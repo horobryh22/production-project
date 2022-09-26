@@ -3,17 +3,17 @@ import {Configuration} from 'webpack';
 import {buildLoaders} from './buildLoaders';
 import {buildResolvers} from './buildResolvers';
 import {buildPlugins} from './buildPlugins';
+import {buildDevServer} from './buildDevServer';
 
 export function buildWebpackConfig(options: BuildOptions): Configuration {
 
-    const {mode, paths, port, isDev} = options;
+    const {mode, paths, isDev} = options;
 
     return {
         // development || production
         mode,
         // start point of our app
         entry: paths.entry,
-        devtool: 'inline-source-map',
         module: {
             // configure loaders here, loaders handle files like 'png', 'jpeg', 'svg', 'css', 'ts' and more
             rules: buildLoaders()
@@ -30,5 +30,7 @@ export function buildWebpackConfig(options: BuildOptions): Configuration {
             clean: true
         },
         plugins: buildPlugins(options),
+        devServer: isDev ? buildDevServer(options) : undefined,
+        devtool: isDev ? 'inline-source-map' : undefined,
     }
 }
