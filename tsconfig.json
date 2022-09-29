@@ -6,7 +6,7 @@
     "module": "ESNext",
     // in which specification will be compiled our code for support more browsers
     "target": "es5",
-    "jsx": "react",
+    "jsx": "react-jsx",
     // with compiling js files also will be handled
     "allowJs": true,
     "moduleResolution": "node",
