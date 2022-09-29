@@ -16,7 +16,7 @@ export function buildWebpackConfig(options: BuildOptions): Configuration {
         entry: paths.entry,
         module: {
             // configure loaders here, loaders handle files like 'png', 'jpeg', 'svg', 'css', 'ts' and more
-            rules: buildLoaders()
+            rules: buildLoaders(options)
         },
         resolve: buildResolvers(),
         // settings where we'll build our app
