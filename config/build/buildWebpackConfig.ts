@@ -18,7 +18,7 @@ export function buildWebpackConfig(options: BuildOptions): Configuration {
             // configure loaders here, loaders handle files like 'png', 'jpeg', 'svg', 'css', 'ts' and more
             rules: buildLoaders(options)
         },
-        resolve: buildResolvers(),
+        resolve: buildResolvers(options),
         // settings where we'll build our app
         output: {
             // name of the main file of our app
