@@ -1,10 +1,9 @@
-import React, {Suspense} from 'react';
+import React from 'react';
 import './styles/index.scss';
-import {NavLink, Route, Routes} from 'react-router-dom';
 import {useTheme} from './providers/ThemeProvider';
-import {AboutPageAsync} from 'pages/AboutPage';
 import {classNames} from 'shared';
-import {MainPageAsync} from 'pages/MainPage';
+import {AppRouter} from 'app/providers/router';
+import {Navbar} from 'widgets/Navbar';
 
 
 const App = () => {
@@ -12,17 +11,9 @@ const App = () => {
 
     return (
         <div className={classNames('app', {}, [theme])}>
+            <Navbar/>
+            <AppRouter/>
             <button onClick={toggleTheme}>Toggle</button>
-            <div>
-                <NavLink to={'/'}>Main</NavLink>
-                <NavLink to={'/about'}>About</NavLink>
-            </div>
-            <Suspense fallback={<div>Loading...</div>}>
-                <Routes>
-                    <Route path={'/about'} element={<AboutPageAsync/>}/>
-                    <Route path={'/'} element={<MainPageAsync/>}/>
-                </Routes>
-            </Suspense>
         </div>
     );
 };
