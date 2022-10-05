@@ -4,6 +4,21 @@ import {BuildOptions} from './types/config';
 
 export function buildLoaders({isDev}: BuildOptions): RuleSetRule[] {
 
+    const svgLoader = {
+        test: /\.svg$/i,
+        issuer: /\.[jt]sx?$/,
+        use: ['@svgr/webpack'],
+    };
+
+    const fileLoader = {
+        test: /\.(png|jpe?g|gif|woff2|woff)$/i,
+        use: [
+            {
+                loader: 'file-loader',
+            },
+        ],
+    };
+
     const cssLoader = {
         test: /\.s[ac]ss$/i,
         use: [
@@ -27,7 +42,7 @@ export function buildLoaders({isDev}: BuildOptions): RuleSetRule[] {
             // Compiles Sass to CSS
             'sass-loader',
         ],
-    }
+    };
 
     // if we don't use typescript, we need to use babel-loader
     const tsLoader = {
@@ -41,6 +56,8 @@ export function buildLoaders({isDev}: BuildOptions): RuleSetRule[] {
 
     // order of loaders is very important!!!
     return [
+        fileLoader,
+        svgLoader,
         tsLoader,
         cssLoader
     ];
