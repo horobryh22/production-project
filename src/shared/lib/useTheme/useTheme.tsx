@@ -1,9 +1,10 @@
 import React, {useContext} from 'react';
-import {
-    LOCAL_STORAGE_THEME_KEY,
-    Theme,
-    ThemeContext
-} from './ThemeContext';
+import {LOCAL_STORAGE_THEME_KEY, ThemeContext} from 'app/providers/ThemeProvider';
+
+export enum Theme {
+    DARK = 'dark',
+    LIGHT = 'light'
+}
 
 interface UseThemeResult {
     theme: Theme;

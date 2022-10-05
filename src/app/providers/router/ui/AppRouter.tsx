@@ -3,12 +3,13 @@ import {useRoutes} from 'react-router-dom';
 import {routeConfig} from '../config/routeConfig';
 
 export const AppRouter = () => {
-
     const elements = useRoutes(routeConfig);
 
     return (
         <Suspense fallback={<div>Loading...</div>}>
-            {elements}
+            <div className="page-wrapper">
+                {elements}
+            </div>
         </Suspense>
     );
 };

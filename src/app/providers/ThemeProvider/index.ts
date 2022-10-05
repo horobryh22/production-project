@@ -1,3 +1,2 @@
 export {ThemeProvider} from './ui/ThemeProvider';
-export {Theme} from './lib/ThemeContext';
-export {useTheme} from './lib/useTheme';
+export {ThemeContext, LOCAL_STORAGE_THEME_KEY} from './lib/ThemeContext';

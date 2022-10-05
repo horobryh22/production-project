@@ -1,9 +1,9 @@
 import React from 'react';
 import './styles/index.scss';
-import {useTheme} from './providers/ThemeProvider';
-import {classNames} from 'shared';
 import {AppRouter} from 'app/providers/router';
 import {Navbar} from 'widgets/Navbar';
+import {classNames, useTheme} from 'shared/lib';
+import {Sidebar} from 'widgets/Sidebar';
 
 
 const App = () => {
@@ -12,7 +12,10 @@ const App = () => {
     return (
         <div className={classNames('app', {}, [theme])}>
             <Navbar/>
-            <AppRouter/>
+            <div className="app-content">
+                <Sidebar/>
+                <AppRouter/>
+            </div>
         </div>
     );
 };
