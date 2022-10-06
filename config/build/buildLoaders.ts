@@ -11,7 +11,7 @@ export function buildLoaders({isDev}: BuildOptions): RuleSetRule[] {
     };
 
     const babelLoader = {
-        test: /\.(js|jsx|tsx)$/,
+        test: /\.(js|jsx|ts|tsx)$/,
         exclude: /node_modules/,
         use: {
             loader: 'babel-loader',
@@ -21,14 +21,16 @@ export function buildLoaders({isDev}: BuildOptions): RuleSetRule[] {
                     [
                         'i18next-extract',
                         {
-                            locales: ['ru', 'en'],
-                            keyAsDefaultValue: true
-                        }
-                    ]
-                ]
-            }
-        }
-    }
+                            locales: ['en', 'ru'],
+                            keyAsDefaultValue: true,
+                            saveMissing: true,
+                            outputPath: 'public/locales/{{locale}}/{{ns}}.json',
+                        },
+                    ],
+                ],
+            },
+        },
+    };
 
     const fileLoader = {
         test: /\.(png|jpe?g|gif|woff2|woff)$/i,
