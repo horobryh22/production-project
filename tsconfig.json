@@ -20,7 +20,7 @@
     // let us to using imports like 'import webpack from 'webpack' instead of
     // 'import * as webpack from 'webpack'
     "allowSyntheticDefaultImports": true,
-    "sourceMap": true
+    "sourceMap": true,
   },
   "ts-node": {
     "compilerOptions": {

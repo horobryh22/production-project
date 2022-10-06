@@ -1,9 +1,9 @@
-import {RuleSetRule} from 'webpack';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
-import {BuildOptions} from './types/config';
+import { RuleSetRule } from 'webpack';
 
-export function buildLoaders({isDev}: BuildOptions): RuleSetRule[] {
+import { BuildOptions } from './types/config';
 
+export function buildLoaders({ isDev }: BuildOptions): RuleSetRule[] {
     const svgLoader = {
         test: /\.svg$/i,
         issuer: /\.[jt]sx?$/,
@@ -24,6 +24,7 @@ export function buildLoaders({isDev}: BuildOptions): RuleSetRule[] {
                             locales: ['en', 'ru'],
                             keyAsDefaultValue: true,
                             saveMissing: true,
+                            discardOldKeys: true,
                             outputPath: 'public/locales/{{locale}}/{{ns}}.json',
                         },
                     ],
@@ -57,9 +58,9 @@ export function buildLoaders({isDev}: BuildOptions): RuleSetRule[] {
                         // change classNames, depends on mode (dev or prod)
                         localIdentName: isDev
                             ? '[path][name]__[local]--[hash:base64:5]'
-                            : '[hash:base64:8]'
-                    }
-                }
+                            : '[hash:base64:8]',
+                    },
+                },
             },
             // Compiles Sass to CSS
             'sass-loader',
@@ -74,14 +75,8 @@ export function buildLoaders({isDev}: BuildOptions): RuleSetRule[] {
         use: 'ts-loader',
         // what doesn't need to handle
         exclude: /node_modules/,
-    }
+    };
 
     // order of loaders is very important!!!
-    return [
-        fileLoader,
-        svgLoader,
-        babelLoader,
-        tsLoader,
-        cssLoader
-    ];
+    return [fileLoader, svgLoader, babelLoader, tsLoader, cssLoader];
 }

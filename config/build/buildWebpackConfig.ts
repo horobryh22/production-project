@@ -1,13 +1,13 @@
-import {BuildOptions} from './types/config';
-import {Configuration} from 'webpack';
-import {buildLoaders} from './buildLoaders';
-import {buildResolvers} from './buildResolvers';
-import {buildPlugins} from './buildPlugins';
-import {buildDevServer} from './buildDevServer';
+import { Configuration } from 'webpack';
+
+import { buildDevServer } from './buildDevServer';
+import { buildLoaders } from './buildLoaders';
+import { buildPlugins } from './buildPlugins';
+import { buildResolvers } from './buildResolvers';
+import { BuildOptions } from './types/config';
 
 export function buildWebpackConfig(options: BuildOptions): Configuration {
-
-    const {mode, paths, isDev} = options;
+    const { mode, paths, isDev } = options;
 
     return {
         // development || production
@@ -16,7 +16,7 @@ export function buildWebpackConfig(options: BuildOptions): Configuration {
         entry: paths.entry,
         module: {
             // configure loaders here, loaders handle files like 'png', 'jpeg', 'svg', 'css', 'ts' and more
-            rules: buildLoaders(options)
+            rules: buildLoaders(options),
         },
         resolve: buildResolvers(options),
         // settings where we'll build our app
@@ -27,10 +27,10 @@ export function buildWebpackConfig(options: BuildOptions): Configuration {
             // in which directory will be our build
             path: paths.build,
             // remove unused bundles
-            clean: true
+            clean: true,
         },
         plugins: buildPlugins(options),
         devServer: isDev ? buildDevServer(options) : undefined,
         devtool: isDev ? 'inline-source-map' : undefined,
-    }
+    };
 }

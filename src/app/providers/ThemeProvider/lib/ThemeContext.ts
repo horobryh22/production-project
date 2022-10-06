@@ -1,5 +1,6 @@
-import {createContext} from 'react';
-import {Theme} from 'shared/lib';
+import { createContext } from 'react';
+
+import { Theme } from 'shared/lib';
 
 interface ThemeContextProps {
     theme?: Theme;

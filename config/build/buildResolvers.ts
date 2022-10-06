@@ -1,9 +1,8 @@
-import {ResolveOptions} from 'webpack';
-import {BuildOptions} from './types/config';
+import { ResolveOptions } from 'webpack';
 
+import { BuildOptions } from './types/config';
 
-export function buildResolvers({paths}: BuildOptions): ResolveOptions {
-
+export function buildResolvers({ paths }: BuildOptions): ResolveOptions {
     return {
         // files that don't need to add an extension when imported, such as '.js' or '.ts'
         extensions: ['.tsx', '.ts', '.js'],
@@ -14,6 +13,6 @@ export function buildResolvers({paths}: BuildOptions): ResolveOptions {
         // paths to src and node_modules files
         modules: [paths.src, 'node_modules'],
         // import without @, like '@/something/'
-        alias: {}
-    }
+        alias: {},
+    };
 }

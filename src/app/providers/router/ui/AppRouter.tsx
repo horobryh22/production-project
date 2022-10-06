@@ -1,15 +1,15 @@
-import React, {Suspense} from 'react';
-import {useRoutes} from 'react-router-dom';
-import {routeConfig} from '../config/routeConfig';
+import React, { ReactElement, Suspense } from 'react';
 
-export const AppRouter = () => {
+import { useRoutes } from 'react-router-dom';
+
+import { routeConfig } from '../config/routeConfig';
+
+export const AppRouter = (): ReactElement => {
     const elements = useRoutes(routeConfig);
 
     return (
         <Suspense fallback={<div>Loading...</div>}>
-            <div className="page-wrapper">
-                {elements}
-            </div>
+            <div className="page-wrapper">{elements}</div>
         </Suspense>
     );
 };
