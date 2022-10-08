@@ -1,14 +1,16 @@
 {
   "env": {
     "browser": true,
-    "es2021": true
+    "es2021": true,
+    "jest": true
   },
   "extends": [
     "prettier",
     "plugin:react/recommended",
     "plugin:import/recommended",
     "plugin:prettier/recommended",
-    "plugin:react-hooks/recommended"
+    "plugin:react-hooks/recommended",
+    "plugin:i18next/recommended"
   ],
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
@@ -24,6 +26,7 @@
   "plugins": [
     "react",
     "import",
+    "i18next",
     "prettier",
     "react-hooks",
     "@typescript-eslint"
@@ -125,6 +128,12 @@
           "state",
           "self"
         ]
+      }
+    ],
+    "i18next/no-literal-string": [
+      "error",
+      {
+        "markupOnly": true
       }
     ],
     "react/display-name": "off",
