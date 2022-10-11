@@ -65,7 +65,6 @@ export function buildLoaders({ isDev }: BuildOptions): RuleSetRule[] {
             // Compiles Sass to CSS
             'sass-loader',
         ],
-        exportLocalsConvention: 'camelCase',
     };
 
     // if we don't use typescript, we need to use babel-loader

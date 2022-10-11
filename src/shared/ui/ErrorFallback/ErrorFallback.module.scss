@@ -1,0 +1,14 @@
+.wrapper {
+  font: var(--font-l);
+  color: var(--secondary-color);
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--bg-color);
+
+  >p {
+    margin-right: 50px;
+  }
+}
