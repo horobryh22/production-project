@@ -2,6 +2,7 @@ import ReactRefreshPlugin from '@pmmmwh/react-refresh-webpack-plugin';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import webpack, { WebpackPluginInstance } from 'webpack';
+import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
 
 import { BuildOptions } from './types/config';
 
@@ -25,5 +26,8 @@ export function buildPlugins({ paths, isDev }: BuildOptions): WebpackPluginInsta
         // these plugins Refresh and HotModule are included so as not to reload our page
         new webpack.HotModuleReplacementPlugin(),
         new ReactRefreshPlugin(),
+        new BundleAnalyzerPlugin({
+            openAnalyzer: false,
+        }),
     ];
 }
