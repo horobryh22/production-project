@@ -6,7 +6,11 @@ import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
 
 import { BuildOptions } from './types/config';
 
-export function buildPlugins({ paths, isDev }: BuildOptions): WebpackPluginInstance[] {
+export function buildPlugins({
+    paths,
+    isDev,
+    analyze,
+}: BuildOptions): WebpackPluginInstance[] {
     return [
         // it shows us progress of build files
         new webpack.ProgressPlugin(),
@@ -26,8 +30,6 @@ export function buildPlugins({ paths, isDev }: BuildOptions): WebpackPluginInsta
         // these plugins Refresh and HotModule are included so as not to reload our page
         new webpack.HotModuleReplacementPlugin(),
         new ReactRefreshPlugin(),
-        new BundleAnalyzerPlugin({
-            openAnalyzer: false,
-        }),
-    ];
+        analyze && new BundleAnalyzerPlugin(),
+    ].filter(Boolean);
 }
