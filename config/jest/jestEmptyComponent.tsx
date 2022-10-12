@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { ReactElement } from 'react';
 
-const JestEmptyComponent = () => {
+const JestEmptyComponent = (): ReactElement => {
     return <div />;
 };
 
