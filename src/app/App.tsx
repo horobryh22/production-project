@@ -3,7 +3,8 @@ import React, { ReactElement, Suspense } from 'react';
 import { ErrorBoundary } from 'react-error-boundary';
 
 import { AppRouter } from 'app/providers/router';
-import { classNames, useTheme } from 'shared/lib';
+import { useTheme } from 'app/providers/ThemeProvider';
+import { classNames } from 'shared/lib';
 import { ErrorFallback } from 'shared/ui';
 import { Navbar } from 'widgets/Navbar';
 import { Sidebar } from 'widgets/Sidebar';
