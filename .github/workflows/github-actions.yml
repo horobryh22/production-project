@@ -21,6 +21,10 @@ jobs:
         run: npm install
       - name: build production project
         run: npm run build:prod
+      - name: build storybook
+        run: npm run storybook:build
+      - name: ui testing
+        run: npm run test:ui:ci
       - name: linting typescript
         run: npm run lint:ts
       - name: linting css
