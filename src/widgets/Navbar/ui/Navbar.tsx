@@ -24,7 +24,7 @@ export const Navbar = ({ className }: NavbarProps): ReactElement => {
                 >
                     {t('Main')}
                 </AppLink>
-                <AppLink theme={AppLinkTheme.SECONDARY} to={'/about'}>
+                <AppLink theme={AppLinkTheme.SECONDARY} to="/about">
                     {t('About')}
                 </AppLink>
             </div>

@@ -24,10 +24,7 @@ export const AppLink: FC<AppLinkProps> = props => {
         <NavLink
             {...restProps}
             to={to}
-            className={classNames(classes.AppLink, {}, [
-                String(className),
-                classes[String(theme)],
-            ])}
+            className={classNames(classes.AppLink, {}, [className, classes[theme]])}
         >
             {children}
         </NavLink>
