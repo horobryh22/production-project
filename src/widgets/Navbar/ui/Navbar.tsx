@@ -15,7 +15,7 @@ export const Navbar = ({ className }: NavbarProps): ReactElement => {
     const { t } = useTranslation();
 
     return (
-        <div className={classNames(classes.Navbar, {}, [String(className)])}>
+        <div className={classNames('', {}, [String(className)])}>
             <div className={classes.links}>
                 <AppLink
                     theme={AppLinkTheme.SECONDARY}
