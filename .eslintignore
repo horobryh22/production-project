@@ -2,4 +2,5 @@
 *.scss
 *.json
 *.d.ts
+/scripts
 config/storybook

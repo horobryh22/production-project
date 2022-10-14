@@ -2,6 +2,7 @@ module.exports = {
     'stories': [
         '../../src/**/*.stories.@(js|jsx|ts|tsx)',
     ],
+    'staticDirs': ["../../public"],
     'addons': [
         'storybook-addon-themes',
         '@storybook/addon-links',

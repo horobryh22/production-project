@@ -3,7 +3,7 @@ import { ReactElement } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import { classNames } from '../../lib';
-import { Button, ThemeButton } from '../Button/Button';
+import { Button, ButtonTheme } from '../Button/Button';
 
 import classes from './ErrorFallback.module.scss';
 
@@ -18,7 +18,7 @@ export const ErrorFallback = ({ resetErrorBoundary }: FallbackProps): ReactEleme
     return (
         <div className={classNames(classes.wrapper)}>
             <p>{t('Something went wrong')}</p>
-            <Button onClick={resetErrorBoundary} theme={ThemeButton.OUTLINE}>
+            <Button onClick={resetErrorBoundary} theme={ButtonTheme.OUTLINE}>
                 {t('Reload page')}
             </Button>
         </div>
