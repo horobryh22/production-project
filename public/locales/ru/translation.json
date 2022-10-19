@@ -4,6 +4,6 @@
   "Main": "Главная",
   "Reload page": "Перезагрузить страницу",
   "Something went wrong": "Что-то пошло не так . . .",
-  "shortLang": "Ru",
-  "lang": "Русский"
+  "decrement": "decrement",
+  "increment": "increment"
 }

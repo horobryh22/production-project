@@ -15,4 +15,7 @@ export default {
     },
     // this property provides opportunity to treat with SetupTests files to don't write @import.... in the each test file
     setupFilesAfterEnv: ['<rootDir>config/jest/setupTests.ts'],
+    globals: {
+        __IS_DEV__: true,
+    },
 };
