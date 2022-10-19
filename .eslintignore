@@ -4,3 +4,4 @@
 *.d.ts
 /scripts
 config/storybook
+/json-server
