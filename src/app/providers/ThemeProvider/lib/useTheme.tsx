@@ -3,8 +3,8 @@ import { useContext } from 'react';
 import { LOCAL_STORAGE_THEME_KEY, ThemeContext } from './ThemeContext';
 
 export enum Theme {
-    DARK = 'dark',
-    LIGHT = 'light',
+    DARK = 'app_dark_theme',
+    LIGHT = 'app_light_theme',
 }
 
 interface UseThemeResult {
@@ -21,6 +21,7 @@ export const useTheme = (): UseThemeResult => {
         if (setTheme) {
             setTheme(selectedTheme);
         }
+        document.body.className = selectedTheme;
         localStorage.setItem(LOCAL_STORAGE_THEME_KEY, selectedTheme);
     };
 

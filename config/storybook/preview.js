@@ -12,10 +12,10 @@ export const parameters = {
         },
     },
     themes: {
-        default: 'light',
+        default: 'dark',
         list: [
-            { name: 'dark', class: ['app', 'dark'] },
-            { name: 'light', class: ['app', 'light'] },
+            { name: 'dark', class: ['app', 'app_dark_theme'] },
+            { name: 'light', class: ['app', 'app_light_theme'] },
         ],
     },
 };

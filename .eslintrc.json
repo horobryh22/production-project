@@ -48,9 +48,10 @@
     },
     // here we turn off i18next rule for test files
     {
-      "files": ["**/src/**/*.test.{ts,tsx}"],
+      "files": ["**/src/**/*.{test,stories}.{ts,tsx}"],
       "rules": {
-        "i18next/no-literal-string": "off"
+        "i18next/no-literal-string": "off",
+        "max-len": "off"
       }
     }
   ],
@@ -150,7 +151,7 @@
     "react/react-in-jsx-scope": "off",
     "react/require-default-props": "off",
     "react-hooks/rules-of-hooks": "error",
-    "react-hooks/exhaustive-deps": "warn",
+    "react-hooks/exhaustive-deps": "error",
     "react/jsx-filename-extension": [
       1,
       {
