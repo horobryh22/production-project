@@ -1,11 +1,11 @@
 {
   "About": "О сайте",
-  "Enter password": "Enter password",
-  "Enter username": "Enter username",
-  "Login": "Login",
+  "Enter password": "Введите пароль",
+  "Enter username": "Введите логин",
+  "Login": "Войти",
   "Main": "Главная",
   "Reload page": "Перезагрузить страницу",
   "Something went wrong": "Что-то пошло не так . . .",
-  "decrement": "decrement",
-  "increment": "increment"
+  "shortLang": "Ru",
+  "lang": "Русский"
 }
