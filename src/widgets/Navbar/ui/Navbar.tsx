@@ -1,11 +1,12 @@
-import React, { ReactElement, useState } from 'react';
+import React, { ReactElement, useCallback, useState } from 'react';
 
 import { useTranslation } from 'react-i18next';
 
 import classes from './Navbar.module.scss';
 
+import { LoginModal } from 'features/AuthByUserName';
 import { classNames } from 'shared/lib';
-import { Button, ButtonTheme, Modal } from 'shared/ui';
+import { Button, ButtonTheme } from 'shared/ui';
 
 interface NavbarProps {
     className?: string;
@@ -16,28 +17,20 @@ export const Navbar = ({ className }: NavbarProps): ReactElement => {
 
     const [isOpen, setIsOpen] = useState(false);
 
-    const onToggleModal = (): void => {
-        if (isOpen) {
-            setIsOpen(prev => !prev);
+    const closeModal = useCallback(() => {
+        setIsOpen(false);
+    }, []);
 
-            return;
-        }
-
-        setIsOpen(prev => !prev);
-    };
+    const openModal = useCallback(() => {
+        setIsOpen(true);
+    }, []);
 
     return (
         <div className={classNames(classes.Navbar, {}, [String(className)])}>
-            {/* eslint-disable-next-line i18next/no-literal-string */}
-            <Modal isOpen={isOpen} onClose={onToggleModal}>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi at
-                consectetur delectus, facilis, fugiat inventore magnam, omnis quae sed
-                similique sint tempora temporibus tenetur unde voluptatem. Assumenda cum
-                laborum vitae.
-            </Modal>
+            <LoginModal isOpen={isOpen} onClose={closeModal} />
             <Button
                 className={classes.links}
-                onClick={onToggleModal}
+                onClick={openModal}
                 theme={ButtonTheme.CLEAR_INVERTED}
             >
                 {t('Login')}
