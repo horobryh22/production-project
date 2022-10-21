@@ -14,7 +14,7 @@ export const LoginModal = (props: LoginModalProps): ReactElement => {
     const { isOpen, onClose, testMode } = props;
 
     return (
-        <Modal testMode={testMode} isOpen={isOpen} onClose={onClose} lazy>
+        <Modal testMode={testMode} isOpen={isOpen} onClose={onClose}>
             <LoginForm />
         </Modal>
     );

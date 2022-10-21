@@ -6,6 +6,6 @@
   "Main": "Main",
   "Reload page": "Reload page",
   "Something went wrong": "Something went wrong . . .",
-  "shortLang": "En",
-  "lang": "English"
+  "decrement": "decrement",
+  "increment": "increment"
 }

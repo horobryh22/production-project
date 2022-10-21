@@ -19,16 +19,13 @@ interface ModalProps {
     isOpen?: boolean;
     onClose?: () => void;
     testMode?: boolean;
-    lazy?: boolean;
 }
 
 const ANIMATION_DELAY = 300;
 const MODAL_ROOT = document.getElementById('modal-root');
 
 export const Modal = (props: ModalProps): ReactElement => {
-    const { className, children, isOpen, onClose, testMode, lazy } = props;
-
-    const [isMounted, setIsMounted] = useState(false);
+    const { className, children, isOpen, onClose, testMode } = props;
 
     const [isClosing, setIsClosing] = useState(false);
     const timerRef = useRef<ReturnType<typeof setTimeout>>();
@@ -58,12 +55,6 @@ export const Modal = (props: ModalProps): ReactElement => {
 
     useEffect(() => {
         if (isOpen) {
-            setIsMounted(true);
-        }
-    }, [isOpen]);
-
-    useEffect(() => {
-        if (isOpen) {
             window.addEventListener('keydown', onKeyDown);
         }
 
@@ -88,7 +79,7 @@ export const Modal = (props: ModalProps): ReactElement => {
         </div>
     );
 
-    if (lazy && !isMounted) return null;
+    if (!isOpen) return null;
 
     if (testMode) return modalElement;
 
