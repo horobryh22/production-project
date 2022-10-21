@@ -123,6 +123,9 @@
         "target": "chrome.app",
         "preset": "iPhone 7"
       }
+    },
+    "overrides": {
+      "chrome-remote-interface": "0.31.3"
     }
   }
 }
