@@ -1,0 +1,17 @@
+import type { DeepPartial } from 'redux';
+
+import { selectUsername } from './selectUsername';
+
+import { StateSchema } from 'app/providers/StoreProvider';
+
+describe('select username', () => {
+    test('should return username', () => {
+        const state: DeepPartial<StateSchema> = {
+            login: {
+                username: 'admin',
+            },
+        };
+
+        expect(selectUsername(state as StateSchema)).toBe('admin');
+    });
+});

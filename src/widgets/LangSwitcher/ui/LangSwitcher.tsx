@@ -23,7 +23,7 @@ export const LangSwitcher = ({ className, short }: LangSwitcherProps): ReactElem
             onClick={toggleLang}
             className={classNames('', {}, [String(className)])}
         >
-            {t(short ? 'shortLang' : 'lang')}
+            {short ? t('shortLang') : t('lang')}
         </Button>
     );
 };

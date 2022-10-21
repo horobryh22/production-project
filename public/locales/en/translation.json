@@ -1,11 +1,16 @@
 {
   "About": "About",
+  "Auth form": "Auth form",
   "Enter password": "Enter password",
+  "Enter the correct password or login": "Enter the correct password or login",
   "Enter username": "Enter username",
   "Login": "Login",
+  "Logout": "Logout",
   "Main": "Main",
   "Reload page": "Reload page",
   "Something went wrong": "Something went wrong . . .",
   "decrement": "decrement",
-  "increment": "increment"
+  "increment": "increment",
+  "lang": "lang",
+  "shortLang": "shortLang"
 }
