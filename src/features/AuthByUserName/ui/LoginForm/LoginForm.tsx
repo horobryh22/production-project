@@ -10,20 +10,25 @@ import {
     selectUsername,
 } from '../../model/selectors';
 import { loginByUsername } from '../../model/services/loginByUsername/loginByUsername';
-import { loginActions } from '../../model/slice/loginSlice';
+import { loginActions, loginReducer } from '../../model/slice/loginSlice';
 
 import classes from './LoginForm.module.scss';
 
 import { useAppDispatch } from 'app/providers/StoreProvider/config/store';
-import { classNames } from 'shared/lib';
+import { classNames, useDynamicModuleLoader } from 'shared/lib';
+import { ReducersList } from 'shared/lib/hooks/useDynamicModuleLoader';
 import { Button, ButtonTheme, Input } from 'shared/ui';
 import { Text, TextTheme } from 'shared/ui/Text/Text';
 
-interface LoginFormProps {
+export interface LoginFormProps {
     className?: string;
 }
 
-export const LoginForm = memo(({ className }: LoginFormProps): ReactElement => {
+const INITIAL_REDUCERS: ReducersList = {
+    login: loginReducer,
+};
+
+const LoginForm = memo(({ className }: LoginFormProps): ReactElement => {
     const { t } = useTranslation();
 
     const dispatch = useAppDispatch();
@@ -32,6 +37,8 @@ export const LoginForm = memo(({ className }: LoginFormProps): ReactElement => {
     const password = useSelector(selectPassword);
     const error = useSelector(selectError);
     const isLoading = useSelector(selectIsLoading);
+
+    useDynamicModuleLoader(INITIAL_REDUCERS);
 
     const onChangeUsername = useCallback(
         (username: string): void => {
@@ -84,3 +91,5 @@ export const LoginForm = memo(({ className }: LoginFormProps): ReactElement => {
         </div>
     );
 });
+
+export default LoginForm;

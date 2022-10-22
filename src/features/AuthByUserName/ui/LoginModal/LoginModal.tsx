@@ -1,8 +1,8 @@
-import { ReactElement } from 'react';
+import { ReactElement, Suspense } from 'react';
 
-import { LoginForm } from '../LoginForm/LoginForm';
+import { LoginFormAsync } from '../LoginForm/LoginForm.async';
 
-import { Modal } from 'shared/ui';
+import { Loader, Modal } from 'shared/ui';
 
 interface LoginModalProps {
     isOpen?: boolean;
@@ -15,7 +15,9 @@ export const LoginModal = (props: LoginModalProps): ReactElement => {
 
     return (
         <Modal testMode={testMode} isOpen={isOpen} onClose={onClose}>
-            <LoginForm />
+            <Suspense fallback={<Loader />}>
+                <LoginFormAsync />
+            </Suspense>
         </Modal>
     );
 };

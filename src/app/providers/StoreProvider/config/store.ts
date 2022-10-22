@@ -1,27 +1,35 @@
+import type { AnyAction, ReducersMapObject, ThunkDispatch } from '@reduxjs/toolkit';
 import { configureStore } from '@reduxjs/toolkit';
-import type { ReducersMapObject, AnyAction, ThunkDispatch } from '@reduxjs/toolkit';
 import { useDispatch } from 'react-redux';
 
-import { StateSchema } from '../config/StateSchema';
+import { ReducerManager, StateSchema, StoreSchema } from '../config/StateSchema';
+
+import { createReducerManager } from './reducerManager';
 
 import { counterReducer } from 'entities/Counter';
 import { userReducer } from 'entities/User';
-import { loginReducer } from 'features/AuthByUserName';
 
 export const createReduxStore = (
     initialState?: StateSchema,
-): ReturnType<typeof configureStore> => {
+    asyncReducers?: ReducersMapObject<StateSchema>,
+): StoreSchema => {
     const rootReducers: ReducersMapObject<StateSchema> = {
-        login: loginReducer,
+        ...asyncReducers,
         user: userReducer,
         counter: counterReducer,
     };
 
-    return configureStore<StateSchema>({
-        reducer: rootReducers,
+    const reducerManager: ReducerManager = createReducerManager(rootReducers);
+
+    const store: StoreSchema = configureStore<StateSchema>({
+        reducer: reducerManager.reduce,
         devTools: __IS_DEV__,
         preloadedState: initialState,
     });
+
+    store.reducerManager = reducerManager;
+
+    return store;
 };
 
 // temporary solve
