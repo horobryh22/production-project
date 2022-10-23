@@ -55,8 +55,8 @@ const LoginForm = memo(({ className }: LoginFormProps): ReactElement => {
     );
 
     const onLogin = useCallback(() => {
-        dispatch(loginByUsername());
-    }, [dispatch]);
+        dispatch(loginByUsername({ username, password }));
+    }, [dispatch, password, username]);
 
     return (
         <div className={classNames(classes.LoginForm, {}, [className])}>

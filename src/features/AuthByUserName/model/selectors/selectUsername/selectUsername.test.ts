@@ -14,4 +14,8 @@ describe('select username', () => {
 
         expect(selectUsername(state as StateSchema)).toBe('admin');
     });
+
+    test('should work with empty state', () => {
+        expect(selectUsername(undefined)).toBe('');
+    });
 });

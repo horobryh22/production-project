@@ -14,4 +14,8 @@ describe('selectError', () => {
 
         expect(selectError(state as StateSchema)).toBe('some error');
     });
+
+    test('should work with empty state', () => {
+        expect(selectError(undefined)).toBeNull();
+    });
 });

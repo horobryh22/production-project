@@ -14,4 +14,8 @@ describe('select password', () => {
 
         expect(selectPassword(state as StateSchema)).toBe('123');
     });
+
+    test('should work with empty state', () => {
+        expect(selectPassword(undefined)).toBe('');
+    });
 });

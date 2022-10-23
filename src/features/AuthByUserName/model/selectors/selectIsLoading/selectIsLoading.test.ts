@@ -14,4 +14,8 @@ describe('selectIsLoading', () => {
 
         expect(selectIsLoading(state as StateSchema)).toBeTruthy();
     });
+
+    test('should work with empty state', () => {
+        expect(selectIsLoading(undefined)).toBeFalsy();
+    });
 });
