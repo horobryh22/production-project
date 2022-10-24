@@ -5,5 +5,15 @@
       "username": "admin",
       "password": "123"
     }
-  ]
+  ],
+  "profile": {
+    "first": "Ilya",
+    "lastname": "Khorobrykh",
+    "age": 28,
+    "currency": "RUB",
+    "country": "Russia",
+    "city": "Omsk",
+    "username": "admin",
+    "avatar": "https://cdn-icons-png.flaticon.com/512/168/168882.png"
+  }
 }

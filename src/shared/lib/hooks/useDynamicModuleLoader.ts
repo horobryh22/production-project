@@ -3,8 +3,9 @@ import { useEffect } from 'react';
 import type { Reducer } from '@reduxjs/toolkit';
 import { useStore } from 'react-redux';
 
+import { useAppDispatch } from '../hooks/useAppDispatch';
+
 import { StateSchemaKey, StoreSchema } from 'app/providers/StoreProvider';
-import { useAppDispatch } from 'app/providers/StoreProvider/config/store';
 
 type ReducerItem = [StateSchemaKey, Reducer];
 

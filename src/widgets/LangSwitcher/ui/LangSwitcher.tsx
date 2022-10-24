@@ -1,4 +1,4 @@
-import { ReactElement } from 'react';
+import { memo, ReactElement } from 'react';
 
 import { useTranslation } from 'react-i18next';
 
@@ -10,20 +10,22 @@ interface LangSwitcherProps {
     short?: boolean;
 }
 
-export const LangSwitcher = ({ className, short }: LangSwitcherProps): ReactElement => {
-    const { t, i18n } = useTranslation();
+export const LangSwitcher = memo(
+    ({ className, short }: LangSwitcherProps): ReactElement => {
+        const { t, i18n } = useTranslation();
 
-    const toggleLang = async (): Promise<void> => {
-        await i18n.changeLanguage(i18n.language === 'en' ? 'ru' : 'en');
-    };
+        const toggleLang = async (): Promise<void> => {
+            await i18n.changeLanguage(i18n.language === 'en' ? 'ru' : 'en');
+        };
 
-    return (
-        <Button
-            theme={ButtonTheme.CLEAR_INVERTED}
-            onClick={toggleLang}
-            className={classNames('', {}, [String(className)])}
-        >
-            {short ? t('shortLang') : t('lang')}
-        </Button>
-    );
-};
+        return (
+            <Button
+                theme={ButtonTheme.CLEAR_INVERTED}
+                onClick={toggleLang}
+                className={classNames('', {}, [String(className)])}
+            >
+                {short ? t('shortLang') : t('lang')}
+            </Button>
+        );
+    },
+);

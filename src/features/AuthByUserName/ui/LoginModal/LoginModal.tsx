@@ -16,7 +16,7 @@ export const LoginModal = (props: LoginModalProps): ReactElement => {
     return (
         <Modal testMode={testMode} isOpen={isOpen} onClose={onClose}>
             <Suspense fallback={<Loader />}>
-                <LoginFormAsync />
+                <LoginFormAsync onSuccess={onClose} />
             </Suspense>
         </Modal>
     );

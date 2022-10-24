@@ -1,4 +1,4 @@
-import { ButtonHTMLAttributes, FC } from 'react';
+import { ButtonHTMLAttributes, ReactElement } from 'react';
 
 import classes from './Button.module.scss';
 
@@ -25,7 +25,7 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
     size?: ButtonSize;
 }
 
-export const Button: FC<ButtonProps> = props => {
+export const Button = (props: ButtonProps): ReactElement => {
     const { children, className, theme, square, size, disabled, ...restProps } = props;
 
     const mods: Record<string, boolean> = {

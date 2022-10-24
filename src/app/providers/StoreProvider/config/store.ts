@@ -1,6 +1,5 @@
-import type { AnyAction, ReducersMapObject, ThunkDispatch } from '@reduxjs/toolkit';
+import type { ReducersMapObject } from '@reduxjs/toolkit';
 import { configureStore } from '@reduxjs/toolkit';
-import { useDispatch } from 'react-redux';
 
 import { ReducerManager, StateSchema, StoreSchema } from '../config/StateSchema';
 
@@ -31,7 +30,3 @@ export const createReduxStore = (
 
     return store;
 };
-
-// temporary solve
-type TypedDispatch<T> = ThunkDispatch<T, any, AnyAction>;
-export const useAppDispatch = (): any => useDispatch<TypedDispatch<StateSchema>>();

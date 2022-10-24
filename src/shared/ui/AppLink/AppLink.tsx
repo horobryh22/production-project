@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { ReactElement } from 'react';
 
 import type { NavLinkProps } from 'react-router-dom';
 import { NavLink } from 'react-router-dom';
@@ -17,7 +17,7 @@ interface AppLinkProps extends NavLinkProps {
     theme?: AppLinkTheme;
 }
 
-export const AppLink: FC<AppLinkProps> = props => {
+export const AppLink = (props: AppLinkProps): ReactElement => {
     const { to, children, className, theme, ...restProps } = props;
 
     return (

@@ -2,11 +2,9 @@ import React, { ReactElement, Suspense, useEffect } from 'react';
 
 import { ErrorBoundary } from 'react-error-boundary';
 
-import { useAppDispatch } from './providers/StoreProvider/config/store';
-
 import { AppRouter } from 'app/providers/router';
 import { userActions } from 'entities/User';
-import { classNames } from 'shared/lib';
+import { classNames, useAppDispatch } from 'shared/lib';
 import { ErrorFallback } from 'shared/ui';
 import { Navbar } from 'widgets/Navbar';
 import { Sidebar } from 'widgets/Sidebar';

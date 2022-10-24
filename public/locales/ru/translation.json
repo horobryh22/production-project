@@ -1,12 +1,10 @@
 {
-  "About": "О сайте",
   "Auth form": "Форма авторизации",
   "Enter password": "Введите пароль",
   "Enter the correct password or login": "Введите верный логин или пароль",
   "Enter username": "Введите логин",
   "Login": "Войти",
   "Logout": "Выйти",
-  "Main": "Главная",
   "Reload page": "Перезагрузить страницу",
   "Something went wrong": "Что-то пошло не так . . .",
   "decrement": "decrement",

@@ -7,6 +7,7 @@ import type {
 import type { CombinedState } from 'redux';
 
 import type { CounterSchema } from 'entities/Counter';
+import { ProfileSchema } from 'entities/Profile';
 import { UserSchema } from 'entities/User';
 import { LoginSchema } from 'features/AuthByUserName';
 
@@ -17,6 +18,7 @@ export interface StateSchema {
 
     // async reducers
     login?: LoginSchema;
+    profile?: ProfileSchema;
 }
 
 export type StateSchemaKey = keyof StateSchema;

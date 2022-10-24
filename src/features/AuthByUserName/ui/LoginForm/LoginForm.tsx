@@ -14,21 +14,21 @@ import { loginActions, loginReducer } from '../../model/slice/loginSlice';
 
 import classes from './LoginForm.module.scss';
 
-import { useAppDispatch } from 'app/providers/StoreProvider/config/store';
-import { classNames, useDynamicModuleLoader } from 'shared/lib';
+import { classNames, useAppDispatch, useDynamicModuleLoader } from 'shared/lib';
 import { ReducersList } from 'shared/lib/hooks/useDynamicModuleLoader';
 import { Button, ButtonTheme, Input } from 'shared/ui';
 import { Text, TextTheme } from 'shared/ui/Text/Text';
 
 export interface LoginFormProps {
     className?: string;
+    onSuccess: () => void;
 }
 
 const INITIAL_REDUCERS: ReducersList = {
     login: loginReducer,
 };
 
-const LoginForm = memo(({ className }: LoginFormProps): ReactElement => {
+const LoginForm = memo(({ className, onSuccess }: LoginFormProps): ReactElement => {
     const { t } = useTranslation();
 
     const dispatch = useAppDispatch();
@@ -54,9 +54,13 @@ const LoginForm = memo(({ className }: LoginFormProps): ReactElement => {
         [dispatch],
     );
 
-    const onLogin = useCallback(() => {
-        dispatch(loginByUsername({ username, password }));
-    }, [dispatch, password, username]);
+    const onLogin = useCallback(async (): Promise<void> => {
+        const result = await dispatch(loginByUsername({ username, password }));
+
+        if (result.meta.requestStatus === 'fulfilled') {
+            onSuccess();
+        }
+    }, [dispatch, onSuccess, password, username]);
 
     return (
         <div className={classNames(classes.LoginForm, {}, [className])}>
