@@ -1,14 +1,6 @@
-import {
-    MouseEvent,
-    ReactElement,
-    ReactNode,
-    useCallback,
-    useEffect,
-    useRef,
-    useState,
-} from 'react';
+import { MouseEvent, ReactNode, useCallback, useEffect, useRef, useState } from 'react';
 
-import { classNames } from '../../lib/classNames/classNames';
+import { classNames, Mods } from '../../lib/classNames/classNames';
 import { Portal } from '../Portal/Portal';
 
 import classes from './Modal.module.scss';
@@ -22,9 +14,9 @@ interface ModalProps {
 }
 
 const ANIMATION_DELAY = 300;
-const MODAL_ROOT = document.getElementById('modal-root');
+const MODAL_ROOT = document.getElementById('modal-root') || undefined;
 
-export const Modal = (props: ModalProps): ReactElement => {
+export const Modal = (props: ModalProps) => {
     const { className, children, isOpen, onClose, testMode } = props;
 
     const [isClosing, setIsClosing] = useState(false);
@@ -64,7 +56,7 @@ export const Modal = (props: ModalProps): ReactElement => {
         };
     }, [isOpen, onKeyDown]);
 
-    const mods: Record<string, boolean> = {
+    const mods: Mods = {
         [classes.opened]: isOpen,
         [classes.isClosing]: isClosing,
     };

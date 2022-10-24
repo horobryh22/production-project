@@ -18,7 +18,7 @@ interface AppLinkProps extends NavLinkProps {
 }
 
 export const AppLink = (props: AppLinkProps): ReactElement => {
-    const { to, children, className, theme, ...restProps } = props;
+    const { to, children, className, theme = AppLinkTheme.PRIMARY, ...restProps } = props;
 
     return (
         <NavLink

@@ -1,5 +1,3 @@
-import type { DeepPartial } from 'redux';
-
 import { selectError } from './selectError';
 
 import { StateSchema } from 'app/providers/StoreProvider';
@@ -16,6 +14,6 @@ describe('selectError', () => {
     });
 
     test('should work with empty state', () => {
-        expect(selectError(undefined)).toBeNull();
+        expect(selectError(undefined!)).toBeNull();
     });
 });

@@ -1,5 +1,3 @@
-import type { DeepPartial } from 'redux';
-
 import { selectPassword } from './selectPassword';
 
 import { StateSchema } from 'app/providers/StoreProvider';
@@ -16,6 +14,6 @@ describe('select password', () => {
     });
 
     test('should work with empty state', () => {
-        expect(selectPassword(undefined)).toBe('');
+        expect(selectPassword(undefined!)).toBe('');
     });
 });

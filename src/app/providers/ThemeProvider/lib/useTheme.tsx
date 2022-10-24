@@ -18,12 +18,10 @@ export const useTheme = (): UseThemeResult => {
     const toggleTheme = (): void => {
         const selectedTheme = Theme.DARK === theme ? Theme.LIGHT : Theme.DARK;
 
-        if (setTheme) {
-            setTheme(selectedTheme);
-        }
+        setTheme?.(selectedTheme);
         document.body.className = selectedTheme;
         localStorage.setItem(LOCAL_STORAGE_THEME_KEY, selectedTheme);
     };
 
-    return { theme: theme!, toggleTheme };
+    return { theme: theme || Theme.DARK, toggleTheme };
 };

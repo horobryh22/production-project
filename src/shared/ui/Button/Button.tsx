@@ -2,7 +2,7 @@ import { ButtonHTMLAttributes, ReactElement } from 'react';
 
 import classes from './Button.module.scss';
 
-import { classNames } from 'shared/lib/classNames/classNames';
+import { classNames, Mods } from 'shared/lib/classNames/classNames';
 
 export enum ButtonTheme {
     CLEAR = 'clear',
@@ -26,9 +26,17 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 }
 
 export const Button = (props: ButtonProps): ReactElement => {
-    const { children, className, theme, square, size, disabled, ...restProps } = props;
+    const {
+        children,
+        className,
+        theme = ButtonTheme.OUTLINE,
+        square,
+        size = ButtonSize.M,
+        disabled,
+        ...restProps
+    } = props;
 
-    const mods: Record<string, boolean> = {
+    const mods: Mods = {
         [classes.square]: square,
         [classes.disabled]: disabled,
     };

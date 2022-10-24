@@ -12,7 +12,7 @@ export function buildPlugins({
     analyze,
     apiUrl,
 }: BuildOptions): WebpackPluginInstance[] {
-    return [
+    const plugins = [
         // it shows us progress of build files
         new webpack.ProgressPlugin(),
         // create html file and link scripts
@@ -32,6 +32,9 @@ export function buildPlugins({
         // these plugins Refresh and HotModule are included so as not to reload our page
         new webpack.HotModuleReplacementPlugin(),
         new ReactRefreshPlugin(),
-        analyze && new BundleAnalyzerPlugin(),
-    ].filter(Boolean);
+    ];
+
+    if (analyze) plugins.push(new BundleAnalyzerPlugin());
+
+    return plugins;
 }

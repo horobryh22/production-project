@@ -15,4 +15,6 @@ export default {
 const Template: ComponentStory<typeof ProfilePage> = () => <ProfilePage />;
 
 export const Profile = Template.bind({});
-Profile.decorators = [StoreDecorator({})];
+Profile.decorators = [
+    StoreDecorator({ profile: { data: { first: 'Ilya', lastname: 'Khorobrykh' } } }),
+];

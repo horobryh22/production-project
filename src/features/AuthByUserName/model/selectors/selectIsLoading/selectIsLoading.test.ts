@@ -1,5 +1,3 @@
-import type { DeepPartial } from 'redux';
-
 import { selectIsLoading } from './selectIsLoading';
 
 import { StateSchema } from 'app/providers/StoreProvider';
@@ -16,6 +14,6 @@ describe('selectIsLoading', () => {
     });
 
     test('should work with empty state', () => {
-        expect(selectIsLoading(undefined)).toBeFalsy();
+        expect(selectIsLoading(undefined!)).toBeFalsy();
     });
 });

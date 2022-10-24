@@ -1,5 +1,6 @@
 import type { AnyAction, Reducer, ReducersMapObject } from '@reduxjs/toolkit';
 import { combineReducers } from 'redux';
+import type { CombinedState } from 'redux';
 
 import { ReducerManager, StateSchema, StateSchemaKey } from './StateSchema';
 
@@ -14,7 +15,7 @@ export const createReducerManager = (
 
     return {
         getReducerMap: () => reducers,
-        reduce: (state: StateSchema, action: AnyAction) => {
+        reduce: (state: StateSchema, action: AnyAction): CombinedState<StateSchema> => {
             if (keysToRemove.length > 0) {
                 state = { ...state };
                 for (let key of keysToRemove) {

@@ -10,10 +10,12 @@ export default function({ config }: { config: webpack.Configuration }) {
         html: '',
         build: '',
     };
-    config.resolve.modules = [paths.src, 'node_modules'];
-    config.resolve.extensions.push('.ts', '.tsx');
+    config!.resolve!.modules = [paths.src, 'node_modules'];
+    config!.resolve!.extensions!.push('.ts', '.tsx');
 
-    config.module.rules = config.module.rules.map((rule: RuleSetRule) => {
+    config!.module!.rules = config!.module!.rules!.map((rule: RuleSetRule | string) => {
+        if (typeof rule === 'string') return rule as RuleSetRule;
+
         if (/svg/.test(rule.test as string)) {
             return { ...rule, exclude: /\.svg$/i };
         }
@@ -21,15 +23,15 @@ export default function({ config }: { config: webpack.Configuration }) {
         return rule;
     });
 
-    config.module.rules.push({
+    config!.module!.rules.push({
             test: /\.svg$/i,
             issuer: /\.[jt]sx?$/,
             use: ['@svgr/webpack'],
         },
     );
-    config.module.rules.push(buildCssLoader(true));
+    config!.module!.rules.push(buildCssLoader(true));
 
-    config.plugins.push(new DefinePlugin({
+    config!.plugins!.push(new DefinePlugin({
         __IS_DEV__: JSON.stringify(true),
         __API__: JSON.stringify(''),
     }));

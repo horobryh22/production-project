@@ -17,7 +17,7 @@ export const ThemeSwitcher = memo(({ className }: ThemeSwitcherProps): ReactElem
         <Button
             theme={ButtonTheme.CLEAR}
             onClick={toggleTheme}
-            className={classNames('', {}, [String(className)])}
+            className={classNames('', {}, [className])}
         >
             {theme === Theme.LIGHT ? <ThemeLight /> : <ThemeDark />}
         </Button>

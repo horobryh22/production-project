@@ -8,14 +8,12 @@ import { AxiosInstance } from 'axios';
 import type { NavigateFunction } from 'react-router/dist/lib/hooks';
 import type { CombinedState } from 'redux';
 
-import type { CounterSchema } from 'entities/Counter';
 import { ProfileSchema } from 'entities/Profile';
 import { UserSchema } from 'entities/User';
 import { LoginSchema } from 'features/AuthByUserName';
 
 // instead of RootState
 export interface StateSchema {
-    counter: CounterSchema;
     user: UserSchema;
 
     // async reducers
@@ -38,7 +36,7 @@ export interface StoreSchema extends EnhancedStore<StateSchema> {
 
 export interface ThunkExtraArgs {
     api: AxiosInstance;
-    navigate: NavigateFunction;
+    navigate?: NavigateFunction;
 }
 
 export interface ThunkConfig<RejectValue> {

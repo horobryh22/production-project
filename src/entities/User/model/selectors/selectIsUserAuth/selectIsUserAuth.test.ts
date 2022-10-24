@@ -1,5 +1,3 @@
-import type { DeepPartial } from 'redux';
-
 import { selectIsUserAuth } from './selectIsUserAuth';
 
 import { StateSchema } from 'app/providers/StoreProvider';

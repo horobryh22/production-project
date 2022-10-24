@@ -6,7 +6,7 @@ import { Loader, Modal } from 'shared/ui';
 
 interface LoginModalProps {
     isOpen?: boolean;
-    onClose?: () => void;
+    onClose: () => void;
     testMode?: boolean;
 }
 

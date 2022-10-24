@@ -1,12 +1,12 @@
 import type { AnyAction, Middleware, ReducersMapObject } from '@reduxjs/toolkit';
 import { configureStore } from '@reduxjs/toolkit';
 import type { NavigateFunction } from 'react-router/dist/lib/hooks';
+import type { CombinedState, Reducer } from 'redux';
 
 import { ReducerManager, StateSchema, StoreSchema } from '../config/StateSchema';
 
 import { createReducerManager } from './reducerManager';
 
-import { counterReducer } from 'entities/Counter';
 import { userReducer } from 'entities/User';
 import { instance } from 'shared/api/api';
 
@@ -18,7 +18,6 @@ export const createReduxStore = (
     const rootReducers: ReducersMapObject<StateSchema> = {
         ...asyncReducers,
         user: userReducer,
-        counter: counterReducer,
     };
 
     const reducerManager: ReducerManager = createReducerManager(rootReducers);
@@ -28,7 +27,7 @@ export const createReduxStore = (
         AnyAction,
         ReadonlyArray<Middleware<{}, StateSchema>>
     >({
-        reducer: reducerManager.reduce,
+        reducer: reducerManager.reduce as Reducer<CombinedState<StateSchema>>,
         devTools: __IS_DEV__,
         preloadedState: initialState,
         middleware: getDefaultMiddleware =>

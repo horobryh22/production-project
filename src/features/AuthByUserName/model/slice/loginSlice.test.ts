@@ -10,7 +10,7 @@ describe('loginSlice.test', () => {
         state = {
             username: '',
             password: '123',
-            error: null,
+            error: undefined,
             isLoading: false,
         };
     });
