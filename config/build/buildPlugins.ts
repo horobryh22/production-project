@@ -10,6 +10,7 @@ export function buildPlugins({
     paths,
     isDev,
     analyze,
+    apiUrl,
 }: BuildOptions): WebpackPluginInstance[] {
     return [
         // it shows us progress of build files
@@ -26,6 +27,7 @@ export function buildPlugins({
         // this plugin gives access to variables what announced inside it
         new webpack.DefinePlugin({
             __IS_DEV__: JSON.stringify(isDev),
+            __API__: JSON.stringify(apiUrl),
         }),
         // these plugins Refresh and HotModule are included so as not to reload our page
         new webpack.HotModuleReplacementPlugin(),

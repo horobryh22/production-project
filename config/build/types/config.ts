@@ -4,6 +4,7 @@ export interface BuildEnv {
     port: number;
     mode: BuildMode;
     analyze: boolean;
+    apiUrl: string;
 }
 
 export interface BuildPaths {
@@ -19,4 +20,5 @@ export interface BuildOptions {
     paths: BuildPaths;
     isDev: boolean;
     analyze: boolean;
+    apiUrl: string;
 }

@@ -4,6 +4,8 @@ import type {
     Reducer,
     ReducersMapObject,
 } from '@reduxjs/toolkit';
+import { AxiosInstance } from 'axios';
+import type { NavigateFunction } from 'react-router/dist/lib/hooks';
 import type { CombinedState } from 'redux';
 
 import type { CounterSchema } from 'entities/Counter';
@@ -32,4 +34,14 @@ export interface ReducerManager {
 
 export interface StoreSchema extends EnhancedStore<StateSchema> {
     reducerManager?: ReducerManager;
+}
+
+export interface ThunkExtraArgs {
+    api: AxiosInstance;
+    navigate: NavigateFunction;
+}
+
+export interface ThunkConfig<RejectValue> {
+    rejectValue: RejectValue;
+    extra: ThunkExtraArgs;
 }
