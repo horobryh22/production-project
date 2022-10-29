@@ -26,5 +26,6 @@ Primary.args = {
         { content: 'Russia', value: '1' },
         { content: 'India', value: '2' },
         { content: 'USA', value: '3' },
+        { content: 'USA', value: '4' },
     ],
 };
