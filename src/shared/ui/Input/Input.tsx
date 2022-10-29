@@ -3,13 +3,18 @@ import { ChangeEvent, InputHTMLAttributes, memo, ReactElement, useState } from '
 import classes from './Input.module.scss';
 
 import { classNames } from 'shared/lib';
+import { Mods } from 'shared/lib/classNames/classNames';
 
-type HTMLInputProps = Omit<InputHTMLAttributes<HTMLInputElement>, 'onChange' | 'value'>;
+type HTMLInputProps = Omit<
+    InputHTMLAttributes<HTMLInputElement>,
+    'onChange' | 'value' | 'readOnly'
+>;
 
 interface InputProps extends HTMLInputProps {
     className?: string;
     onChange?: (value: string) => void;
-    value?: string;
+    value?: string | number;
+    readonly?: boolean;
 }
 
 export const Input = memo((props: InputProps): ReactElement => {
@@ -19,11 +24,14 @@ export const Input = memo((props: InputProps): ReactElement => {
         value,
         className,
         placeholder,
+        readonly,
         ...restProps
     } = props;
 
     const [isFocused, setIsFocused] = useState(false);
     const [caretPosition, setCaretPosition] = useState(0);
+
+    const isCaretVisible = isFocused && !readonly;
 
     const handleBlur = (): void => {
         setIsFocused(false);
@@ -49,14 +57,19 @@ export const Input = memo((props: InputProps): ReactElement => {
         }
     };
 
+    const mods: Mods = {
+        [classes.readonly]: readonly,
+    };
+
     return (
-        <div className={classNames(classes.InputWrapper, {}, [className])}>
+        <div className={classNames(classes.InputWrapper, mods, [className])}>
             {placeholder && (
                 <div className={classes.placeholder}>{`${placeholder}>`}</div>
             )}
             <div className={classes.caretWrapper}>
                 <input
                     {...restProps}
+                    readOnly={readonly}
                     onBlur={handleBlur}
                     onFocus={handleFocus}
                     className={classes.input}
@@ -65,7 +78,7 @@ export const Input = memo((props: InputProps): ReactElement => {
                     value={value}
                     onSelect={handleSelect}
                 />
-                {isFocused && (
+                {isCaretVisible && (
                     <span
                         style={{ left: `${caretPosition * 9.5}px` }}
                         className={classes.caret}

@@ -8,9 +8,9 @@ import { AxiosInstance } from 'axios';
 import type { NavigateFunction } from 'react-router/dist/lib/hooks';
 import type { CombinedState } from 'redux';
 
-import { ProfileSchema } from 'entities/Profile';
 import { UserSchema } from 'entities/User';
 import { LoginSchema } from 'features/AuthByUserName';
+import { ProfileSchema } from 'features/EditableProfileCard';
 
 // instead of RootState
 export interface StateSchema {
@@ -42,4 +42,5 @@ export interface ThunkExtraArgs {
 export interface ThunkConfig<RejectValue> {
     rejectValue: RejectValue;
     extra: ThunkExtraArgs;
+    state: StateSchema;
 }

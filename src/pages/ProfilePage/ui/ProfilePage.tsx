@@ -1,7 +1,9 @@
-import React, { ReactElement, useEffect } from 'react';
+import React, { ReactElement } from 'react';
 
-import { fetchProfileData, ProfileCard, profileReducer } from 'entities/Profile';
-import { useAppDispatch, useDynamicModuleLoader } from 'shared/lib';
+import { ProfilePageHeader } from './ProfilePageHeader/ProfilePageHeader';
+
+import { EditableProfileCard, profileReducer } from 'features/EditableProfileCard';
+import { useDynamicModuleLoader } from 'shared/lib';
 import { ReducersList } from 'shared/lib/hooks/useDynamicModuleLoader';
 
 const INITIAL_REDUCERS: ReducersList = {
@@ -9,17 +11,12 @@ const INITIAL_REDUCERS: ReducersList = {
 };
 
 const ProfilePage = (): ReactElement => {
-    const dispatch = useAppDispatch();
-
     useDynamicModuleLoader(INITIAL_REDUCERS);
-
-    useEffect(() => {
-        dispatch(fetchProfileData());
-    }, [dispatch]);
 
     return (
         <div>
-            <ProfileCard />
+            <ProfilePageHeader />
+            <EditableProfileCard />
         </div>
     );
 };

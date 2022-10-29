@@ -5,3 +5,4 @@ export { ErrorFallback } from './ErrorFallback/ErrorFallback';
 export { Modal } from './Modal/Modal';
 export { Portal } from './Portal/Portal';
 export { Input } from './Input/Input';
+export { Avatar } from './Avatar/Avatar';

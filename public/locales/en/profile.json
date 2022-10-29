@@ -1,6 +1,14 @@
 {
+  "Age": "Age",
+  "Avatar": "Avatar",
+  "Cancel": "Cancel",
+  "City": "City",
   "Edit": "Edit",
+  "Loading profile finished with mistake": "Loading profile finished with mistake",
   "Name": "Name",
   "Profile page": "Profile page",
-  "Surname": "Surname"
+  "Save": "Save",
+  "Surname": "Surname",
+  "Try to reload page": "Try to reload page",
+  "Username": "Username"
 }
