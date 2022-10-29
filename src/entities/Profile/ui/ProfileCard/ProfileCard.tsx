@@ -2,6 +2,10 @@ import { ReactElement } from 'react';
 
 import { useTranslation } from 'react-i18next';
 
+import { Country } from '../../../Country/model/types';
+import { CountrySelect } from '../../../Country/ui/CountrySelect';
+import { Currency } from '../../../Currency/model/types';
+import { CurrencySelect } from '../../../Currency/ui/CurrencySelect/CurrencySelect';
 import { Profile } from '../../model/types';
 
 import classes from './ProfileCard.module.scss';
@@ -23,6 +27,8 @@ interface ProfileCardProps {
     onChangeUsername?: (value: string) => void;
     onChangeAvatar?: (value: string) => void;
     onChangeAge?: (value: string) => void;
+    onChangeCurrency?: (value: Currency) => void;
+    onChangeCountry?: (value: Country) => void;
 }
 
 export const ProfileCard = (props: ProfileCardProps): ReactElement => {
@@ -38,6 +44,8 @@ export const ProfileCard = (props: ProfileCardProps): ReactElement => {
         onChangeUsername,
         onChangeAge,
         onChangeAvatar,
+        onChangeCurrency,
+        onChangeCountry,
     } = props;
 
     const { t } = useTranslation('profile');
@@ -115,6 +123,18 @@ export const ProfileCard = (props: ProfileCardProps): ReactElement => {
                 className={classes.input}
                 readonly={readonly}
                 onChange={onChangeAvatar}
+            />
+            <CurrencySelect
+                value={data?.currency}
+                readonly={readonly}
+                className={classes.input}
+                onChange={onChangeCurrency}
+            />
+            <CountrySelect
+                value={data?.country}
+                readonly={readonly}
+                className={classes.input}
+                onChange={onChangeCountry}
             />
         </div>
     );

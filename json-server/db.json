@@ -9,11 +9,11 @@
   "profile": {
     "first": "Илья",
     "lastname": "Хоробрых",
-    "age": 28,
-    "currency": "RUB",
-    "country": "Russia",
-    "city": "Omsk",
     "username": "admin",
-    "avatar": "https://cdn-icons-png.flaticon.com/512/168/168882.png"
+    "age": 28,
+    "city": "Omsk",
+    "avatar": "https://cdn.icon-icons.com/icons2/1371/PNG/512/batman_90804.png",
+    "currency": "RUB",
+    "country": "Belarus"
   }
 }

@@ -14,11 +14,12 @@ interface SelectProps {
     label?: string;
     options?: SelectOptions[];
     value?: string;
-    onChange: (value: string) => void;
+    onChange?: (value: string) => void;
+    readonly?: boolean;
 }
 
 export const Select = memo((props: SelectProps): ReactElement => {
-    const { className, options, label, value, onChange } = props;
+    const { className, options, label, value, onChange, readonly } = props;
 
     const optionsList = useMemo(() => {
         return options?.map(({ content, value }) => {
@@ -37,7 +38,12 @@ export const Select = memo((props: SelectProps): ReactElement => {
     return (
         <div className={classNames(classes.Wrapper, {}, [className])}>
             <span className={classes.label}>{label + '>'}</span>
-            <select value={value} onChange={handleChange} className={classes.select}>
+            <select
+                value={value}
+                disabled={readonly}
+                onChange={handleChange}
+                className={classes.select}
+            >
                 {optionsList}
             </select>
         </div>

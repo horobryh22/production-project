@@ -7,10 +7,17 @@ import { selectProfileFormData } from '../model/selectors/selectProfileFormData/
 import { selectProfileIsLoading } from '../model/selectors/selectProfileIsLoading/selectProfileIsLoading';
 import { selectProfileReadonly } from '../model/selectors/selectProfileReadonly/selectProfileReadonly';
 import { fetchProfileData } from '../model/services/fetchProfileData';
+import { profileActions, profileReducer } from '../model/slice/profileSlice';
 
+import { Country } from 'entities/Country';
+import { Currency } from 'entities/Currency';
 import { ProfileCard } from 'entities/Profile';
-import { profileActions } from 'features/EditableProfileCard';
-import { classNames, useAppDispatch } from 'shared/lib';
+import { classNames, useAppDispatch, useDynamicModuleLoader } from 'shared/lib';
+import { ReducersList } from 'shared/lib/hooks/useDynamicModuleLoader';
+
+const INITIAL_REDUCERS: ReducersList = {
+    profile: profileReducer,
+};
 
 interface EditableProfileCardProps {
     className?: string;
@@ -26,8 +33,10 @@ export const EditableProfileCard = ({
     const error = useSelector(selectProfileError);
     const readonly = useSelector(selectProfileReadonly);
 
+    useDynamicModuleLoader(INITIAL_REDUCERS);
+
     useEffect(() => {
-        dispatch(fetchProfileData);
+        dispatch(fetchProfileData());
     }, [dispatch]);
 
     const onChangeFirstname = useCallback(
@@ -74,6 +83,20 @@ export const EditableProfileCard = ({
         [dispatch],
     );
 
+    const onChangeCurrency = useCallback(
+        (value: Currency) => {
+            dispatch(profileActions.changeUserProfile({ currency: value }));
+        },
+        [dispatch],
+    );
+
+    const onChangeCountry = useCallback(
+        (value: Country) => {
+            dispatch(profileActions.changeUserProfile({ country: value }));
+        },
+        [dispatch],
+    );
+
     return (
         <div className={classNames('', {}, [className])}>
             <ProfileCard
@@ -87,6 +110,8 @@ export const EditableProfileCard = ({
                 onChangeCity={onChangeCity}
                 onChangeUsername={onChangeUsername}
                 onChangeAvatar={onChangeAvatar}
+                onChangeCurrency={onChangeCurrency}
+                onChangeCountry={onChangeCountry}
             />
         </div>
     );
