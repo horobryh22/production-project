@@ -4,11 +4,16 @@
   "Cancel": "Cancel",
   "City": "City",
   "Edit": "Edit",
+  "Enter the correct age": "Enter the correct age",
   "Loading profile finished with mistake": "Loading profile finished with mistake",
   "Name": "Name",
   "Profile page": "Профиль",
   "Save": "Save",
+  "Select your country, please": "Select your country, please",
   "Surname": "Surname",
+  "The data is empty": "The data is empty",
+  "The data was not sent": "The data was not sent",
   "Try to reload page": "Try to reload page",
+  "User data is not correct": "User data is not correct",
   "Username": "Username"
 }

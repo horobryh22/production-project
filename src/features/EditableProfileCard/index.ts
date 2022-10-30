@@ -1,9 +1,10 @@
 export { EditableProfileCard } from '../EditableProfileCard/ui/EditableProfileCard';
-export { fetchProfileData } from '../EditableProfileCard/model/services/fetchProfileData';
-export { updateUserProfile } from '../EditableProfileCard/model/services/updateUserProfile';
+export { fetchProfileData } from './model/services/fetchProfileData/fetchProfileData';
+export { updateUserProfile } from './model/services/updateUserProfile/updateUserProfile';
 export {
     profileReducer,
     profileActions,
 } from '../EditableProfileCard/model/slice/profileSlice';
-export { ProfileSchema } from '../EditableProfileCard/model/types';
+export { ProfileSchema, ValidateProfileError } from '../EditableProfileCard/model/types';
 export { selectProfileReadonly } from '../EditableProfileCard/model/selectors/selectProfileReadonly/selectProfileReadonly';
+export { validateProfileData } from 'features/EditableProfileCard/model/services/validateProfileData/validateProfileData';

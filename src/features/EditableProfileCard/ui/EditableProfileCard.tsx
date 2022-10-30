@@ -1,19 +1,23 @@
 import { ReactElement, useCallback, useEffect } from 'react';
 
+import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
 
 import { selectProfileError } from '../model/selectors/selectProfileError/selectProfileError';
 import { selectProfileFormData } from '../model/selectors/selectProfileFormData/selectProfileFormData';
 import { selectProfileIsLoading } from '../model/selectors/selectProfileIsLoading/selectProfileIsLoading';
 import { selectProfileReadonly } from '../model/selectors/selectProfileReadonly/selectProfileReadonly';
-import { fetchProfileData } from '../model/services/fetchProfileData';
+import { selectProfileValidateErrors } from '../model/selectors/selectProfileValidateErrors/selectProfileValidateErrors';
+import { fetchProfileData } from '../model/services/fetchProfileData/fetchProfileData';
 import { profileActions, profileReducer } from '../model/slice/profileSlice';
+import { ValidateProfileError } from '../model/types';
 
 import { Country } from 'entities/Country';
 import { Currency } from 'entities/Currency';
 import { ProfileCard } from 'entities/Profile';
 import { classNames, useAppDispatch, useDynamicModuleLoader } from 'shared/lib';
 import { ReducersList } from 'shared/lib/hooks/useDynamicModuleLoader';
+import { Text, TextTheme } from 'shared/ui/Text/Text';
 
 const INITIAL_REDUCERS: ReducersList = {
     profile: profileReducer,
@@ -28,15 +32,20 @@ export const EditableProfileCard = ({
 }: EditableProfileCardProps): ReactElement => {
     const dispatch = useAppDispatch();
 
+    const { t } = useTranslation('profile');
+
     const formData = useSelector(selectProfileFormData);
     const isLoading = useSelector(selectProfileIsLoading);
     const error = useSelector(selectProfileError);
     const readonly = useSelector(selectProfileReadonly);
+    const validateError = useSelector(selectProfileValidateErrors);
 
     useDynamicModuleLoader(INITIAL_REDUCERS);
 
     useEffect(() => {
-        dispatch(fetchProfileData());
+        if (__PROJECT__ !== 'storybook') {
+            dispatch(fetchProfileData());
+        }
     }, [dispatch]);
 
     const onChangeFirstname = useCallback(
@@ -97,8 +106,36 @@ export const EditableProfileCard = ({
         [dispatch],
     );
 
+    const validateErrorTranslates: Record<ValidateProfileError, string> = {
+        [ValidateProfileError.INCORRECT_AGE]: t('Enter the correct age', {
+            ns: 'profile',
+        }),
+        [ValidateProfileError.INCORRECT_COUNTRY]: t('Select your country, please', {
+            ns: 'profile',
+        }),
+        [ValidateProfileError.INCORRECT_USER_DATA]: t('User data is not correct', {
+            ns: 'profile',
+        }),
+        [ValidateProfileError.SERVER_ERROR]: t('The data was not sent', {
+            ns: 'profile',
+        }),
+        [ValidateProfileError.NO_DATA]: t('The data is empty', {
+            ns: 'profile',
+        }),
+    };
+
     return (
         <div className={classNames('', {}, [className])}>
+            {validateError?.length &&
+                validateError.map(error => {
+                    return (
+                        <Text
+                            key={error}
+                            text={validateErrorTranslates[error]}
+                            theme={TextTheme.ERROR}
+                        />
+                    );
+                })}
             <ProfileCard
                 data={formData}
                 error={error}

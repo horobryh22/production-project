@@ -27,5 +27,6 @@ export default (env: BuildEnv): Configuration => {
         paths: PATHS,
         analyze: ANALYZE,
         apiUrl: URL,
+        project: 'frontend',
     });
 };

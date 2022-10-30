@@ -11,6 +11,7 @@ export function buildPlugins({
     isDev,
     analyze,
     apiUrl,
+    project,
 }: BuildOptions): WebpackPluginInstance[] {
     const plugins = [
         // it shows us progress of build files
@@ -28,6 +29,7 @@ export function buildPlugins({
         new webpack.DefinePlugin({
             __IS_DEV__: JSON.stringify(isDev),
             __API__: JSON.stringify(apiUrl),
+            __PROJECT__: JSON.stringify(project),
         }),
         // these plugins Refresh and HotModule are included so as not to reload our page
         new webpack.HotModuleReplacementPlugin(),
