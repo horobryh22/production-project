@@ -31,12 +31,17 @@ export function buildPlugins({
             __API__: JSON.stringify(apiUrl),
             __PROJECT__: JSON.stringify(project),
         }),
-        // these plugins Refresh and HotModule are included so as not to reload our page
-        new webpack.HotModuleReplacementPlugin(),
-        new ReactRefreshPlugin(),
     ];
 
-    if (analyze) plugins.push(new BundleAnalyzerPlugin());
+    if (isDev) {
+        // these plugins Refresh and HotModule are included so as not to reload our page
+        plugins.push(new webpack.HotModuleReplacementPlugin());
+        plugins.push(new ReactRefreshPlugin());
+    }
+
+    if (analyze) {
+        plugins.push(new BundleAnalyzerPlugin());
+    }
 
     return plugins;
 }

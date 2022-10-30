@@ -16,6 +16,7 @@ export const parameters = {
         list: [
             { name: 'dark', class: ['app', 'app_dark_theme'] },
             { name: 'light', class: ['app', 'app_light_theme'] },
+            { name: 'purple', class: ['app', 'app_purple_theme'] },
         ],
     },
 };
