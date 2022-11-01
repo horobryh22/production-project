@@ -6,4 +6,5 @@ export interface User {
 export interface UserSchema {
     authData: User;
     isUserAuth: boolean;
+    _initialized: boolean;
 }

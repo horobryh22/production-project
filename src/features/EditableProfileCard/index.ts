@@ -7,4 +7,5 @@ export {
 } from '../EditableProfileCard/model/slice/profileSlice';
 export { ProfileSchema, ValidateProfileError } from '../EditableProfileCard/model/types';
 export { selectProfileReadonly } from '../EditableProfileCard/model/selectors/selectProfileReadonly/selectProfileReadonly';
-export { validateProfileData } from 'features/EditableProfileCard/model/services/validateProfileData/validateProfileData';
+export { selectProfileError } from '../EditableProfileCard/model/selectors/selectProfileError/selectProfileError';
+export { validateProfileData } from '../EditableProfileCard/model/services/validateProfileData/validateProfileData';

@@ -7,6 +7,7 @@ import classes from './ProfilePageHeader.module.scss';
 
 import {
     profileActions,
+    selectProfileError,
     selectProfileReadonly,
     updateUserProfile,
 } from 'features/EditableProfileCard';
@@ -26,6 +27,7 @@ export const ProfilePageHeader = ({
     const dispatch = useAppDispatch();
 
     const readonly = useSelector(selectProfileReadonly);
+    const error = useSelector(selectProfileError);
 
     const onEdit = useCallback((): void => {
         dispatch(profileActions.setReadonly(false));
@@ -42,11 +44,12 @@ export const ProfilePageHeader = ({
     return (
         <div className={classNames(classes.ProfilePageHeader, {}, [className])}>
             <Text title={t('Profile page', { ns: 'profile' })} />
-            {readonly ? (
+            {readonly && (
                 <Button className={classes.editBtn} onClick={onEdit}>
                     {t('Edit', { ns: 'profile' })}
                 </Button>
-            ) : (
+            )}
+            {!readonly && !error && (
                 <div>
                     <Button onClick={onSave} className={classes.saveBtn}>
                         {t('Save', { ns: 'profile' })}

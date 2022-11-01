@@ -1,17 +1,34 @@
-import React, { ReactElement, Suspense } from 'react';
+import React, { ReactElement, Suspense, useMemo } from 'react';
 
-import { useRoutes } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 
 import { routeConfig } from '../config/routeConfig';
+import { RequireAuth } from '../lib/RequireAuth/RequireAuth';
 
 import { PageLoader } from 'widgets/PageLoader';
 
 export const AppRouter = (): ReactElement => {
-    const elements = useRoutes(routeConfig);
+    const elements = useMemo(() => {
+        return routeConfig.map(({ element, onlyAuth, path }) => {
+            if (onlyAuth) {
+                return (
+                    <Route
+                        key={path}
+                        path={path}
+                        element={<RequireAuth>{element}</RequireAuth>}
+                    />
+                );
+            }
+
+            return <Route key={path} element={element} path={path} />;
+        });
+    }, []);
 
     return (
         <Suspense fallback={<PageLoader />}>
-            <div className="page-wrapper">{elements}</div>
+            <div className="page-wrapper">
+                <Routes>{elements}</Routes>
+            </div>
         </Suspense>
     );
 };

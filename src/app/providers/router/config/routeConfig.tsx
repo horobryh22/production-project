@@ -1,12 +1,14 @@
 import React from 'react';
 
-import type { RouteObject } from 'react-router-dom';
 import { Navigate } from 'react-router-dom';
+import type { RouteProps } from 'react-router-dom';
 
 import { AboutPageAsync } from 'pages/AboutPage';
 import { MainPageAsync } from 'pages/MainPage';
 import { NotFoundPage } from 'pages/NotFoundPage';
 import { ProfilePageAsync } from 'pages/ProfilePage';
+
+type ExtendedRouteProps = RouteProps & { onlyAuth?: boolean };
 
 export enum AppRoute {
     MAIN = 'main',
@@ -24,10 +26,10 @@ export const RoutePath: Record<AppRoute, string> = {
     [AppRoute.ERROR]: '*',
 };
 
-export const routeConfig: RouteObject[] = [
+export const routeConfig: ExtendedRouteProps[] = [
     { path: RoutePath[AppRoute.MAIN], element: <MainPageAsync /> },
     { path: RoutePath[AppRoute.ABOUT], element: <AboutPageAsync /> },
-    { path: RoutePath[AppRoute.PROFILE], element: <ProfilePageAsync /> },
+    { path: RoutePath[AppRoute.PROFILE], element: <ProfilePageAsync />, onlyAuth: true },
     { path: RoutePath[AppRoute.NOT_FOUND], element: <NotFoundPage /> },
     {
         path: RoutePath[AppRoute.ERROR],
