@@ -28,6 +28,8 @@ export function buildWebpackConfig(options: BuildOptions): Configuration {
             path: paths.build,
             // remove unused bundles
             clean: true,
+            // added this to work the following "someurl/article/ => (1) <="
+            publicPath: '/',
         },
         plugins: buildPlugins(options),
         devServer: isDev ? buildDevServer(options) : undefined,
