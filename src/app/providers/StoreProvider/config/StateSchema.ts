@@ -8,6 +8,7 @@ import { AxiosInstance } from 'axios';
 import type { NavigateFunction } from 'react-router/dist/lib/hooks';
 import type { CombinedState } from 'redux';
 
+import { ArticleDetailsSchema } from 'entities/Article';
 import { UserSchema } from 'entities/User';
 import { LoginSchema } from 'features/AuthByUserName';
 import { ProfileSchema } from 'features/EditableProfileCard';
@@ -19,6 +20,7 @@ export interface StateSchema {
     // async reducers
     login?: LoginSchema;
     profile?: ProfileSchema;
+    articleDetails?: ArticleDetailsSchema;
 }
 
 export type StateSchemaKey = keyof StateSchema;
