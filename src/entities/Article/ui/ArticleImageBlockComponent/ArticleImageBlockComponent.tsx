@@ -1,26 +1,39 @@
-import { ReactElement, memo } from 'react';
+import { memo, ReactElement } from 'react';
 
-import { useTranslation } from 'react-i18next';
+import { ArticleImageBlock } from '../../model/types';
 
 import classes from './ArticleImageBlockComponent.module.scss';
 
 import { classNames } from 'shared/lib';
+import { TextAlign, Text } from 'shared/ui/Text/Text';
 
 interface ArticleImageBlockComponentProps {
     className?: string;
+    block: ArticleImageBlock;
 }
 
 export const ArticleImageBlockComponent = memo(
     (props: ArticleImageBlockComponentProps): ReactElement => {
-        const { className } = props;
-        const {} = useTranslation();
+        const {
+            className,
+            block: { src, title },
+        } = props;
 
         return (
             <div
                 className={classNames(classes.ArticleImageBlockComponent, {}, [
                     className,
                 ])}
-            ></div>
+            >
+                <img src={src} alt="image" />
+                {title && (
+                    <Text
+                        text={title}
+                        className={classes.title}
+                        align={TextAlign.CENTER}
+                    />
+                )}
+            </div>
         );
     },
 );

@@ -3,6 +3,26 @@
   width: 100%;
 }
 
+.avatarWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.block {
+  margin-top: 16px;
+}
+
+.articleInfo {
+  display: flex;
+  align-items: center;
+
+  > svg {
+    margin-right: 8px;
+  }
+}
+
 .avatar {
   margin: 0 auto;
 }

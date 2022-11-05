@@ -1,7 +1,13 @@
 .Button {
   padding: 5px 20px;
   cursor: pointer;
-  color: var(--primary-color)
+  color: var(--primary-color);
+
+  &:hover {
+    opacity: 0.8;
+    fill-opacity: 80%;
+    stroke-opacity: 80%;
+  }
 }
 
 .clear, .clearInverted {
