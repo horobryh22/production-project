@@ -7,7 +7,7 @@ import {
     selectArticleDetailsData,
     selectArticleDetailsError,
     selectArticleDetailsIsLoading,
-} from '../../model/selectors';
+} from '../../model/selectors/articleDetails';
 import { fetchArticleById } from '../../model/services/fetchArticleById/fetchArticleById';
 import { articleDetailsReducer } from '../../model/slice/articleDetailsSlice';
 import { ArticleBlock, ArticleBlockType } from '../../model/types';

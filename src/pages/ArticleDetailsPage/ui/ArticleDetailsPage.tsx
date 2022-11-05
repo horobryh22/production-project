@@ -18,7 +18,9 @@ const ArticleDetailsPage = memo((props: ArticleDetailsPageProps): ReactElement |
     const { className } = props;
     const { t } = useTranslation('article');
 
-    const { id } = useParams();
+    let { id } = useParams();
+
+    if (!id && __PROJECT__ === 'storybook') id = '1';
 
     if (!id) {
         return (
