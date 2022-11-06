@@ -4,13 +4,15 @@
       "id": "1",
       "username": "admin",
       "password": "123",
-      "role": "ADMIN"
+      "role": "ADMIN",
+      "avatar": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRdim6mwjPEYlsFTPtK5hmZXBGJG1KyUz4SxpZBKVU&s"
     },
     {
       "id": "2",
       "username": "user",
       "password": "123",
-      "role": "USER"
+      "role": "USER",
+      "avatar": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRdim6mwjPEYlsFTPtK5hmZXBGJG1KyUz4SxpZBKVU&s"
     }
   ],
   "profile": {
@@ -19,7 +21,7 @@
     "username": "admin",
     "age": 28,
     "city": "Omsk",
-    "avatar": "https://cdn.icon-icons.com/icons2/1371/PNG/512/batman_90804.png",
+    "avatar": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRdim6mwjPEYlsFTPtK5hmZXBGJG1KyUz4SxpZBKVU&s",
     "currency": "RUB",
     "country": "Belarus"
   },

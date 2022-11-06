@@ -6,6 +6,7 @@ import { useParams } from 'react-router-dom';
 import classes from './ArticleDetailsPage.module.scss';
 
 import { ArticleDetails } from 'entities/Article';
+import { CommentsList } from 'entities/Comment';
 import { classNames } from 'shared/lib';
 import { Text } from 'shared/ui';
 import { TextTheme } from 'shared/ui/Text/Text';
@@ -36,6 +37,34 @@ const ArticleDetailsPage = memo((props: ArticleDetailsPageProps): ReactElement |
     return (
         <div className={classNames(classes.ArticleDetailsPage, {}, [className])}>
             <ArticleDetails id={id} />
+            <Text
+                className={classes.commentTitle}
+                title={t('Comments', { ns: 'article' })}
+            />
+            <CommentsList
+                comments={[
+                    {
+                        user: {
+                            id: '1',
+                            username: 'admin',
+                            avatar: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRdim6mwjPEYlsFTPtK5hmZXBGJG1KyUz4SxpZBKVU&s',
+                        },
+                        text: 'some comment',
+                        articleId: '1',
+                        id: '1',
+                    },
+                    {
+                        user: {
+                            id: '1',
+                            username: 'admin',
+                            avatar: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRdim6mwjPEYlsFTPtK5hmZXBGJG1KyUz4SxpZBKVU&s',
+                        },
+                        text: 'some comment',
+                        articleId: '1',
+                        id: '1',
+                    },
+                ]}
+            />
         </div>
     );
 });

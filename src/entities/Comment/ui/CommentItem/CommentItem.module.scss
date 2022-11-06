@@ -1,0 +1,14 @@
+.CommentItem {
+  padding: 15px;
+  border: 1px solid var(--primary-color);
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+
+  .avatar {
+    margin-right: 10px;
+  }
+}
