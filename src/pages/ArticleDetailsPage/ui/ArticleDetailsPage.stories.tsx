@@ -81,5 +81,9 @@ const article: Article = {
 };
 
 export const Primary = Template.bind({});
-Primary.args = {};
 Primary.decorators = [StoreDecorator({ articleDetails: { data: article } })];
+
+export const Loading = Template.bind({});
+Loading.decorators = [
+    StoreDecorator({ articleDetails: { data: article, isLoading: true } }),
+];

@@ -10,6 +10,7 @@ import type { CombinedState } from 'redux';
 
 import { ArticleDetailsSchema } from 'entities/Article';
 import { UserSchema } from 'entities/User';
+import { ArticleDetailsCommentsSchema } from 'features/ArticleDetailsComments';
 import { LoginSchema } from 'features/AuthByUserName';
 import { ProfileSchema } from 'features/EditableProfileCard';
 
@@ -21,6 +22,7 @@ export interface StateSchema {
     login?: LoginSchema;
     profile?: ProfileSchema;
     articleDetails?: ArticleDetailsSchema;
+    articleDetailsComments?: ArticleDetailsCommentsSchema;
 }
 
 export type StateSchemaKey = keyof StateSchema;
