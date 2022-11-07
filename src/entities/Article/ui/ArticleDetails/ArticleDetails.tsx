@@ -1,4 +1,4 @@
-import { memo, ReactElement, useCallback, useEffect } from 'react';
+import { memo, ReactElement, useCallback } from 'react';
 
 import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
@@ -21,6 +21,7 @@ import DataIcon from 'shared/assets/icons/date.svg';
 import ViewIcon from 'shared/assets/icons/view.svg';
 import { classNames, useAppDispatch, useDynamicModuleLoader } from 'shared/lib';
 import { ReducersList } from 'shared/lib/hooks/useDynamicModuleLoader';
+import { useInitialEffect } from 'shared/lib/hooks/useInitialEffect';
 import { Avatar, Icon, Skeleton, Text } from 'shared/ui';
 import { TextAlign, TextSize, TextTheme } from 'shared/ui/Text/Text';
 
@@ -35,7 +36,7 @@ interface ArticleDetailsProps {
 
 export const ArticleDetails = memo((props: ArticleDetailsProps): ReactElement => {
     const { className, id } = props;
-    const { t } = useTranslation();
+    const { t } = useTranslation('article');
 
     const dispatch = useAppDispatch();
     const article = useSelector(selectArticleDetailsData);
@@ -44,11 +45,7 @@ export const ArticleDetails = memo((props: ArticleDetailsProps): ReactElement =>
 
     useDynamicModuleLoader(reducers);
 
-    useEffect(() => {
-        if (__PROJECT__ !== 'storybook') {
-            dispatch(fetchArticleById(id));
-        }
-    }, [dispatch, id]);
+    useInitialEffect(() => dispatch(fetchArticleById(id)));
 
     const renderBlock = useCallback((block: ArticleBlock) => {
         switch (block.type) {

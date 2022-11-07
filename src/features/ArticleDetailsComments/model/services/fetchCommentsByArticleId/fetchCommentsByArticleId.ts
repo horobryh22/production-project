@@ -4,7 +4,7 @@ import { ThunkConfig } from 'app/providers/StoreProvider';
 import { Comment } from 'entities/Comment';
 
 export const fetchCommentsByArticleId = createAsyncThunk<
-    Comment,
+    Comment[],
     string | undefined,
     ThunkConfig<string>
 >('comment/fetchCommentsByArticleId', async (articleId, { rejectWithValue, extra }) => {
@@ -13,7 +13,12 @@ export const fetchCommentsByArticleId = createAsyncThunk<
             return rejectWithValue('error');
         }
 
-        const { data } = await extra.api.get<Comment>('/comments', {});
+        const { data } = await extra.api.get<Comment[]>(`/comments`, {
+            params: {
+                articleId,
+                _expand: 'user',
+            },
+        });
 
         if (!data) {
             throw new Error();

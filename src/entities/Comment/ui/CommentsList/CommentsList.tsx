@@ -1,11 +1,14 @@
 import { ReactElement, memo, useMemo } from 'react';
 
+import { useTranslation } from 'react-i18next';
+
 import { Comment } from '../../model/types';
 import { CommentItem } from '../CommentItem/CommentItem';
 
 import classes from './CommentsList.module.scss';
 
 import { classNames } from 'shared/lib';
+import { Text } from 'shared/ui';
 
 interface CommentsListProps {
     className?: string;
@@ -15,6 +18,7 @@ interface CommentsListProps {
 
 export const CommentsList = memo((props: CommentsListProps): ReactElement => {
     const { className, comments, isLoading } = props;
+    const { t } = useTranslation('article');
 
     const mappedComments = useMemo(() => {
         return comments.map(comment => (
@@ -29,7 +33,11 @@ export const CommentsList = memo((props: CommentsListProps): ReactElement => {
 
     return (
         <div className={classNames(classes.CommentsList, {}, [className])}>
-            {mappedComments}
+            {mappedComments.length ? (
+                mappedComments
+            ) : (
+                <Text text={t('No comments', { ns: 'article' })} />
+            )}
         </div>
     );
 });
