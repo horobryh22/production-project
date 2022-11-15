@@ -22,9 +22,9 @@ export const Sidebar = memo(({ className }: SidebarProps): ReactElement => {
         setCollapsed(prev => !prev);
     }, []);
 
-    const mappedItems = SidebarItemList.map(item => (
-        <SidebarItem key={item.to} item={item} collapsed={collapsed} />
-    ));
+    const mappedItems = SidebarItemList.map(item => {
+        return <SidebarItem key={item.to} item={item} collapsed={collapsed} />;
+    });
 
     return (
         <div

@@ -15,5 +15,7 @@
   "The data was not sent": "The data was not sent",
   "Try to reload page": "Try to reload page",
   "User data is not correct": "User data is not correct",
-  "Username": "Username"
+  "Username": "Username",
+  "Введите текст комментария": "Введите текст комментария",
+  "Отправить": "Отправить"
 }

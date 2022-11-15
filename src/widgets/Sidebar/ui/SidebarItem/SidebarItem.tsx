@@ -7,7 +7,7 @@ import { SidebarItemType } from '../../model/items';
 
 import classes from './SidebarItem.module.scss';
 
-import { selectIsUserAuth } from 'entities/User';
+import { selectAuthData, selectIsUserAuth } from 'entities/User';
 import { classNames } from 'shared/lib';
 import { AppLink, AppLinkTheme } from 'shared/ui';
 
@@ -17,14 +17,19 @@ interface SidebarItemProps {
 }
 
 export const SidebarItem = memo(({ item, collapsed }: SidebarItemProps) => {
-    const { to, pageName, Icon, authOnly } = item;
+    let { to, pageName, Icon, authOnly } = item;
 
     const { t } = useTranslation();
 
     const isAuth = useSelector(selectIsUserAuth);
+    const authData = useSelector(selectAuthData);
 
     if (authOnly && !isAuth) {
         return null;
+    }
+
+    if (pageName === 'Profile') {
+        to = `${to}${authData.id}`;
     }
 
     return (

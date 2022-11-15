@@ -4,8 +4,9 @@ import { Comment } from '../../model/types';
 
 import classes from './CommentItem.module.scss';
 
+import { RoutePath } from 'app/providers/router/config/routeConfig';
 import { classNames } from 'shared/lib';
-import { Avatar, Text, Skeleton } from 'shared/ui';
+import { Avatar, Text, Skeleton, AppLink } from 'shared/ui';
 
 interface CommentItemProps {
     className?: string;
@@ -35,7 +36,10 @@ export const CommentItem = memo((props: CommentItemProps): ReactElement => {
 
     return (
         <div className={classNames(classes.CommentItem, {}, [className])}>
-            <div className={classes.header}>
+            <AppLink
+                to={`${RoutePath.profile}${comment.user.id}`}
+                className={classes.header}
+            >
                 {comment.user.avatar && (
                     <Avatar
                         size={30}
@@ -44,7 +48,7 @@ export const CommentItem = memo((props: CommentItemProps): ReactElement => {
                     />
                 )}
                 <Text title={comment.user.username} />
-            </div>
+            </AppLink>
             <Text text={comment.text} />
         </div>
     );

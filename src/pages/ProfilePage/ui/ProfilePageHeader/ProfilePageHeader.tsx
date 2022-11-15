@@ -3,6 +3,8 @@ import { ReactElement, useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
 
+import { getCanEdit } from '../../model/selectors/getCanEdit/getCanEdit';
+
 import classes from './ProfilePageHeader.module.scss';
 
 import {
@@ -28,6 +30,7 @@ export const ProfilePageHeader = ({
 
     const readonly = useSelector(selectProfileReadonly);
     const error = useSelector(selectProfileError);
+    const canEdit = useSelector(getCanEdit);
 
     const onEdit = useCallback((): void => {
         dispatch(profileActions.setReadonly(false));
@@ -44,19 +47,26 @@ export const ProfilePageHeader = ({
     return (
         <div className={classNames(classes.ProfilePageHeader, {}, [className])}>
             <Text title={t('Profile page', { ns: 'profile' })} />
-            {readonly && (
-                <Button className={classes.editBtn} onClick={onEdit}>
-                    {t('Edit', { ns: 'profile' })}
-                </Button>
-            )}
-            {!readonly && !error && (
+            {canEdit && (
                 <div>
-                    <Button onClick={onSave} className={classes.saveBtn}>
-                        {t('Save', { ns: 'profile' })}
-                    </Button>
-                    <Button onClick={onCancelEdit} theme={ButtonTheme.OUTLINE_RED}>
-                        {t('Cancel', { ns: 'profile' })}
-                    </Button>
+                    {readonly && (
+                        <Button className={classes.editBtn} onClick={onEdit}>
+                            {t('Edit', { ns: 'profile' })}
+                        </Button>
+                    )}
+                    {!readonly && !error && (
+                        <div>
+                            <Button onClick={onSave} className={classes.saveBtn}>
+                                {t('Save', { ns: 'profile' })}
+                            </Button>
+                            <Button
+                                onClick={onCancelEdit}
+                                theme={ButtonTheme.OUTLINE_RED}
+                            >
+                                {t('Cancel', { ns: 'profile' })}
+                            </Button>
+                        </div>
+                    )}
                 </div>
             )}
         </div>

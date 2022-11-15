@@ -12,19 +12,33 @@
       "username": "user",
       "password": "123",
       "role": "USER",
-      "avatar": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRdim6mwjPEYlsFTPtK5hmZXBGJG1KyUz4SxpZBKVU&s"
+      "avatar": "https://cdn4.iconfinder.com/data/icons/avatars-xmas-giveaway/128/batman_hero_avatar_comics-512.png"
     }
   ],
-  "profile": {
-    "first": "Илья",
-    "lastname": "Хоробрых",
-    "username": "admin",
-    "age": 28,
-    "city": "Omsk",
-    "avatar": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRdim6mwjPEYlsFTPtK5hmZXBGJG1KyUz4SxpZBKVU&s",
-    "currency": "RUB",
-    "country": "Belarus"
-  },
+  "profile": [
+    {
+      "id": "1",
+      "first": "Илья",
+      "lastname": "Хоробрых",
+      "username": "admin",
+      "age": 28,
+      "city": "Omsk",
+      "avatar": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRdim6mwjPEYlsFTPtK5hmZXBGJG1KyUz4SxpZBKVU&s",
+      "currency": "RUB",
+      "country": "Belarus"
+    },
+    {
+      "id": "2",
+      "first": "Тимур",
+      "lastname": "Ульби",
+      "username": "user",
+      "age": 23,
+      "city": "Moscow",
+      "avatar": "https://cdn4.iconfinder.com/data/icons/avatars-xmas-giveaway/128/batman_hero_avatar_comics-512.png",
+      "currency": "RUB",
+      "country": "Russia"
+    }
+  ],
   "articles": [
     {
       "id": "1",
@@ -33,7 +47,9 @@
       "img": "https://teknotower.com/wp-content/uploads/2020/11/js.png",
       "views": 1022,
       "createdAt": "26.02.2022",
-      "type": ["IT"],
+      "type": [
+        "IT"
+      ],
       "blocks": [
         {
           "id": "1",
@@ -107,13 +123,98 @@
       "id": "2",
       "text": "some comment 2",
       "articleId": "1",
-      "userId": "1"
+      "userId": "2"
     },
     {
       "id": "3",
       "text": "some comment 3",
       "articleId": "1",
       "userId": "1"
+    },
+    {
+      "articleId": "1",
+      "userId": "1",
+      "id": "oRYUop-"
+    },
+    {
+      "articleId": "1",
+      "userId": "1",
+      "id": "r5RaZUJ"
+    },
+    {
+      "text": "my first comment",
+      "articleId": "1",
+      "userId": "1",
+      "id": "tgdVlja"
+    },
+    {
+      "text": "and my first comment",
+      "articleId": "1",
+      "userId": "2",
+      "id": "A2L6fMC"
+    },
+    {
+      "text": "my new comment",
+      "articleId": "1",
+      "userId": "2",
+      "id": "nbYA7sI"
+    },
+    {
+      "text": "sdfsdfsdf",
+      "articleId": "1",
+      "userId": "2",
+      "id": "vas13qD"
+    },
+    {
+      "text": "sdfsdfsdf",
+      "articleId": "1",
+      "userId": "2",
+      "id": "7Cv6Jgc"
+    },
+    {
+      "articleId": "1",
+      "userId": "2",
+      "id": "oc-ZMqN"
+    },
+    {
+      "articleId": "1",
+      "userId": "2",
+      "id": "E_5F7Oe"
+    },
+    {
+      "articleId": "1",
+      "userId": "2",
+      "id": "t2jX3Jn"
+    },
+    {
+      "text": "sdfsdfsdfsfd",
+      "articleId": "1",
+      "userId": "2",
+      "id": "C4GRzE4"
+    },
+    {
+      "text": "sdfsdfsdfsdfsf",
+      "articleId": "1",
+      "userId": "2",
+      "id": "tHdMHvV"
+    },
+    {
+      "text": "sdfsdfsdfsdf",
+      "articleId": "1",
+      "userId": "2",
+      "id": "nKEAkcK"
+    },
+    {
+      "text": "sdfsdfsdfsdf",
+      "articleId": "1",
+      "userId": "2",
+      "id": "QoXgqV8"
+    },
+    {
+      "text": "sddfdsfsdfsdfsdsd",
+      "articleId": "1",
+      "userId": "2",
+      "id": "KDkZdMi"
     }
   ]
 }

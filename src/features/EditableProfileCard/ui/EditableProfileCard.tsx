@@ -1,4 +1,4 @@
-import { ReactElement, useCallback, useEffect } from 'react';
+import { ReactElement, useCallback } from 'react';
 
 import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
@@ -17,6 +17,7 @@ import { Currency } from 'entities/Currency';
 import { ProfileCard } from 'entities/Profile';
 import { classNames, useAppDispatch, useDynamicModuleLoader } from 'shared/lib';
 import { ReducersList } from 'shared/lib/hooks/useDynamicModuleLoader';
+import { useInitialEffect } from 'shared/lib/hooks/useInitialEffect';
 import { Text, TextTheme } from 'shared/ui/Text/Text';
 
 const INITIAL_REDUCERS: ReducersList = {
@@ -25,10 +26,12 @@ const INITIAL_REDUCERS: ReducersList = {
 
 interface EditableProfileCardProps {
     className?: string;
+    profileId?: string;
 }
 
 export const EditableProfileCard = ({
     className,
+    profileId,
 }: EditableProfileCardProps): ReactElement => {
     const dispatch = useAppDispatch();
 
@@ -42,11 +45,11 @@ export const EditableProfileCard = ({
 
     useDynamicModuleLoader(INITIAL_REDUCERS);
 
-    useEffect(() => {
-        if (__PROJECT__ !== 'storybook') {
-            dispatch(fetchProfileData());
+    useInitialEffect(() => {
+        if (profileId) {
+            dispatch(fetchProfileData(profileId));
         }
-    }, [dispatch]);
+    });
 
     const onChangeFirstname = useCallback(
         (value?: string) => {
