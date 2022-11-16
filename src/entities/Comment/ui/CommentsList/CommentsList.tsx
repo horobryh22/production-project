@@ -21,7 +21,7 @@ export const CommentsList = memo((props: CommentsListProps): ReactElement => {
     const { t } = useTranslation('article');
 
     const mappedComments = useMemo(() => {
-        return comments.map(comment => (
+        return comments?.map(comment => (
             <CommentItem
                 key={comment.id}
                 comment={comment}
@@ -30,6 +30,16 @@ export const CommentsList = memo((props: CommentsListProps): ReactElement => {
             />
         ));
     }, [comments, isLoading]);
+
+    if (isLoading) {
+        return (
+            <div className={classNames(classes.CommentsList, {}, [className])}>
+                <CommentItem isLoading />
+                <CommentItem isLoading />
+                <CommentItem isLoading />
+            </div>
+        );
+    }
 
     return (
         <div className={classNames(classes.CommentsList, {}, [className])}>

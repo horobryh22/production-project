@@ -62,7 +62,7 @@ describe('profileSlice.test', () => {
     test('update profile fullfield service', () => {
         const updatedState = profileReducer(
             state,
-            updateUserProfile.fulfilled(userData, ''),
+            updateUserProfile.fulfilled(userData, '1', '1'),
         );
 
         expect(updatedState.isLoading).toBeFalsy();

@@ -3,9 +3,7 @@ import { memo, ReactElement, useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
 
-import { selectCommentIsLoading } from '../../model/selectors/selectCommentIsLoading/selectCommentIsLoading';
 import { selectCommentText } from '../../model/selectors/selectCommentText/selectCommentText';
-import { sendComment } from '../../model/services/sendComment/sendComment';
 import {
     addCommentFormActions,
     addCommentFormReducer,
@@ -19,53 +17,54 @@ import { Button, Input } from 'shared/ui';
 
 export interface AddCommentFormProps {
     className?: string;
+    onSendComment: (text: string) => void;
+    isLoading?: boolean;
 }
 
 const reducers: ReducersList = {
     addCommentForm: addCommentFormReducer,
 };
 
-const AddCommentForm = memo(({ className }: AddCommentFormProps): ReactElement => {
-    const { t } = useTranslation('profile');
-    const dispatch = useAppDispatch();
+const AddCommentForm = memo(
+    ({ className, onSendComment, isLoading }: AddCommentFormProps): ReactElement => {
+        const { t } = useTranslation('profile');
+        const dispatch = useAppDispatch();
 
-    const text = useSelector(selectCommentText);
-    const isLoading = useSelector(selectCommentIsLoading);
+        const text = useSelector(selectCommentText);
 
-    const onSendComment = useCallback(async (): Promise<void> => {
-        const { meta } = await dispatch(sendComment());
+        const onChangeComment = useCallback(
+            (value: string): void => {
+                dispatch(addCommentFormActions.changeText(value));
+            },
+            [dispatch],
+        );
 
-        if (meta.requestStatus === 'fulfilled') {
+        const handleSendComment = useCallback(() => {
+            onSendComment(text || '');
             dispatch(addCommentFormActions.changeText(''));
-        }
-    }, [dispatch]);
+        }, [dispatch, onSendComment, text]);
 
-    const onChangeComment = useCallback(
-        (value: string): void => {
-            dispatch(addCommentFormActions.changeText(value));
-        },
-        [dispatch],
-    );
+        useDynamicModuleLoader(reducers);
 
-    useDynamicModuleLoader(reducers);
-
-    return (
-        <div className={classNames(classes.AddCommentForm, {}, [className])}>
-            <Input
-                className={classes.input}
-                value={text || ''}
-                placeholder={t('Введите текст комментария', {
-                    ns: 'profile',
-                })}
-                onChange={onChangeComment}
-            />
-            <Button onClick={onSendComment} disabled={isLoading}>
-                {t('Отправить', {
-                    ns: 'profile',
-                })}
-            </Button>
-        </div>
-    );
-});
+        return (
+            <div className={classNames(classes.AddCommentForm, {}, [className])}>
+                <Input
+                    disabled={isLoading}
+                    className={classes.input}
+                    value={text || ''}
+                    placeholder={t('Введите текст комментария', {
+                        ns: 'profile',
+                    })}
+                    onChange={onChangeComment}
+                />
+                <Button onClick={handleSendComment} disabled={isLoading}>
+                    {t('Отправить', {
+                        ns: 'profile',
+                    })}
+                </Button>
+            </div>
+        );
+    },
+);
 
 export default AddCommentForm;

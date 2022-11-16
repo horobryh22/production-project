@@ -15,6 +15,7 @@ const profileData = {
     avatar: '',
     city: 'Omsk',
     first: 'Илья',
+    id: '1',
 };
 
 describe('updateUserProfile.test', () => {
@@ -24,7 +25,7 @@ describe('updateUserProfile.test', () => {
         });
 
         thunk.api.put.mockReturnValue(Promise.resolve({ data: profileData }));
-        const result = await thunk.callThunk();
+        const result = await thunk.callThunk('1');
 
         expect(thunk.api.put).toHaveBeenCalled();
         expect(result.meta.requestStatus).toBe('fulfilled');
@@ -37,7 +38,7 @@ describe('updateUserProfile.test', () => {
         });
 
         thunk.api.put.mockReturnValue(Promise.resolve({ status: 403 }));
-        const result = await thunk.callThunk();
+        const result = await thunk.callThunk('1');
 
         expect(thunk.api.put).toHaveBeenCalledTimes(1);
         expect(result.meta.requestStatus).toBe('rejected');
@@ -50,7 +51,7 @@ describe('updateUserProfile.test', () => {
         });
 
         thunk.api.put.mockReturnValue(Promise.resolve({ status: 403 }));
-        const result = await thunk.callThunk();
+        const result = await thunk.callThunk('1');
 
         expect(thunk.api.put).toHaveBeenCalledTimes(0);
         expect(result.meta.requestStatus).toBe('rejected');

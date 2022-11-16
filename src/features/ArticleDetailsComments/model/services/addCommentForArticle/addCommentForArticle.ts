@@ -1,19 +1,21 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
-import { selectCommentText } from '../../selectors/selectCommentText/selectCommentText';
-
 import { ThunkConfig } from 'app/providers/StoreProvider';
 import { selectArticleDetailsData } from 'entities/Article';
+import { Comment } from 'entities/Comment';
 import { selectAuthData } from 'entities/User';
 
-export const sendComment = createAsyncThunk<Comment, void, ThunkConfig<string>>(
-    'addCommentForm/sendComment',
-    async (_, { rejectWithValue, getState, extra }) => {
+export const addCommentForArticle = createAsyncThunk<
+    Comment,
+    string,
+    ThunkConfig<string>
+>(
+    'articleDetailsComments/addCommentForArticle',
+    async (text, { rejectWithValue, getState, extra }) => {
         const authUserData = selectAuthData(getState());
         const articleData = selectArticleDetailsData(getState());
-        const text = selectCommentText(getState());
 
-        if (!authUserData || !text || !articleData) {
+        if (!authUserData || !articleData) {
             return rejectWithValue('no data');
         }
 
@@ -25,10 +27,17 @@ export const sendComment = createAsyncThunk<Comment, void, ThunkConfig<string>>(
             });
 
             if (!data) {
-                throw new Error();
+                throw new Error('no data');
             }
 
-            return data;
+            const comment: Comment = {
+                user: authUserData,
+                articleId: articleData?.id,
+                text,
+                id: data.id,
+            };
+
+            return comment;
         } catch (e) {
             return rejectWithValue('error');
         }

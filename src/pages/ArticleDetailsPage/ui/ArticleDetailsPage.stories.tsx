@@ -80,10 +80,44 @@ const article: Article = {
     ],
 };
 
+const comments = {
+    ids: ['123', '234'],
+    entities: {
+        '123': {
+            articleId: '1',
+            text: 'It is a cool article',
+            id: '123',
+            user: {
+                id: '1',
+                username: 'admin',
+                avatar: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRdim6mwjPEYlsFTPtK5hmZXBGJG1KyUz4SxpZBKVU&s',
+            },
+        },
+        '234': {
+            articleId: '1',
+            text: 'I agree with you. my friend',
+            id: '123',
+            user: {
+                id: '1',
+                username: 'user',
+                avatar: 'https://cdn4.iconfinder.com/data/icons/avatars-xmas-giveaway/128/batman_hero_avatar_comics-512.png',
+            },
+        },
+    },
+};
+
 export const Primary = Template.bind({});
-Primary.decorators = [StoreDecorator({ articleDetails: { data: article } })];
+Primary.decorators = [
+    StoreDecorator({
+        articleDetails: { data: article },
+        articleDetailsComments: comments,
+    }),
+];
 
 export const Loading = Template.bind({});
 Loading.decorators = [
-    StoreDecorator({ articleDetails: { data: article, isLoading: true } }),
+    StoreDecorator({
+        articleDetails: { data: article, isLoading: true },
+        articleDetailsComments: { ...comments, isLoading: true },
+    }),
 ];

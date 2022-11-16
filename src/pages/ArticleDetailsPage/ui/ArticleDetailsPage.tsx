@@ -6,7 +6,6 @@ import { useParams } from 'react-router-dom';
 import classes from './ArticleDetailsPage.module.scss';
 
 import { ArticleDetails } from 'entities/Article';
-import { AddCommentFormAsync } from 'features/AddCommentForm';
 import { ArticleComments } from 'features/ArticleDetailsComments';
 import { classNames } from 'shared/lib';
 import { Text } from 'shared/ui';
@@ -16,7 +15,7 @@ interface ArticleDetailsPageProps {
     className?: string;
 }
 
-const ArticleDetailsPage = memo((props: ArticleDetailsPageProps): ReactElement | null => {
+const ArticleDetailsPage = memo((props: ArticleDetailsPageProps): ReactElement => {
     const { className } = props;
     const { t } = useTranslation('article');
 
@@ -42,7 +41,6 @@ const ArticleDetailsPage = memo((props: ArticleDetailsPageProps): ReactElement |
                 className={classes.commentTitle}
                 title={t('Comments', { ns: 'article' })}
             />
-            <AddCommentFormAsync />
             <ArticleComments id={id} />
         </div>
     );

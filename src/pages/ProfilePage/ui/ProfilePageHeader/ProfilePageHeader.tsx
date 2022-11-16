@@ -2,6 +2,7 @@ import { ReactElement, useCallback } from 'react';
 
 import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
+import { useParams } from 'react-router-dom';
 
 import { getCanEdit } from '../../model/selectors/getCanEdit/getCanEdit';
 
@@ -27,6 +28,7 @@ export const ProfilePageHeader = ({
     const { t } = useTranslation('profile');
 
     const dispatch = useAppDispatch();
+    const { id } = useParams();
 
     const readonly = useSelector(selectProfileReadonly);
     const error = useSelector(selectProfileError);
@@ -41,8 +43,10 @@ export const ProfilePageHeader = ({
     }, [dispatch]);
 
     const onSave = useCallback((): void => {
-        dispatch(updateUserProfile());
-    }, [dispatch]);
+        if (id) {
+            dispatch(updateUserProfile(id));
+        }
+    }, [dispatch, id]);
 
     return (
         <div className={classNames(classes.ProfilePageHeader, {}, [className])}>

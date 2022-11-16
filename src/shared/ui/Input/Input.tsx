@@ -25,6 +25,7 @@ export const Input = memo((props: InputProps): ReactElement => {
         className,
         placeholder,
         readonly,
+        disabled,
         ...restProps
     } = props;
 
@@ -59,6 +60,7 @@ export const Input = memo((props: InputProps): ReactElement => {
 
     const mods: Mods = {
         [classes.readonly]: readonly,
+        [classes.disabled]: disabled,
     };
 
     return (
@@ -69,6 +71,7 @@ export const Input = memo((props: InputProps): ReactElement => {
             <div className={classes.caretWrapper}>
                 <input
                     {...restProps}
+                    disabled={disabled}
                     readOnly={readonly}
                     onBlur={handleBlur}
                     onFocus={handleFocus}

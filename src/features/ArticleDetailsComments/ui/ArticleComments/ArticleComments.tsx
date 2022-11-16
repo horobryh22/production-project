@@ -1,8 +1,9 @@
-import { memo, ReactElement } from 'react';
+import { memo, ReactElement, useCallback, useMemo } from 'react';
 
 import { useSelector } from 'react-redux';
 
 import { selectArticleDetailsCommentsIsLoading } from '../../model/selectors/selectArticleDetailsCommentsIsLoading/selectArticleDetailsCommentsIsLoading';
+import { addCommentForArticle } from '../../model/services/addCommentForArticle/addCommentForArticle';
 import { fetchCommentsByArticleId } from '../../model/services/fetchCommentsByArticleId/fetchCommentsByArticleId';
 import {
     articleDetailsCommentsReducer,
@@ -10,6 +11,7 @@ import {
 } from '../../model/slice/articleDetailsCommentsSlice';
 
 import { CommentsList } from 'entities/Comment';
+import { AddCommentFormAsync } from 'features/AddCommentForm';
 import { classNames, useAppDispatch, useDynamicModuleLoader } from 'shared/lib';
 import { ReducersList } from 'shared/lib/hooks/useDynamicModuleLoader';
 import { useInitialEffect } from 'shared/lib/hooks/useInitialEffect';
@@ -35,9 +37,21 @@ export const ArticleComments = memo((props: ArticleCommentsProps): ReactElement 
 
     useInitialEffect(() => dispatch(fetchCommentsByArticleId(id)));
 
+    const reversedComments = useMemo(() => {
+        return [...comments].reverse();
+    }, [comments]);
+
+    const onSendComment = useCallback(
+        (text: string) => {
+            dispatch(addCommentForArticle(text));
+        },
+        [dispatch],
+    );
+
     return (
         <div className={classNames('', {}, [className])}>
-            <CommentsList comments={comments} isLoading={isLoading} />
+            <AddCommentFormAsync onSendComment={onSendComment} isLoading={isLoading} />
+            <CommentsList comments={reversedComments} isLoading={isLoading} />
         </div>
     );
 });
