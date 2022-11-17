@@ -1,0 +1,14 @@
+.list {
+  .card {
+    margin: 40px 0;
+  }
+}
+
+.tile {
+  display: flex;
+  flex-wrap: wrap;
+
+  .card {
+    margin: 20px 40px;
+  }
+}

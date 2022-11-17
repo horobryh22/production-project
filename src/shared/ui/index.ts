@@ -11,3 +11,4 @@ export { Text, TextSize, TextAlign, TextTheme } from './Text/Text';
 export { Skeleton } from './Skeleton/Skeleton';
 export { Icon } from './Icon/Icon';
 export { Code } from './Code/Code';
+export { Card } from './Card/Card';

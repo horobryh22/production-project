@@ -1,14 +1,16 @@
-import { memo, ReactElement } from 'react';
+import { memo, ReactElement, useCallback } from 'react';
 
 import { useTranslation } from 'react-i18next';
+import { useNavigate } from 'react-router';
 import { useParams } from 'react-router-dom';
 
 import classes from './ArticleDetailsPage.module.scss';
 
+import { RoutePath } from 'app/providers/router/config/routeConfig';
 import { ArticleDetails } from 'entities/Article';
 import { ArticleComments } from 'features/ArticleDetailsComments';
 import { classNames } from 'shared/lib';
-import { Text } from 'shared/ui';
+import { Button, Text } from 'shared/ui';
 import { TextTheme } from 'shared/ui/Text/Text';
 
 interface ArticleDetailsPageProps {
@@ -19,9 +21,15 @@ const ArticleDetailsPage = memo((props: ArticleDetailsPageProps): ReactElement =
     const { className } = props;
     const { t } = useTranslation('article');
 
+    const navigate = useNavigate();
+
     let { id } = useParams();
 
     if (!id && __PROJECT__ === 'storybook') id = '1';
+
+    const onBackToArticles = useCallback(() => {
+        navigate(RoutePath.articles);
+    }, [navigate]);
 
     if (!id) {
         return (
@@ -36,6 +44,9 @@ const ArticleDetailsPage = memo((props: ArticleDetailsPageProps): ReactElement =
 
     return (
         <div className={classNames(classes.ArticleDetailsPage, {}, [className])}>
+            <Button onClick={onBackToArticles} className={classes.btn}>
+                {t('Back to articles', { ns: 'article' })}
+            </Button>
             <ArticleDetails id={id} />
             <Text
                 className={classes.commentTitle}
