@@ -3,11 +3,11 @@ import React, { memo } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
 
-import { SidebarItemType } from '../../model/items';
+import { SidebarItemType } from '../../model/types';
 
 import classes from './SidebarItem.module.scss';
 
-import { selectAuthData, selectIsUserAuth } from 'entities/User';
+import { selectIsUserAuth } from 'entities/User';
 import { classNames } from 'shared/lib';
 import { AppLink, AppLinkTheme } from 'shared/ui';
 
@@ -22,14 +22,9 @@ export const SidebarItem = memo(({ item, collapsed }: SidebarItemProps) => {
     const { t } = useTranslation();
 
     const isAuth = useSelector(selectIsUserAuth);
-    const authData = useSelector(selectAuthData);
 
     if (authOnly && !isAuth) {
         return null;
-    }
-
-    if (pageName === 'Profile') {
-        to = `${to}${authData.id}`;
     }
 
     return (
