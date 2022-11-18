@@ -1,5 +1,8 @@
 .list {
+  width: 100%;
+
   .card {
+    width: 100%;
     margin: 40px 0;
   }
 }
@@ -9,6 +12,6 @@
   flex-wrap: wrap;
 
   .card {
-    margin: 20px 40px;
+    margin: 20px;
   }
 }

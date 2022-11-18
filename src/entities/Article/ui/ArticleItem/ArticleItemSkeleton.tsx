@@ -24,29 +24,34 @@ export const ArticleItemSkeleton = memo(
                         classes[view],
                     ])}
                 >
-                    {/*<Card>*/}
-                    {/*    <div className={classes.header}>*/}
-                    {/*        <Avatar size={30} src={article.user.avatar} />*/}
-                    {/*        <Text*/}
-                    {/*            text={article.user.username}*/}
-                    {/*            className={classes.username}*/}
-                    {/*        />*/}
-                    {/*        <Text text={article.createdAt} className={classes.date} />*/}
-                    {/*    </div>*/}
-                    {/*    <Text title={article.title} className={classes.title} />*/}
-                    {/*    <div className={classes.imageBlock}>*/}
-                    {/*        <img*/}
-                    {/*            src={article.img}*/}
-                    {/*            alt={article.title}*/}
-                    {/*            className={classes.image}*/}
-                    {/*        />*/}
-                    {/*    </div>*/}
-                    {/*    <div className={classes.footer}>*/}
-                    {/*        <Button onClick={onOpenArticle}>*/}
-                    {/*            {t('Read more', { ns: 'article' })}*/}
-                    {/*        </Button>*/}
-                    {/*    </div>*/}
-                    {/*</Card>*/}
+                    <Card>
+                        <div className={classes.header}>
+                            <Skeleton width={30} height={30} border="100%" />
+                            <Skeleton
+                                width={150}
+                                height={16}
+                                className={classes.username}
+                            />
+                            <Skeleton width={110} height={16} className={classes.date} />
+                        </div>
+                        <Skeleton width={500} height={25} className={classes.title} />
+                        <Skeleton width={50} height={16} className={classes.tags} />
+                        <div className={classes.imageBlock}>
+                            <Skeleton
+                                width="100%"
+                                height={200}
+                                className={classes.image}
+                            />
+                        </div>
+                        <Skeleton
+                            width="100%"
+                            height={80}
+                            className={classes.textBlock}
+                        />
+                        <div className={classes.footer}>
+                            <Skeleton width={100} height={32} className={classes.image} />
+                        </div>
+                    </Card>
                 </div>
             );
         }

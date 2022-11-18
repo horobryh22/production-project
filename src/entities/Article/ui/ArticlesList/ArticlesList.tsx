@@ -15,6 +15,13 @@ interface ArticlesListProps {
     isLoading?: boolean;
 }
 
+const getSkeletons = (view: ArticleView) =>
+    new Array(view === ArticleView.TILE ? 8 : 3)
+        .fill(1)
+        .map((item, index) => (
+            <ArticleItemSkeleton className={classes.card} key={index} view={view} />
+        ));
+
 export const ArticlesList = memo((props: ArticlesListProps): ReactElement => {
     const { className, articles, view = ArticleView.TILE, isLoading } = props;
 
@@ -26,15 +33,7 @@ export const ArticlesList = memo((props: ArticlesListProps): ReactElement => {
                     classes[view],
                 ])}
             >
-                {new Array(view === ArticleView.TILE ? 9 : 3)
-                    .fill(1)
-                    .map((item, index) => (
-                        <ArticleItemSkeleton
-                            className={classes.card}
-                            key={index}
-                            view={view}
-                        />
-                    ))}
+                {getSkeletons(view)}
             </div>
         );
     }
