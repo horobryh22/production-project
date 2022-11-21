@@ -14,6 +14,7 @@ import { AddCommentFormSchema } from 'features/AddCommentForm';
 import { ArticleDetailsCommentsSchema } from 'features/ArticleDetailsComments';
 import { LoginSchema } from 'features/AuthByUserName';
 import { ProfileSchema } from 'features/EditableProfileCard';
+import { ArticlePageSchema } from 'pages/ArticlesPage';
 
 // instead of RootState
 export interface StateSchema {
@@ -25,6 +26,7 @@ export interface StateSchema {
     articleDetails?: ArticleDetailsSchema;
     articleDetailsComments?: ArticleDetailsCommentsSchema;
     addCommentForm?: AddCommentFormSchema;
+    articlePage?: ArticlePageSchema;
 }
 
 export type StateSchemaKey = keyof StateSchema;
