@@ -13,7 +13,7 @@ interface PageProps {
 export const Page = memo((props: PageProps): ReactElement => {
     const { className, children, onScrollEnd } = props;
 
-    const wrapperRef = useRef() as MutableRefObject<HTMLElement>;
+    const wrapperRef = useRef() as MutableRefObject<HTMLDivElement>;
     const triggerRef = useRef() as MutableRefObject<HTMLDivElement>;
 
     useInfiniteScroll({

@@ -73,7 +73,7 @@ describe('articlePageSlice.test', () => {
     test('state should be init', () => {
         const updatedState = articlePageReducer(state, articlePageActions.initState());
 
-        expect(updatedState.limit).toBe(8);
+        expect(updatedState.limit).toBe(9);
         expect(updatedState.view).toBe(ArticleView.TILE);
     });
 
