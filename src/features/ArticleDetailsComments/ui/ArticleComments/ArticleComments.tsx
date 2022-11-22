@@ -1,7 +1,8 @@
-import { memo, ReactElement, useCallback, useMemo } from 'react';
+import { memo, ReactElement, useCallback, useMemo, Suspense } from 'react';
 
 import { useSelector } from 'react-redux';
 
+import { AddCommentFormAsync } from '../../../AddCommentForm/';
 import { selectArticleDetailsCommentsIsLoading } from '../../model/selectors/selectArticleDetailsCommentsIsLoading/selectArticleDetailsCommentsIsLoading';
 import { addCommentForArticle } from '../../model/services/addCommentForArticle/addCommentForArticle';
 import { fetchCommentsByArticleId } from '../../model/services/fetchCommentsByArticleId/fetchCommentsByArticleId';
@@ -10,11 +11,13 @@ import {
     commentsSelectors,
 } from '../../model/slice/articleDetailsCommentsSlice';
 
+import classes from './ArticleComments.module.scss';
+
 import { CommentsList } from 'entities/Comment';
-import { AddCommentFormAsync } from 'features/AddCommentForm';
 import { classNames, useAppDispatch, useDynamicModuleLoader } from 'shared/lib';
 import { ReducersList } from 'shared/lib/hooks/useDynamicModuleLoader';
 import { useInitialEffect } from 'shared/lib/hooks/useInitialEffect';
+import { Loader } from 'shared/ui';
 
 interface ArticleCommentsProps {
     className?: string;
@@ -49,8 +52,13 @@ export const ArticleComments = memo((props: ArticleCommentsProps): ReactElement 
     );
 
     return (
-        <div className={classNames('', {}, [className])}>
-            <AddCommentFormAsync onSendComment={onSendComment} isLoading={isLoading} />
+        <div className={classNames(classes.ArticleComments, {}, [className])}>
+            <Suspense fallback={<Loader className={classes.loader} />}>
+                <AddCommentFormAsync
+                    onSendComment={onSendComment}
+                    isLoading={isLoading}
+                />
+            </Suspense>
             <CommentsList comments={reversedComments} isLoading={isLoading} />
         </div>
     );

@@ -16,8 +16,6 @@ import {
     articleSelectors,
 } from '../model/slice/articlePageSlice';
 
-import classes from './ArticlesPage.module.scss';
-
 import { ArticlesList, ArticleView } from 'entities/Article';
 import { classNames, useAppDispatch, useDynamicModuleLoader } from 'shared/lib';
 import { ReducersList } from 'shared/lib/hooks/useDynamicModuleLoader';
@@ -64,10 +62,7 @@ const ArticlesPage = memo((props: ArticlePageProps): ReactElement => {
     });
 
     return (
-        <Page
-            onScrollEnd={onLoadNextPart}
-            className={classNames(classes.ArticlePage, {}, [className])}
-        >
+        <Page onScrollEnd={onLoadNextPart} className={classNames('', {}, [className])}>
             <ViewSwitcher view={view} onChangeView={onChangeView} />
             <ArticlesList articles={articles} view={view} isLoading={isLoading} />
         </Page>

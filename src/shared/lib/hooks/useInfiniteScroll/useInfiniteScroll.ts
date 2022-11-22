@@ -30,7 +30,7 @@ export const useInfiniteScroll = (props: useInfiniteScrollOptions): void => {
             observer.observe(trigger);
 
             return () => {
-                if (observer) {
+                if (observer && trigger) {
                     observer.unobserve(trigger);
                 }
             };

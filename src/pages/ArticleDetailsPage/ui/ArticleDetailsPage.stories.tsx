@@ -115,14 +115,14 @@ export const Primary = Template.bind({});
 Primary.decorators = [
     StoreDecorator({
         articleDetails: { data: article },
-        articleDetailsComments: comments,
+        articleDetailsComments: { ...comments, isLoading: false },
     }),
 ];
 
 export const Loading = Template.bind({});
 Loading.decorators = [
     StoreDecorator({
-        articleDetails: { data: article, isLoading: true },
+        articleDetails: { isLoading: true },
         articleDetailsComments: { ...comments, isLoading: true },
     }),
 ];

@@ -21,6 +21,11 @@ AuthUser.decorators = [
     StoreDecorator({
         user: {
             isUserAuth: true,
+            authData: {
+                id: '1',
+                username: 'Ilya',
+                avatar: '',
+            },
         },
     }),
 ];
