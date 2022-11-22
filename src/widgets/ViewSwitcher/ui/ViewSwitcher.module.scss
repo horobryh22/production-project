@@ -1,7 +1,11 @@
-.svg path {
-  fill: var(--secondary-color);
+.ViewSwitcher {
+  margin-left: auto;
+  width: 40px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
 }
 
-.active path {
-  fill: var(--primary-color);
+.no-active path {
+  fill: var(--secondary-color);
 }

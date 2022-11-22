@@ -26,9 +26,7 @@ export const AppRouter = (): ReactElement => {
 
     return (
         <Suspense fallback={<PageLoader />}>
-            <div className="page-wrapper">
-                <Routes>{elements}</Routes>
-            </div>
+            <Routes>{elements}</Routes>
         </Suspense>
     );
 };

@@ -46,11 +46,9 @@ export const ViewSwitcher = memo((props: ViewSwitcherProps): ReactElement => {
             >
                 <Icon
                     Svg={viewItem.Svg}
-                    className={classNames(
-                        classes.svg,
-                        { [classes['active']]: view == viewItem.view },
-                        [],
-                    )}
+                    className={classNames('', {
+                        [classes['no-active']]: view !== viewItem.view,
+                    })}
                 />
             </Button>
         ));

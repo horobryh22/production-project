@@ -36,7 +36,7 @@ export const Navbar = memo(({ className }: NavbarProps): ReactElement => {
     }, [dispatch]);
 
     return (
-        <div className={classNames(classes.Navbar, {}, [String(className)])}>
+        <header className={classNames(classes.Navbar, {}, [String(className)])}>
             <LoginModal isOpen={isOpen} onClose={closeModal} />
             <Button
                 className={classes.links}
@@ -45,6 +45,6 @@ export const Navbar = memo(({ className }: NavbarProps): ReactElement => {
             >
                 {isUserAuth ? t('Logout') : t('Login')}
             </Button>
-        </div>
+        </header>
     );
 });

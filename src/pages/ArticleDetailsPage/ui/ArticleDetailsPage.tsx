@@ -10,7 +10,7 @@ import { RoutePath } from 'app/providers/router/config/routeConfig';
 import { ArticleDetails } from 'entities/Article';
 import { ArticleComments } from 'features/ArticleDetailsComments';
 import { classNames } from 'shared/lib';
-import { Button, Text } from 'shared/ui';
+import { Button, Page, Text } from 'shared/ui';
 import { TextTheme } from 'shared/ui/Text/Text';
 
 interface ArticleDetailsPageProps {
@@ -33,17 +33,17 @@ const ArticleDetailsPage = memo((props: ArticleDetailsPageProps): ReactElement =
 
     if (!id) {
         return (
-            <div className={classNames(classes.ArticleDetailsPage, {}, [className])}>
+            <Page className={classNames(classes.ArticleDetailsPage, {}, [className])}>
                 <Text
                     theme={TextTheme.ERROR}
                     text={t('Article not found', { ns: 'article' })}
                 />
-            </div>
+            </Page>
         );
     }
 
     return (
-        <div className={classNames(classes.ArticleDetailsPage, {}, [className])}>
+        <Page className={classNames(classes.ArticleDetailsPage, {}, [className])}>
             <Button onClick={onBackToArticles} className={classes.btn}>
                 {t('Back to articles', { ns: 'article' })}
             </Button>
@@ -53,7 +53,7 @@ const ArticleDetailsPage = memo((props: ArticleDetailsPageProps): ReactElement =
                 title={t('Comments', { ns: 'article' })}
             />
             <ArticleComments id={id} />
-        </div>
+        </Page>
     );
 });
 

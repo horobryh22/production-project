@@ -25,19 +25,6 @@ const getSkeletons = (view: ArticleView) =>
 export const ArticlesList = memo((props: ArticlesListProps): ReactElement => {
     const { className, articles, view = ArticleView.TILE, isLoading } = props;
 
-    if (isLoading) {
-        return (
-            <div
-                className={classNames(classes.ArticlesList, {}, [
-                    className,
-                    classes[view],
-                ])}
-            >
-                {getSkeletons(view)}
-            </div>
-        );
-    }
-
     const renderArticle = (article: Article): ReactElement => {
         return (
             <ArticleItem
@@ -52,6 +39,7 @@ export const ArticlesList = memo((props: ArticlesListProps): ReactElement => {
     return (
         <div className={classNames(classes.ArticlesList, {}, [className, classes[view]])}>
             {articles.length ? articles.map(renderArticle) : null}
+            {isLoading && getSkeletons(view)}
         </div>
     );
 });
