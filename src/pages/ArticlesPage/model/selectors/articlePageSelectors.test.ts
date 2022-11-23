@@ -3,6 +3,7 @@ import type { DeepPartial } from 'redux';
 import {
     selectArticlePageError,
     selectArticlePageHasMore,
+    selectArticlePageInited,
     selectArticlePageIsLoading,
     selectArticlePageLimitNum,
     selectArticlePagePageNum,
@@ -25,6 +26,7 @@ describe('articlePageSelectors.test', () => {
                 limit: 8,
                 ids: [],
                 entities: {},
+                _inited: true,
             },
         };
     });
@@ -63,5 +65,11 @@ describe('articlePageSelectors.test', () => {
         const error = selectArticlePageError(state as StateSchema);
 
         expect(error).toBeUndefined();
+    });
+
+    test('selectArticlePageInited', () => {
+        const _inited = selectArticlePageInited(state as StateSchema);
+
+        expect(_inited).toBeTruthy();
     });
 });

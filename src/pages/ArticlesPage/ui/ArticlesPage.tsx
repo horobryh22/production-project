@@ -5,11 +5,10 @@ import { useSelector } from 'react-redux';
 
 import {
     selectArticlePageIsLoading,
-    selectArticlePagePageNum,
     selectArticlePageView,
 } from '../model/selectors/articlePageSelectors';
-import { fetchArticlesList } from '../model/services/fetchArticlesList/fetchArticlesList';
 import { fetchNextArticlesPage } from '../model/services/fetchNextArticlesPage/fetchNextArticlesPage';
+import { initArticlesPage } from '../model/services/initArticlesPage/initArticlesPage';
 import {
     articlePageActions,
     articlePageReducer,
@@ -41,7 +40,6 @@ const ArticlesPage = memo((props: ArticlePageProps): ReactElement => {
     const articles = useSelector(articleSelectors.selectAll);
     const isLoading = useSelector(selectArticlePageIsLoading);
     const view = useSelector(selectArticlePageView);
-    const page = useSelector(selectArticlePagePageNum);
 
     const onChangeView = useCallback(
         (view: ArticleView) => {
@@ -57,8 +55,7 @@ const ArticlesPage = memo((props: ArticlePageProps): ReactElement => {
     useDynamicModuleLoader(reducers);
 
     useInitialEffect(() => {
-        dispatch(articlePageActions.initState());
-        dispatch(fetchArticlesList({ page }));
+        dispatch(initArticlesPage());
     });
 
     return (

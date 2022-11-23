@@ -52,6 +52,7 @@ describe('articlePageSlice.test', () => {
             isLoading: false,
             view: ArticleView.LIST,
             page: 1,
+            _inited: false,
         };
     });
 
@@ -75,6 +76,7 @@ describe('articlePageSlice.test', () => {
 
         expect(updatedState.limit).toBe(9);
         expect(updatedState.view).toBe(ArticleView.TILE);
+        expect(updatedState._inited).toBeTruthy();
     });
 
     test('fetching articles pending service', () => {
