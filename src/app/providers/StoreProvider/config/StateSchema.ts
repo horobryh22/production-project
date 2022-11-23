@@ -15,10 +15,12 @@ import { ArticleDetailsCommentsSchema } from 'features/ArticleDetailsComments';
 import { LoginSchema } from 'features/AuthByUserName';
 import { ProfileSchema } from 'features/EditableProfileCard';
 import { ArticlePageSchema } from 'pages/ArticlesPage';
+import { UIPageSchema } from 'widgets/Page';
 
 // instead of RootState
 export interface StateSchema {
     user: UserSchema;
+    uiPage: UIPageSchema;
 
     // async reducers
     login?: LoginSchema;

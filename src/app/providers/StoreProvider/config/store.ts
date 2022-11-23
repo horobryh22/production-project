@@ -9,6 +9,7 @@ import { createReducerManager } from './reducerManager';
 
 import { userReducer } from 'entities/User';
 import { instance } from 'shared/api/api';
+import { uiPageSliceReducer } from 'widgets/Page';
 
 export const createReduxStore = (
     initialState?: StateSchema,
@@ -18,6 +19,7 @@ export const createReduxStore = (
     const rootReducers: ReducersMapObject<StateSchema> = {
         ...asyncReducers,
         user: userReducer,
+        uiPage: uiPageSliceReducer,
     };
 
     const reducerManager: ReducerManager = createReducerManager(rootReducers);

@@ -19,7 +19,7 @@ import { ArticlesList, ArticleView } from 'entities/Article';
 import { classNames, useAppDispatch, useDynamicModuleLoader } from 'shared/lib';
 import { ReducersList } from 'shared/lib/hooks/useDynamicModuleLoader';
 import { useInitialEffect } from 'shared/lib/hooks/useInitialEffect';
-import { Page } from 'shared/ui';
+import { Page } from 'widgets/Page';
 import { ViewSwitcher } from 'widgets/ViewSwitcher';
 
 interface ArticlePageProps {
@@ -52,7 +52,7 @@ const ArticlesPage = memo((props: ArticlePageProps): ReactElement => {
         dispatch(fetchNextArticlesPage());
     }, [dispatch]);
 
-    useDynamicModuleLoader(reducers);
+    useDynamicModuleLoader(reducers, false);
 
     useInitialEffect(() => {
         dispatch(initArticlesPage());

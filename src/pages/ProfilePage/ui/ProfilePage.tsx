@@ -5,7 +5,7 @@ import { useParams } from 'react-router-dom';
 import { ProfilePageHeader } from './ProfilePageHeader/ProfilePageHeader';
 
 import { EditableProfileCard } from 'features/EditableProfileCard';
-import { Page } from 'shared/ui';
+import { Page } from 'widgets/Page';
 
 const ProfilePage = (): ReactElement => {
     const { id } = useParams();

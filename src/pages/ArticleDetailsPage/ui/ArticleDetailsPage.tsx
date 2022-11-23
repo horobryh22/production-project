@@ -10,8 +10,9 @@ import { RoutePath } from 'app/providers/router/config/routeConfig';
 import { ArticleDetails } from 'entities/Article';
 import { ArticleComments } from 'features/ArticleDetailsComments';
 import { classNames } from 'shared/lib';
-import { Button, Page, Text } from 'shared/ui';
+import { Button, Text } from 'shared/ui';
 import { TextTheme } from 'shared/ui/Text/Text';
+import { Page } from 'widgets/Page';
 
 interface ArticleDetailsPageProps {
     className?: string;
