@@ -57,7 +57,7 @@ export const Page = memo((props: PageProps): ReactElement => {
             className={classNames(classes.Page, {}, [className])}
         >
             {children}
-            <div ref={triggerRef} />
+            {onScrollEnd ? <div className={classes.trigger} ref={triggerRef} /> : null}
         </section>
     );
 });

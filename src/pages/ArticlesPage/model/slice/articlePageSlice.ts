@@ -26,6 +26,7 @@ export const articlePageSlice = createSlice({
         ids: [],
         entities: {},
         _inited: false,
+        limit: 9,
     }),
     reducers: {
         setView: (state, action: PayloadAction<ArticleView>) => {
@@ -52,18 +53,24 @@ export const articlePageSlice = createSlice({
                 state.error = action.payload;
                 state.isLoading = false;
             })
-            .addCase(fetchArticlesList.pending, state => {
+            .addCase(fetchArticlesList.pending, (state, action) => {
                 state.isLoading = true;
                 state.error = undefined;
+
+                if (action.meta.arg.replace) {
+                    articleAdapter.removeAll(state);
+                }
             })
-            .addCase(
-                fetchArticlesList.fulfilled,
-                (state, action: PayloadAction<Article[]>) => {
-                    state.isLoading = false;
+            .addCase(fetchArticlesList.fulfilled, (state, action) => {
+                state.isLoading = false;
+                state.hasMore = action.payload.length > 0;
+
+                if (action.meta.arg.replace) {
+                    articleAdapter.setAll(state, action.payload);
+                } else {
                     articleAdapter.addMany(state, action.payload);
-                    state.hasMore = action.payload.length > 0;
-                },
-            ),
+                }
+            }),
 });
 
 export const { actions: articlePageActions } = articlePageSlice;

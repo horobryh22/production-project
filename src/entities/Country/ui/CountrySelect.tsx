@@ -11,7 +11,7 @@ import { Mods } from 'shared/lib/classNames/classNames';
 import { Select } from 'shared/ui';
 import { SelectOptions } from 'shared/ui/Select/Select';
 
-const options: SelectOptions[] = [
+const options: SelectOptions<Country>[] = [
     { content: Country.USA, value: Country.USA },
     { content: Country.RUSSIA, value: Country.RUSSIA },
     { content: Country.BELARUS, value: Country.BELARUS },

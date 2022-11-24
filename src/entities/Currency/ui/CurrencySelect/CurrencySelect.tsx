@@ -11,7 +11,7 @@ import { Mods } from 'shared/lib/classNames/classNames';
 import { Select } from 'shared/ui';
 import { SelectOptions } from 'shared/ui/Select/Select';
 
-const options: SelectOptions[] = [
+const options: SelectOptions<Currency>[] = [
     { content: Currency.RUB, value: Currency.RUB },
     { content: Currency.EURO, value: Currency.EURO },
     { content: Currency.USD, value: Currency.USD },

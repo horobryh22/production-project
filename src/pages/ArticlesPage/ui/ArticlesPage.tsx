@@ -1,4 +1,4 @@
-import { memo, ReactElement, useCallback } from 'react';
+import { memo, ReactElement, useCallback, useEffect } from 'react';
 
 import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
@@ -7,6 +7,7 @@ import {
     selectArticlePageIsLoading,
     selectArticlePageView,
 } from '../model/selectors/articlePageSelectors';
+import { fetchArticlesList } from '../model/services/fetchArticlesList/fetchArticlesList';
 import { fetchNextArticlesPage } from '../model/services/fetchNextArticlesPage/fetchNextArticlesPage';
 import { initArticlesPage } from '../model/services/initArticlesPage/initArticlesPage';
 import {
@@ -16,6 +17,11 @@ import {
 } from '../model/slice/articlePageSlice';
 
 import { ArticlesList, ArticleView } from 'entities/Article';
+import {
+    ArticlesFilterBlock,
+    selectArticlesPageFilterOrder,
+    selectArticlesPageFilterSort,
+} from 'features/ArticlesPageFilter';
 import { classNames, useAppDispatch, useDynamicModuleLoader } from 'shared/lib';
 import { ReducersList } from 'shared/lib/hooks/useDynamicModuleLoader';
 import { useInitialEffect } from 'shared/lib/hooks/useInitialEffect';
@@ -40,6 +46,8 @@ const ArticlesPage = memo((props: ArticlePageProps): ReactElement => {
     const articles = useSelector(articleSelectors.selectAll);
     const isLoading = useSelector(selectArticlePageIsLoading);
     const view = useSelector(selectArticlePageView);
+    const order = useSelector(selectArticlesPageFilterOrder);
+    const sort = useSelector(selectArticlesPageFilterSort);
 
     const onChangeView = useCallback(
         (view: ArticleView) => {
@@ -58,9 +66,14 @@ const ArticlesPage = memo((props: ArticlePageProps): ReactElement => {
         dispatch(initArticlesPage());
     });
 
+    useEffect(() => {
+        dispatch(fetchArticlesList({ page: 1, replace: true }));
+    }, [dispatch, order, sort]);
+
     return (
         <Page onScrollEnd={onLoadNextPart} className={classNames('', {}, [className])}>
             <ViewSwitcher view={view} onChangeView={onChangeView} />
+            <ArticlesFilterBlock />
             <ArticlesList articles={articles} view={view} isLoading={isLoading} />
         </Page>
     );

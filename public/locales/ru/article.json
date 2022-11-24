@@ -1,8 +1,15 @@
 {
   "Article not found": "Article not found",
   "Article was not received": "Article was not received",
+  "Ascending": "Ascending",
   "Back to articles": "Back to articles",
   "Comments": "Comments",
+  "Descending": "Descending",
   "No comments": "No comments",
-  "Read more": "Read more"
+  "Read more": "Read more",
+  "Sort by": "Sort by",
+  "created": "created",
+  "direction": "direction",
+  "title": "title",
+  "views": "views"
 }

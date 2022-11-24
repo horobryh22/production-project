@@ -43,6 +43,7 @@ describe('articlePageSlice.test', () => {
 
     beforeEach(() => {
         state = {
+            limit: 9,
             hasMore: true,
             ids: ['1', '2'],
             entities: {
@@ -80,7 +81,10 @@ describe('articlePageSlice.test', () => {
     });
 
     test('fetching articles pending service', () => {
-        const updatedState = articlePageReducer(state, fetchArticlesList.pending);
+        const updatedState = articlePageReducer(
+            state,
+            fetchArticlesList.pending('', { page: 1, replace: false }),
+        );
 
         expect(updatedState.isLoading).toBeTruthy();
         expect(updatedState.error).toBeUndefined();
