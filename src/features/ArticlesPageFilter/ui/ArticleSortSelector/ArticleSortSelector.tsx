@@ -52,7 +52,7 @@ export const ArticleSortSelector = memo(
         }, [t]);
 
         return (
-            <div className={classNames(classes.ArticleSortSelector, {}, [className])}>
+            <div className={classNames('', {}, [className])}>
                 <Select<ArticleSortType>
                     value={sort}
                     label={t('Sort by', { ns: 'article' })}

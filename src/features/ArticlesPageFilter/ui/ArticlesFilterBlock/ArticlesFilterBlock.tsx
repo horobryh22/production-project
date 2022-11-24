@@ -50,7 +50,7 @@ export const ArticlesFilterBlock = memo(
         );
 
         return (
-            <div className={classNames(classes.ArticlesFilterBlock, {}, [className])}>
+            <div className={classNames('', {}, [className])}>
                 <ArticleSortSelector
                     sort={sort}
                     order={order}
