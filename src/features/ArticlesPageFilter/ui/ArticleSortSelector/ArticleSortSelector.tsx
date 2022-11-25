@@ -2,6 +2,8 @@ import { ReactElement, memo, useMemo } from 'react';
 
 import { useTranslation } from 'react-i18next';
 
+import classes from './ArticleSortSelector.module.scss';
+
 import { ArticleSortType } from 'entities/Article';
 import { classNames } from 'shared/lib';
 import { SortOrder } from 'shared/types';
@@ -52,12 +54,13 @@ export const ArticleSortSelector = memo(
         }, [t]);
 
         return (
-            <div className={classNames('', {}, [className])}>
+            <div className={classNames(classes.ArticleSortSelector, {}, [className])}>
                 <Select<ArticleSortType>
                     value={sort}
                     label={t('Sort by', { ns: 'article' })}
                     options={sortFields}
                     onChange={onChangeSort}
+                    className={classes.select}
                 />
                 <Select<SortOrder>
                     value={order}

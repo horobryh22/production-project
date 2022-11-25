@@ -1,5 +1,6 @@
 import { StateSchema } from 'app/providers/StoreProvider';
 import { ArticleSortType } from 'entities/Article';
+import { ArticleType } from 'entities/Article/model/types';
 import { SortOrder } from 'shared/types';
 
 export const selectArticlesPageFilterOrder = (state: StateSchema): SortOrder =>
@@ -10,3 +11,9 @@ export const selectArticlesPageFilterSort = (state: StateSchema): ArticleSortTyp
 
 export const selectArticlesPageFilterSearch = (state: StateSchema): string =>
     state.articlesPageFilter?.search ?? '';
+
+export const selectArticlesPageFilterInited = (state: StateSchema) =>
+    state.articlesPageFilter?._inited;
+
+export const selectArticlesPageFilterTypeTab = (state: StateSchema): ArticleType =>
+    state.articlesPageFilter?.typeTab || ArticleType.ALL;

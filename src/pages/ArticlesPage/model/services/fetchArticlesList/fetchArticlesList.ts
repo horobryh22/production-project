@@ -4,10 +4,14 @@ import { selectArticlePageLimitNum } from '../../selectors/articlePageSelectors'
 
 import { ThunkConfig } from 'app/providers/StoreProvider';
 import { Article } from 'entities/Article';
+import { ArticleType } from 'entities/Article/model/types';
 import {
     selectArticlesPageFilterOrder,
+    selectArticlesPageFilterSearch,
     selectArticlesPageFilterSort,
+    selectArticlesPageFilterTypeTab,
 } from 'features/ArticlesPageFilter';
+import { addQueryParams } from 'shared/lib/url/addQueryParams/addQueryParams';
 
 export interface FetchArticlesListProps {
     page: number;
@@ -25,14 +29,19 @@ export const fetchArticlesList = createAsyncThunk<
         const limit = selectArticlePageLimitNum(getState());
         const sort = selectArticlesPageFilterSort(getState());
         const order = selectArticlesPageFilterOrder(getState());
+        const search = selectArticlesPageFilterSearch(getState());
+        const typeTab = selectArticlesPageFilterTypeTab(getState());
 
         try {
+            addQueryParams({ sort, order, search, typeTab });
             const { data } = await extra.api.get<Article[]>('/articles', {
                 params: {
                     _page: page,
                     _limit: limit,
                     _sort: sort,
                     _order: order,
+                    q: search,
+                    type: typeTab === ArticleType.ALL ? undefined : typeTab,
                     _expand: 'user',
                 },
             });

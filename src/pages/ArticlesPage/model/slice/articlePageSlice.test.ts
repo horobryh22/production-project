@@ -36,6 +36,12 @@ const articles: Article[] = [
     { ...article, id: '3' },
     { ...article, id: '4' },
     { ...article, id: '5' },
+    { ...article, id: '6' },
+    { ...article, id: '7' },
+    { ...article, id: '8' },
+    { ...article, id: '9' },
+    { ...article, id: '10' },
+    { ...article, id: '11' },
 ];
 
 describe('articlePageSlice.test', () => {
@@ -90,16 +96,35 @@ describe('articlePageSlice.test', () => {
         expect(updatedState.error).toBeUndefined();
     });
 
-    test('fetching articles fullfield service', () => {
+    test('fetching articles fullfield service hasMore should be true', () => {
         const updatedState = articlePageReducer(
             state,
             fetchArticlesList.fulfilled(articles, '1', { page: 1 }),
         );
 
         expect(updatedState.isLoading).toBeFalsy();
-        expect(updatedState.ids.length).toBe(5);
-        expect(Object.keys(updatedState.entities).length).toBe(5);
+        expect(updatedState.ids.length).toBe(11);
+        expect(Object.keys(updatedState.entities).length).toBe(11);
         expect(updatedState.hasMore).toBeTruthy();
+    });
+
+    test('fetching articles fullfield service hasMore should be false', () => {
+        const updatedState = articlePageReducer(
+            state,
+            fetchArticlesList.fulfilled(
+                [
+                    { ...article, id: '3' },
+                    { ...article, id: '4' },
+                ],
+                '1',
+                { page: 1 },
+            ),
+        );
+
+        expect(updatedState.isLoading).toBeFalsy();
+        expect(updatedState.ids.length).toBe(4);
+        expect(Object.keys(updatedState.entities).length).toBe(4);
+        expect(updatedState.hasMore).toBeFalsy();
     });
 
     test('all articles were got', () => {

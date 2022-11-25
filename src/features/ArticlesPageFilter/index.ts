@@ -4,4 +4,5 @@ export {
     selectArticlesPageFilterSort,
     selectArticlesPageFilterOrder,
     selectArticlesPageFilterSearch,
+    selectArticlesPageFilterTypeTab,
 } from './model/selectors/articlesPageFilterSelectors';
