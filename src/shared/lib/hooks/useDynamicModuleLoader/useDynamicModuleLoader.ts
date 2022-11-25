@@ -3,7 +3,7 @@ import { useEffect } from 'react';
 import type { Reducer } from '@reduxjs/toolkit';
 import { useStore } from 'react-redux';
 
-import { useAppDispatch } from '../hooks/useAppDispatch';
+import { useAppDispatch } from '../useAppDispatch/useAppDispatch';
 
 import { StateSchemaKey, StoreSchema } from 'app/providers/StoreProvider';
 

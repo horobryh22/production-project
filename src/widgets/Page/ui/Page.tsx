@@ -9,8 +9,13 @@ import { uiPageSliceActions } from '../model/slice/uiPageSlice';
 import classes from './Page.module.scss';
 
 import { StateSchema } from 'app/providers/StoreProvider';
-import { classNames, useAppDispatch, useInfiniteScroll, useThrottle } from 'shared/lib';
-import { useInitialEffect } from 'shared/lib/hooks/useInitialEffect';
+import {
+    classNames,
+    useAppDispatch,
+    useInfiniteScroll,
+    useThrottle,
+    useInitialEffect,
+} from 'shared/lib';
 
 interface PageProps {
     className?: string;

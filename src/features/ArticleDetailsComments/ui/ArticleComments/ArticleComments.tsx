@@ -14,9 +14,13 @@ import {
 import classes from './ArticleComments.module.scss';
 
 import { CommentsList } from 'entities/Comment';
-import { classNames, useAppDispatch, useDynamicModuleLoader } from 'shared/lib';
-import { ReducersList } from 'shared/lib/hooks/useDynamicModuleLoader';
-import { useInitialEffect } from 'shared/lib/hooks/useInitialEffect';
+import {
+    classNames,
+    useAppDispatch,
+    useDynamicModuleLoader,
+    useInitialEffect,
+} from 'shared/lib';
+import { ReducersList } from 'shared/lib/hooks/useDynamicModuleLoader/useDynamicModuleLoader';
 import { Loader } from 'shared/ui';
 
 interface ArticleCommentsProps {

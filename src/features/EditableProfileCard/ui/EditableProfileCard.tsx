@@ -15,9 +15,13 @@ import { ValidateProfileError } from '../model/types';
 import { Country } from 'entities/Country';
 import { Currency } from 'entities/Currency';
 import { ProfileCard } from 'entities/Profile';
-import { classNames, useAppDispatch, useDynamicModuleLoader } from 'shared/lib';
-import { ReducersList } from 'shared/lib/hooks/useDynamicModuleLoader';
-import { useInitialEffect } from 'shared/lib/hooks/useInitialEffect';
+import {
+    classNames,
+    useAppDispatch,
+    useDynamicModuleLoader,
+    useInitialEffect,
+} from 'shared/lib';
+import { ReducersList } from 'shared/lib/hooks/useDynamicModuleLoader/useDynamicModuleLoader';
 import { Text, TextTheme } from 'shared/ui/Text/Text';
 
 const INITIAL_REDUCERS: ReducersList = {

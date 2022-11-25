@@ -6,6 +6,7 @@ import { useSearchParams } from 'react-router-dom';
 
 import {
     selectArticlesPageFilterOrder,
+    selectArticlesPageFilterSearch,
     selectArticlesPageFilterSort,
 } from '../../model/selectors/articlesPageFilterSelectors';
 import { initArticlesPageFilter } from '../../model/services/initArticlesPageFilter/initArticlesPageFilter';
@@ -14,19 +15,18 @@ import {
     articlesPageFilterReducer,
 } from '../../model/slice/articlesPageFilterSlice';
 import { ArticleSortSelector } from '../ArticleSortSelector/ArticleSortSelector';
+import { ArticleTypeTabs } from '../ArticleTypeTabs/ArticleTypeTabs';
 
 import classes from './ArticlesFilterBlock.module.scss';
 
 import { ArticleSortType } from 'entities/Article';
-import { ArticleTypeTabs } from 'features/ArticlesPageFilter/ui/ArticleTypeTabs/ArticleTypeTabs';
 import {
     classNames,
     useAppDispatch,
-    useDebounce,
     useDynamicModuleLoader,
+    useInitialEffect,
 } from 'shared/lib';
-import { ReducersList } from 'shared/lib/hooks/useDynamicModuleLoader';
-import { useInitialEffect } from 'shared/lib/hooks/useInitialEffect';
+import { ReducersList } from 'shared/lib/hooks/useDynamicModuleLoader/useDynamicModuleLoader';
 import { SortOrder } from 'shared/types';
 import { Card, Input } from 'shared/ui';
 
@@ -48,6 +48,7 @@ export const ArticlesFilterBlock = memo(
 
         const order = useSelector(selectArticlesPageFilterOrder);
         const sort = useSelector(selectArticlesPageFilterSort);
+        const search = useSelector(selectArticlesPageFilterSearch);
 
         useDynamicModuleLoader(reducers);
 
@@ -58,9 +59,12 @@ export const ArticlesFilterBlock = memo(
             [dispatch],
         );
 
-        const onChangeSearch = useDebounce((sort: string): void => {
-            dispatch(articlesPageFilterActions.setSearch(sort));
-        }, 500);
+        const onChangeSearch = useCallback(
+            (sort: string): void => {
+                dispatch(articlesPageFilterActions.setSearch(sort));
+            },
+            [dispatch],
+        );
 
         const onChangeOrder = useCallback(
             (sort: SortOrder): void => {
@@ -83,6 +87,7 @@ export const ArticlesFilterBlock = memo(
                 />
                 <Card className={classes.search}>
                     <Input
+                        value={search}
                         onChange={onChangeSearch}
                         placeholder={t('Search', { ns: 'article' })}
                     />

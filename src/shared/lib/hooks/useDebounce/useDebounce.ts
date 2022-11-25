@@ -1,18 +1,15 @@
-import { MutableRefObject, useCallback, useRef } from 'react';
+import { useEffect, useState } from 'react';
 
-export const useDebounce = (cb: (...args: any[]) => void, delay: number) => {
-    const timer = useRef() as MutableRefObject<any>;
+export const useDebounce = <T>(value: T, delay?: number): T => {
+    const [debouncedValue, setDebouncedValue] = useState<T>(value);
 
-    return useCallback(
-        (...args: any[]) => {
-            if (timer.current) {
-                clearTimeout(timer.current);
-            }
+    useEffect(() => {
+        const timer = setTimeout(() => setDebouncedValue(value), delay || 500);
 
-            timer.current = setTimeout(() => {
-                cb(args);
-            }, delay);
-        },
-        [cb, delay],
-    );
+        return () => {
+            clearTimeout(timer);
+        };
+    }, [value, delay]);
+
+    return debouncedValue;
 };

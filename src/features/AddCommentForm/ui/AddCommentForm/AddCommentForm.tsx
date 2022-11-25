@@ -12,7 +12,7 @@ import {
 import classes from './AddCommentForm.module.scss';
 
 import { classNames, useAppDispatch, useDynamicModuleLoader } from 'shared/lib';
-import { ReducersList } from 'shared/lib/hooks/useDynamicModuleLoader';
+import { ReducersList } from 'shared/lib/hooks/useDynamicModuleLoader/useDynamicModuleLoader';
 import { Button, Input } from 'shared/ui';
 
 export interface AddCommentFormProps {

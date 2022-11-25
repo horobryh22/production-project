@@ -5,6 +5,7 @@ import { useSelector } from 'react-redux';
 import {
     selectArticlePageInited,
     selectArticlePageIsLoading,
+    selectArticlePageLimitNum,
     selectArticlePageView,
 } from '../model/selectors/articlePageSelectors';
 import { fetchArticlesList } from '../model/services/fetchArticlesList/fetchArticlesList';
@@ -26,9 +27,14 @@ import {
     selectArticlesPageFilterSort,
     selectArticlesPageFilterTypeTab,
 } from 'features/ArticlesPageFilter';
-import { classNames, useAppDispatch, useDynamicModuleLoader } from 'shared/lib';
-import { ReducersList } from 'shared/lib/hooks/useDynamicModuleLoader';
-import { useInitialEffect } from 'shared/lib/hooks/useInitialEffect';
+import {
+    classNames,
+    useAppDispatch,
+    useDebounce,
+    useDynamicModuleLoader,
+    useInitialEffect,
+} from 'shared/lib';
+import { ReducersList } from 'shared/lib/hooks/useDynamicModuleLoader/useDynamicModuleLoader';
 import { Page } from 'widgets/Page';
 import { ViewSwitcher } from 'widgets/ViewSwitcher';
 
@@ -50,9 +56,11 @@ const ArticlesPage = memo((props: ArticlePageProps): ReactElement => {
     const view = useSelector(selectArticlePageView);
     const order = useSelector(selectArticlesPageFilterOrder);
     const sort = useSelector(selectArticlesPageFilterSort);
+    const limit = useSelector(selectArticlePageLimitNum);
     const search = useSelector(selectArticlesPageFilterSearch);
     const typeTab = useSelector(selectArticlesPageFilterTypeTab);
     const _inited = useSelector(selectArticlePageInited);
+    const debouncedSearch = useDebounce<string>(search);
 
     const onChangeView = useCallback(
         (view: ArticleView) => {
@@ -75,7 +83,7 @@ const ArticlesPage = memo((props: ArticlePageProps): ReactElement => {
         if (_inited) {
             dispatch(fetchArticlesList({ page: 1, replace: true }));
         }
-    }, [dispatch, order, sort, search, _inited, typeTab]);
+    }, [dispatch, order, sort, debouncedSearch, _inited, typeTab, limit]);
 
     return (
         <Page onScrollEnd={onLoadNextPart} className={classNames('', {}, [className])}>
