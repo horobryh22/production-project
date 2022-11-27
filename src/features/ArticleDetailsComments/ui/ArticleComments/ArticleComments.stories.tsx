@@ -5,7 +5,7 @@ import { ArticleComments } from './ArticleComments';
 import { StoreDecorator } from 'shared/config/storybook/StoreDecorator';
 
 export default {
-    title: 'features/ArticleComments',
+    title: 'features/ArticleDetailsComments',
     component: ArticleComments,
     argTypes: {
         backgroundColor: { control: 'color' },
