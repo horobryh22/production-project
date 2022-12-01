@@ -1,5 +1,6 @@
 import { memo, ReactElement, useCallback, useMemo, Suspense } from 'react';
 
+import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
 
 import { AddCommentFormAsync } from '../../../AddCommentForm/';
@@ -21,7 +22,7 @@ import {
     useInitialEffect,
 } from 'shared/lib';
 import { ReducersList } from 'shared/lib/hooks/useDynamicModuleLoader/useDynamicModuleLoader';
-import { Loader } from 'shared/ui';
+import { Loader, Text, TextSize } from 'shared/ui';
 
 interface ArticleCommentsProps {
     className?: string;
@@ -34,6 +35,7 @@ const reducers: ReducersList = {
 
 export const ArticleComments = memo((props: ArticleCommentsProps): ReactElement => {
     const { className, id } = props;
+    const { t } = useTranslation('article');
 
     const dispatch = useAppDispatch();
 
@@ -57,6 +59,11 @@ export const ArticleComments = memo((props: ArticleCommentsProps): ReactElement 
 
     return (
         <div className={classNames(classes.ArticleComments, {}, [className])}>
+            <Text
+                size={TextSize.L}
+                className={classes.commentTitle}
+                title={t('Comments', { ns: 'article' })}
+            />
             <Suspense fallback={<Loader className={classes.loader} />}>
                 <AddCommentFormAsync
                     onSendComment={onSendComment}

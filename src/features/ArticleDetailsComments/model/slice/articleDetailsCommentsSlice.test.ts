@@ -32,7 +32,7 @@ describe('articleDetailsCommentsSlice.test', () => {
     beforeEach(() => {
         state = {
             isLoading: false,
-            ids: [],
+            ids: ['1'],
             entities: {
                 '1': {
                     user: { id: '1', username: 'admin', avatar: 'avatar' },

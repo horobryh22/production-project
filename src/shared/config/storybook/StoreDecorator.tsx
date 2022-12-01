@@ -9,6 +9,7 @@ import { StateSchema, StoreProvider } from 'app/providers/StoreProvider';
 import { articleDetailsReducer } from 'entities/Article/model/slice/articleDetailsSlice';
 import { addCommentFormReducer } from 'features/AddCommentForm/model/slice/addCommentFormSlice';
 import { articleDetailsCommentsReducer } from 'features/ArticleDetailsComments/model/slice/articleDetailsCommentsSlice';
+import { articleRecommendationsReducer } from 'features/ArticleRecommendationsList/model/slices/articleRecommendationsSlice';
 import { loginReducer } from 'features/AuthByUserName';
 import { profileReducer } from 'features/EditableProfileCard';
 import { articlePageReducer } from 'pages/ArticlesPage/model/slice/articlePageSlice';
@@ -20,6 +21,7 @@ const defaultAsyncReducers: ReducersList = {
     addCommentForm: addCommentFormReducer,
     articleDetailsComments: articleDetailsCommentsReducer,
     articlePage: articlePageReducer,
+    articleRecommendations: articleRecommendationsReducer,
 };
 
 export const StoreDecorator =

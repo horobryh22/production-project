@@ -12,6 +12,7 @@ import { ArticleDetailsSchema } from 'entities/Article';
 import { UserSchema } from 'entities/User';
 import { AddCommentFormSchema } from 'features/AddCommentForm';
 import { ArticleDetailsCommentsSchema } from 'features/ArticleDetailsComments';
+import { ArticleRecommendationsSchema } from 'features/ArticleRecommendationsList';
 import { ArticlesPageFilterSchema } from 'features/ArticlesPageFilter';
 import { LoginSchema } from 'features/AuthByUserName';
 import { ProfileSchema } from 'features/EditableProfileCard';
@@ -28,6 +29,7 @@ export interface StateSchema {
     profile?: ProfileSchema;
     articleDetails?: ArticleDetailsSchema;
     articleDetailsComments?: ArticleDetailsCommentsSchema;
+    articleRecommendations?: ArticleRecommendationsSchema;
     addCommentForm?: AddCommentFormSchema;
     articlePage?: ArticlePageSchema;
     articlesPageFilter?: ArticlesPageFilterSchema;

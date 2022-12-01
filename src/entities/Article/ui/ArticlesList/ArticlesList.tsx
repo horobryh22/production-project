@@ -1,4 +1,4 @@
-import { memo, ReactElement } from 'react';
+import { HTMLAttributeAnchorTarget, memo, ReactElement } from 'react';
 
 import { useTranslation } from 'react-i18next';
 
@@ -16,6 +16,7 @@ interface ArticlesListProps {
     articles: Article[];
     view?: ArticleView;
     isLoading?: boolean;
+    target?: HTMLAttributeAnchorTarget;
 }
 
 const getSkeletons = (view: ArticleView) =>
@@ -26,7 +27,7 @@ const getSkeletons = (view: ArticleView) =>
         ));
 
 export const ArticlesList = memo((props: ArticlesListProps): ReactElement => {
-    const { className, articles, view = ArticleView.TILE, isLoading } = props;
+    const { className, articles, view = ArticleView.TILE, isLoading, target } = props;
     const { t } = useTranslation('article');
 
     const renderArticle = (article: Article): ReactElement => {
@@ -36,6 +37,7 @@ export const ArticlesList = memo((props: ArticlesListProps): ReactElement => {
                 article={article}
                 view={view}
                 className={classes.card}
+                target={target}
             />
         );
     };

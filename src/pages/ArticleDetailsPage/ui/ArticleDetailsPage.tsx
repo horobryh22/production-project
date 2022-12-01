@@ -9,6 +9,7 @@ import classes from './ArticleDetailsPage.module.scss';
 import { RoutePath } from 'app/providers/router/config/routeConfig';
 import { ArticleDetails } from 'entities/Article';
 import { ArticleComments } from 'features/ArticleDetailsComments';
+import { ArticleRecommendationsList } from 'features/ArticleRecommendationsList';
 import { classNames } from 'shared/lib';
 import { Button, Text } from 'shared/ui';
 import { TextTheme } from 'shared/ui/Text/Text';
@@ -49,10 +50,7 @@ const ArticleDetailsPage = memo((props: ArticleDetailsPageProps): ReactElement =
                 {t('Back to articles', { ns: 'article' })}
             </Button>
             <ArticleDetails id={id} />
-            <Text
-                className={classes.commentTitle}
-                title={t('Comments', { ns: 'article' })}
-            />
+            <ArticleRecommendationsList />
             <ArticleComments id={id} />
         </Page>
     );
