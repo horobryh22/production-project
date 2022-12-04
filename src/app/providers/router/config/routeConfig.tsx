@@ -5,6 +5,7 @@ import type { RouteProps } from 'react-router-dom';
 
 import { AboutPageAsync } from 'pages/AboutPage';
 import { ArticleDetailsPageAsync } from 'pages/ArticleDetailsPage';
+import { ArticleEditPageAsync } from 'pages/ArticleEditPage';
 import { ArticlesPageAsync } from 'pages/ArticlesPage';
 import { MainPageAsync } from 'pages/MainPage';
 import { NotFoundPage } from 'pages/NotFoundPage';
@@ -19,6 +20,8 @@ export enum AppRoute {
     NOT_FOUND = 'not_found',
     ARTICLES = 'articles',
     ARTICLES_DETAILS = 'articles_details',
+    CREATE_ARTICLE = 'article_create',
+    EDIT_ARTICLE = 'article_edit',
     ERROR = 'error',
 }
 
@@ -27,6 +30,8 @@ export const RoutePath: Record<AppRoute, string> = {
     [AppRoute.ABOUT]: '/about',
     [AppRoute.PROFILE]: '/profile/',
     [AppRoute.ARTICLES]: '/articles',
+    [AppRoute.CREATE_ARTICLE]: '/articles/create',
+    [AppRoute.EDIT_ARTICLE]: '/articles/:id/edit',
     [AppRoute.ARTICLES_DETAILS]: '/articles/',
     [AppRoute.NOT_FOUND]: '/not_found',
     [AppRoute.ERROR]: '*',
@@ -43,6 +48,16 @@ export const routeConfig: ExtendedRouteProps[] = [
     {
         path: RoutePath[AppRoute.ARTICLES],
         element: <ArticlesPageAsync />,
+        onlyAuth: true,
+    },
+    {
+        path: RoutePath[AppRoute.CREATE_ARTICLE],
+        element: <ArticleEditPageAsync />,
+        onlyAuth: true,
+    },
+    {
+        path: RoutePath[AppRoute.EDIT_ARTICLE],
+        element: <ArticleEditPageAsync />,
         onlyAuth: true,
     },
     {

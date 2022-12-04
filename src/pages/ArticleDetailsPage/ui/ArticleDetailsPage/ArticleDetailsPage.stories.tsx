@@ -7,7 +7,7 @@ import { ArticleBlockType, ArticleType } from 'entities/Article/model/types';
 import { StoreDecorator } from 'shared/config/storybook/StoreDecorator';
 
 export default {
-    title: 'pages/ArticleDetailsPage',
+    title: 'pages/ArticleDetails/ArticleDetailsPage',
     component: ArticleDetailsPage,
     argTypes: {
         backgroundColor: { control: 'color' },

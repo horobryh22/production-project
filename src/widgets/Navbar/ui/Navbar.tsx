@@ -5,10 +5,11 @@ import { useSelector } from 'react-redux';
 
 import classes from './Navbar.module.scss';
 
+import { RoutePath } from 'app/providers/router/config/routeConfig';
 import { selectIsUserAuth, userActions } from 'entities/User';
 import { LoginModal } from 'features/AuthByUserName';
 import { classNames, useAppDispatch } from 'shared/lib';
-import { Button, ButtonTheme } from 'shared/ui';
+import { AppLink, AppLinkTheme, Button, ButtonTheme, Text, TextTheme } from 'shared/ui';
 
 interface NavbarProps {
     className?: string;
@@ -37,6 +38,16 @@ export const Navbar = memo(({ className }: NavbarProps): ReactElement => {
 
     return (
         <header className={classNames(classes.Navbar, {}, [String(className)])}>
+            <Text
+                title="UlbiTV app"
+                theme={TextTheme.INVERTED}
+                className={classes.appName}
+            />
+            {isUserAuth && (
+                <AppLink to={RoutePath.article_create} theme={AppLinkTheme.PRIMARY}>
+                    {t('Create Article', { ns: 'article' })}
+                </AppLink>
+            )}
             <LoginModal isOpen={isOpen} onClose={closeModal} />
             <Button
                 className={classes.links}
