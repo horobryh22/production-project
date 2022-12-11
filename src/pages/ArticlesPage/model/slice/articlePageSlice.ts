@@ -38,9 +38,9 @@ export const articlePageSlice = createSlice({
             state.page = action.payload;
         },
         initState: state => {
-            const view = localStorage.getItem(
-                ARTICLES_VIEW_LOCAL_STORAGE_KEY,
-            ) as ArticleView;
+            const view =
+                (localStorage.getItem(ARTICLES_VIEW_LOCAL_STORAGE_KEY) as ArticleView) ||
+                ArticleView.TILE;
 
             state._inited = true;
             state.view = view;
