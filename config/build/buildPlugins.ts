@@ -1,4 +1,6 @@
 import ReactRefreshPlugin from '@pmmmwh/react-refresh-webpack-plugin';
+// eslint-disable-next-line import/default
+import CopyPlugin from 'copy-webpack-plugin';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import webpack, { WebpackPluginInstance } from 'webpack';
@@ -30,6 +32,10 @@ export function buildPlugins({
             __IS_DEV__: JSON.stringify(isDev),
             __API__: JSON.stringify(apiUrl),
             __PROJECT__: JSON.stringify(project),
+        }),
+        // this plugin needs for copy locales to production build
+        new CopyPlugin({
+            patterns: [{ from: paths.locales, to: paths.localesBuild }],
         }),
     ];
 

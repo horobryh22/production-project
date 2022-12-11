@@ -13,6 +13,8 @@ export default (env: BuildEnv): Configuration => {
         html: path.resolve(__dirname, 'public', 'index.html'),
         build: path.resolve(__dirname, 'build'),
         src: path.resolve(__dirname, 'src'),
+        locales: path.resolve(__dirname, 'public', 'locales'),
+        localesBuild: path.resolve(__dirname, 'build', 'locales'),
     };
 
     const MODE: BuildMode = env.mode || 'development';

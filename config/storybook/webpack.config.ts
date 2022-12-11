@@ -9,6 +9,8 @@ export default function({ config }: { config: webpack.Configuration }) {
         entry: '',
         html: '',
         build: '',
+        locales: '',
+        localesBuild: ''
     };
     config!.resolve!.modules = [paths.src, 'node_modules'];
     config!.resolve!.extensions!.push('.ts', '.tsx');
