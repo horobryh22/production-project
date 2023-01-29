@@ -86,7 +86,11 @@ const ArticlesPage = memo((props: ArticlePageProps): ReactElement => {
     }, [dispatch, order, sort, debouncedSearch, _inited, typeTab, limit]);
 
     return (
-        <Page onScrollEnd={onLoadNextPart} className={classNames('', {}, [className])}>
+        <Page
+            needParentRef
+            onScrollEnd={onLoadNextPart}
+            className={classNames('', {}, [className])}
+        >
             <ViewSwitcher view={view} onChangeView={onChangeView} />
             <ArticlesFilterBlock />
             <ArticlesList

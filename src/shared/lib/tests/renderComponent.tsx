@@ -16,7 +16,7 @@ export interface renderComponentOptions {
 export const renderComponent = (
     component: ReactNode,
     options: renderComponentOptions = {},
-): ReactNode => {
+) => {
     const { route = '/', initialState } = options;
 
     return render(

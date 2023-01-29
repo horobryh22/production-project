@@ -1,4 +1,12 @@
-import { memo, MutableRefObject, ReactElement, ReactNode, UIEvent, useRef } from 'react';
+import {
+    Children,
+    memo,
+    MutableRefObject,
+    ReactElement,
+    ReactNode,
+    UIEvent,
+    useRef,
+} from 'react';
 
 import { useSelector } from 'react-redux';
 import { useLocation } from 'react-router-dom';
@@ -13,18 +21,19 @@ import {
     classNames,
     useAppDispatch,
     useInfiniteScroll,
-    useThrottle,
     useInitialEffect,
+    useThrottle,
 } from 'shared/lib';
 
 interface PageProps {
     className?: string;
     children: ReactNode;
     onScrollEnd?: () => void;
+    needParentRef?: boolean;
 }
 
 export const Page = memo((props: PageProps): ReactElement => {
-    const { className, children, onScrollEnd } = props;
+    const { className, children, onScrollEnd, needParentRef } = props;
 
     const dispatch = useAppDispatch();
     const { pathname } = useLocation();
@@ -35,6 +44,10 @@ export const Page = memo((props: PageProps): ReactElement => {
 
     const wrapperRef = useRef() as MutableRefObject<HTMLDivElement>;
     const triggerRef = useRef() as MutableRefObject<HTMLDivElement>;
+
+    const mappedChildren = Children.map(children, (Child: any) => (
+        <Child.type {...Child.props} ref={wrapperRef} />
+    ));
 
     useInfiniteScroll({
         wrapperRef,
@@ -61,8 +74,35 @@ export const Page = memo((props: PageProps): ReactElement => {
             ref={wrapperRef}
             className={classNames(classes.Page, {}, [className])}
         >
-            {children}
+            {needParentRef ? mappedChildren : children}
             {onScrollEnd ? <div className={classes.trigger} ref={triggerRef} /> : null}
         </section>
     );
 });
+
+{
+    /*
+либо можем создать хук
+function useRefs() {
+  const refs = useRef({});
+
+  const register = useCallback((refName) => ref => {
+    refs.current[refName] = ref;
+  }, []);
+
+  return [refs, register];
+}
+
+и использовать его внутри компоненты, назначая дочерным компонентам рефы
+и иметь возможность доступа к ним в родителе
+
+ const [refs, register] = useRefs();
+
+   {React.Children.map((Child, index) => (
+       <Child.type
+         {...Child.props}
+         ref={register(`${field-${index}}`)}
+         />
+    )}
+*/
+}

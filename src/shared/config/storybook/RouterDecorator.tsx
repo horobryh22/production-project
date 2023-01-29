@@ -1,8 +1,7 @@
-import { ReactElement } from 'react';
+import { ReactElement, ReactNode } from 'react';
 
-import type { Story } from '@storybook/react';
 import { BrowserRouter } from 'react-router-dom';
 
-export const RouterDecorator = (story: () => Story): ReactElement => {
+export const RouterDecorator = (story: () => ReactNode): ReactElement => {
     return <BrowserRouter>{story()}</BrowserRouter>;
 };

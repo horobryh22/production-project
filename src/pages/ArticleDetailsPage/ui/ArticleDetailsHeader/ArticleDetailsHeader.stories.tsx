@@ -2,6 +2,8 @@ import type { ComponentMeta, ComponentStory } from '@storybook/react';
 
 import { ArticleDetailsHeader } from './ArticleDetailsHeader';
 
+import { StoreDecorator } from 'shared/config/storybook/StoreDecorator';
+
 export default {
     title: 'pages/ArticleDetails/ArticleDetailsHeader',
     component: ArticleDetailsHeader,
@@ -16,3 +18,4 @@ const Template: ComponentStory<typeof ArticleDetailsHeader> = args => (
 
 export const Primary = Template.bind({});
 Primary.args = {};
+Primary.decorators = [StoreDecorator({ uiPage: { scroll: {} } })];
