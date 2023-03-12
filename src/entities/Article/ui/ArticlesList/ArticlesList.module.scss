@@ -12,3 +12,17 @@
   flex-wrap: wrap;
   gap: 40px;
 }
+
+.skeletons {
+  margin-top: 25px;
+
+  &.loading {
+    &.tile {
+      margin-top: 65px;
+    }
+
+    &.list {
+      margin-top: 105px;
+    }
+  }
+}

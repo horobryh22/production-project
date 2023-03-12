@@ -1,4 +1,11 @@
-import { memo, ReactElement, useCallback, useEffect } from 'react';
+import {
+    memo,
+    MutableRefObject,
+    ReactElement,
+    useCallback,
+    useEffect,
+    useState,
+} from 'react';
 
 import { useSelector } from 'react-redux';
 
@@ -62,6 +69,10 @@ const ArticlesPage = memo((props: ArticlePageProps): ReactElement => {
     const _inited = useSelector(selectArticlePageInited);
     const debouncedSearch = useDebounce<string>(search);
 
+    const [scrollPageRef, setScrollPageRef] = useState<
+        MutableRefObject<HTMLDivElement> | undefined
+    >(undefined);
+
     const onChangeView = useCallback(
         (view: ArticleView) => {
             dispatch(articlePageActions.setView(view));
@@ -87,8 +98,8 @@ const ArticlesPage = memo((props: ArticlePageProps): ReactElement => {
 
     return (
         <Page
-            needParentRef
             onScrollEnd={onLoadNextPart}
+            setScrollPageRef={setScrollPageRef}
             className={classNames('', {}, [className])}
         >
             <ViewSwitcher view={view} onChangeView={onChangeView} />
@@ -98,6 +109,7 @@ const ArticlesPage = memo((props: ArticlePageProps): ReactElement => {
                 articles={articles}
                 view={view}
                 isLoading={isLoading}
+                scrollPageRef={scrollPageRef}
             />
         </Page>
     );

@@ -49,7 +49,7 @@ describe('articlePageSlice.test', () => {
 
     beforeEach(() => {
         state = {
-            limit: 9,
+            limit: 8,
             hasMore: true,
             ids: ['1', '2'],
             entities: {
@@ -81,7 +81,7 @@ describe('articlePageSlice.test', () => {
     test('state should be init', () => {
         const updatedState = articlePageReducer(state, articlePageActions.initState());
 
-        expect(updatedState.limit).toBe(9);
+        expect(updatedState.limit).toBe(8);
         expect(updatedState.view).toBe(ArticleView.TILE);
         expect(updatedState._inited).toBeTruthy();
     });
