@@ -110,6 +110,7 @@ const ArticlesPage = memo((props: ArticlePageProps): ReactElement => {
                 view={view}
                 isLoading={isLoading}
                 scrollPageRef={scrollPageRef}
+                needVirtualization
             />
         </Page>
     );
