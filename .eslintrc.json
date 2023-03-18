@@ -31,7 +31,8 @@
     "storybook",
     "prettier",
     "react-hooks",
-    "@typescript-eslint"
+    "@typescript-eslint",
+    "fsd-plugin"
   ],
   "overrides": [
     {
@@ -140,6 +141,11 @@
         ]
       }
     ],
+    "fsd-plugin/path-checker":  [ 1, {
+      "include": [],
+      "exclude": [],
+      "message": ""
+    } ],
     "i18next/no-literal-string": [
       "error",
       {
