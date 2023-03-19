@@ -8,21 +8,32 @@ const ruleTester = new RuleTester();
 ruleTester.run("path-checker", rule, {
     valid: [
         {
-            code: "const onError = () => {};",
-            options: [ 1, {
-                "include": ['onError'],
-                "exclude": [],
-                "message": ""
-            } ],
-            parserOptions: { ecmaVersion: 2020 },
+            code: "import { Article } from '../../../Article';",
+            parserOptions: {
+                sourceType: "module",
+                ecmaVersion: 2020
+            },
+            filename: 'src/entities/Article/ui/ArticleDetails/ArticleDetails.stories.tsx'
+        },
+        {
+            code: "import { Portal } from 'shared/ui';",
+            parserOptions: {
+                sourceType: "module",
+                ecmaVersion: 2020
+            },
+            filename: 'src/shared/ui/Modal/Modal.tsx'
         }
     ],
 
     invalid: [
         {
-            code: "const selectArticleDetailsError = () => {};",
-            errors: [{ message: "Unexpected invalid variable." }],
-            parserOptions: { ecmaVersion: 2020 },
+            code: "import { Article } from 'entities/Article';",
+            errors: [{ message: "In this case path should be relative" }],
+            parserOptions: {
+                sourceType: "module",
+                ecmaVersion: 2020
+            },
+            filename: 'src/entities/Article/ui/ArticleDetails/ArticleDetails.stories.tsx'
         },
     ]
 });

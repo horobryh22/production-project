@@ -141,11 +141,7 @@
         ]
       }
     ],
-    "fsd-plugin/path-checker":  [ 1, {
-      "include": [],
-      "exclude": [],
-      "message": ""
-    } ],
+    "fsd-plugin/path-checker":  "error",
     "i18next/no-literal-string": [
       "error",
       {
