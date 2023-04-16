@@ -12,7 +12,7 @@ import classes from './ProfileCard.module.scss';
 
 import { classNames } from 'shared/lib';
 import { Mods } from 'shared/lib/classNames/classNames';
-import { Avatar, Input, Loader } from 'shared/ui';
+import { Avatar, HStack, Input, Loader, VStack } from 'shared/ui';
 import { Text, TextAlign, TextTheme } from 'shared/ui/Text/Text';
 
 interface ProfileCardProps {
@@ -56,86 +56,85 @@ export const ProfileCard = (props: ProfileCardProps): ReactElement => {
 
     if (isLoading) {
         return (
-            <div className={classNames(classes.ProfileCard, {}, [classes.loading])}>
+            <HStack
+                max
+                className={classNames(classes.ProfileCard, {}, [classes.loading])}
+            >
                 <Loader />
-            </div>
+            </HStack>
         );
     }
 
     if (error) {
         return (
-            <div className={classNames(classes.ProfileCard, {}, [classes.error])}>
+            <HStack max className={classNames(classes.ProfileCard, {}, [classes.error])}>
                 <Text
                     title={t('Loading profile finished with mistake', { ns: 'profile' })}
                     text={t('Try to reload page', { ns: 'profile' })}
                     theme={TextTheme.ERROR}
                     align={TextAlign.CENTER}
                 />
-            </div>
+            </HStack>
         );
     }
 
     return (
-        <div className={classNames(classes.ProfileCard, mods, [className])}>
+        <VStack
+            gap={'8'}
+            max
+            className={classNames(classes.ProfileCard, mods, [className])}
+        >
             {data?.avatar && (
-                <div className={classes.avatarWrapper}>
+                <HStack justify={'center'} max>
                     <Avatar src={data.avatar} />
-                </div>
+                </HStack>
             )}
             <Input
                 value={data?.first}
                 placeholder={t('Name', { ns: 'profile' })}
-                className={classes.input}
                 readonly={readonly}
                 onChange={onChangeFirstname}
             />
             <Input
                 value={data?.lastname}
                 placeholder={t('Surname', { ns: 'profile' })}
-                className={classes.input}
                 readonly={readonly}
                 onChange={onChangeLastname}
             />
             <Input
                 value={data?.username}
                 placeholder={t('Username', { ns: 'profile' })}
-                className={classes.input}
                 readonly={readonly}
                 onChange={onChangeUsername}
             />
             <Input
                 value={data?.age}
                 placeholder={t('Age', { ns: 'profile' })}
-                className={classes.input}
                 readonly={readonly}
                 onChange={onChangeAge}
             />
             <Input
                 value={data?.city}
                 placeholder={t('City', { ns: 'profile' })}
-                className={classes.input}
                 readonly={readonly}
                 onChange={onChangeCity}
             />
             <Input
                 value={data?.avatar}
                 placeholder={t('Avatar', { ns: 'profile' })}
-                className={classes.input}
                 readonly={readonly}
                 onChange={onChangeAvatar}
             />
             <CurrencySelect
                 value={data?.currency}
                 readonly={readonly}
-                className={classes.input}
                 onChange={onChangeCurrency}
             />
             <CountrySelect
                 value={data?.country}
                 readonly={readonly}
-                className={classes.input}
                 onChange={onChangeCountry}
             />
-        </div>
+        </VStack>
     );
 };

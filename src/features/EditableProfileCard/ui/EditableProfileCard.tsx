@@ -15,13 +15,9 @@ import { ValidateProfileError } from '../model/types';
 import { Country } from 'entities/Country';
 import { Currency } from 'entities/Currency';
 import { ProfileCard } from 'entities/Profile';
-import {
-    classNames,
-    useAppDispatch,
-    useDynamicModuleLoader,
-    useInitialEffect,
-} from 'shared/lib';
+import { useAppDispatch, useDynamicModuleLoader, useInitialEffect } from 'shared/lib';
 import { ReducersList } from 'shared/lib/hooks/useDynamicModuleLoader/useDynamicModuleLoader';
+import { VStack } from 'shared/ui';
 import { Text, TextTheme } from 'shared/ui/Text/Text';
 
 const INITIAL_REDUCERS: ReducersList = {
@@ -132,7 +128,7 @@ export const EditableProfileCard = ({
     };
 
     return (
-        <div className={classNames('', {}, [className])}>
+        <VStack gap={'8'} max className={className}>
             {validateError?.length &&
                 validateError.map(error => {
                     return (
@@ -157,6 +153,6 @@ export const EditableProfileCard = ({
                 onChangeCurrency={onChangeCurrency}
                 onChangeCountry={onChangeCountry}
             />
-        </div>
+        </VStack>
     );
 };

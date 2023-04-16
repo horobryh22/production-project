@@ -4,6 +4,7 @@ import classes from './Input.module.scss';
 
 import { classNames } from 'shared/lib';
 import { Mods } from 'shared/lib/classNames/classNames';
+import { HStack } from 'shared/ui';
 
 type HTMLInputProps = Omit<
     InputHTMLAttributes<HTMLInputElement>,
@@ -64,10 +65,8 @@ export const Input = memo((props: InputProps): ReactElement => {
     };
 
     return (
-        <div className={classNames(classes.InputWrapper, mods, [className])}>
-            {placeholder && (
-                <div className={classes.placeholder}>{`${placeholder}>`}</div>
-            )}
+        <HStack gap={'4'} className={classNames('', mods, [className])}>
+            {placeholder && <div>{`${placeholder}>`}</div>}
             <div className={classes.caretWrapper}>
                 <input
                     {...restProps}
@@ -88,6 +87,6 @@ export const Input = memo((props: InputProps): ReactElement => {
                     />
                 )}
             </div>
-        </div>
+        </HStack>
     );
 });
