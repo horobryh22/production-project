@@ -8,7 +8,7 @@ import classes from './CurrencySelect.module.scss';
 
 import { classNames } from 'shared/lib';
 import { Mods } from 'shared/lib/classNames/classNames';
-import { Select } from 'shared/ui';
+import { ListBox } from 'shared/ui';
 import { SelectOptions } from 'shared/ui/Select/Select';
 
 const options: SelectOptions<Currency>[] = [
@@ -40,13 +40,14 @@ export const CurrencySelect = memo(
         };
 
         return (
-            <Select
-                className={classNames('', mods, [className])}
-                onChange={handleChange}
+            <ListBox
+                items={options}
                 value={value}
-                label={t('Select your currency')}
-                options={options}
+                onChange={handleChange}
+                className={classNames('', mods, [className])}
                 readonly={readonly}
+                defaultValue={t('Select your currency')}
+                label={t('Select your currency')}
             />
         );
     },

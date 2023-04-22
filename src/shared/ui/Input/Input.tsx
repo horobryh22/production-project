@@ -65,7 +65,7 @@ export const Input = memo((props: InputProps): ReactElement => {
     };
 
     return (
-        <HStack gap={'4'} className={classNames('', mods, [className])}>
+        <HStack gap={'4'} max className={classNames('', mods, [className])}>
             {placeholder && <div>{`${placeholder}>`}</div>}
             <div className={classes.caretWrapper}>
                 <input

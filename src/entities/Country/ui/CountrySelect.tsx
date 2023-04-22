@@ -8,7 +8,7 @@ import classes from './CountrySelect.module.scss';
 
 import { classNames } from 'shared/lib';
 import { Mods } from 'shared/lib/classNames/classNames';
-import { Select } from 'shared/ui';
+import { ListBox } from 'shared/ui';
 import { SelectOptions } from 'shared/ui/Select/Select';
 
 const options: SelectOptions<Country>[] = [
@@ -40,13 +40,15 @@ export const CountrySelect = memo(
         };
 
         return (
-            <Select
-                className={classNames('', mods, [className])}
-                onChange={handleChange}
+            <ListBox
+                items={options}
                 value={value}
-                label={t('Select your country')}
-                options={options}
+                onChange={handleChange}
+                className={classNames('', mods, [className])}
                 readonly={readonly}
+                defaultValue={t('Select your country')}
+                label={t('Select your country')}
+                direction={'top'}
             />
         );
     },
