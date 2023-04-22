@@ -60,14 +60,14 @@ export const Page = memo((props: PageProps): ReactElement => {
     });
 
     return (
-        <section
+        <main
             onScroll={onScroll}
             ref={wrapperRef}
             className={classNames(classes.Page, {}, [className])}
         >
             {children}
             {onScrollEnd ? <div className={classes.trigger} ref={triggerRef} /> : null}
-        </section>
+        </main>
     );
 });
 

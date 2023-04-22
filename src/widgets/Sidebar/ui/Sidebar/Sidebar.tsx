@@ -31,7 +31,7 @@ export const Sidebar = memo(({ className }: SidebarProps): ReactElement => {
     });
 
     return (
-        <menu
+        <aside
             data-testid="sidebar"
             className={classNames(classes.Sidebar, { [classes.collapsed]: collapsed }, [
                 String(className),
@@ -47,13 +47,18 @@ export const Sidebar = memo(({ className }: SidebarProps): ReactElement => {
             >
                 {collapsed ? '>' : '<'}
             </Button>
-            <VStack gap={'8'} justify={'center'} className={classes.items}>
+            <VStack
+                role={'navigation'}
+                gap={'8'}
+                justify={'center'}
+                className={classes.items}
+            >
                 {mappedItems}
             </VStack>
             <HStack justify={'center'} gap={'16'} className={classes.switchers}>
                 <ThemeSwitcher />
                 <LangSwitcher short={collapsed} />
             </HStack>
-        </menu>
+        </aside>
     );
 });
