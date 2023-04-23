@@ -1,4 +1,4 @@
-import { Fragment, memo, ReactElement, ReactNode } from 'react';
+import { Fragment, memo, ReactElement, ReactNode, useMemo } from 'react';
 
 import { Listbox as HListBox } from '@headlessui/react';
 
@@ -6,9 +6,8 @@ import classes from './ListBox.module.scss';
 
 import CheckIcon from 'shared/assets/icons/check.svg';
 import { classNames } from 'shared/lib';
+import { DropdownDirection } from 'shared/types/ui';
 import { Button, ButtonTheme, HStack } from 'shared/ui';
-
-type ListBoxDirection = 'bottom' | 'top';
 
 interface ListBoxItem {
     value: string;
@@ -24,12 +23,14 @@ interface ListBoxProps {
     onChange: <T extends string>(value: T) => void;
     readonly?: boolean;
     label?: string;
-    direction?: ListBoxDirection;
+    direction?: DropdownDirection;
 }
 
-const listBoxDirectionClass: Record<ListBoxDirection, string> = {
-    top: classes.directionTop,
-    bottom: classes.directionBottom,
+const listBoxDirectionClass: Record<DropdownDirection, string> = {
+    'top left': classes.optionsTopLeft,
+    'top right': classes.optionsTopRight,
+    'bottom left': classes.optionsBottomLeft,
+    'bottom right': classes.optionsBottomRight,
 };
 
 export const ListBox = memo((props: ListBoxProps): ReactElement => {
@@ -41,8 +42,32 @@ export const ListBox = memo((props: ListBoxProps): ReactElement => {
         items,
         readonly,
         label,
-        direction = 'bottom',
+        direction = 'bottom right',
     } = props;
+
+    const mappedItems = useMemo(() => {
+        return items.map(({ disabled, value, content }) => (
+            <HListBox.Option key={value} value={value} as={Fragment} disabled={disabled}>
+                {({ active, selected }) => (
+                    <li
+                        className={classNames(classes.item, {
+                            [classes.active]: active,
+                        })}
+                    >
+                        {selected && <CheckIcon className={classes.icon} />}
+                        <span
+                            className={classNames('', {
+                                [classes.withPaddingLeft]: !selected,
+                                [classes.disabled]: disabled,
+                            })}
+                        >
+                            {content}
+                        </span>
+                    </li>
+                )}
+            </HListBox.Option>
+        ));
+    }, [items]);
 
     return (
         <HStack gap={'4'}>
@@ -55,7 +80,7 @@ export const ListBox = memo((props: ListBoxProps): ReactElement => {
                 disabled={readonly}
                 defaultValue={defaultValue}
             >
-                <HListBox.Button className={classes.button}>
+                <HListBox.Button className={classes.button} as={'div'}>
                     <Button disabled={readonly} theme={ButtonTheme.OUTLINE}>
                         {value ?? defaultValue}
                     </Button>
@@ -65,32 +90,7 @@ export const ListBox = memo((props: ListBoxProps): ReactElement => {
                         listBoxDirectionClass[direction],
                     ])}
                 >
-                    {items.map(({ disabled, value, content }) => (
-                        <HListBox.Option
-                            key={value}
-                            value={value}
-                            as={Fragment}
-                            disabled={disabled}
-                        >
-                            {({ active, selected }) => (
-                                <li
-                                    className={classNames(classes.item, {
-                                        [classes.active]: active,
-                                    })}
-                                >
-                                    {selected && <CheckIcon className={classes.icon} />}
-                                    <span
-                                        className={classNames('', {
-                                            [classes.withPaddingLeft]: !selected,
-                                            [classes.disabled]: disabled,
-                                        })}
-                                    >
-                                        {content}
-                                    </span>
-                                </li>
-                            )}
-                        </HListBox.Option>
-                    ))}
+                    {mappedItems}
                 </HListBox.Options>
             </HListBox>
         </HStack>

@@ -1,0 +1,60 @@
+.Dropdown {
+  position: relative;
+}
+
+.trigger {
+  background: none;
+  outline: none;
+  margin: 0;
+  padding: 0;
+  border: none;
+  cursor: pointer;
+}
+
+.menu {
+  background: var(--card-color);
+  position: absolute;
+  z-index: 10;
+  border-radius: 8px;
+  border: 1px solid var(--primary-color);
+  display: flex;
+  flex-direction: column;
+
+
+  &.menuTopLeft {
+    right: 0;
+    bottom: 100%;
+  }
+
+  &.menuTopRight {
+    left: 0;
+    bottom: 100%;
+  }
+
+  &.menuBottomLeft {
+    right: 0;
+  }
+
+  &.menuBottomRight {
+    left: 0;
+  }
+}
+
+.item {
+  padding: 10px 25px;
+  width: 100%;
+  border: none;
+  background: none;
+  outline: none;
+  color: var(--primary-color);
+
+  &:not(.disabled) {
+    cursor: pointer;
+  }
+
+}
+
+.active {
+  background: var(--inverted-primary-color);
+  border-radius: 8px;
+}

@@ -8,8 +8,26 @@
   border-radius: 12px;
   background: var(--list-box-bg);
   box-shadow: 4px 4px 8px var(--list-box-bg);
-  min-width: 100%;
+  width: 200px;
   z-index: 10;
+
+  &.optionsTopLeft {
+    right: 0;
+    bottom: 100%;
+  }
+
+  &.optionsTopRight {
+    left: 0;
+    bottom: 100%;
+  }
+
+  &.optionsBottomLeft {
+    right: 0;
+  }
+
+  &.optionsBottomRight {
+    left: 0;
+  }
 }
 
 .button {
@@ -42,8 +60,5 @@
 
 .active {
   background: var(--inverted-primary-color);
-}
-
-.directionTop {
-  bottom: 100%;
+  border-radius: 12px;
 }

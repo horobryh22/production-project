@@ -48,7 +48,7 @@ export const CountrySelect = memo(
                 readonly={readonly}
                 defaultValue={t('Select your country')}
                 label={t('Select your country')}
-                direction={'top'}
+                direction={'top left'}
             />
         );
     },
