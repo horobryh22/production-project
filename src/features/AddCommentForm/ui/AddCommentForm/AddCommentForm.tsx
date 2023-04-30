@@ -13,7 +13,7 @@ import classes from './AddCommentForm.module.scss';
 
 import { classNames, useAppDispatch, useDynamicModuleLoader } from 'shared/lib';
 import { ReducersList } from 'shared/lib/hooks/useDynamicModuleLoader/useDynamicModuleLoader';
-import { Button, Input } from 'shared/ui';
+import { Button, HStack, Input } from 'shared/ui';
 
 export interface AddCommentFormProps {
     className?: string;
@@ -47,7 +47,11 @@ const AddCommentForm = memo(
         useDynamicModuleLoader(reducers);
 
         return (
-            <div className={classNames(classes.AddCommentForm, {}, [className])}>
+            <HStack
+                max
+                justify={'between'}
+                className={classNames(classes.AddCommentForm, {}, [className])}
+            >
                 <Input
                     disabled={isLoading}
                     className={classes.input}
@@ -62,7 +66,7 @@ const AddCommentForm = memo(
                         ns: 'profile',
                     })}
                 </Button>
-            </div>
+            </HStack>
         );
     },
 );

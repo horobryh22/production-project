@@ -5,10 +5,8 @@ import { useTranslation } from 'react-i18next';
 import { Comment } from '../../model/types';
 import { CommentItem } from '../CommentItem/CommentItem';
 
-import classes from './CommentsList.module.scss';
-
 import { classNames } from 'shared/lib';
-import { Text } from 'shared/ui';
+import { Text, VStack } from 'shared/ui';
 
 interface CommentsListProps {
     className?: string;
@@ -22,32 +20,27 @@ export const CommentsList = memo((props: CommentsListProps): ReactElement => {
 
     const mappedComments = useMemo(() => {
         return comments?.map(comment => (
-            <CommentItem
-                key={comment.id}
-                comment={comment}
-                isLoading={isLoading}
-                className={classes.comment}
-            />
+            <CommentItem key={comment.id} comment={comment} isLoading={isLoading} />
         ));
     }, [comments, isLoading]);
 
     if (isLoading) {
         return (
-            <div className={classNames(classes.CommentsList, {}, [className])}>
+            <VStack max gap={'8'} className={classNames('', {}, [className])}>
                 <CommentItem isLoading />
                 <CommentItem isLoading />
                 <CommentItem isLoading />
-            </div>
+            </VStack>
         );
     }
 
     return (
-        <div className={classNames(classes.CommentsList, {}, [className])}>
+        <VStack max gap={'8'} className={classNames('', {}, [className])}>
             {mappedComments.length ? (
                 mappedComments
             ) : (
                 <Text text={t('No comments', { ns: 'article' })} />
             )}
-        </div>
+        </VStack>
     );
 });

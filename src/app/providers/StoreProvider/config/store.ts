@@ -9,6 +9,7 @@ import { createReducerManager } from './reducerManager';
 
 import { userReducer } from 'entities/User';
 import { instance } from 'shared/api/api';
+import { rtkApi } from 'shared/api/rtkApi';
 import { uiPageSliceReducer } from 'widgets/Page';
 
 export const createReduxStore = (
@@ -20,6 +21,7 @@ export const createReduxStore = (
         ...asyncReducers,
         user: userReducer,
         uiPage: uiPageSliceReducer,
+        [rtkApi.reducerPath]: rtkApi.reducer,
     };
 
     const reducerManager: ReducerManager = createReducerManager(rootReducers);
@@ -35,7 +37,7 @@ export const createReduxStore = (
         middleware: getDefaultMiddleware =>
             getDefaultMiddleware({
                 thunk: { extraArgument: { api: instance, navigate } },
-            }),
+            }).concat(rtkApi.middleware),
     });
 
     store.reducerManager = reducerManager;

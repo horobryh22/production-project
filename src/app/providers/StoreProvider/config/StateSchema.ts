@@ -17,12 +17,14 @@ import { ArticlesPageFilterSchema } from 'features/ArticlesPageFilter';
 import { LoginSchema } from 'features/AuthByUserName';
 import { ProfileSchema } from 'features/EditableProfileCard';
 import { ArticlePageSchema } from 'pages/ArticlesPage';
+import { rtkApi } from 'shared/api/rtkApi';
 import { UIPageSchema } from 'widgets/Page';
 
 // instead of RootState
 export interface StateSchema {
     user: UserSchema;
     uiPage: UIPageSchema;
+    [rtkApi.reducerPath]: ReturnType<typeof rtkApi.reducer>;
 
     // async reducers
     login?: LoginSchema;

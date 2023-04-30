@@ -5,13 +5,11 @@ import { useParams } from 'react-router-dom';
 
 import { ArticleDetailsHeader } from '../ArticleDetailsHeader/ArticleDetailsHeader';
 
-import classes from './ArticleDetailsPage.module.scss';
-
 import { ArticleDetails } from 'entities/Article';
 import { ArticleComments } from 'features/ArticleDetailsComments';
 import { ArticleRecommendationsList } from 'features/ArticleRecommendationsList';
 import { classNames } from 'shared/lib';
-import { Text } from 'shared/ui';
+import { Text, VStack } from 'shared/ui';
 import { TextTheme } from 'shared/ui/Text/Text';
 import { Page } from 'widgets/Page';
 
@@ -29,7 +27,7 @@ const ArticleDetailsPage = memo((props: ArticleDetailsPageProps): ReactElement =
 
     if (!id) {
         return (
-            <Page className={classNames(classes.ArticleDetailsPage, {}, [className])}>
+            <Page className={classNames('', {}, [className])}>
                 <Text
                     theme={TextTheme.ERROR}
                     text={t('Article not found', { ns: 'article' })}
@@ -39,11 +37,13 @@ const ArticleDetailsPage = memo((props: ArticleDetailsPageProps): ReactElement =
     }
 
     return (
-        <Page className={classNames(classes.ArticleDetailsPage, {}, [className])}>
-            <ArticleDetailsHeader />
-            <ArticleDetails id={id} />
-            <ArticleRecommendationsList />
-            <ArticleComments id={id} />
+        <Page className={classNames('', {}, [className])}>
+            <VStack gap={'16'} max>
+                <ArticleDetailsHeader />
+                <ArticleDetails id={id} />
+                <ArticleRecommendationsList />
+                <ArticleComments id={id} />
+            </VStack>
         </Page>
     );
 });

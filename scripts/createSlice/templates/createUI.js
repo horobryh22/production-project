@@ -7,11 +7,18 @@ const changeFirstLetter = require('../helpers/changeFirstLetter');
 
 module.exports = async (layer, slice) => {
     const sliceNameUpperCase = changeFirstLetter(slice, 'upper');
-    const resolveUIPath = (...segments) => resolveRoot('src', layer, sliceNameUpperCase, 'ui', ...segments);
+    const resolveUIPath = (...segments) => resolveRoot(
+        'src',
+        layer,
+        sliceNameUpperCase,
+        'ui',
+        ...segments
+    );
 
     const createUIFolder = async () => {
         try {
             await fs.mkdir(resolveUIPath(''));
+            await fs.mkdir(resolveUIPath(sliceNameUpperCase));
         } catch (e) {
             console.error(`Не удалось создать папку ui для слайса ${slice}`, e);
         }
@@ -20,7 +27,7 @@ module.exports = async (layer, slice) => {
     const createComponentFile = async () => {
         try {
             await fs.writeFile(
-                resolveUIPath(`${sliceNameUpperCase}.tsx`),
+                resolveUIPath(sliceNameUpperCase, `${sliceNameUpperCase}.tsx`),
                 createComponentTemplate(slice),
             );
         } catch (e) {
@@ -31,7 +38,7 @@ module.exports = async (layer, slice) => {
     const createStoryFile = async () => {
         try {
             await fs.writeFile(
-                resolveUIPath(`${sliceNameUpperCase}.stories.tsx`),
+                resolveUIPath(sliceNameUpperCase, `${sliceNameUpperCase}.stories.tsx`),
                 createStoryTemplate(layer, slice),
             );
         } catch (e) {
@@ -42,7 +49,7 @@ module.exports = async (layer, slice) => {
     const createStyleFile = async () => {
         try {
             await fs.writeFile(
-                resolveUIPath(`${sliceNameUpperCase}.module.scss`),
+                resolveUIPath(sliceNameUpperCase, `${sliceNameUpperCase}.module.scss`),
                 createStyleTemplate(slice),
             );
         } catch (e) {

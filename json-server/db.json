@@ -707,6 +707,18 @@
       "text": "some comment 3",
       "articleId": "1",
       "userId": "1"
+    },
+    {
+      "text": "fgdfgdfgdfgdfg",
+      "articleId": "2",
+      "userId": "1",
+      "id": "RbYO1Jy"
+    },
+    {
+      "text": "sdasdasdasdasd",
+      "articleId": "2",
+      "userId": "1",
+      "id": "0HG6a6n"
     }
   ]
 }

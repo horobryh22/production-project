@@ -1,69 +1,44 @@
 import { memo, ReactElement } from 'react';
 
 import { useTranslation } from 'react-i18next';
-import { useSelector } from 'react-redux';
 
-import { selectArticleRecommendationsIsLoading } from '../../model/selectors/articleRecommendationsSelectors';
-import { fetchArticleRecommendations } from '../../model/services/fetchArticleRecommendations/fetchArticleRecommendations';
-import {
-    articleRecommendationsReducer,
-    articleRecommendationsSelectors,
-} from '../../model/slices/articleRecommendationsSlice';
+import { fetchRecommendedArticles } from '../../api/recommendedArticlesAPI';
 
 import classes from './ArticleRecommendationsList.module.scss';
 
 import { ArticlesList, ArticleView } from 'entities/Article';
-import {
-    classNames,
-    useAppDispatch,
-    useDynamicModuleLoader,
-    useInitialEffect,
-} from 'shared/lib';
-import { ReducersList } from 'shared/lib/hooks/useDynamicModuleLoader/useDynamicModuleLoader';
-import { Text, TextSize } from 'shared/ui';
+import { classNames } from 'shared/lib';
+import { Text, TextSize, VStack } from 'shared/ui';
 
 interface ArticleRecommendationsListProps {
     className?: string;
 }
-
-const reducers: ReducersList = {
-    articleRecommendations: articleRecommendationsReducer,
-};
 
 export const ArticleRecommendationsList = memo(
     (props: ArticleRecommendationsListProps): ReactElement => {
         const { className } = props;
         const { t } = useTranslation('article');
 
-        const dispatch = useAppDispatch();
+        const { data: recommendedArticles, isLoading } = fetchRecommendedArticles(6);
 
-        const recommendations = useSelector(articleRecommendationsSelectors.selectAll);
-        const isLoading = useSelector(selectArticleRecommendationsIsLoading);
-
-        useDynamicModuleLoader(reducers);
-
-        useInitialEffect(() => {
-            dispatch(fetchArticleRecommendations());
-        });
+        if (!recommendedArticles) {
+            return <Text text={t('Рекоммендованные статьи не были найдены')} />;
+        }
 
         return (
-            <div
-                className={classNames(classes.ArticleRecommendationsList, {}, [
-                    className,
-                ])}
-            >
+            <VStack max gap={'16'} className={classNames('', {}, [className])}>
                 <Text
                     size={TextSize.L}
                     title={t('Recommended articles', { ns: 'article' })}
                 />
                 <ArticlesList
                     className={classes.recommendationsList}
-                    articles={recommendations}
+                    articles={recommendedArticles}
                     isLoading={isLoading}
                     view={ArticleView.TILE}
                     target={'_blank'}
                 />
-            </div>
+            </VStack>
         );
     },
 );

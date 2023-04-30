@@ -1,11 +1,7 @@
-.ArticleRecommendationsList {
-  margin-top: 20px;
-
-  .recommendationsList {
-    margin-top: 20px;
-    flex-wrap: nowrap;
-    overflow-y: hidden;
-    overflow-x: auto;
-    padding-bottom: 10px;
-  }
+.recommendationsList {
+  flex-wrap: nowrap;
+  overflow-y: hidden;
+  overflow-x: auto;
+  padding-bottom: 10px;
+  max-width: 100%;
 }

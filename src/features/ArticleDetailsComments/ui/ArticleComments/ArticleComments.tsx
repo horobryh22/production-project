@@ -22,7 +22,7 @@ import {
     useInitialEffect,
 } from 'shared/lib';
 import { ReducersList } from 'shared/lib/hooks/useDynamicModuleLoader/useDynamicModuleLoader';
-import { Loader, Text, TextSize } from 'shared/ui';
+import { Loader, Text, TextSize, VStack } from 'shared/ui';
 
 interface ArticleCommentsProps {
     className?: string;
@@ -58,7 +58,7 @@ export const ArticleComments = memo((props: ArticleCommentsProps): ReactElement 
     );
 
     return (
-        <div className={classNames(classes.ArticleComments, {}, [className])}>
+        <VStack max gap={'16'} className={classNames('', {}, [className])}>
             <Text
                 size={TextSize.L}
                 className={classes.commentTitle}
@@ -71,6 +71,6 @@ export const ArticleComments = memo((props: ArticleCommentsProps): ReactElement 
                 />
             </Suspense>
             <CommentsList comments={reversedComments} isLoading={isLoading} />
-        </div>
+        </VStack>
     );
 });
