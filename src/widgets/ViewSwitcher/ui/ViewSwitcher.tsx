@@ -1,17 +1,30 @@
 import { memo, ReactElement, useCallback, useMemo } from 'react';
 
+import { useSelector } from 'react-redux';
+
+import { selectViewSwitcherView } from '../model/selectors/viewSwitcherSelectors';
+import { initView } from '../model/services/initView/initView';
+import {
+    viewSwitcherActions,
+    viewSwitcherReducer,
+} from '../model/slice/viewSwitcherSlice';
+
 import classes from './ViewSwitcher.module.scss';
 
 import { ArticleView } from 'entities/Article';
 import ListView from 'shared/assets/icons/list.svg';
 import TileView from 'shared/assets/icons/tile.svg';
-import { classNames } from 'shared/lib';
-import { Button, ButtonTheme, Icon } from 'shared/ui';
+import {
+    classNames,
+    useAppDispatch,
+    useDynamicModuleLoader,
+    useInitialEffect,
+} from 'shared/lib';
+import { ReducersList } from 'shared/lib/hooks/useDynamicModuleLoader/useDynamicModuleLoader';
+import { Button, ButtonTheme, HStack, Icon } from 'shared/ui';
 
 interface ViewSwitcherProps {
     className?: string;
-    view?: ArticleView;
-    onChangeView?: (view: ArticleView) => void;
 }
 
 const viewTypes = [
@@ -27,14 +40,21 @@ const viewTypes = [
     },
 ];
 
+const reducers: ReducersList = {
+    viewSwitcher: viewSwitcherReducer,
+};
+
 export const ViewSwitcher = memo((props: ViewSwitcherProps): ReactElement => {
-    const { className, onChangeView, view } = props;
+    const { className } = props;
+    const dispatch = useAppDispatch();
+
+    const view = useSelector(selectViewSwitcherView);
 
     const onClickViewIcon = useCallback(
         (newView: ArticleView) => () => {
-            onChangeView?.(newView);
+            dispatch(viewSwitcherActions.setView(newView));
         },
-        [onChangeView],
+        [dispatch],
     );
 
     const mappedViews = useMemo(() => {
@@ -54,9 +74,18 @@ export const ViewSwitcher = memo((props: ViewSwitcherProps): ReactElement => {
         ));
     }, [onClickViewIcon, view]);
 
+    useDynamicModuleLoader(reducers);
+
+    useInitialEffect(() => {
+        dispatch(initView());
+    }, []);
+
     return (
-        <div className={classNames(classes.ViewSwitcher, {}, [className])}>
+        <HStack
+            justify={'between'}
+            className={classNames(classes.ViewSwitcher, {}, [className])}
+        >
             {mappedViews}
-        </div>
+        </HStack>
     );
 });

@@ -43,7 +43,7 @@ export const ArticleComments = memo((props: ArticleCommentsProps): ReactElement 
 
     useDynamicModuleLoader(reducers);
 
-    useInitialEffect(() => dispatch(fetchCommentsByArticleId(id)));
+    useInitialEffect(() => dispatch(fetchCommentsByArticleId(id)), []);
 
     const reversedComments = useMemo(() => {
         return [...comments].reverse();

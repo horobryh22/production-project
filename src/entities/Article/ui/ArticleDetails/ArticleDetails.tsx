@@ -49,7 +49,7 @@ export const ArticleDetails = memo((props: ArticleDetailsProps): ReactElement =>
 
     useDynamicModuleLoader(reducers);
 
-    useInitialEffect(() => dispatch(fetchArticleById(id)));
+    useInitialEffect(() => dispatch(fetchArticleById(id)), []);
 
     const renderBlock = useCallback((block: ArticleBlock) => {
         switch (block.type) {

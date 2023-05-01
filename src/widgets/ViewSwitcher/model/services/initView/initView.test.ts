@@ -1,11 +1,11 @@
-import { initArticlesPage } from './initArticlesPage';
+import { initView } from './initView';
 
 import { TestAsyncThunk } from 'shared/lib/tests/testAsyncThunk';
 
 describe('initArticlesPage.test', () => {
     test('initState action should be called', async () => {
-        const thunk = new TestAsyncThunk(initArticlesPage, {
-            articlePage: {
+        const thunk = new TestAsyncThunk(initView, {
+            viewSwitcher: {
                 _inited: false,
             },
         });
@@ -13,12 +13,12 @@ describe('initArticlesPage.test', () => {
         await thunk.callThunk();
 
         expect(thunk.dispatch).toBeCalledTimes(3);
-        expect(thunk.getState().articlePage?._inited).toBeFalsy();
+        expect(thunk.getState().viewSwitcher?._inited).toBeFalsy();
     });
 
     test('initState action should NOT be called', async () => {
-        const thunk = new TestAsyncThunk(initArticlesPage, {
-            articlePage: {
+        const thunk = new TestAsyncThunk(initView, {
+            viewSwitcher: {
                 _inited: true,
             },
         });
@@ -26,6 +26,6 @@ describe('initArticlesPage.test', () => {
         await thunk.callThunk();
 
         expect(thunk.dispatch).toBeCalledTimes(2);
-        expect(thunk.getState().articlePage?._inited).toBeTruthy();
+        expect(thunk.getState().viewSwitcher?._inited).toBeTruthy();
     });
 });

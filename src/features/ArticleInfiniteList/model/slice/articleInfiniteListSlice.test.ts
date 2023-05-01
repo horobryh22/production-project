@@ -1,9 +1,12 @@
 import { fetchArticlesList } from '../services/fetchArticlesList/fetchArticlesList';
-import { ArticlePageSchema } from '../types';
+import { ArticleInfiniteListSchema } from '../types';
 
-import { articlePageActions, articlePageReducer } from './articlePageSlice';
+import {
+    articleInfiniteListActions,
+    articleInfiniteListReducer,
+} from './articleInfiniteListSlice';
 
-import { Article, ArticleView } from 'entities/Article';
+import { Article } from 'entities/Article';
 import { ArticleBlockType, ArticleType } from 'entities/Article/model/types';
 
 const article: Article = {
@@ -44,8 +47,8 @@ const articles: Article[] = [
     { ...article, id: '11' },
 ];
 
-describe('articlePageSlice.test', () => {
-    let state: ArticlePageSchema;
+describe('articleInfiniteListSlice.test', () => {
+    let state: ArticleInfiniteListSchema;
 
     beforeEach(() => {
         state = {
@@ -57,37 +60,50 @@ describe('articlePageSlice.test', () => {
                 '2': { ...article, id: '2' },
             },
             isLoading: false,
-            view: ArticleView.LIST,
             page: 1,
-            _inited: false,
         };
     });
 
-    test('set view to state', () => {
+    /*    test('set view to state', () => {
         const updatedState = articlePageReducer(
             state,
             articlePageActions.setView(ArticleView.TILE),
         );
 
         expect(updatedState.view).toBe(ArticleView.TILE);
-    });
+    });*/
 
     test('set page to state', () => {
-        const updatedState = articlePageReducer(state, articlePageActions.setPageNum(3));
+        const updatedState = articleInfiniteListReducer(
+            state,
+            articleInfiniteListActions.setPageNum(3),
+        );
 
         expect(updatedState.page).toBe(3);
     });
 
-    test('state should be init', () => {
-        const updatedState = articlePageReducer(state, articlePageActions.initState());
+    test('set limit to state', () => {
+        const updatedState = articleInfiniteListReducer(
+            state,
+            articleInfiniteListActions.selLimit(3),
+        );
+
+        expect(updatedState.limit).toBe(3);
+    });
+
+    /*    test('state should be init', () => {
+        const updatedState = articleInfiniteListReducer(
+            state,
+            articleInfiniteListActions.initState(),
+        );
 
         expect(updatedState.limit).toBe(8);
         expect(updatedState.view).toBe(ArticleView.TILE);
         expect(updatedState._inited).toBeTruthy();
-    });
+    });*/
 
     test('fetching articles pending service', () => {
-        const updatedState = articlePageReducer(
+        const updatedState = articleInfiniteListReducer(
             state,
             fetchArticlesList.pending('', { page: 1, replace: false }),
         );
@@ -97,7 +113,7 @@ describe('articlePageSlice.test', () => {
     });
 
     test('fetching articles fullfield service hasMore should be true', () => {
-        const updatedState = articlePageReducer(
+        const updatedState = articleInfiniteListReducer(
             state,
             fetchArticlesList.fulfilled(articles, '1', { page: 1 }),
         );
@@ -109,7 +125,7 @@ describe('articlePageSlice.test', () => {
     });
 
     test('fetching articles fullfield service hasMore should be false', () => {
-        const updatedState = articlePageReducer(
+        const updatedState = articleInfiniteListReducer(
             state,
             fetchArticlesList.fulfilled(
                 [
@@ -128,7 +144,7 @@ describe('articlePageSlice.test', () => {
     });
 
     test('all articles were got', () => {
-        const updatedState = articlePageReducer(
+        const updatedState = articleInfiniteListReducer(
             state,
             fetchArticlesList.fulfilled([], '1', { page: 1 }),
         );

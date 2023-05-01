@@ -49,7 +49,7 @@ export const EditableProfileCard = ({
         if (profileId) {
             dispatch(fetchProfileData(profileId));
         }
-    });
+    }, []);
 
     const onChangeFirstname = useCallback(
         (value?: string) => {

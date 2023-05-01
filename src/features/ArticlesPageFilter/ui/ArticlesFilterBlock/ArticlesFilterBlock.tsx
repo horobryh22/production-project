@@ -75,7 +75,7 @@ export const ArticlesFilterBlock = memo(
 
         useInitialEffect(() => {
             dispatch(initArticlesPageFilter(searchParams));
-        });
+        }, []);
 
         return (
             <div className={classNames('', {}, [className])}>

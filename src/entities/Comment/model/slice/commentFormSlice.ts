@@ -3,16 +3,13 @@ import { createSlice } from '@reduxjs/toolkit';
 
 import { CommentFormSchema } from '../types';
 
-const initialState: CommentFormSchema = {
-    isLoading: false,
-};
+const initialState: CommentFormSchema = {};
 
 export const commentFormSlice = createSlice({
     name: 'commentFormSlice',
     initialState,
     reducers: {
         changeText: (state, action: PayloadAction<string>) => {
-            state.error = undefined;
             state.text = action.payload;
         },
     },

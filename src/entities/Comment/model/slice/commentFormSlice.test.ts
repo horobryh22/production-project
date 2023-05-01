@@ -7,7 +7,6 @@ describe('profileSlice.test', () => {
     beforeEach(() => {
         state = {
             text: 'Hello world',
-            isLoading: false,
         };
     });
 

@@ -57,7 +57,7 @@ export const Page = memo((props: PageProps): ReactElement => {
         if (wrapperRef) {
             setScrollPageRef?.(wrapperRef);
         }
-    });
+    }, []);
 
     return (
         <main

@@ -1,6 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
-import { selectArticlePageLimitNum } from '../../selectors/articlePageSelectors';
+import { selectInfiniteListLimit } from '../../selectors/articleInfiniteListSelectors';
 
 import { ThunkConfig } from 'app/providers/StoreProvider';
 import { Article } from 'entities/Article';
@@ -26,7 +26,7 @@ export const fetchArticlesList = createAsyncThunk<
     'articlesPage/fetchArticlesList',
     async (props, { rejectWithValue, extra, getState }) => {
         const { page = 1 } = props;
-        const limit = selectArticlePageLimitNum(getState());
+        const limit = selectInfiniteListLimit(getState());
         const sort = selectArticlesPageFilterSort(getState());
         const order = selectArticlesPageFilterOrder(getState());
         const search = selectArticlesPageFilterSearch(getState());

@@ -2,49 +2,35 @@ import type { PayloadAction } from '@reduxjs/toolkit';
 import { createEntityAdapter, createSlice } from '@reduxjs/toolkit';
 
 import { fetchArticlesList } from '../services/fetchArticlesList/fetchArticlesList';
-import { ArticlePageSchema } from '../types';
+import { ArticleInfiniteListSchema } from '../types';
 
 import { StateSchema } from 'app/providers/StoreProvider';
-import { Article, ArticleView } from 'entities/Article';
-import { ARTICLES_VIEW_LOCAL_STORAGE_KEY } from 'shared/const/localStorage';
+import { Article } from 'entities/Article';
 
 const articleAdapter = createEntityAdapter<Article>({
     selectId: article => article?.id,
 });
 
-export const articleSelectors = articleAdapter.getSelectors<StateSchema>(
-    state => state.articlePage || articleAdapter.getInitialState(),
+export const infiniteListSelectors = articleAdapter.getSelectors<StateSchema>(
+    state => state.articleInfiniteList || articleAdapter.getInitialState(),
 );
 
-export const articlePageSlice = createSlice({
+export const articleInfiniteListSlice = createSlice({
     name: 'articlePageSlice',
-    initialState: articleAdapter.getInitialState<ArticlePageSchema>({
+    initialState: articleAdapter.getInitialState<ArticleInfiniteListSchema>({
         isLoading: false,
-        view: ArticleView.TILE,
         page: 1,
         hasMore: true,
         ids: [],
         entities: {},
-        _inited: false,
-        limit: 9,
+        limit: 8,
     }),
     reducers: {
-        setView: (state, action: PayloadAction<ArticleView>) => {
-            state.view = action.payload;
-            localStorage.setItem(ARTICLES_VIEW_LOCAL_STORAGE_KEY, action.payload);
-            state.limit = action.payload === ArticleView.TILE ? 8 : 3;
-        },
         setPageNum: (state, action: PayloadAction<number>) => {
             state.page = action.payload;
         },
-        initState: state => {
-            const view =
-                (localStorage.getItem(ARTICLES_VIEW_LOCAL_STORAGE_KEY) as ArticleView) ||
-                ArticleView.TILE;
-
-            state._inited = true;
-            state.view = view;
-            state.limit = view === ArticleView.TILE ? 8 : 3;
+        selLimit: (state, action: PayloadAction<number>) => {
+            state.limit = action.payload;
         },
     },
     extraReducers: builder =>
@@ -73,5 +59,5 @@ export const articlePageSlice = createSlice({
             }),
 });
 
-export const { actions: articlePageActions } = articlePageSlice;
-export const { reducer: articlePageReducer } = articlePageSlice;
+export const { actions: articleInfiniteListActions } = articleInfiniteListSlice;
+export const { reducer: articleInfiniteListReducer } = articleInfiniteListSlice;

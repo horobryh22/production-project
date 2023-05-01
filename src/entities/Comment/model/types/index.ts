@@ -9,6 +9,4 @@ export interface Comment {
 
 export interface CommentFormSchema {
     text?: string;
-    error?: string;
-    isLoading: boolean;
 }

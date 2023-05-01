@@ -9,10 +9,11 @@ import { StateSchema, StoreProvider } from 'app/providers/StoreProvider';
 import { articleDetailsReducer } from 'entities/Article/model/slice/articleDetailsSlice';
 import { commentFormReducer } from 'entities/Comment/model/slice/commentFormSlice';
 import { articleCommentsReducer } from 'features/ArticleComments/model/slice/articleCommentsSlice';
+import { articleInfiniteListReducer } from 'features/ArticleInfiniteList/model/slice/articleInfiniteListSlice';
 import { articleRecommendationsReducer } from 'features/ArticleRecommendationsList/model/slices/articleRecommendationsSlice';
 import { loginReducer } from 'features/AuthByUserName';
 import { profileReducer } from 'features/EditableProfileCard';
-import { articlePageReducer } from 'pages/ArticlesPage/model/slice/articlePageSlice';
+import { viewSwitcherReducer } from 'widgets/ViewSwitcher/model/slice/viewSwitcherSlice';
 
 const defaultAsyncReducers: ReducersList = {
     login: loginReducer,
@@ -20,8 +21,9 @@ const defaultAsyncReducers: ReducersList = {
     articleDetails: articleDetailsReducer,
     commentForm: commentFormReducer,
     articleDetailsComments: articleCommentsReducer,
-    articlePage: articlePageReducer,
     articleRecommendations: articleRecommendationsReducer,
+    articleInfiniteList: articleInfiniteListReducer,
+    viewSwitcher: viewSwitcherReducer,
 };
 
 export const StoreDecorator =

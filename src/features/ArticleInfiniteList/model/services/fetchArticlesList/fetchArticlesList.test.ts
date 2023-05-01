@@ -35,7 +35,7 @@ const articles: Article[] = [article, article, article, article];
 describe('fetchArticlesList.test', () => {
     test('success fetching articles', async () => {
         const thunk = new TestAsyncThunk(fetchArticlesList, {
-            articlePage: {
+            articleInfiniteList: {
                 page: 1,
                 limit: 8,
                 hasMore: true,
@@ -53,7 +53,7 @@ describe('fetchArticlesList.test', () => {
 
     test('error with fetching articles', async () => {
         const thunk = new TestAsyncThunk(fetchArticlesList, {
-            articlePage: {
+            articleInfiniteList: {
                 page: 1,
                 limit: 8,
                 hasMore: true,
