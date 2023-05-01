@@ -6,3 +6,9 @@ export interface Comment {
     articleId: string;
     user: User;
 }
+
+export interface CommentFormSchema {
+    text?: string;
+    error?: string;
+    isLoading: boolean;
+}

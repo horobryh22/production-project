@@ -9,9 +9,9 @@ import type { NavigateFunction } from 'react-router/dist/lib/hooks';
 import type { CombinedState } from 'redux';
 
 import { ArticleDetailsSchema } from 'entities/Article';
+import { CommentFormSchema } from 'entities/Comment';
 import { UserSchema } from 'entities/User';
-import { AddCommentFormSchema } from 'features/AddCommentForm';
-import { ArticleDetailsCommentsSchema } from 'features/ArticleDetailsComments';
+import { ArticleCommentsSchema } from 'features/ArticleComments';
 import { ArticleRecommendationsSchema } from 'features/ArticleRecommendationsList';
 import { ArticlesPageFilterSchema } from 'features/ArticlesPageFilter';
 import { LoginSchema } from 'features/AuthByUserName';
@@ -30,11 +30,11 @@ export interface StateSchema {
     login?: LoginSchema;
     profile?: ProfileSchema;
     articleDetails?: ArticleDetailsSchema;
-    articleDetailsComments?: ArticleDetailsCommentsSchema;
+    articleDetailsComments?: ArticleCommentsSchema;
     articleRecommendations?: ArticleRecommendationsSchema;
-    addCommentForm?: AddCommentFormSchema;
     articlePage?: ArticlePageSchema;
     articlesPageFilter?: ArticlesPageFilterSchema;
+    commentForm?: CommentFormSchema;
 }
 
 export type StateSchemaKey = keyof StateSchema;

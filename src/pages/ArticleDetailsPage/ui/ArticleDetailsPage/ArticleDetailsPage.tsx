@@ -6,7 +6,7 @@ import { useParams } from 'react-router-dom';
 import { ArticleDetailsHeader } from '../ArticleDetailsHeader/ArticleDetailsHeader';
 
 import { ArticleDetails } from 'entities/Article';
-import { ArticleComments } from 'features/ArticleDetailsComments';
+import { ArticleComments } from 'features/ArticleComments';
 import { ArticleRecommendationsList } from 'features/ArticleRecommendationsList';
 import { classNames } from 'shared/lib';
 import { Text, VStack } from 'shared/ui';

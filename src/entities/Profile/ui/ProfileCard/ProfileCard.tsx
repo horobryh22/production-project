@@ -2,14 +2,12 @@ import { ReactElement } from 'react';
 
 import { useTranslation } from 'react-i18next';
 
-import { Country } from '../../../Country/model/types';
-import { CountrySelect } from '../../../Country/ui/CountrySelect';
-import { Currency } from '../../../Currency/model/types';
-import { CurrencySelect } from '../../../Currency/ui/CurrencySelect/CurrencySelect';
 import { Profile } from '../../model/types';
 
 import classes from './ProfileCard.module.scss';
 
+import { CountrySelect, Country } from 'entities/Country';
+import { CurrencySelect, Currency } from 'entities/Currency';
 import { classNames } from 'shared/lib';
 import { Mods } from 'shared/lib/classNames/classNames';
 import { Avatar, HStack, Input, Loader, VStack } from 'shared/ui';

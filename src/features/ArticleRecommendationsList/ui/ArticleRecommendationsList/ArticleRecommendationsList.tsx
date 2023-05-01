@@ -2,7 +2,7 @@ import { memo, ReactElement } from 'react';
 
 import { useTranslation } from 'react-i18next';
 
-import { fetchRecommendedArticles } from '../../api/recommendedArticlesAPI';
+import { useRecommendedArticles } from '../../api/recommendedArticlesAPI';
 
 import classes from './ArticleRecommendationsList.module.scss';
 
@@ -19,7 +19,7 @@ export const ArticleRecommendationsList = memo(
         const { className } = props;
         const { t } = useTranslation('article');
 
-        const { data: recommendedArticles, isLoading } = fetchRecommendedArticles(6);
+        const { data: recommendedArticles, isLoading } = useRecommendedArticles(6);
 
         if (!recommendedArticles) {
             return <Text text={t('Рекоммендованные статьи не были найдены')} />;

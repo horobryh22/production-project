@@ -1,2 +1,3 @@
 export { CommentsList } from './ui/CommentsList/CommentsList';
-export { Comment } from './model/types';
+export { CommentFormAsync } from './ui/CommentForm/CommentForm.async';
+export { Comment, CommentFormSchema } from './model/types';

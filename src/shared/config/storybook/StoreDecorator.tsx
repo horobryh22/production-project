@@ -7,8 +7,8 @@ import { ReducersList } from '../../lib/hooks/useDynamicModuleLoader/useDynamicM
 
 import { StateSchema, StoreProvider } from 'app/providers/StoreProvider';
 import { articleDetailsReducer } from 'entities/Article/model/slice/articleDetailsSlice';
-import { addCommentFormReducer } from 'features/AddCommentForm/model/slice/addCommentFormSlice';
-import { articleDetailsCommentsReducer } from 'features/ArticleDetailsComments/model/slice/articleDetailsCommentsSlice';
+import { commentFormReducer } from 'entities/Comment/model/slice/commentFormSlice';
+import { articleCommentsReducer } from 'features/ArticleComments/model/slice/articleCommentsSlice';
 import { articleRecommendationsReducer } from 'features/ArticleRecommendationsList/model/slices/articleRecommendationsSlice';
 import { loginReducer } from 'features/AuthByUserName';
 import { profileReducer } from 'features/EditableProfileCard';
@@ -18,8 +18,8 @@ const defaultAsyncReducers: ReducersList = {
     login: loginReducer,
     profile: profileReducer,
     articleDetails: articleDetailsReducer,
-    addCommentForm: addCommentFormReducer,
-    articleDetailsComments: articleDetailsCommentsReducer,
+    commentForm: commentFormReducer,
+    articleDetailsComments: articleCommentsReducer,
     articlePage: articlePageReducer,
     articleRecommendations: articleRecommendationsReducer,
 };
