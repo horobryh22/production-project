@@ -6,7 +6,13 @@ import { useSelector } from 'react-redux';
 import classes from './Navbar.module.scss';
 
 import { RoutePath } from 'app/providers/router/config/routeConfig';
-import { selectAuthData, selectIsUserAuth, userActions } from 'entities/User';
+import {
+    isUserAdmin,
+    isUserManager,
+    selectAuthData,
+    selectIsUserAuth,
+    userActions,
+} from 'entities/User';
 import { LoginModal } from 'features/AuthByUserName';
 import { classNames, useAppDispatch } from 'shared/lib';
 import {
@@ -32,8 +38,12 @@ export const Navbar = memo(({ className }: NavbarProps): ReactElement => {
 
     const isUserAuth = useSelector(selectIsUserAuth);
     const userData = useSelector(selectAuthData);
+    const isAdmin = useSelector(isUserAdmin);
+    const isManager = useSelector(isUserManager);
 
     const [isOpen, setIsOpen] = useState(false);
+
+    const isAdminPanelVisible = isAdmin || isManager;
 
     const closeModal = useCallback(() => {
         setIsOpen(false);
@@ -49,6 +59,14 @@ export const Navbar = memo(({ className }: NavbarProps): ReactElement => {
 
     const dropdownItems: DropdownItems[] = useMemo(() => {
         return [
+            ...(isAdminPanelVisible
+                ? [
+                      {
+                          href: RoutePath.admin,
+                          content: t('Admin panel'),
+                      },
+                  ]
+                : []),
             {
                 href: RoutePath.profile + userData.id,
                 content: t('Profile'),
@@ -58,7 +76,7 @@ export const Navbar = memo(({ className }: NavbarProps): ReactElement => {
                 content: t('Logout'),
             },
         ];
-    }, [onLogout, t, userData.id]);
+    }, [isAdminPanelVisible, onLogout, t, userData.id]);
 
     return (
         <header className={classNames(classes.Navbar, {}, [String(className)])}>
