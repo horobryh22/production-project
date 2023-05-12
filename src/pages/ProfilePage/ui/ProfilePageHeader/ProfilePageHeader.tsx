@@ -2,7 +2,6 @@ import { ReactElement, useCallback } from 'react';
 
 import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
-import { useParams } from 'react-router-dom';
 
 import { getCanEdit } from '../../model/selectors/getCanEdit/getCanEdit';
 
@@ -17,16 +16,17 @@ import { Button, ButtonTheme, HStack } from 'shared/ui';
 import { Text } from 'shared/ui/Text/Text';
 
 interface ProfilePageHeaderProps {
+    id?: string;
     className?: string;
 }
 
 export const ProfilePageHeader = ({
+    id,
     className,
 }: ProfilePageHeaderProps): ReactElement => {
     const { t } = useTranslation('profile');
 
     const dispatch = useAppDispatch();
-    const { id } = useParams();
 
     const readonly = useSelector(selectProfileReadonly);
     const error = useSelector(selectProfileError);
@@ -52,16 +52,22 @@ export const ProfilePageHeader = ({
             {canEdit && (
                 <>
                     {readonly && (
-                        <Button onClick={onEdit}>{t('Edit', { ns: 'profile' })}</Button>
+                        <Button data-testid={'ProfilePageButton.Edit'} onClick={onEdit}>
+                            {t('Edit', { ns: 'profile' })}
+                        </Button>
                     )}
                     {!readonly && !error && (
                         <HStack gap={'16'}>
-                            <Button onClick={onSave}>
+                            <Button
+                                onClick={onSave}
+                                data-testid={'ProfilePageButton.Save'}
+                            >
                                 {t('Save', { ns: 'profile' })}
                             </Button>
                             <Button
                                 onClick={onCancelEdit}
                                 theme={ButtonTheme.OUTLINE_RED}
+                                data-testid={'ProfilePageButton.Cancel'}
                             >
                                 {t('Cancel', { ns: 'profile' })}
                             </Button>

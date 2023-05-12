@@ -92,12 +92,14 @@ export const ProfileCard = (props: ProfileCardProps): ReactElement => {
                 placeholder={t('Name', { ns: 'profile' })}
                 readonly={readonly}
                 onChange={onChangeFirstname}
+                data-testid={'EditableProfileCard.Firstname'}
             />
             <Input
                 value={data?.lastname}
                 placeholder={t('Surname', { ns: 'profile' })}
                 readonly={readonly}
                 onChange={onChangeLastname}
+                data-testid={'EditableProfileCard.Lastname'}
             />
             <Input
                 value={data?.username}

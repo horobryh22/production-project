@@ -9,12 +9,14 @@ import { VStack } from 'shared/ui';
 import { Page } from 'widgets/Page';
 
 const ProfilePage = (): ReactElement => {
-    const { id } = useParams();
+    let { id } = useParams();
+
+    if (__PROJECT__ === 'jest') id = '1';
 
     return (
         <Page>
             <VStack gap={'16'} max>
-                <ProfilePageHeader />
+                <ProfilePageHeader id={id} />
                 <EditableProfileCard profileId={id} />
             </VStack>
         </Page>
