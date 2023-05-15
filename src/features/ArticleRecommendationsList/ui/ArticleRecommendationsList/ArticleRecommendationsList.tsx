@@ -21,7 +21,7 @@ export const ArticleRecommendationsList = memo(
 
         const { data: recommendedArticles, isLoading } = useRecommendedArticles(6);
 
-        if (!recommendedArticles) {
+        if (!recommendedArticles && !isLoading) {
             return <Text text={t('Рекоммендованные статьи не были найдены')} />;
         }
 
@@ -33,7 +33,7 @@ export const ArticleRecommendationsList = memo(
                 />
                 <ArticlesList
                     className={classes.recommendationsList}
-                    articles={recommendedArticles}
+                    articles={recommendedArticles ?? []}
                     isLoading={isLoading}
                     view={ArticleView.TILE}
                     target={'_blank'}

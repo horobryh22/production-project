@@ -2,6 +2,7 @@ import type { ComponentMeta, ComponentStory } from '@storybook/react';
 
 import { Navbar as NavbarComponent } from './Navbar';
 
+import { UserRole } from 'entities/User';
 import { StoreDecorator } from 'shared/config/storybook/StoreDecorator';
 
 export default {
@@ -21,6 +22,9 @@ Navbar.decorators = [
     StoreDecorator({
         user: {
             isUserAuth: false,
+            authData: {
+                roles: [],
+            },
         },
     }),
 ];
@@ -30,6 +34,12 @@ AuthNavbar.decorators = [
     StoreDecorator({
         user: {
             isUserAuth: true,
+            authData: {
+                roles: [UserRole.ADMIN],
+                username: 'admin',
+                avatar: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRdim6mwjPEYlsFTPtK5hmZXBGJG1KyUz4SxpZBKVU&s',
+                id: '1',
+            },
         },
     }),
 ];

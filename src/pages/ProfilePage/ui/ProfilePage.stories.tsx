@@ -14,6 +14,7 @@ export default {
     argTypes: {
         backgroundColor: { control: 'color' },
     },
+    decorators: [],
 } as ComponentMeta<typeof ProfilePage>;
 
 const Template: ComponentStory<typeof ProfilePage> = () => <ProfilePage />;
@@ -31,8 +32,14 @@ Primary.decorators = [
                 avatar: '',
                 city: 'Omsk',
                 first: 'Илья',
+                id: '1',
             },
             readonly: true,
+        },
+        user: {
+            authData: {
+                id: '1',
+            },
         },
     }),
 ];
@@ -50,8 +57,14 @@ EditMode.decorators = [
                 avatar: '',
                 city: 'Omsk',
                 first: 'Илья',
+                id: '1',
             },
             readonly: false,
+        },
+        user: {
+            authData: {
+                id: '1',
+            },
         },
     }),
 ];
@@ -69,12 +82,18 @@ WithValidateErrors.decorators = [
                 avatar: '',
                 city: 'Omsk',
                 first: '',
+                id: '1',
             },
             readonly: false,
             validateErrors: [
                 ValidateProfileError.INCORRECT_USER_DATA,
                 ValidateProfileError.INCORRECT_AGE,
             ],
+        },
+        user: {
+            authData: {
+                id: '1',
+            },
         },
     }),
 ];

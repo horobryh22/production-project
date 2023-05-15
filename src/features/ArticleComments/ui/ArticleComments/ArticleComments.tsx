@@ -1,4 +1,4 @@
-import { memo, ReactElement, Suspense, useCallback, useMemo } from 'react';
+import { memo, ReactElement, useCallback, useMemo } from 'react';
 
 import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
@@ -11,8 +11,6 @@ import {
     commentsSelectors,
 } from '../../model/slice/articleCommentsSlice';
 
-import classes from './ArticleComments.module.scss';
-
 import { CommentFormAsync, CommentsList } from 'entities/Comment';
 import {
     classNames,
@@ -21,7 +19,7 @@ import {
     useInitialEffect,
 } from 'shared/lib';
 import { ReducersList } from 'shared/lib/hooks/useDynamicModuleLoader/useDynamicModuleLoader';
-import { Loader, Text, TextSize, VStack } from 'shared/ui';
+import { Text, TextSize, VStack } from 'shared/ui';
 
 interface ArticleCommentsProps {
     className?: string;
@@ -58,14 +56,8 @@ export const ArticleComments = memo((props: ArticleCommentsProps): ReactElement 
 
     return (
         <VStack max gap={'16'} className={classNames('', {}, [className])}>
-            <Text
-                size={TextSize.L}
-                className={classes.commentTitle}
-                title={t('Comments', { ns: 'article' })}
-            />
-            <Suspense fallback={<Loader className={classes.loader} />}>
-                <CommentFormAsync onSendComment={onSendComment} isLoading={isLoading} />
-            </Suspense>
+            <Text size={TextSize.L} title={t('Comments', { ns: 'article' })} />
+            <CommentFormAsync onSendComment={onSendComment} isLoading={isLoading} />
             <CommentsList comments={reversedComments} isLoading={isLoading} />
         </VStack>
     );

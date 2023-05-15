@@ -1,4 +1,5 @@
 import type { ComponentMeta, ComponentStory } from '@storybook/react';
+import { rest } from 'msw';
 
 import ArticleDetailsPage from './ArticleDetailsPage';
 
@@ -118,6 +119,24 @@ Primary.decorators = [
         articleDetailsComments: { ...comments, isLoading: false },
     }),
 ];
+Primary.parameters = {
+    msw: {
+        handlers: [
+            rest.get('/articles', (req, res, ctx) =>
+                res(
+                    ctx.json([
+                        article,
+                        { ...article, id: '2' },
+                        { ...article, id: '3' },
+                        { ...article, id: '4' },
+                        { ...article, id: '5' },
+                        { ...article, id: '6' },
+                    ]),
+                ),
+            ),
+        ],
+    },
+};
 
 export const Loading = Template.bind({});
 Loading.decorators = [
@@ -126,3 +145,22 @@ Loading.decorators = [
         articleDetailsComments: { ...comments, isLoading: true },
     }),
 ];
+Loading.parameters = {
+    msw: {
+        handlers: [
+            rest.get('/articles', (req, res, ctx) =>
+                res(
+                    ctx.delay(1000 * 60 * 60 * 60),
+                    ctx.json([
+                        article,
+                        { ...article, id: '2' },
+                        { ...article, id: '3' },
+                        { ...article, id: '4' },
+                        { ...article, id: '5' },
+                        { ...article, id: '6' },
+                    ]),
+                ),
+            ),
+        ],
+    },
+};

@@ -1,7 +1,12 @@
 import { addDecorator } from '@storybook/react';
 import { StyleDecorator } from '../../src/shared/config/storybook/StyleDecorator';
 import { RouterDecorator } from '../../src/shared/config/storybook/RouterDecorator';
+import { SuspenseDecorator } from '../../src/shared/config/storybook/SuspenseDecorator';
 import { withThemes } from 'storybook-addon-themes/react';
+import { initialize, mswDecorator } from 'msw-storybook-addon';
+
+// Initialize MSW
+initialize();
 
 export const parameters = {
     actions: { argTypesRegex: '^on[A-Z].*' },
@@ -23,4 +28,6 @@ export const parameters = {
 
 addDecorator(StyleDecorator);
 addDecorator(RouterDecorator);
+addDecorator(SuspenseDecorator);
+addDecorator(mswDecorator);
 addDecorator(withThemes);
