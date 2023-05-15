@@ -1,4 +1,5 @@
 import ReactRefreshPlugin from '@pmmmwh/react-refresh-webpack-plugin';
+import CircularDependencyPlugin from 'circular-dependency-plugin';
 // eslint-disable-next-line import/default
 import CopyPlugin from 'copy-webpack-plugin';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
@@ -43,6 +44,12 @@ export function buildPlugins({
         // these plugins Refresh and HotModule are included so as not to reload our page
         plugins.push(new webpack.HotModuleReplacementPlugin());
         plugins.push(new ReactRefreshPlugin());
+        plugins.push(
+            new CircularDependencyPlugin({
+                exclude: /node_modules/,
+                failOnError: true,
+            }),
+        );
     }
 
     if (analyze) {

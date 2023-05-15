@@ -2,11 +2,12 @@ import { Fragment, memo, ReactElement, ReactNode } from 'react';
 
 import { Menu } from '@headlessui/react';
 
+import { AppLink } from '../AppLink/AppLink';
+
 import classes from './Dropdown.module.scss';
 
 import { classNames } from 'shared/lib';
 import { DropdownDirection } from 'shared/types/ui';
-import { AppLink } from 'shared/ui';
 
 export interface DropdownItems {
     href?: string;
