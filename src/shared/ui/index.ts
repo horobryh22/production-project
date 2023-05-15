@@ -14,4 +14,5 @@ export { Code } from './Code/Code';
 export { Card } from './Card/Card';
 export { HStack, VStack } from './Stack';
 export { ListBox } from './ListBox/ListBox';
-export { Dropdown, DropdownItems } from './Dropdown/Dropdown';
+export { Dropdown } from './Dropdown/Dropdown';
+export type { DropdownItems } from './Dropdown/Dropdown';

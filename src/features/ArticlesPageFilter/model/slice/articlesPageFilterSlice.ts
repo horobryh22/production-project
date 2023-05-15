@@ -3,8 +3,7 @@ import { createSlice } from '@reduxjs/toolkit';
 
 import { ArticlesPageFilterSchema, ArticlesPageURLParams } from '../types';
 
-import { ArticleSortType } from 'entities/Article';
-import { ArticleType } from 'entities/Article/model/types';
+import { ArticleSortType, ArticleType } from 'entities/Article';
 import { SortOrder } from 'shared/types';
 
 const initialState: ArticlesPageFilterSchema = {

@@ -2,12 +2,8 @@ import { HTMLAttributeAnchorTarget, memo, ReactElement } from 'react';
 
 import { useTranslation } from 'react-i18next';
 
-import {
-    Article,
-    ArticleBlockType,
-    ArticleTextBlock,
-    ArticleView,
-} from '../../model/types';
+import { ArticleBlockType, ArticleView } from '../../model/consts/consts';
+import { Article, ArticleTextBlock } from '../../model/types';
 import { ArticleTextBlockComponent } from '../ArticleTextBlockComponent/ArticleTextBlockComponent';
 
 import classes from './ArticleItem.module.scss';

@@ -21,7 +21,8 @@
     // let us to using imports like 'import webpack from 'webpack' instead of
     // 'import * as webpack from 'webpack'
     "allowSyntheticDefaultImports": true,
-    "sourceMap": true
+    "sourceMap": true,
+    "isolatedModules": true
   },
   "ts-node": {
     "compilerOptions": {
@@ -33,6 +34,6 @@
     "./**/*.ts",
     "./**/*.tsx",
     "./src/**/*.ts",
-    "./src/**/*.tsx",
+    "./src/**/*.tsx"
   ]
 }

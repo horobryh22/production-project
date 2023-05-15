@@ -8,7 +8,7 @@ import { articlesPageFilterActions } from '../../model/slice/articlesPageFilterS
 
 import classes from './ArticleTypeTabs.module.scss';
 
-import { ArticleType } from 'entities/Article/model/types';
+import { ArticleType } from 'entities/Article';
 import { classNames, useAppDispatch } from 'shared/lib';
 import { TabItem, Tabs } from 'shared/ui/Tabs/Tabs';
 

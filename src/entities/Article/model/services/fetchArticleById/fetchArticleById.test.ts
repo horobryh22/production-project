@@ -1,4 +1,5 @@
-import { Article, ArticleBlockType, ArticleType } from '../../types';
+import { ArticleBlockType, ArticleType } from '../../consts/consts';
+import { Article } from '../../types';
 
 import { fetchArticleById } from './fetchArticleById';
 

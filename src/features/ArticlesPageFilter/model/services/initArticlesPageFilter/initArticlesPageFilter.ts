@@ -4,8 +4,7 @@ import { selectArticlesPageFilterInited } from '../../selectors/articlesPageFilt
 import { articlesPageFilterActions } from '../../slice/articlesPageFilterSlice';
 
 import { ThunkConfig } from 'app/providers/StoreProvider';
-import { ArticleSortType } from 'entities/Article';
-import { ArticleType } from 'entities/Article/model/types';
+import { ArticleSortType, ArticleType } from 'entities/Article';
 import { SortOrder } from 'shared/types';
 
 export const initArticlesPageFilter = createAsyncThunk<

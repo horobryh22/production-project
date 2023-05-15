@@ -3,6 +3,7 @@ import { memo, ReactElement, useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
 
+import { ArticleBlockType } from '../../model/consts/consts';
 import {
     selectArticleDetailsData,
     selectArticleDetailsError,
@@ -10,7 +11,7 @@ import {
 } from '../../model/selectors/articleDetails';
 import { fetchArticleById } from '../../model/services/fetchArticleById/fetchArticleById';
 import { articleDetailsReducer } from '../../model/slice/articleDetailsSlice';
-import { ArticleBlock, ArticleBlockType } from '../../model/types';
+import { ArticleBlock } from '../../model/types';
 import { ArticleCodeBlockComponent } from '../ArticleCodeBlockComponent/ArticleCodeBlockComponent';
 import { ArticleImageBlockComponent } from '../ArticleImageBlockComponent/ArticleImageBlockComponent';
 import { ArticleTextBlockComponent } from '../ArticleTextBlockComponent/ArticleTextBlockComponent';

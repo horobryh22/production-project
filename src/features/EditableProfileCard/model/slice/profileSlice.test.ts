@@ -1,5 +1,6 @@
+import { ValidateProfileError } from '../consts/consts';
 import { updateUserProfile } from '../services/updateUserProfile/updateUserProfile';
-import { ProfileSchema, ValidateProfileError } from '../types';
+import { ProfileSchema } from '../types';
 
 import { profileActions, profileReducer } from './profileSlice';
 

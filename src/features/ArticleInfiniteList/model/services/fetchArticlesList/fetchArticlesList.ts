@@ -3,8 +3,7 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 import { selectInfiniteListLimit } from '../../selectors/articleInfiniteListSelectors';
 
 import { ThunkConfig } from 'app/providers/StoreProvider';
-import { Article } from 'entities/Article';
-import { ArticleType } from 'entities/Article/model/types';
+import { Article, ArticleType } from 'entities/Article';
 import {
     selectArticlesPageFilterOrder,
     selectArticlesPageFilterSearch,

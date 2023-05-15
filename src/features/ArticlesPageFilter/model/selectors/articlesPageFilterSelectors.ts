@@ -1,6 +1,5 @@
 import { StateSchema } from 'app/providers/StoreProvider';
-import { ArticleSortType } from 'entities/Article';
-import { ArticleType } from 'entities/Article/model/types';
+import { ArticleSortType, ArticleType } from 'entities/Article';
 import { SortOrder } from 'shared/types';
 
 export const selectArticlesPageFilterOrder = (state: StateSchema): SortOrder =>

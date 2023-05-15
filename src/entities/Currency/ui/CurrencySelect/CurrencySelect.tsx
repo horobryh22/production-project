@@ -2,7 +2,7 @@ import { memo, ReactElement, useCallback } from 'react';
 
 import { useTranslation } from 'react-i18next';
 
-import { Currency } from '../../model/types';
+import { Currency } from '../../model/consts/consts';
 
 import classes from './CurrencySelect.module.scss';
 

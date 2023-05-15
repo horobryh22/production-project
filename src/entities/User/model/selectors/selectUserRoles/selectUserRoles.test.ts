@@ -1,4 +1,4 @@
-import { UserRole } from '../../types';
+import { UserRole } from '../../consts/consts';
 
 import { isUserAdmin, isUserManager, selectUserRoles } from './selectUserRoles';
 

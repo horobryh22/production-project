@@ -5,8 +5,9 @@ export {
     profileReducer,
     profileActions,
 } from '../EditableProfileCard/model/slice/profileSlice';
-export { ProfileSchema, ValidateProfileError } from '../EditableProfileCard/model/types';
+export type { ProfileSchema } from '../EditableProfileCard/model/types';
 export { selectProfileReadonly } from '../EditableProfileCard/model/selectors/selectProfileReadonly/selectProfileReadonly';
 export { selectProfileError } from '../EditableProfileCard/model/selectors/selectProfileError/selectProfileError';
 export { selectProfileFormData } from '../EditableProfileCard/model/selectors/selectProfileFormData/selectProfileFormData';
 export { validateProfileData } from '../EditableProfileCard/model/services/validateProfileData/validateProfileData';
+export { ValidateProfileError } from './model/consts/consts';

@@ -1,6 +1,6 @@
 import type { ComponentMeta, ComponentStory } from '@storybook/react';
 
-import { Currency } from '../../model/types';
+import { Currency } from '../../model/consts/consts';
 
 import { CurrencySelect } from './CurrencySelect';
 

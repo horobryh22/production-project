@@ -3,7 +3,7 @@ import type { ComponentMeta, ComponentStory } from '@storybook/react';
 
 import { Tabs } from './Tabs';
 
-import { ArticleType } from 'entities/Article/model/types';
+import { ArticleType } from 'entities/Article';
 
 export default {
     title: 'shared/Tabs',

@@ -3,7 +3,8 @@ import { HTMLAttributeAnchorTarget, memo, MutableRefObject, ReactElement } from 
 import { useTranslation } from 'react-i18next';
 import { VirtuosoGrid } from 'react-virtuoso';
 
-import { Article, ArticleView } from '../../model/types';
+import { ArticleView } from '../../model/consts/consts';
+import { Article } from '../../model/types';
 import { ArticleItem } from '../ArticleItem/ArticleItem';
 import { ArticleItemSkeleton } from '../ArticleItem/ArticleItemSkeleton';
 

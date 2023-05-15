@@ -1,4 +1,4 @@
-export { ArticlesPageFilterSchema } from './model/types';
+export type { ArticlesPageFilterSchema } from './model/types';
 export { ArticlesFilterBlock } from './ui/ArticlesFilterBlock/ArticlesFilterBlock';
 export {
     selectArticlesPageFilterSort,

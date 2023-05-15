@@ -2,7 +2,7 @@ import { memo, ReactElement, useCallback } from 'react';
 
 import { useTranslation } from 'react-i18next';
 
-import { Country } from '../../model/types';
+import { Country } from '../../model/consts/consts';
 
 import classes from './CountrySelect.module.scss';
 

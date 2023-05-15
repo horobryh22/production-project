@@ -3,8 +3,7 @@ import { rest } from 'msw';
 
 import ArticleDetailsPage from './ArticleDetailsPage';
 
-import { Article } from 'entities/Article';
-import { ArticleBlockType, ArticleType } from 'entities/Article/model/types';
+import { Article, ArticleBlockType, ArticleType } from 'entities/Article';
 import { StoreDecorator } from 'shared/config/storybook/StoreDecorator';
 
 export default {

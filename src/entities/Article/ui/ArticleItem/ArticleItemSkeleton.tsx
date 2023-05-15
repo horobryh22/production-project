@@ -1,6 +1,6 @@
 import { memo, ReactElement } from 'react';
 
-import { ArticleView } from '../../model/types';
+import { ArticleView } from '../../model/consts/consts';
 
 import classes from './ArticleItem.module.scss';
 

@@ -1,4 +1,4 @@
-import { ValidateProfileError } from '../../types';
+import { ValidateProfileError } from '../../consts/consts';
 
 import { updateUserProfile } from './updateUserProfile';
 

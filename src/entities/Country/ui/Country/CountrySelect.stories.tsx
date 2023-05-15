@@ -1,6 +1,6 @@
 import type { ComponentMeta, ComponentStory } from '@storybook/react';
 
-import { Country } from '../../model/types';
+import { Country } from '../../model/consts/consts';
 import { CountrySelect } from '../Country/CountrySelect';
 
 export default {

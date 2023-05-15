@@ -1,7 +1,6 @@
 import { fetchArticlesList } from './fetchArticlesList';
 
-import { Article } from 'entities/Article';
-import { ArticleBlockType, ArticleType } from 'entities/Article/model/types';
+import { Article, ArticleBlockType, ArticleType } from 'entities/Article';
 import { TestAsyncThunk } from 'shared/lib/tests/testAsyncThunk';
 
 const article: Article = {
