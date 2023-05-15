@@ -13,7 +13,8 @@ export function buildLoaders(options: BuildOptions): RuleSetRule[] {
         use: ['@svgr/webpack'],
     };
 
-    const babelLoader = buildBabelLoader(options);
+    const babelLoader = buildBabelLoader({ ...options, isTsx: false });
+    const babelTsxLoader = buildBabelLoader({ ...options, isTsx: true });
 
     const fileLoader = {
         test: /\.(png|jpe?g|gif|woff2|woff)$/i,
@@ -27,15 +28,23 @@ export function buildLoaders(options: BuildOptions): RuleSetRule[] {
     const cssLoader = buildCssLoader(isDev);
 
     // if we don't use typescript, we need to use babel-loader
-    const tsLoader = {
-        // we say which type of files loader will handle
-        test: /\.tsx?$/,
-        // which loader will handle files
-        use: 'ts-loader',
-        // what doesn't need to handle
-        exclude: /node_modules/,
-    };
+
+    // const tsLoader = {
+    //     // we say which type of files loader will handle
+    //     test: /\.tsx?$/,
+    //     // which loader will handle files
+    //     use: 'ts-loader',
+    //     // what doesn't need to handle
+    //     exclude: /node_modules/,
+    // };
 
     // order of loaders is very important!!!
-    return [fileLoader, svgLoader, babelLoader, tsLoader, cssLoader];
+    return [
+        fileLoader,
+        svgLoader,
+        babelLoader,
+        babelTsxLoader,
+        //tsLoader,
+        cssLoader,
+    ];
 }
