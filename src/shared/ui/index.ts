@@ -13,6 +13,9 @@ export { Icon } from './Icon/Icon';
 export { Code } from './Code/Code';
 export { Card } from './Card/Card';
 export { HStack, VStack } from './Stack';
-export { ListBox } from './ListBox/ListBox';
-export { Dropdown } from './Dropdown/Dropdown';
-export type { DropdownItems } from './Dropdown/Dropdown';
+export { ListBox } from './Popups/ui/ListBox/ListBox';
+export { Dropdown } from './Popups/ui/Dropdown/Dropdown';
+export { Popover } from './Popups/ui/Popover/Popover';
+
+// types
+export type { DropdownItems } from './Popups/ui/Dropdown/Dropdown';

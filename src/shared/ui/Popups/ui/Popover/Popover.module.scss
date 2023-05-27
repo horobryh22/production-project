@@ -1,0 +1,15 @@
+.Popover {
+  cursor: auto;
+}
+
+.panel {
+  background: var(--card-color);
+  position: absolute;
+  z-index: 10;
+  border-radius: 8px;
+  border: 1px solid var(--primary-color);
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  overflow-y: auto;
+}

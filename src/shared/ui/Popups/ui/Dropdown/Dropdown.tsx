@@ -2,12 +2,14 @@ import { Fragment, memo, ReactElement, ReactNode } from 'react';
 
 import { Menu } from '@headlessui/react';
 
-import { AppLink } from '../AppLink/AppLink';
+import { AppLink } from '../../../AppLink/AppLink';
+import popupCls from '../../styles/popups.module.scss';
 
 import classes from './Dropdown.module.scss';
 
 import { classNames } from 'shared/lib';
 import { DropdownDirection } from 'shared/types/ui';
+import { popupDirectionClass } from 'shared/ui/Popups/styles';
 
 export interface DropdownItems {
     href?: string;
@@ -21,13 +23,6 @@ interface DropdownProps {
     trigger: ReactNode;
     direction?: DropdownDirection;
 }
-
-const dropdownDirectionClass: Record<DropdownDirection, string> = {
-    'top left': classes.menuTopLeft,
-    'top right': classes.menuTopRight,
-    'bottom left': classes.menuBottomLeft,
-    'bottom right': classes.menuBottomRight,
-};
 
 export const Dropdown = memo((props: DropdownProps): ReactElement => {
     const { className, trigger, items, direction = 'bottom right' } = props;
@@ -45,8 +40,8 @@ export const Dropdown = memo((props: DropdownProps): ReactElement => {
                 {({ active, disabled }) => (
                     <Component
                         className={classNames(classes.item, {
-                            [classes.active]: active,
-                            [classes.disabled]: disabled,
+                            [popupCls.active]: active,
+                            [popupCls.disabled]: disabled,
                         })}
                         to={href ? href : ''}
                         onClick={onClick}
@@ -59,14 +54,15 @@ export const Dropdown = memo((props: DropdownProps): ReactElement => {
     });
 
     return (
-        <Menu as={'div'} className={classNames(classes.Dropdown, {}, [className])}>
-            <Menu.Button className={classes.trigger} as={'div'}>
+        <Menu
+            as={'div'}
+            className={classNames(classes.Dropdown, {}, [className, popupCls.popup])}
+        >
+            <Menu.Button className={popupCls.trigger} as={'div'}>
                 {trigger}
             </Menu.Button>
             <Menu.Items
-                className={classNames(classes.menu, {}, [
-                    dropdownDirectionClass[direction],
-                ])}
+                className={classNames(classes.menu, {}, [popupDirectionClass[direction]])}
             >
                 {mappedItems}
             </Menu.Items>

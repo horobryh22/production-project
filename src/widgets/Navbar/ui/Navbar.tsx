@@ -1,4 +1,4 @@
-import React, { memo, ReactElement, useCallback, useMemo, useState } from 'react';
+import React, { memo, ReactElement, useCallback, useState } from 'react';
 
 import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
@@ -6,23 +6,17 @@ import { useSelector } from 'react-redux';
 import classes from './Navbar.module.scss';
 
 import { RoutePath } from 'app/providers/router/config/routeConfig';
-import {
-    isUserAdmin,
-    isUserManager,
-    selectAuthData,
-    selectIsUserAuth,
-    userActions,
-} from 'entities/User';
+import { selectAuthData, selectIsUserAuth } from 'entities/User';
 import { LoginModal } from 'features/AuthByUserName';
-import { classNames, useAppDispatch } from 'shared/lib';
+import { AvatarDropdown } from 'features/AvatarDropdown';
+import { NotificationButton } from 'features/NotificationButton';
+import { classNames } from 'shared/lib';
 import {
     AppLink,
     AppLinkTheme,
-    Avatar,
     Button,
     ButtonTheme,
-    Dropdown,
-    DropdownItems,
+    HStack,
     Text,
     TextTheme,
 } from 'shared/ui';
@@ -34,16 +28,10 @@ interface NavbarProps {
 export const Navbar = memo(({ className }: NavbarProps): ReactElement => {
     const { t } = useTranslation();
 
-    const dispatch = useAppDispatch();
-
     const isUserAuth = useSelector(selectIsUserAuth);
     const userData = useSelector(selectAuthData);
-    const isAdmin = useSelector(isUserAdmin);
-    const isManager = useSelector(isUserManager);
 
     const [isOpen, setIsOpen] = useState(false);
-
-    const isAdminPanelVisible = isAdmin || isManager;
 
     const closeModal = useCallback(() => {
         setIsOpen(false);
@@ -53,60 +41,39 @@ export const Navbar = memo(({ className }: NavbarProps): ReactElement => {
         setIsOpen(true);
     }, []);
 
-    const onLogout = useCallback(() => {
-        dispatch(userActions.logout());
-    }, [dispatch]);
-
-    const dropdownItems: DropdownItems[] = useMemo(() => {
-        return [
-            ...(isAdminPanelVisible
-                ? [
-                      {
-                          href: RoutePath.admin,
-                          content: t('Admin panel'),
-                      },
-                  ]
-                : []),
-            {
-                href: RoutePath.profile + userData.id,
-                content: t('Profile'),
-            },
-            {
-                onClick: onLogout,
-                content: t('Logout'),
-            },
-        ];
-    }, [isAdminPanelVisible, onLogout, t, userData.id]);
-
     return (
-        <header className={classNames(classes.Navbar, {}, [String(className)])}>
+        <header className={classNames(classes.Navbar, {}, [className])}>
             <Text
                 title="UlbiTV app"
                 theme={TextTheme.INVERTED}
                 className={classes.appName}
             />
-            {isUserAuth && (
-                <AppLink to={RoutePath.article_create} theme={AppLinkTheme.PRIMARY}>
-                    {t('Create Article', { ns: 'article' })}
-                </AppLink>
-            )}
+            <HStack max justify={'between'}>
+                {isUserAuth && (
+                    <AppLink
+                        className={classes.createBtn}
+                        to={RoutePath.article_create}
+                        theme={AppLinkTheme.PRIMARY}
+                    >
+                        {t('Create Article', { ns: 'article' })}
+                    </AppLink>
+                )}
+                <HStack max gap={'16'} justify={'end'}>
+                    <NotificationButton userId={userData.id} />
+                    {isUserAuth ? (
+                        <AvatarDropdown />
+                    ) : (
+                        <Button
+                            className={classes.btn}
+                            onClick={openModal}
+                            theme={ButtonTheme.CLEAR_INVERTED}
+                        >
+                            {t('Login')}
+                        </Button>
+                    )}
+                </HStack>
+            </HStack>
             <LoginModal isOpen={isOpen} onClose={closeModal} />
-            {isUserAuth ? (
-                <Dropdown
-                    className={classes.dropdown}
-                    items={dropdownItems}
-                    trigger={<Avatar size={30} src={userData.avatar} />}
-                    direction={'bottom left'}
-                />
-            ) : (
-                <Button
-                    className={classes.btn}
-                    onClick={openModal}
-                    theme={ButtonTheme.CLEAR_INVERTED}
-                >
-                    {t('Login')}
-                </Button>
-            )}
         </header>
     );
 });

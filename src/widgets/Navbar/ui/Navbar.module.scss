@@ -5,6 +5,7 @@
   background-color: var(--inverted-bg-color);
   display: flex;
   align-items: center;
+  justify-content: space-between;
 }
 
 .appName {
@@ -12,11 +13,6 @@
   margin-left: 15px;
 }
 
-.btn,
-.dropdown {
-  margin-left: auto;
-}
-
-.mainLink {
-  margin-right: 15px;
+.createBtn {
+  width: 100%;
 }

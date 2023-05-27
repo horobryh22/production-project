@@ -1,0 +1,28 @@
+.ListBox {
+  cursor: auto;
+}
+
+.options {
+  position: absolute;
+  cursor: pointer;
+  border-radius: 12px;
+  background: var(--list-box-bg);
+  box-shadow: 4px 4px 8px var(--list-box-bg);
+  width: 200px;
+  z-index: 10;
+}
+
+.item {
+  padding: 4px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.icon {
+  max-width: 10px;
+}
+
+.withPaddingLeft {
+  padding-left: 14px;
+}

@@ -2,14 +2,16 @@ import { Fragment, memo, ReactElement, ReactNode, useMemo } from 'react';
 
 import { Listbox as HListBox } from '@headlessui/react';
 
-import { DropdownDirection } from '../../types/ui';
-import { Button, ButtonTheme } from '../Button/Button';
-import { HStack } from '../Stack/HStack/HStack';
+import { Button, ButtonTheme } from '../../../Button/Button';
+import { HStack } from '../../../Stack/HStack/HStack';
+import popupCls from '../../styles/popups.module.scss';
 
 import classes from './ListBox.module.scss';
 
 import CheckIcon from 'shared/assets/icons/check.svg';
 import { classNames } from 'shared/lib';
+import { DropdownDirection } from 'shared/types/ui';
+import { popupDirectionClass } from 'shared/ui/Popups/styles';
 
 interface ListBoxItem {
     value: string;
@@ -28,13 +30,6 @@ interface ListBoxProps {
     direction?: DropdownDirection;
 }
 
-const listBoxDirectionClass: Record<DropdownDirection, string> = {
-    'top left': classes.optionsTopLeft,
-    'top right': classes.optionsTopRight,
-    'bottom left': classes.optionsBottomLeft,
-    'bottom right': classes.optionsBottomRight,
-};
-
 export const ListBox = memo((props: ListBoxProps): ReactElement => {
     const {
         className,
@@ -47,20 +42,22 @@ export const ListBox = memo((props: ListBoxProps): ReactElement => {
         direction = 'bottom right',
     } = props;
 
+    console.log({ popup: popupDirectionClass[direction] });
+
     const mappedItems = useMemo(() => {
         return items.map(({ disabled, value, content }) => (
             <HListBox.Option key={value} value={value} as={Fragment} disabled={disabled}>
                 {({ active, selected }) => (
                     <li
                         className={classNames(classes.item, {
-                            [classes.active]: active,
+                            [popupCls.active]: active,
                         })}
                     >
                         {selected && <CheckIcon className={classes.icon} />}
                         <span
                             className={classNames('', {
                                 [classes.withPaddingLeft]: !selected,
-                                [classes.disabled]: disabled,
+                                [popupCls.disabled]: disabled,
                             })}
                         >
                             {content}
@@ -75,21 +72,21 @@ export const ListBox = memo((props: ListBoxProps): ReactElement => {
         <HStack gap={'4'}>
             {label && <span>{label + '>'}</span>}
             <HListBox
-                className={classNames(classes.ListBox, {}, [className])}
+                className={classNames(classes.ListBox, {}, [className, popupCls.popup])}
                 value={value}
                 onChange={onChange}
                 as={'div'}
                 disabled={readonly}
                 defaultValue={defaultValue}
             >
-                <HListBox.Button className={classes.button} as={'div'}>
+                <HListBox.Button className={popupCls?.trigger} as={'div'}>
                     <Button disabled={readonly} theme={ButtonTheme.OUTLINE}>
                         {value ?? defaultValue}
                     </Button>
                 </HListBox.Button>
                 <HListBox.Options
                     className={classNames(classes.options, {}, [
-                        listBoxDirectionClass[direction],
+                        popupDirectionClass[direction],
                     ])}
                 >
                     {mappedItems}
