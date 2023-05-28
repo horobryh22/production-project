@@ -6,3 +6,4 @@ export { useThrottle } from './hooks/useThrottle/useThrottle';
 export { useDebounce } from './hooks/useDebounce/useDebounce';
 export { useInfiniteScroll } from './hooks/useInfiniteScroll/useInfiniteScroll';
 export { useInitialEffect } from './hooks/useInitialEffect/useInitialEffect';
+export { useIsDesktop } from './hooks/useIsDesktop/useIsDesktop';

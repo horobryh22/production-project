@@ -1,13 +1,15 @@
-import { ReactNode } from 'react';
+import { memo, ReactNode } from 'react';
 
-import { classNames, Mods } from '../../lib/classNames/classNames';
 import { useModal } from '../../lib/hooks/useModal/useModal';
 import { Overlay } from '../Overlay/Overlay';
 import { Portal } from '../Portal/Portal';
 
-import classes from './Modal.module.scss';
+import classes from './Drawer.module.scss';
 
-interface ModalProps {
+import { classNames } from 'shared/lib';
+import { Mods } from 'shared/lib/classNames/classNames';
+
+interface DrawerProps {
     className?: string;
     children: ReactNode;
     isOpen?: boolean;
@@ -15,10 +17,10 @@ interface ModalProps {
     testMode?: boolean;
 }
 
+const DRAWER_ROOT = document.getElementById('drawer-root') || undefined;
 const ANIMATION_DELAY = 300;
-const MODAL_ROOT = document.getElementById('modal-root') || undefined;
 
-export const Modal = (props: ModalProps) => {
+export const Drawer = memo((props: DrawerProps) => {
     const { className, children, isOpen, onClose, testMode } = props;
 
     const { isClosing, closeHandler } = useModal({
@@ -32,8 +34,8 @@ export const Modal = (props: ModalProps) => {
         [classes.isClosing]: isClosing,
     };
 
-    const modalElement = (
-        <div className={classNames(classes.Modal, mods, [className])}>
+    const drawerElement = (
+        <div className={classNames(classes.Drawer, mods, [className])}>
             <Overlay onClick={closeHandler} />
             <div className={classes.content}>{children}</div>
         </div>
@@ -41,7 +43,7 @@ export const Modal = (props: ModalProps) => {
 
     if (!isOpen) return null;
 
-    if (testMode) return modalElement;
+    if (testMode) return drawerElement;
 
-    return <Portal container={MODAL_ROOT}>{modalElement}</Portal>;
-};
+    return <Portal container={DRAWER_ROOT}>{drawerElement}</Portal>;
+});

@@ -1,11 +1,14 @@
-import React, { memo, ReactElement } from 'react';
+import React, { memo, ReactElement, useCallback, useState } from 'react';
+
+import { useSelector } from 'react-redux';
 
 import classes from './NotificationButton.module.scss';
 
 import { NotificationList } from 'entities/Notification';
+import { selectIsUserAuth } from 'entities/User';
 import notificationIcon from 'shared/assets/icons/notification.svg';
-import { classNames } from 'shared/lib';
-import { Button, ButtonTheme, Icon, Popover } from 'shared/ui';
+import { classNames, useIsDesktop } from 'shared/lib';
+import { Button, ButtonTheme, Drawer, Icon, Popover } from 'shared/ui';
 
 interface NotificationButtonProps {
     className?: string;
@@ -14,19 +17,49 @@ interface NotificationButtonProps {
 
 export const NotificationButton = memo((props: NotificationButtonProps): ReactElement => {
     const { className, userId } = props;
+    const isDesktop = useIsDesktop();
 
-    const triggerForPopover: JSX.Element = (
-        <Button theme={ButtonTheme.CLEAR}>
+    const isAuth = useSelector(selectIsUserAuth);
+
+    const [isOpen, setIsOpen] = useState(false);
+
+    const onDrawerClose = useCallback(() => {
+        setIsOpen(false);
+    }, []);
+
+    const onDrawerOpen = useCallback(() => {
+        setIsOpen(true);
+    }, []);
+
+    const triggerForPopover = isAuth ? (
+        <Button theme={ButtonTheme.CLEAR} onClick={onDrawerOpen}>
             <Icon Svg={notificationIcon} theme={'inverted'} />
         </Button>
-    );
+    ) : null;
 
-    return (
-        <Popover
-            trigger={triggerForPopover}
-            className={classNames(classes.NotificationButton, {}, [className])}
-        >
-            <NotificationList className={classes.notifications} userId={userId} />
-        </Popover>
-    );
+    /*TODO по хорошему здесь в дальнейшем применить библиотеку loadable,
+       которая позволяет не загружать компонент, если он отрисовывается по условию*/
+    const renderContent = () => {
+        if (isDesktop) {
+            return (
+                <Popover
+                    trigger={triggerForPopover}
+                    className={classNames(classes.NotificationButton, {}, [className])}
+                >
+                    <NotificationList className={classes.notifications} userId={userId} />
+                </Popover>
+            );
+        }
+
+        return (
+            <>
+                {triggerForPopover}
+                <Drawer className={className} isOpen={isOpen} onClose={onDrawerClose}>
+                    <NotificationList className={classes.notifications} userId={userId} />
+                </Drawer>
+            </>
+        );
+    };
+
+    return renderContent();
 });

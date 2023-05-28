@@ -16,6 +16,7 @@ export { HStack, VStack } from './Stack';
 export { ListBox } from './Popups/ui/ListBox/ListBox';
 export { Dropdown } from './Popups/ui/Dropdown/Dropdown';
 export { Popover } from './Popups/ui/Popover/Popover';
+export { Drawer } from './Drawer/Drawer';
 
 // types
 export type { DropdownItems } from './Popups/ui/Dropdown/Dropdown';
