@@ -1,3 +1,2 @@
-import React from 'react';
-
-export const ProfilePageAsync = React.lazy(() => import('./ProfilePage'));
+import loadable from '@loadable/component';
+export const ProfilePageAsync = loadable(() => import('./ProfilePage'));

@@ -1,3 +1,3 @@
-import React from 'react';
+import loadable from '@loadable/component';
 
-export const AdminPageAsync = React.lazy(() => import('./AdminPage'));
+export const AdminPageAsync = loadable(() => import('./AdminPage'));

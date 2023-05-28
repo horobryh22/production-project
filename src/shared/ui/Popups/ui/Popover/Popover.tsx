@@ -10,7 +10,7 @@ import classes from './Popover.module.scss';
 import { classNames } from 'shared/lib';
 import { DropdownDirection } from 'shared/types/ui';
 
-interface PopoverProps {
+export interface PopoverProps {
     className?: string;
     direction?: DropdownDirection;
     trigger: ReactNode;
@@ -24,7 +24,9 @@ export const Popover = memo((props: PopoverProps): ReactElement => {
         <HPopover
             className={classNames(classes.Popover, {}, [className, popupCls.popup])}
         >
-            <HPopover.Button className={popupCls.trigger}>{trigger}</HPopover.Button>
+            <HPopover.Button as={'div'} className={popupCls.trigger}>
+                {trigger}
+            </HPopover.Button>
             <HPopover.Panel
                 className={classNames(classes.panel, {}, [
                     popupDirectionClass[direction],

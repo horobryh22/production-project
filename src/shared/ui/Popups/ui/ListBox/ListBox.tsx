@@ -42,8 +42,6 @@ export const ListBox = memo((props: ListBoxProps): ReactElement => {
         direction = 'bottom right',
     } = props;
 
-    console.log({ popup: popupDirectionClass[direction] });
-
     const mappedItems = useMemo(() => {
         return items.map(({ disabled, value, content }) => (
             <HListBox.Option key={value} value={value} as={Fragment} disabled={disabled}>

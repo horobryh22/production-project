@@ -1,3 +1,3 @@
-import React from 'react';
+import loadable from '@loadable/component';
 
-export const ArticleEditPageAsync = React.lazy(() => import('./ArticleEditPage'));
+export const ArticleEditPageAsync = loadable(() => import('./ArticleEditPage'));

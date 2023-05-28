@@ -1,5 +1,5 @@
-import { FC, lazy } from 'react';
+import loadable from '@loadable/component';
 
 import { CommentFormProps } from './CommentForm';
 
-export const CommentFormAsync = lazy<FC<CommentFormProps>>(() => import('./CommentForm'));
+export const CommentFormAsync = loadable<CommentFormProps>(() => import('./CommentForm'));

@@ -9,7 +9,7 @@ import classes from './Drawer.module.scss';
 import { classNames } from 'shared/lib';
 import { Mods } from 'shared/lib/classNames/classNames';
 
-interface DrawerProps {
+export interface DrawerProps {
     className?: string;
     children: ReactNode;
     isOpen?: boolean;
