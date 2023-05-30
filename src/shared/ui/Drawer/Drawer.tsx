@@ -1,6 +1,5 @@
-import { memo, ReactNode } from 'react';
+import { memo, ReactNode, useCallback, useEffect } from 'react';
 
-import { useModal } from '../../lib/hooks/useModal/useModal';
 import { Overlay } from '../Overlay/Overlay';
 import { Portal } from '../Portal/Portal';
 
@@ -8,6 +7,7 @@ import classes from './Drawer.module.scss';
 
 import { classNames } from 'shared/lib';
 import { Mods } from 'shared/lib/classNames/classNames';
+import { useAnimationModules } from 'shared/lib/providers';
 
 export interface DrawerProps {
     className?: string;
@@ -18,26 +18,76 @@ export interface DrawerProps {
 }
 
 const DRAWER_ROOT = document.getElementById('drawer-root') || undefined;
-const ANIMATION_DELAY = 300;
+const HEIGHT = window.innerHeight - 100;
 
-export const Drawer = memo((props: DrawerProps) => {
+const DrawerContent = memo((props: DrawerProps) => {
     const { className, children, isOpen, onClose, testMode } = props;
+    const { Spring, Gesture } = useAnimationModules();
 
-    const { isClosing, closeHandler } = useModal({
-        animationDelay: ANIMATION_DELAY,
-        isOpen: isOpen,
-        onClose,
-    });
+    const { useSpring, a, config } = Spring!;
+    const { useDrag } = Gesture!;
+
+    const [{ y }, api] = useSpring(() => ({ y: HEIGHT }));
+
+    const onOpenDrawer = useCallback(() => {
+        api.start({
+            y: 0,
+            immediate: false,
+        });
+    }, [api]);
+    const close = (velocity = 0): void => {
+        api.start({
+            y: HEIGHT,
+            immediate: false,
+            config: { ...config.stiff, velocity },
+            onResolve: onClose,
+        });
+    };
+
+    const bind = useDrag(
+        ({ last, velocity: [, vy], direction: [, dy], movement: [my], cancel }) => {
+            if (my < -70) cancel();
+
+            if (last) {
+                if (my > HEIGHT * 0.5 || (vy > 0.5 && dy > 0)) {
+                    close();
+                } else {
+                    onOpenDrawer();
+                }
+            } else {
+                api.start({ y: my, immediate: true });
+            }
+        },
+        {
+            from: () => [0, y.get()],
+            filterTaps: true,
+            bounds: { top: 0 },
+            rubberband: true,
+        },
+    );
+
+    useEffect(() => {
+        if (isOpen) {
+            onOpenDrawer();
+        }
+    }, [api, isOpen, onOpenDrawer]);
 
     const mods: Mods = {
         [classes.opened]: isOpen,
-        [classes.isClosing]: isClosing,
     };
+
+    const display = y.to(py => (py < HEIGHT ? 'block' : 'none'));
 
     const drawerElement = (
         <div className={classNames(classes.Drawer, mods, [className])}>
-            <Overlay onClick={closeHandler} />
-            <div className={classes.content}>{children}</div>
+            <Overlay onClick={close} />
+            <a.div
+                className={classes.sheet}
+                {...bind()}
+                style={{ display, bottom: `calc(-100vh + ${HEIGHT - 100}px)`, y }}
+            >
+                {children}
+            </a.div>
         </div>
     );
 
@@ -46,4 +96,16 @@ export const Drawer = memo((props: DrawerProps) => {
     if (testMode) return drawerElement;
 
     return <Portal container={DRAWER_ROOT}>{drawerElement}</Portal>;
+});
+
+export const Drawer = memo(({ children, ...props }: DrawerProps) => {
+    const { isLoaded } = useAnimationModules();
+
+    if (!isLoaded) {
+        // здесь можно также отрисовывать скелетон к примеру,
+        // или как-то обрабатывать ошибку, если она есть и если ее передавать
+        return null;
+    }
+
+    return <DrawerContent {...props}>{children}</DrawerContent>;
 });

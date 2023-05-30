@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useLayoutEffect, useState } from 'react';
 
 // значение захардкожено, так как данное приложение адаптировано только под Desktop и Mobile версии
 const MEDIA_QUERY: string = '(min-width: 768px)';
@@ -8,7 +8,7 @@ export const useIsDesktop = (): boolean => {
 
     const [isDesktop, setIsDesktop] = useState(defineDevice());
 
-    useEffect(() => {
+    useLayoutEffect(() => {
         const handleResize = (): void => {
             setIsDesktop(defineDevice());
         };
