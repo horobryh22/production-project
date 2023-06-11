@@ -11,17 +11,17 @@ import {
 
 import classes from './ViewSwitcher.module.scss';
 
-import { ArticleView } from 'entities/Article';
-import ListView from 'shared/assets/icons/list.svg';
-import TileView from 'shared/assets/icons/tile.svg';
+import { ArticleView } from '@/entities/Article';
+import ListView from '@/shared/assets/icons/list.svg';
+import TileView from '@/shared/assets/icons/tile.svg';
 import {
     classNames,
     useAppDispatch,
     useDynamicModuleLoader,
     useInitialEffect,
-} from 'shared/lib';
-import { ReducersList } from 'shared/lib/hooks/useDynamicModuleLoader/useDynamicModuleLoader';
-import { Button, ButtonTheme, HStack, Icon } from 'shared/ui';
+} from '@/shared/lib';
+import { ReducersList } from '@/shared/lib/hooks/useDynamicModuleLoader/useDynamicModuleLoader';
+import { Button, ButtonTheme, HStack, Icon } from '@/shared/ui';
 
 interface ViewSwitcherProps {
     className?: string;

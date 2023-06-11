@@ -2,7 +2,7 @@ import { ReactElement } from 'react';
 
 import classes from './Loader.module.scss';
 
-import { classNames } from 'shared/lib';
+import { classNames } from '@/shared/lib';
 
 interface LoaderProps {
     className?: string;

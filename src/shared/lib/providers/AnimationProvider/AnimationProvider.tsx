@@ -11,7 +11,7 @@ import {
 type SpringType = typeof import('@react-spring/web');
 type GestureType = typeof import('@use-gesture/react');
 
-interface AnimationContextPayload {
+export interface AnimationContextPayload {
     Spring?: SpringType;
     Gesture?: GestureType;
     isLoaded?: boolean;

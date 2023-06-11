@@ -2,8 +2,8 @@ import type { ComponentMeta, ComponentStory } from '@storybook/react';
 
 import { AvatarDropdown } from './AvatarDropdown';
 
-import { UserRole } from 'entities/User';
-import { StoreDecorator } from 'shared/config/storybook/StoreDecorator';
+import { UserRole } from '@/entities/User';
+import { StoreDecorator } from '@/shared/config/storybook/StoreDecorator';
 
 export default {
     title: 'features/AvatarDropdown',

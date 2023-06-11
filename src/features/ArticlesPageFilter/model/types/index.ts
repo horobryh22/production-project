@@ -1,5 +1,5 @@
-import { ArticleSortType, ArticleType } from 'entities/Article';
-import { SortOrder } from 'shared/types';
+import { ArticleSortType, ArticleType } from '@/entities/Article';
+import { SortOrder } from '@/shared/types';
 
 export interface ArticlesPageURLParams {
     search: string;

@@ -1,6 +1,6 @@
 import { selectArticleCommentsError } from './selectArticleCommentsError';
 
-import { StateSchema } from 'app/providers/StoreProvider';
+import { StateSchema } from '@/app/providers/StoreProvider';
 
 describe('selectArticleDetailsCommentsError', () => {
     test('should return error', () => {

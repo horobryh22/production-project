@@ -2,7 +2,7 @@ import { memo, ReactElement } from 'react';
 
 import classes from './Overlay.module.scss';
 
-import { classNames } from 'shared/lib';
+import { classNames } from '@/shared/lib';
 
 interface OverlayProps {
     className?: string;

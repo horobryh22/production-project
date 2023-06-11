@@ -2,7 +2,7 @@ import type { ComponentMeta, ComponentStory } from '@storybook/react';
 
 import { Dropdown } from './Dropdown';
 
-import { Button } from 'shared/ui';
+import { Button } from '@/shared/ui';
 
 export default {
     title: 'shared/Dropdown',

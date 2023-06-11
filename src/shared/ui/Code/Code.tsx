@@ -4,8 +4,8 @@ import { Button, ButtonTheme } from '../Button/Button';
 
 import classes from './Code.module.scss';
 
-import CopyIcon from 'shared/assets/icons/copy.svg';
-import { classNames } from 'shared/lib';
+import CopyIcon from '@/shared/assets/icons/copy.svg';
+import { classNames } from '@/shared/lib';
 
 interface CodeProps {
     className?: string;

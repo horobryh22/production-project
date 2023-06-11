@@ -3,7 +3,7 @@ import { fetchCommentsByArticleId } from '../services/fetchCommentsByArticleId/f
 import { articleCommentsReducer } from '../slice/articleCommentsSlice';
 import { ArticleCommentsSchema } from '../types';
 
-import { Comment } from 'entities/Comment';
+import { Comment } from '@/entities/Comment';
 
 describe('articleCommentsSlice.test', () => {
     let state: ArticleCommentsSchema;

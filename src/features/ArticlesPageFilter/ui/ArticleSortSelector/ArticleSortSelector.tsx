@@ -4,11 +4,11 @@ import { useTranslation } from 'react-i18next';
 
 import classes from './ArticleSortSelector.module.scss';
 
-import { ArticleSortType } from 'entities/Article';
-import { classNames } from 'shared/lib';
-import { SortOrder } from 'shared/types';
-import { Select } from 'shared/ui';
-import { SelectOptions } from 'shared/ui/Select/Select';
+import { ArticleSortType } from '@/entities/Article';
+import { classNames } from '@/shared/lib';
+import { SortOrder } from '@/shared/types';
+import { Select } from '@/shared/ui';
+import { SelectOptions } from '@/shared/ui/Select/Select';
 
 interface ArticleSortSelectorProps {
     className?: string;

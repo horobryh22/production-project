@@ -7,9 +7,9 @@ import { SidebarItemType } from '../../model/types';
 
 import classes from './SidebarItem.module.scss';
 
-import { selectIsUserAuth } from 'entities/User';
-import { classNames } from 'shared/lib';
-import { AppLink, AppLinkTheme } from 'shared/ui';
+import { selectIsUserAuth } from '@/entities/User';
+import { classNames } from '@/shared/lib';
+import { AppLink, AppLinkTheme } from '@/shared/ui';
 
 interface SidebarItemProps {
     item: SidebarItemType;

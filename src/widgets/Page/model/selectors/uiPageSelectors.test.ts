@@ -2,7 +2,7 @@ import type { DeepPartial } from 'redux';
 
 import { selectScrollPositionByPath, selectUIPageScroll } from './uiPageSelectors';
 
-import { StateSchema } from 'app/providers/StoreProvider';
+import { StateSchema } from '@/app/providers/StoreProvider';
 
 describe('uiPageSelectors.test', () => {
     let state: DeepPartial<StateSchema>;

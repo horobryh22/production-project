@@ -2,7 +2,7 @@ import type { DeepPartial } from 'redux';
 
 import { getSidebarItems } from './getSidebarItems';
 
-import { StateSchema } from 'app/providers/StoreProvider';
+import { StateSchema } from '@/app/providers/StoreProvider';
 
 describe('getSidebarItems.test', () => {
     test('if user auth', () => {

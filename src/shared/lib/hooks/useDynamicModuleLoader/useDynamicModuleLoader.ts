@@ -5,7 +5,7 @@ import { useStore } from 'react-redux';
 
 import { useAppDispatch } from '../useAppDispatch/useAppDispatch';
 
-import { StateSchema, StateSchemaKey, StoreSchema } from 'app/providers/StoreProvider';
+import { StateSchema, StateSchemaKey, StoreSchema } from '@/app/providers/StoreProvider';
 
 export type ReducersList = {
     [reducerKey in StateSchemaKey]?: Reducer<NonNullable<StateSchema[reducerKey]>>;

@@ -1,6 +1,6 @@
 import { selectCommentText } from './selectCommentText';
 
-import { StateSchema } from 'app/providers/StoreProvider';
+import { StateSchema } from '@/app/providers/StoreProvider';
 
 describe('selectCommentText', () => {
     test('should return text', () => {

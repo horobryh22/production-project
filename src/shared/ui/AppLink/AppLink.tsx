@@ -5,7 +5,7 @@ import { NavLink } from 'react-router-dom';
 
 import classes from './AppLink.module.scss';
 
-import { classNames } from 'shared/lib';
+import { classNames } from '@/shared/lib';
 
 export enum AppLinkTheme {
     PRIMARY = 'primary',

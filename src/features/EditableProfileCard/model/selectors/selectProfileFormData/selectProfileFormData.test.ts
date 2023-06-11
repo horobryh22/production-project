@@ -1,8 +1,8 @@
 import { selectProfileFormData } from './selectProfileFormData';
 
-import { StateSchema } from 'app/providers/StoreProvider';
-import { Country } from 'entities/Country';
-import { Currency } from 'entities/Currency';
+import { StateSchema } from '@/app/providers/StoreProvider';
+import { Country } from '@/entities/Country';
+import { Currency } from '@/entities/Currency';
 
 describe('selectProfileFormData', () => {
     test('should return form data', () => {

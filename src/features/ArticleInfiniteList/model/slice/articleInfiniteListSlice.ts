@@ -4,8 +4,8 @@ import { createEntityAdapter, createSlice } from '@reduxjs/toolkit';
 import { fetchArticlesList } from '../services/fetchArticlesList/fetchArticlesList';
 import { ArticleInfiniteListSchema } from '../types';
 
-import { StateSchema } from 'app/providers/StoreProvider';
-import { Article } from 'entities/Article';
+import { StateSchema } from '@/app/providers/StoreProvider';
+import { Article } from '@/entities/Article';
 
 const articleAdapter = createEntityAdapter<Article>({
     selectId: article => article?.id,

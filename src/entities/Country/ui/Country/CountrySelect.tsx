@@ -6,10 +6,10 @@ import { Country } from '../../model/consts/consts';
 
 import classes from './CountrySelect.module.scss';
 
-import { classNames } from 'shared/lib';
-import { Mods } from 'shared/lib/classNames/classNames';
-import { ListBox } from 'shared/ui';
-import { SelectOptions } from 'shared/ui/Select/Select';
+import { classNames } from '@/shared/lib';
+import { Mods } from '@/shared/lib/classNames/classNames';
+import { ListBox } from '@/shared/ui';
+import { SelectOptions } from '@/shared/ui/Select/Select';
 
 const options: SelectOptions<Country>[] = [
     { content: Country.USA, value: Country.USA },

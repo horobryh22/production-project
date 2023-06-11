@@ -9,9 +9,9 @@ import { SidebarItem } from '../SidebarItem/SidebarItem';
 
 import classes from './Sidebar.module.scss';
 
-import { classNames } from 'shared/lib';
-import { Button, ButtonTheme, HStack, VStack } from 'shared/ui';
-import { ButtonSize } from 'shared/ui/Button/Button';
+import { classNames } from '@/shared/lib';
+import { Button, ButtonTheme, HStack, VStack } from '@/shared/ui';
+import { ButtonSize } from '@/shared/ui/Button/Button';
 
 interface SidebarProps {
     className?: string;

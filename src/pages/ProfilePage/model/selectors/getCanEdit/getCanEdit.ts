@@ -1,7 +1,7 @@
 import { createSelector } from 'reselect';
 
-import { selectAuthData } from 'entities/User';
-import { selectProfileFormData } from 'features/EditableProfileCard';
+import { selectAuthData } from '@/entities/User';
+import { selectProfileFormData } from '@/features/EditableProfileCard';
 
 export const getCanEdit = createSelector(
     selectAuthData,

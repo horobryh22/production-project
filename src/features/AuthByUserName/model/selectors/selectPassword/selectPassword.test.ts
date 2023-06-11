@@ -1,6 +1,6 @@
 import { selectPassword } from './selectPassword';
 
-import { StateSchema } from 'app/providers/StoreProvider';
+import { StateSchema } from '@/app/providers/StoreProvider';
 
 describe('select password', () => {
     test('should return password', () => {

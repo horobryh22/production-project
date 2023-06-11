@@ -1,7 +1,7 @@
 import { fetchArticleRecommendations } from './fetchArticleRecommendations';
 
-import { Article, ArticleType } from 'entities/Article';
-import { TestAsyncThunk } from 'shared/lib/tests/testAsyncThunk';
+import { Article, ArticleType } from '@/entities/Article';
+import { TestAsyncThunk } from '@/shared/lib/tests/testAsyncThunk';
 
 const articles: Article[] = [
     {

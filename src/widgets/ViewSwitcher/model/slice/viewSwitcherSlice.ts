@@ -3,8 +3,8 @@ import { createSlice } from '@reduxjs/toolkit';
 
 import { ViewSwitcherSchema } from '../types';
 
-import { ArticleView } from 'entities/Article';
-import { ARTICLES_VIEW_LOCAL_STORAGE_KEY } from 'shared/const/localStorage';
+import { ArticleView } from '@/entities/Article';
+import { ARTICLES_VIEW_LOCAL_STORAGE_KEY } from '@/shared/const/localStorage';
 
 const initialState: ViewSwitcherSchema = {
     view: ArticleView.TILE,

@@ -5,9 +5,10 @@ import { Portal } from '../Portal/Portal';
 
 import classes from './Drawer.module.scss';
 
-import { classNames } from 'shared/lib';
-import { Mods } from 'shared/lib/classNames/classNames';
-import { useAnimationModules } from 'shared/lib/providers';
+import { useTheme } from '@/app/providers/ThemeProvider';
+import { classNames } from '@/shared/lib';
+import { Mods } from '@/shared/lib/classNames/classNames';
+import { useAnimationModules } from '@/shared/lib/providers';
 
 export interface DrawerProps {
     className?: string;
@@ -26,6 +27,7 @@ const DrawerContent = memo((props: DrawerProps) => {
 
     const { useSpring, a, config } = Spring!;
     const { useDrag } = Gesture!;
+    const { theme } = useTheme();
 
     const [{ y }, api] = useSpring(() => ({ y: HEIGHT }));
 
@@ -35,6 +37,7 @@ const DrawerContent = memo((props: DrawerProps) => {
             immediate: false,
         });
     }, [api]);
+
     const close = (velocity = 0): void => {
         api.start({
             y: HEIGHT,
@@ -45,7 +48,7 @@ const DrawerContent = memo((props: DrawerProps) => {
     };
 
     const bind = useDrag(
-        ({ last, velocity: [, vy], direction: [, dy], movement: [my], cancel }) => {
+        ({ last, velocity: [, vy], direction: [, dy], movement: [, my], cancel }) => {
             if (my < -70) cancel();
 
             if (last) {
@@ -79,12 +82,12 @@ const DrawerContent = memo((props: DrawerProps) => {
     const display = y.to(py => (py < HEIGHT ? 'block' : 'none'));
 
     const drawerElement = (
-        <div className={classNames(classes.Drawer, mods, [className])}>
+        <div className={classNames(classes.Drawer, mods, [className, theme])}>
             <Overlay onClick={close} />
             <a.div
                 className={classes.sheet}
-                {...bind()}
                 style={{ display, bottom: `calc(-100vh + ${HEIGHT - 100}px)`, y }}
+                {...bind()}
             >
                 {children}
             </a.div>

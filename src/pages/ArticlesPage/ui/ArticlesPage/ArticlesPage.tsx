@@ -4,11 +4,14 @@ import { useSelector } from 'react-redux';
 
 import classes from './ArticlesPage.module.scss';
 
-import { ArticleInfiniteList, fetchNextArticlesPage } from 'features/ArticleInfiniteList';
-import { ArticlesFilterBlock } from 'features/ArticlesPageFilter';
-import { classNames, useAppDispatch } from 'shared/lib';
-import { Page } from 'widgets/Page';
-import { selectViewSwitcherView, ViewSwitcher } from 'widgets/ViewSwitcher';
+import {
+    ArticleInfiniteList,
+    fetchNextArticlesPage,
+} from '@/features/ArticleInfiniteList';
+import { ArticlesFilterBlock } from '@/features/ArticlesPageFilter';
+import { classNames, useAppDispatch } from '@/shared/lib';
+import { Page } from '@/widgets/Page';
+import { selectViewSwitcherView, ViewSwitcher } from '@/widgets/ViewSwitcher';
 
 interface ArticlePageProps {
     className?: string;

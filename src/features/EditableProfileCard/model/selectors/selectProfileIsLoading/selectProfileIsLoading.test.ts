@@ -1,6 +1,6 @@
 import { selectProfileIsLoading } from './selectProfileIsLoading';
 
-import { StateSchema } from 'app/providers/StoreProvider';
+import { StateSchema } from '@/app/providers/StoreProvider';
 
 describe('selectProfileIsLoading', () => {
     test('should return is Loading', () => {

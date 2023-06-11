@@ -3,7 +3,7 @@ import {
     selectArticleRecommendationsIsLoading,
 } from './articleRecommendationsSelectors';
 
-import { StateSchema } from 'app/providers/StoreProvider';
+import { StateSchema } from '@/app/providers/StoreProvider';
 
 describe('articleRecommendationsSelectors', () => {
     test('should return error', () => {

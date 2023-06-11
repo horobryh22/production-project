@@ -6,7 +6,7 @@ import {
     articleInfiniteListReducer,
 } from './articleInfiniteListSlice';
 
-import { Article, ArticleBlockType, ArticleType } from 'entities/Article';
+import { Article, ArticleBlockType, ArticleType } from '@/entities/Article';
 
 const article: Article = {
     id: '7',

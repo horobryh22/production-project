@@ -6,8 +6,8 @@ import { ArticleTextBlock } from '../../model/types';
 
 import classes from './ArticleTextBlockComponent.module.scss';
 
-import { classNames } from 'shared/lib';
-import { Text } from 'shared/ui';
+import { classNames } from '@/shared/lib';
+import { Text } from '@/shared/ui';
 
 interface ArticleTextBlockComponentProps {
     className?: string;

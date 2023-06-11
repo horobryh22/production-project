@@ -2,7 +2,7 @@ import { fireEvent, screen } from '@testing-library/react';
 
 import { Sidebar } from './Sidebar';
 
-import { renderComponent } from 'shared/lib/tests/renderComponent';
+import { renderComponent } from '@/shared/lib/tests/renderComponent';
 
 describe('Sidebar', () => {
     test('exists in the document', () => {

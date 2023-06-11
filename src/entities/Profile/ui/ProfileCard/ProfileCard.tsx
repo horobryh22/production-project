@@ -6,12 +6,12 @@ import { Profile } from '../../model/types';
 
 import classes from './ProfileCard.module.scss';
 
-import { CountrySelect, Country } from 'entities/Country';
-import { CurrencySelect, Currency } from 'entities/Currency';
-import { classNames } from 'shared/lib';
-import { Mods } from 'shared/lib/classNames/classNames';
-import { Avatar, HStack, Input, Loader, VStack } from 'shared/ui';
-import { Text, TextAlign, TextTheme } from 'shared/ui/Text/Text';
+import { CountrySelect, Country } from '@/entities/Country';
+import { CurrencySelect, Currency } from '@/entities/Currency';
+import { classNames } from '@/shared/lib';
+import { Mods } from '@/shared/lib/classNames/classNames';
+import { Avatar, HStack, Input, Loader, VStack } from '@/shared/ui';
+import { Text, TextAlign, TextTheme } from '@/shared/ui/Text/Text';
 
 interface ProfileCardProps {
     className?: string;

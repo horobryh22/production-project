@@ -4,8 +4,8 @@ import { ArticleView } from '../../model/consts/consts';
 
 import classes from './ArticleItem.module.scss';
 
-import { classNames } from 'shared/lib';
-import { Card, Skeleton } from 'shared/ui';
+import { classNames } from '@/shared/lib';
+import { Card, Skeleton } from '@/shared/ui';
 
 interface ArticleItemSkeletonProps {
     className?: string;

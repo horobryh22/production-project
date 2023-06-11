@@ -4,8 +4,8 @@ import { ArticleCodeBlock } from '../../model/types';
 
 import classes from './ArticleCodeBlockComponent.module.scss';
 
-import { classNames } from 'shared/lib';
-import { Code } from 'shared/ui';
+import { classNames } from '@/shared/lib';
+import { Code } from '@/shared/ui';
 
 interface ArticleCodeBlockComponentProps {
     className?: string;

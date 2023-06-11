@@ -4,12 +4,12 @@ import { useSelector } from 'react-redux';
 
 import classes from './NotificationButton.module.scss';
 
-import { NotificationList } from 'entities/Notification';
-import { selectIsUserAuth } from 'entities/User';
-import notificationIcon from 'shared/assets/icons/notification.svg';
-import { classNames, useIsDesktop } from 'shared/lib';
-import { AnimationProvider } from 'shared/lib/providers';
-import { Button, ButtonTheme, Drawer, Icon, Popover } from 'shared/ui';
+import { NotificationList } from '@/entities/Notification';
+import { selectIsUserAuth } from '@/entities/User';
+import notificationIcon from '@/shared/assets/icons/notification.svg';
+import { classNames, useIsDesktop } from '@/shared/lib';
+import { AnimationProvider } from '@/shared/lib/providers';
+import { Button, ButtonTheme, Drawer, Icon, Popover } from '@/shared/ui';
 
 interface NotificationButtonProps {
     className?: string;

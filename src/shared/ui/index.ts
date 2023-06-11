@@ -21,4 +21,4 @@ export { Drawer } from './Drawer/Drawer';
 // types
 export type { DropdownItems } from './Popups/ui/Dropdown/Dropdown';
 export type { PopoverProps } from './Popups/ui/Popover/Popover';
-export type { DrawerProps } from './Drawer/Drawer';
+// export type { DrawerProps } from './Drawer/Drawer';

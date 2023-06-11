@@ -1,6 +1,6 @@
 import { createSelector } from 'reselect';
 
-import { StateSchema } from 'app/providers/StoreProvider';
+import { StateSchema } from '@/app/providers/StoreProvider';
 
 export const selectUIPageScroll = (state: StateSchema): Record<string, number> =>
     state.uiPage.scroll;

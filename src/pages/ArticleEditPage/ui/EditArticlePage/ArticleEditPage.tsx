@@ -5,8 +5,8 @@ import { useParams } from 'react-router-dom';
 
 import classes from './ArticleEditPage.module.scss';
 
-import { classNames } from 'shared/lib';
-import { Page } from 'widgets/Page';
+import { classNames } from '@/shared/lib';
+import { Page } from '@/widgets/Page';
 
 interface ArticleEditPageProps {
     className?: string;

@@ -11,15 +11,15 @@ import {
     commentsSelectors,
 } from '../../model/slice/articleCommentsSlice';
 
-import { CommentFormAsync, CommentsList } from 'entities/Comment';
+import { CommentFormAsync, CommentsList } from '@/entities/Comment';
 import {
     classNames,
     useAppDispatch,
     useDynamicModuleLoader,
     useInitialEffect,
-} from 'shared/lib';
-import { ReducersList } from 'shared/lib/hooks/useDynamicModuleLoader/useDynamicModuleLoader';
-import { Text, TextSize, VStack } from 'shared/ui';
+} from '@/shared/lib';
+import { ReducersList } from '@/shared/lib/hooks/useDynamicModuleLoader/useDynamicModuleLoader';
+import { Text, TextSize, VStack } from '@/shared/ui';
 
 interface ArticleCommentsProps {
     className?: string;

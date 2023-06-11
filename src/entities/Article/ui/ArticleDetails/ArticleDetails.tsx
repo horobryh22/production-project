@@ -18,17 +18,17 @@ import { ArticleTextBlockComponent } from '../ArticleTextBlockComponent/ArticleT
 
 import classes from './ArticleDetails.module.scss';
 
-import DataIcon from 'shared/assets/icons/date.svg';
-import ViewIcon from 'shared/assets/icons/view.svg';
+import DataIcon from '@/shared/assets/icons/date.svg';
+import ViewIcon from '@/shared/assets/icons/view.svg';
 import {
     useInitialEffect,
     classNames,
     useAppDispatch,
     useDynamicModuleLoader,
-} from 'shared/lib';
-import { ReducersList } from 'shared/lib/hooks/useDynamicModuleLoader/useDynamicModuleLoader';
-import { Avatar, Icon, Skeleton, Text } from 'shared/ui';
-import { TextAlign, TextSize, TextTheme } from 'shared/ui/Text/Text';
+} from '@/shared/lib';
+import { ReducersList } from '@/shared/lib/hooks/useDynamicModuleLoader/useDynamicModuleLoader';
+import { Avatar, Icon, Skeleton, Text } from '@/shared/ui';
+import { TextAlign, TextSize, TextTheme } from '@/shared/ui/Text/Text';
 
 const reducers: ReducersList = {
     articleDetails: articleDetailsReducer,

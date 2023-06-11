@@ -10,8 +10,8 @@ import { ArticleItemSkeleton } from '../ArticleItem/ArticleItemSkeleton';
 
 import classes from './ArticlesList.module.scss';
 
-import { classNames } from 'shared/lib';
-import { Text, TextSize } from 'shared/ui';
+import { classNames } from '@/shared/lib';
+import { Text, TextSize } from '@/shared/ui';
 
 interface ArticlesListProps {
     className?: string;

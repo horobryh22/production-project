@@ -1,8 +1,8 @@
 import { fetchProfileData } from './fetchProfileData';
 
-import { Country } from 'entities/Country';
-import { Currency } from 'entities/Currency';
-import { TestAsyncThunk } from 'shared/lib/tests/testAsyncThunk';
+import { Country } from '@/entities/Country';
+import { Currency } from '@/entities/Currency';
+import { TestAsyncThunk } from '@/shared/lib/tests/testAsyncThunk';
 
 const data = {
     age: 28,

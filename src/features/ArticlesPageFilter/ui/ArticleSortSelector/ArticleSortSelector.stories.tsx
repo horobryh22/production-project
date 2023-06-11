@@ -3,8 +3,8 @@ import type { ComponentMeta, ComponentStory } from '@storybook/react';
 
 import { ArticleSortSelector } from './ArticleSortSelector';
 
-import { ArticleSortType } from 'entities/Article';
-import { SortOrder } from 'shared/types';
+import { ArticleSortType } from '@/entities/Article';
+import { SortOrder } from '@/shared/types';
 
 export default {
     title: 'features/ArticlePageFilter/ArticleSortSelector',

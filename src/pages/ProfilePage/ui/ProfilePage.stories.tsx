@@ -2,10 +2,10 @@ import type { ComponentMeta, ComponentStory } from '@storybook/react';
 
 import ProfilePage from './ProfilePage';
 
-import { Country } from 'entities/Country';
-import { Currency } from 'entities/Currency';
-import { ValidateProfileError } from 'features/EditableProfileCard';
-import { StoreDecorator } from 'shared/config/storybook/StoreDecorator';
+import { Country } from '@/entities/Country';
+import { Currency } from '@/entities/Currency';
+import { ValidateProfileError } from '@/features/EditableProfileCard';
+import { StoreDecorator } from '@/shared/config/storybook/StoreDecorator';
 
 export default {
     title: 'pages/Profile',

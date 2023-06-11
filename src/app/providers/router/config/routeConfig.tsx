@@ -3,16 +3,16 @@ import React from 'react';
 import type { RouteProps } from 'react-router-dom';
 import { Navigate } from 'react-router-dom';
 
-import { UserRole } from 'entities/User';
-import { AboutPageAsync } from 'pages/AboutPage';
-import { AdminPageAsync } from 'pages/AdminPage';
-import { ArticleDetailsPageAsync } from 'pages/ArticleDetailsPage';
-import { ArticleEditPageAsync } from 'pages/ArticleEditPage';
-import { ArticlesPageAsync } from 'pages/ArticlesPage';
-import { ForbiddenPage } from 'pages/ForbiddenPage';
-import { MainPageAsync } from 'pages/MainPage';
-import { NotFoundPage } from 'pages/NotFoundPage';
-import { ProfilePageAsync } from 'pages/ProfilePage';
+import { UserRole } from '@/entities/User';
+import { AboutPageAsync } from '@/pages/AboutPage';
+import { AdminPageAsync } from '@/pages/AdminPage';
+import { ArticleDetailsPageAsync } from '@/pages/ArticleDetailsPage';
+import { ArticleEditPageAsync } from '@/pages/ArticleEditPage';
+import { ArticlesPageAsync } from '@/pages/ArticlesPage';
+import { ForbiddenPage } from '@/pages/ForbiddenPage';
+import { MainPageAsync } from '@/pages/MainPage';
+import { NotFoundPage } from '@/pages/NotFoundPage';
+import { ProfilePageAsync } from '@/pages/ProfilePage';
 
 type ExtendedRouteProps = RouteProps & { onlyAuth?: boolean; roles?: UserRole[] };
 

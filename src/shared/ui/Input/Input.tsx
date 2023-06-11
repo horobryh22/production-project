@@ -4,8 +4,8 @@ import { HStack } from '../Stack/HStack/HStack';
 
 import classes from './Input.module.scss';
 
-import { classNames } from 'shared/lib';
-import { Mods } from 'shared/lib/classNames/classNames';
+import { classNames } from '@/shared/lib';
+import { Mods } from '@/shared/lib/classNames/classNames';
 
 type HTMLInputProps = Omit<
     InputHTMLAttributes<HTMLInputElement>,

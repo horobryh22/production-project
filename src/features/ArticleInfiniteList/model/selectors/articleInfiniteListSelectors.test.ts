@@ -8,7 +8,7 @@ import {
     selectInfiniteListLimit,
 } from './articleInfiniteListSelectors';
 
-import { StateSchema } from 'app/providers/StoreProvider';
+import { StateSchema } from '@/app/providers/StoreProvider';
 
 describe('articleInfiniteList.test', () => {
     let state: DeepPartial<StateSchema>;

@@ -3,15 +3,15 @@ import userEvent from '@testing-library/user-event';
 
 import ProfilePage from './ProfilePage';
 
-import { Country } from 'entities/Country';
-import { Currency } from 'entities/Currency';
-import { Profile } from 'entities/Profile';
-import { profileReducer } from 'features/EditableProfileCard';
-import { instance } from 'shared/api/api';
+import { Country } from '@/entities/Country';
+import { Currency } from '@/entities/Currency';
+import { Profile } from '@/entities/Profile';
+import { profileReducer } from '@/features/EditableProfileCard';
+import { instance } from '@/shared/api/api';
 import {
     renderComponent,
     renderComponentOptions,
-} from 'shared/lib/tests/renderComponent';
+} from '@/shared/lib/tests/renderComponent';
 
 const profileData: Profile = {
     id: '1',

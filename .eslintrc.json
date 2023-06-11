@@ -209,6 +209,7 @@
   },
   "settings": {
     "import/resolver": {
+      "typescript": {},
       "node": {
         "paths": [
           "src"

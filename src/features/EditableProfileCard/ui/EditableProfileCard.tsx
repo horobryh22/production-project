@@ -12,13 +12,13 @@ import { selectProfileValidateErrors } from '../model/selectors/selectProfileVal
 import { fetchProfileData } from '../model/services/fetchProfileData/fetchProfileData';
 import { profileActions, profileReducer } from '../model/slice/profileSlice';
 
-import { Country } from 'entities/Country';
-import { Currency } from 'entities/Currency';
-import { ProfileCard } from 'entities/Profile';
-import { useAppDispatch, useDynamicModuleLoader, useInitialEffect } from 'shared/lib';
-import { ReducersList } from 'shared/lib/hooks/useDynamicModuleLoader/useDynamicModuleLoader';
-import { VStack } from 'shared/ui';
-import { Text, TextTheme } from 'shared/ui/Text/Text';
+import { Country } from '@/entities/Country';
+import { Currency } from '@/entities/Currency';
+import { ProfileCard } from '@/entities/Profile';
+import { useAppDispatch, useDynamicModuleLoader, useInitialEffect } from '@/shared/lib';
+import { ReducersList } from '@/shared/lib/hooks/useDynamicModuleLoader/useDynamicModuleLoader';
+import { VStack } from '@/shared/ui';
+import { Text, TextTheme } from '@/shared/ui/Text/Text';
 
 const INITIAL_REDUCERS: ReducersList = {
     profile: profileReducer,

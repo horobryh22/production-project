@@ -2,8 +2,8 @@ import { ReactElement } from 'react';
 
 import classes from './PageLoader.module.scss';
 
-import { classNames } from 'shared/lib';
-import { Loader } from 'shared/ui';
+import { classNames } from '@/shared/lib';
+import { Loader } from '@/shared/ui';
 
 interface PageLoaderProps {
     className?: string;

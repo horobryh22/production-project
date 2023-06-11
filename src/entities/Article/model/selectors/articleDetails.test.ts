@@ -4,7 +4,7 @@ import {
     selectArticleDetailsError,
 } from './articleDetails';
 
-import { StateSchema } from 'app/providers/StoreProvider';
+import { StateSchema } from '@/app/providers/StoreProvider';
 
 describe('articleDetails selectors', () => {
     const state: DeepPartial<StateSchema> = {

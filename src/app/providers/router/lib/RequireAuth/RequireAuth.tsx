@@ -5,7 +5,7 @@ import { Navigate, useLocation } from 'react-router-dom';
 
 import { RoutePath } from '../../config/routeConfig';
 
-import { selectIsUserAuth } from 'entities/User';
+import { selectIsUserAuth } from '@/entities/User';
 
 interface RequireAuthProps {
     children: ReactNode | null;

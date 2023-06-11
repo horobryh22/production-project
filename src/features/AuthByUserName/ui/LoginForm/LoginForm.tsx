@@ -14,10 +14,10 @@ import { loginActions, loginReducer } from '../../model/slice/loginSlice';
 
 import classes from './LoginForm.module.scss';
 
-import { classNames, useAppDispatch, useDynamicModuleLoader } from 'shared/lib';
-import { ReducersList } from 'shared/lib/hooks/useDynamicModuleLoader/useDynamicModuleLoader';
-import { Button, ButtonTheme, Input } from 'shared/ui';
-import { Text, TextTheme } from 'shared/ui/Text/Text';
+import { classNames, useAppDispatch, useDynamicModuleLoader } from '@/shared/lib';
+import { ReducersList } from '@/shared/lib/hooks/useDynamicModuleLoader/useDynamicModuleLoader';
+import { Button, ButtonTheme, Input } from '@/shared/ui';
+import { Text, TextTheme } from '@/shared/ui/Text/Text';
 
 export interface LoginFormProps {
     className?: string;

@@ -8,10 +8,10 @@ import popupCls from '../../styles/popups.module.scss';
 
 import classes from './ListBox.module.scss';
 
-import CheckIcon from 'shared/assets/icons/check.svg';
-import { classNames } from 'shared/lib';
-import { DropdownDirection } from 'shared/types/ui';
-import { popupDirectionClass } from 'shared/ui/Popups/styles';
+import CheckIcon from '@/shared/assets/icons/check.svg';
+import { classNames } from '@/shared/lib';
+import { DropdownDirection } from '@/shared/types/ui';
+import { popupDirectionClass } from '@/shared/ui/Popups/styles';
 
 interface ListBoxItem {
     value: string;

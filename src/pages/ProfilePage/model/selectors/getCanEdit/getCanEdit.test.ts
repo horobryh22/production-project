@@ -1,6 +1,6 @@
 import { getCanEdit } from './getCanEdit';
 
-import { StateSchema } from 'app/providers/StoreProvider';
+import { StateSchema } from '@/app/providers/StoreProvider';
 
 describe('getCanEdit', () => {
     test('should return true', () => {

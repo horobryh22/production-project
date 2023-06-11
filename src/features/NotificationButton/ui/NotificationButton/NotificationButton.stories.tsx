@@ -3,8 +3,8 @@ import { rest } from 'msw';
 
 import { NotificationButton } from './NotificationButton';
 
-import { Notification } from 'entities/Notification/model/types';
-import { StoreDecorator } from 'shared/config/storybook/StoreDecorator';
+import { Notification } from '@/entities/Notification/model/types';
+import { StoreDecorator } from '@/shared/config/storybook/StoreDecorator';
 
 export default {
     title: 'features/NotificationButton',

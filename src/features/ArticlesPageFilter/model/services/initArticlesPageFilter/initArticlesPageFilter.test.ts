@@ -1,8 +1,8 @@
 import { initArticlesPageFilter } from './initArticlesPageFilter';
 
-import { ArticleSortType, ArticleType } from 'entities/Article';
-import { TestAsyncThunk } from 'shared/lib/tests/testAsyncThunk';
-import { SortOrder } from 'shared/types';
+import { ArticleSortType, ArticleType } from '@/entities/Article';
+import { TestAsyncThunk } from '@/shared/lib/tests/testAsyncThunk';
+import { SortOrder } from '@/shared/types';
 
 describe('initArticlesPageFilter.test', () => {
     test('state should be inited', async () => {

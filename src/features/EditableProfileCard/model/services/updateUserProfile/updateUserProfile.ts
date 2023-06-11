@@ -4,8 +4,8 @@ import { ValidateProfileError } from '../../consts/consts';
 import { selectProfileFormData } from '../../selectors/selectProfileFormData/selectProfileFormData';
 import { validateProfileData } from '../validateProfileData/validateProfileData';
 
-import { ThunkConfig } from 'app/providers/StoreProvider';
-import { Profile } from 'entities/Profile';
+import { ThunkConfig } from '@/app/providers/StoreProvider';
+import { Profile } from '@/entities/Profile';
 
 export const updateUserProfile = createAsyncThunk<
     Profile,

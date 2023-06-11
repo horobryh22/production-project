@@ -5,7 +5,7 @@ import { Navigate, useLocation } from 'react-router-dom';
 
 import { RoutePath } from '../../config/routeConfig';
 
-import { UserRole, selectUserRoles } from 'entities/User';
+import { UserRole, selectUserRoles } from '@/entities/User';
 
 interface RequireRoleProps {
     roles: UserRole[];

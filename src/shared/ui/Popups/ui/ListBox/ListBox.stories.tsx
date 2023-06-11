@@ -4,7 +4,7 @@ import type { ComponentMeta, ComponentStory } from '@storybook/react';
 
 import { ListBox } from './ListBox';
 
-import { Currency } from 'entities/Currency';
+import { Currency } from '@/entities/Currency';
 
 export default {
     title: 'shared/ListBox',

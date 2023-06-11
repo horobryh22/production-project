@@ -1,3 +1,4 @@
+import TsconfigPathsPlugin from 'tsconfig-paths-webpack-plugin';
 import { ResolveOptions } from 'webpack';
 
 import { BuildOptions } from './types/config';
@@ -14,5 +15,6 @@ export function buildResolvers({ paths }: BuildOptions): ResolveOptions {
         modules: [paths.src, 'node_modules'],
         // import without @, like '@/something/'
         alias: {},
+        plugins: [new TsconfigPathsPlugin({})],
     };
 }

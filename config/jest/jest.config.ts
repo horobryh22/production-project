@@ -13,6 +13,7 @@ export default {
     moduleNameMapper: {
         '\\.s?css$': 'identity-obj-proxy',
         '\\.svg': path.resolve(__dirname, 'jestEmptyComponent.tsx'),
+        '^@/(.*)$': '<rootDir>src/$1',
     },
     // this property provides opportunity to treat with SetupTests files to don't write @import.... in the each test file
     setupFilesAfterEnv: ['<rootDir>config/jest/setupTests.ts'],

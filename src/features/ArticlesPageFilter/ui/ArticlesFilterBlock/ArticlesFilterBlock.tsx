@@ -19,16 +19,16 @@ import { ArticleTypeTabs } from '../ArticleTypeTabs/ArticleTypeTabs';
 
 import classes from './ArticlesFilterBlock.module.scss';
 
-import { ArticleSortType } from 'entities/Article';
+import { ArticleSortType } from '@/entities/Article';
 import {
     classNames,
     useAppDispatch,
     useDynamicModuleLoader,
     useInitialEffect,
-} from 'shared/lib';
-import { ReducersList } from 'shared/lib/hooks/useDynamicModuleLoader/useDynamicModuleLoader';
-import { SortOrder } from 'shared/types';
-import { Card, Input } from 'shared/ui';
+} from '@/shared/lib';
+import { ReducersList } from '@/shared/lib/hooks/useDynamicModuleLoader/useDynamicModuleLoader';
+import { SortOrder } from '@/shared/types';
+import { Card, Input } from '@/shared/ui';
 
 interface ArticlesFilterBlockProps {
     className?: string;

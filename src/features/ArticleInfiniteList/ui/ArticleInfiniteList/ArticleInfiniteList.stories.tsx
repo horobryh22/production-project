@@ -2,8 +2,8 @@ import type { ComponentMeta, ComponentStory } from '@storybook/react';
 
 import { ArticleInfiniteList } from './ArticleInfiniteList';
 
-import { Article, ArticleType, ArticleView } from 'entities/Article';
-import { StoreDecorator } from 'shared/config/storybook/StoreDecorator';
+import { Article, ArticleType, ArticleView } from '@/entities/Article';
+import { StoreDecorator } from '@/shared/config/storybook/StoreDecorator';
 
 export default {
     title: 'features/ArticleInfiniteList',

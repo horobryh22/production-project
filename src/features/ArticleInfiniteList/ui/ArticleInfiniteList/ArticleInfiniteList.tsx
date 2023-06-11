@@ -13,21 +13,21 @@ import {
     infiniteListSelectors,
 } from '../../model/slice/articleInfiniteListSlice';
 
-import { ArticlesList, ArticleView } from 'entities/Article';
+import { ArticlesList, ArticleView } from '@/entities/Article';
 import {
     selectArticlesPageFilterOrder,
     selectArticlesPageFilterSearch,
     selectArticlesPageFilterSort,
     selectArticlesPageFilterTypeTab,
-} from 'features/ArticlesPageFilter';
+} from '@/features/ArticlesPageFilter';
 import {
     classNames,
     useAppDispatch,
     useDebounce,
     useDynamicModuleLoader,
     useInitialEffect,
-} from 'shared/lib';
-import { ReducersList } from 'shared/lib/hooks/useDynamicModuleLoader/useDynamicModuleLoader';
+} from '@/shared/lib';
+import { ReducersList } from '@/shared/lib/hooks/useDynamicModuleLoader/useDynamicModuleLoader';
 
 interface ArticleInfiniteListProps {
     className?: string;

@@ -2,7 +2,7 @@ import { createSelector } from 'reselect';
 
 import { UserRole } from '../../consts/consts';
 
-import { StateSchema } from 'app/providers/StoreProvider';
+import { StateSchema } from '@/app/providers/StoreProvider';
 
 export const selectUserRoles = (state: StateSchema) => state.user?.authData?.roles;
 

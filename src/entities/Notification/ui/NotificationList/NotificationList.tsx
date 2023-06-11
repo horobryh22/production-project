@@ -5,8 +5,8 @@ import { NotificationItem } from '../NotificationItem/NotificationItem';
 
 import classes from './NotificationList.module.scss';
 
-import { classNames } from 'shared/lib';
-import { Skeleton, VStack } from 'shared/ui';
+import { classNames } from '@/shared/lib';
+import { Skeleton, VStack } from '@/shared/ui';
 
 interface NotificationListProps {
     className?: string;

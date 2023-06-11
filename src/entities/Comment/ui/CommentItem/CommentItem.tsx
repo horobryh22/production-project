@@ -4,10 +4,10 @@ import { Comment } from '../../model/types';
 
 import classes from './CommentItem.module.scss';
 
-import { RoutePath } from 'app/providers/router/config/routeConfig';
-import { classNames } from 'shared/lib';
-import { Mods } from 'shared/lib/classNames/classNames';
-import { Avatar, Text, Skeleton, AppLink } from 'shared/ui';
+import { RoutePath } from '@/app/providers/router/config/routeConfig';
+import { classNames } from '@/shared/lib';
+import { Mods } from '@/shared/lib/classNames/classNames';
+import { Avatar, Text, Skeleton, AppLink } from '@/shared/ui';
 
 interface CommentItemProps {
     className?: string;

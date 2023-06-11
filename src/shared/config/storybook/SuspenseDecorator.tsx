@@ -2,7 +2,7 @@ import { ReactElement, Suspense } from 'react';
 
 import type { Story } from '@storybook/react';
 
-import { Loader } from 'shared/ui';
+import { Loader } from '@/shared/ui';
 
 export const SuspenseDecorator = (StoryComponent: Story): ReactElement => {
     return (

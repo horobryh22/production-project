@@ -7,9 +7,9 @@ import popupCls from '../../styles/popups.module.scss';
 
 import classes from './Dropdown.module.scss';
 
-import { classNames } from 'shared/lib';
-import { DropdownDirection } from 'shared/types/ui';
-import { popupDirectionClass } from 'shared/ui/Popups/styles';
+import { classNames } from '@/shared/lib';
+import { DropdownDirection } from '@/shared/types/ui';
+import { popupDirectionClass } from '@/shared/ui/Popups/styles';
 
 export interface DropdownItems {
     href?: string;

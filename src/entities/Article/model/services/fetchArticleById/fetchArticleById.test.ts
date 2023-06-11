@@ -3,7 +3,7 @@ import { Article } from '../../types';
 
 import { fetchArticleById } from './fetchArticleById';
 
-import { TestAsyncThunk } from 'shared/lib/tests/testAsyncThunk';
+import { TestAsyncThunk } from '@/shared/lib/tests/testAsyncThunk';
 
 const article: Article = {
     id: '1',

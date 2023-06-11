@@ -3,8 +3,8 @@ import { rest } from 'msw';
 
 import ArticleDetailsPage from './ArticleDetailsPage';
 
-import { Article, ArticleBlockType, ArticleType } from 'entities/Article';
-import { StoreDecorator } from 'shared/config/storybook/StoreDecorator';
+import { Article, ArticleBlockType, ArticleType } from '@/entities/Article';
+import { StoreDecorator } from '@/shared/config/storybook/StoreDecorator';
 
 export default {
     title: 'pages/ArticleDetails/ArticleDetailsPage',

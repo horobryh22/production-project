@@ -2,7 +2,7 @@ import { UserRole } from '../../consts/consts';
 
 import { isUserAdmin, isUserManager, selectUserRoles } from './selectUserRoles';
 
-import { StateSchema } from 'app/providers/StoreProvider';
+import { StateSchema } from '@/app/providers/StoreProvider';
 
 const roles: UserRole[] = [UserRole.ADMIN, UserRole.MANAGER];
 

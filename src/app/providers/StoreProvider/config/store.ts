@@ -7,10 +7,10 @@ import { ReducerManager, StateSchema, StoreSchema } from '../config/StateSchema'
 
 import { createReducerManager } from './reducerManager';
 
-import { userReducer } from 'entities/User';
-import { instance } from 'shared/api/api';
-import { rtkApi } from 'shared/api/rtkApi';
-import { uiPageSliceReducer } from 'widgets/Page';
+import { userReducer } from '@/entities/User';
+import { instance } from '@/shared/api/api';
+import { rtkApi } from '@/shared/api/rtkApi';
+import { uiPageSliceReducer } from '@/widgets/Page';
 
 export const createReduxStore = (
     initialState?: StateSchema,

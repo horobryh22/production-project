@@ -8,18 +8,18 @@ import { AxiosInstance } from 'axios';
 import type { NavigateFunction } from 'react-router/dist/lib/hooks';
 import type { CombinedState } from 'redux';
 
-import { ArticleDetailsSchema } from 'entities/Article';
-import { CommentFormSchema } from 'entities/Comment';
-import { UserSchema } from 'entities/User';
-import { ArticleCommentsSchema } from 'features/ArticleComments';
-import { ArticleInfiniteListSchema } from 'features/ArticleInfiniteList';
-import { ArticleRecommendationsSchema } from 'features/ArticleRecommendationsList';
-import { ArticlesPageFilterSchema } from 'features/ArticlesPageFilter';
-import { LoginSchema } from 'features/AuthByUserName';
-import { ProfileSchema } from 'features/EditableProfileCard';
-import { rtkApi } from 'shared/api/rtkApi';
-import { UIPageSchema } from 'widgets/Page';
-import { ViewSwitcherSchema } from 'widgets/ViewSwitcher';
+import { ArticleDetailsSchema } from '@/entities/Article';
+import { CommentFormSchema } from '@/entities/Comment';
+import { UserSchema } from '@/entities/User';
+import { ArticleCommentsSchema } from '@/features/ArticleComments';
+import { ArticleInfiniteListSchema } from '@/features/ArticleInfiniteList';
+import { ArticleRecommendationsSchema } from '@/features/ArticleRecommendationsList';
+import { ArticlesPageFilterSchema } from '@/features/ArticlesPageFilter';
+import { LoginSchema } from '@/features/AuthByUserName';
+import { ProfileSchema } from '@/features/EditableProfileCard';
+import { rtkApi } from '@/shared/api/rtkApi';
+import { UIPageSchema } from '@/widgets/Page';
+import { ViewSwitcherSchema } from '@/widgets/ViewSwitcher';
 
 // instead of RootState
 export interface StateSchema {

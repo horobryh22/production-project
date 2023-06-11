@@ -10,10 +10,10 @@ import {
     selectProfileError,
     selectProfileReadonly,
     updateUserProfile,
-} from 'features/EditableProfileCard';
-import { classNames, useAppDispatch } from 'shared/lib';
-import { Button, ButtonTheme, HStack } from 'shared/ui';
-import { Text } from 'shared/ui/Text/Text';
+} from '@/features/EditableProfileCard';
+import { classNames, useAppDispatch } from '@/shared/lib';
+import { Button, ButtonTheme, HStack } from '@/shared/ui';
+import { Text } from '@/shared/ui/Text/Text';
 
 interface ProfilePageHeaderProps {
     id?: string;

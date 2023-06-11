@@ -2,8 +2,8 @@ import type { ComponentMeta, ComponentStory } from '@storybook/react';
 
 import { ViewSwitcher } from './ViewSwitcher';
 
-import { ArticleView } from 'entities/Article';
-import { StoreDecorator } from 'shared/config/storybook/StoreDecorator';
+import { ArticleView } from '@/entities/Article';
+import { StoreDecorator } from '@/shared/config/storybook/StoreDecorator';
 
 export default {
     title: 'widgets/ViewSwitcher',

@@ -3,9 +3,9 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 import { selectArticlesPageFilterInited } from '../../selectors/articlesPageFilterSelectors';
 import { articlesPageFilterActions } from '../../slice/articlesPageFilterSlice';
 
-import { ThunkConfig } from 'app/providers/StoreProvider';
-import { ArticleSortType, ArticleType } from 'entities/Article';
-import { SortOrder } from 'shared/types';
+import { ThunkConfig } from '@/app/providers/StoreProvider';
+import { ArticleSortType, ArticleType } from '@/entities/Article';
+import { SortOrder } from '@/shared/types';
 
 export const initArticlesPageFilter = createAsyncThunk<
     void,

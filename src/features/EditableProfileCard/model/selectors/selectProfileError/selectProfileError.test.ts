@@ -1,6 +1,6 @@
 import { selectProfileError } from './selectProfileError';
 
-import { StateSchema } from 'app/providers/StoreProvider';
+import { StateSchema } from '@/app/providers/StoreProvider';
 
 describe('selectProfileError', () => {
     test('should return error', () => {

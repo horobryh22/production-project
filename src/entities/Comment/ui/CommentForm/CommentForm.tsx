@@ -11,9 +11,9 @@ import {
 
 import classes from './CommentForm.module.scss';
 
-import { classNames, useAppDispatch, useDynamicModuleLoader } from 'shared/lib';
-import { ReducersList } from 'shared/lib/hooks/useDynamicModuleLoader/useDynamicModuleLoader';
-import { Button, HStack, Input } from 'shared/ui';
+import { classNames, useAppDispatch, useDynamicModuleLoader } from '@/shared/lib';
+import { ReducersList } from '@/shared/lib/hooks/useDynamicModuleLoader/useDynamicModuleLoader';
+import { Button, HStack, Input } from '@/shared/ui';
 
 export interface CommentFormProps {
     className?: string;

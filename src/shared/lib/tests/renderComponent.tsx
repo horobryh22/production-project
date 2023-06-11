@@ -7,7 +7,7 @@ import { MemoryRouter } from 'react-router';
 
 import i18nForTests from '../../config/i18n/i18nForTests';
 
-import { StateSchema, StoreProvider } from 'app/providers/StoreProvider';
+import { StateSchema, StoreProvider } from '@/app/providers/StoreProvider';
 
 export interface renderComponentOptions {
     route?: string;

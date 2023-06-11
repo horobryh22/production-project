@@ -3,8 +3,8 @@ import { rest } from 'msw';
 
 import { ArticleRecommendationsList } from './ArticleRecommendationsList';
 
-import { ArticleType } from 'entities/Article';
-import { StoreDecorator } from 'shared/config/storybook/StoreDecorator';
+import { ArticleType } from '@/entities/Article';
+import { StoreDecorator } from '@/shared/config/storybook/StoreDecorator';
 
 const article = {
     user: { id: '1', username: 'admin', avatar: 'avatar' },

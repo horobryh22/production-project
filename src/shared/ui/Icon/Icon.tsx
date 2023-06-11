@@ -2,7 +2,7 @@ import React, { ReactElement, memo } from 'react';
 
 import classes from './Icon.module.scss';
 
-import { classNames } from 'shared/lib';
+import { classNames } from '@/shared/lib';
 
 type IconTheme = 'primary' | 'inverted';
 interface IconProps {
