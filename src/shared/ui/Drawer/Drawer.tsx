@@ -1,4 +1,4 @@
-import { memo, ReactNode, useCallback, useEffect } from 'react';
+import { ReactNode, useCallback, useEffect } from 'react';
 
 import { Overlay } from '../Overlay/Overlay';
 import { Portal } from '../Portal/Portal';
@@ -8,7 +8,7 @@ import classes from './Drawer.module.scss';
 import { useTheme } from '@/app/providers/ThemeProvider';
 import { classNames } from '@/shared/lib';
 import { Mods } from '@/shared/lib/classNames/classNames';
-import { useAnimationModules } from '@/shared/lib/providers';
+import { AnimationProvider, useAnimationModules } from '@/shared/lib/providers';
 
 export interface DrawerProps {
     className?: string;
@@ -21,7 +21,7 @@ export interface DrawerProps {
 const DRAWER_ROOT = document.getElementById('drawer-root') || undefined;
 const HEIGHT = window.innerHeight - 100;
 
-const DrawerContent = memo((props: DrawerProps) => {
+const DrawerContent = (props: DrawerProps) => {
     const { className, children, isOpen, onClose, testMode } = props;
     const { Spring, Gesture } = useAnimationModules();
 
@@ -99,9 +99,9 @@ const DrawerContent = memo((props: DrawerProps) => {
     if (testMode) return drawerElement;
 
     return <Portal container={DRAWER_ROOT}>{drawerElement}</Portal>;
-});
+};
 
-export const Drawer = memo(({ children, ...props }: DrawerProps) => {
+const DrawerAsync = ({ children, ...props }: DrawerProps) => {
     const { isLoaded } = useAnimationModules();
 
     if (!isLoaded) {
@@ -111,4 +111,12 @@ export const Drawer = memo(({ children, ...props }: DrawerProps) => {
     }
 
     return <DrawerContent {...props}>{children}</DrawerContent>;
-});
+};
+
+export const Drawer = ({ children, ...props }: DrawerProps) => {
+    return (
+        <AnimationProvider>
+            <DrawerAsync {...props}>{children}</DrawerAsync>
+        </AnimationProvider>
+    );
+};

@@ -8,7 +8,6 @@ import { NotificationList } from '@/entities/Notification';
 import { selectIsUserAuth } from '@/entities/User';
 import notificationIcon from '@/shared/assets/icons/notification.svg';
 import { classNames, useIsDesktop } from '@/shared/lib';
-import { AnimationProvider } from '@/shared/lib/providers';
 import { Button, ButtonTheme, Drawer, Icon, Popover } from '@/shared/ui';
 
 interface NotificationButtonProps {
@@ -55,14 +54,9 @@ export const NotificationButton = memo((props: NotificationButtonProps): ReactEl
         return (
             <>
                 {triggerForPopover}
-                <AnimationProvider>
-                    <Drawer className={className} isOpen={isOpen} onClose={onDrawerClose}>
-                        <NotificationList
-                            className={classes.notifications}
-                            userId={userId}
-                        />
-                    </Drawer>
-                </AnimationProvider>
+                <Drawer className={className} isOpen={isOpen} onClose={onDrawerClose}>
+                    <NotificationList className={classes.notifications} userId={userId} />
+                </Drawer>
             </>
         );
     };
