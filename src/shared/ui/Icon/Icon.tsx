@@ -4,15 +4,15 @@ import classes from './Icon.module.scss';
 
 import { classNames } from '@/shared/lib';
 
-type IconTheme = 'primary' | 'inverted';
-interface IconProps {
+type IconTheme = 'primary' | 'inverted' | 'outline';
+interface IconProps extends React.SVGProps<SVGSVGElement> {
     className?: string;
     Svg: React.VFC<React.SVGProps<SVGSVGElement>>;
     theme?: IconTheme;
 }
 
 export const Icon = memo((props: IconProps): ReactElement => {
-    const { className, Svg, theme = 'primary' } = props;
+    const { className, Svg, theme = 'primary', ...restProps } = props;
 
-    return <Svg className={classNames(classes[theme], {}, [className])} />;
+    return <Svg {...restProps} className={classNames(classes[theme], {}, [className])} />;
 });

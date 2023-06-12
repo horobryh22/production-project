@@ -24,6 +24,7 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
     theme?: ButtonTheme;
     square?: boolean;
     size?: ButtonSize;
+    fullWidth?: boolean;
 }
 
 export const Button = (props: ButtonProps): ReactElement => {
@@ -34,12 +35,14 @@ export const Button = (props: ButtonProps): ReactElement => {
         square,
         size = ButtonSize.M,
         disabled,
+        fullWidth,
         ...restProps
     } = props;
 
     const mods: Mods = {
         [classes.square]: square,
         [classes.disabled]: disabled,
+        [classes.fullWidth]: fullWidth,
     };
 
     return (

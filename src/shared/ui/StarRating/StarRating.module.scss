@@ -1,0 +1,21 @@
+.normal {
+  fill: none;
+
+  > path {
+    fill: none;
+  }
+}
+
+.selected {
+  fill: var(--primary-color);
+  cursor: pointer;
+
+  > path {
+    fill: var(--primary-color);
+  }
+}
+
+.cursorAuto {
+  cursor: auto
+}
+

@@ -2,6 +2,7 @@ import type { ComponentMeta, ComponentStory } from '@storybook/react';
 
 import { Modal } from './Modal';
 
+// TODO доработать везде истории с modal (сейчас не работают стили нигде)
 export default {
     title: 'shared/Modal',
     component: Modal,

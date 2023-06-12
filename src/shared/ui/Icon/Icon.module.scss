@@ -13,3 +13,11 @@
     fill: var(--inverted-primary-color);
   }
 }
+
+.outline {
+  fill: none;
+
+  > path {
+    fill: none;
+  }
+}

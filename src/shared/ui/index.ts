@@ -17,6 +17,7 @@ export { ListBox } from './Popups/ui/ListBox/ListBox';
 export { Dropdown } from './Popups/ui/Dropdown/Dropdown';
 export { Popover } from './Popups/ui/Popover/Popover';
 export { Drawer } from './Drawer/Drawer';
+export { StarRating } from './StarRating/StarRating';
 
 // types
 export type { DropdownItems } from './Popups/ui/Dropdown/Dropdown';
