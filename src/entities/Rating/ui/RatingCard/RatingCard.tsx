@@ -18,11 +18,11 @@ import {
 
 interface RatingCardProps {
     className?: string;
-    selectedStars?: number;
+    rating?: number;
     text: string;
     feedbackTitle?: string;
     withFeedback?: boolean;
-    onAccept?: (starsCount: number, feedbackText?: string) => void;
+    onAccept?: (starsCount: number, feedbackText: string) => void;
     onCancel?: (starsCount: number) => void;
 }
 
@@ -32,29 +32,29 @@ export const RatingCard = memo((props: RatingCardProps): ReactElement => {
     const {
         className,
         text,
-        selectedStars,
+        rating = 0,
         onCancel,
         onAccept,
         withFeedback,
         feedbackTitle,
     } = props;
 
-    const [starsCountSelected, setStarsCountSelected] = useState(0);
+    const [starsCountSelected, setStarsCountSelected] = useState(rating);
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [feedbackText, setFeedbackText] = useState('');
 
     const handleRatingSelect = useCallback(
         (starCount: number) => {
-            if (!selectedStars) {
+            if (!rating) {
                 setStarsCountSelected(starCount);
                 if (withFeedback) {
                     setIsModalOpen(true);
                 } else {
-                    onAccept?.(starCount);
+                    onCancel?.(starCount);
                 }
             }
         },
-        [onAccept, selectedStars, withFeedback],
+        [onCancel, rating, withFeedback],
     );
 
     const handleCancel = useCallback(() => {
@@ -112,15 +112,15 @@ export const RatingCard = memo((props: RatingCardProps): ReactElement => {
     };
 
     return (
-        <Card>
+        <Card max>
             <VStack
                 max
                 gap={'16'}
                 className={classNames('', {}, [className])}
                 align={'center'}
             >
-                {text && <Text title={text} />}
-                <StarRating selectedStars={selectedStars} onSelect={handleRatingSelect} />
+                {text && <Text title={rating ? t('Спасибо за вашу оценку') : text} />}
+                <StarRating selectedStars={rating} onSelect={handleRatingSelect} />
             </VStack>
             {withFeedback && renderModal()}
         </Card>

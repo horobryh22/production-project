@@ -7,6 +7,7 @@ import { ArticleDetailsHeader } from '../ArticleDetailsHeader/ArticleDetailsHead
 
 import { ArticleDetails } from '@/entities/Article';
 import { ArticleComments } from '@/features/ArticleComments';
+import { ArticleRating } from '@/features/ArticleRating';
 import { ArticleRecommendationsList } from '@/features/ArticleRecommendationsList';
 import { classNames } from '@/shared/lib';
 import { Text, VStack } from '@/shared/ui';
@@ -41,6 +42,7 @@ const ArticleDetailsPage = memo((props: ArticleDetailsPageProps): ReactElement =
             <VStack gap={'16'} max>
                 <ArticleDetailsHeader />
                 <ArticleDetails id={id} />
+                <ArticleRating articleId={id} />
                 <ArticleRecommendationsList />
                 <ArticleComments id={id} />
             </VStack>
