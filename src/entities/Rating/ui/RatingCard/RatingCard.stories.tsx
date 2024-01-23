@@ -29,5 +29,5 @@ WithoutFeedback.args = {
 export const StarRatingSelected = Template.bind({});
 StarRatingSelected.args = {
     text: 'Оцените нашу статью',
-    selectedStars: 4,
+    rating: 4,
 };

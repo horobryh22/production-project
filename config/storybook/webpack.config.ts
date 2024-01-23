@@ -15,10 +15,10 @@ export default function({ config }: { config: webpack.Configuration }) {
     config!.resolve!.modules = [paths.src, 'node_modules'];
     config!.resolve!.extensions!.push('.ts', '.tsx');
 
-    config!.module!.rules = config!.module!.rules!.map((rule: RuleSetRule | string) => {
+    config!.module!.rules = config!.module!.rules!.map((rule) => {
         if (typeof rule === 'string') return rule as RuleSetRule;
 
-        if (/svg/.test(rule.test as string)) {
+        if (/svg/.test((rule as RuleSetRule).test as string)) {
             return { ...rule, exclude: /\.svg$/i };
         }
 

@@ -1,6 +1,6 @@
 import type { ComponentMeta, ComponentStory } from '@storybook/react';
 
-import { ArticleRating } from './ArticleRating';
+import ArticleRating from './ArticleRating';
 
 export default {
     title: 'shared/ArticleRating',
