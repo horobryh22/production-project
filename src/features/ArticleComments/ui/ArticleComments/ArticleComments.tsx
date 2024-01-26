@@ -11,7 +11,7 @@ import {
     commentsSelectors,
 } from '../../model/slice/articleCommentsSlice';
 
-import { CommentFormAsync, CommentsList } from '@/entities/Comment';
+import { CommentForm, CommentsList } from '@/entities/Comment';
 import {
     classNames,
     useAppDispatch,
@@ -57,8 +57,10 @@ export const ArticleComments = memo((props: ArticleCommentsProps): ReactElement 
     return (
         <VStack max gap={'16'} className={classNames('', {}, [className])}>
             <Text size={TextSize.L} title={t('Comments', { ns: 'article' })} />
-            <CommentFormAsync onSendComment={onSendComment} isLoading={isLoading} />
+            <CommentForm onSendComment={onSendComment} isLoading={isLoading} />
             <CommentsList comments={reversedComments} isLoading={isLoading} />
         </VStack>
     );
 });
+
+export default ArticleComments;

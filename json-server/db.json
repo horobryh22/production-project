@@ -825,5 +825,28 @@
       "feedback": "Средняя стаья",
       "id": "hfh2NG9"
     }
+  ],
+  "profile-rating": [
+    {
+      "id": "1",
+      "rating": 3,
+      "feedback": "Хороший профиль",
+      "profileId": "1",
+      "userId": "2"
+    },
+    {
+      "id": "2",
+      "rating": 5,
+      "feedback": "Отличный профиль",
+      "profileId": "2",
+      "userId": "1"
+    },
+    {
+      "profileId": "1",
+      "userId": "1",
+      "rating": 4,
+      "feedback": "asdasdasdasd",
+      "id": "qPa96Ho"
+    }
   ]
 }

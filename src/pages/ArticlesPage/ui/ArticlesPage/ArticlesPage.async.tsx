@@ -1,3 +1,3 @@
-import loadable from '@loadable/component';
+import { lazy } from 'react';
 
-export const ArticlesPageAsync = loadable(() => import('./ArticlesPage'));
+export const ArticlesPageAsync = lazy(() => import('./ArticlesPage'));

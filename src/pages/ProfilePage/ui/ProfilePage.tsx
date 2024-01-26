@@ -1,12 +1,15 @@
-import React, { ReactElement } from 'react';
+import React, { lazy, ReactElement } from 'react';
 
 import { useParams } from 'react-router-dom';
 
 import { ProfilePageHeader } from './ProfilePageHeader/ProfilePageHeader';
 
 import { EditableProfileCard } from '@/features/EditableProfileCard';
-import { VStack } from '@/shared/ui';
+import { LazyLoader, VStack } from '@/shared/ui';
 import { Page } from '@/widgets/Page';
+
+// lazy
+const ProfileRating = lazy(() => import('@/features/ProfileRating'));
 
 const ProfilePage = (): ReactElement => {
     let { id } = useParams();
@@ -18,6 +21,9 @@ const ProfilePage = (): ReactElement => {
             <VStack gap={'16'} max>
                 <ProfilePageHeader id={id} />
                 <EditableProfileCard profileId={id} />
+                <LazyLoader initialInView>
+                    <ProfileRating profileId={id!} />
+                </LazyLoader>
             </VStack>
         </Page>
     );

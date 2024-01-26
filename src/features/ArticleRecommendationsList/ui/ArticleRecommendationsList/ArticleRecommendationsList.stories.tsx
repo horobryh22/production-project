@@ -1,7 +1,7 @@
 import type { ComponentMeta, ComponentStory } from '@storybook/react';
 import { rest } from 'msw';
 
-import { ArticleRecommendationsList } from './ArticleRecommendationsList';
+import ArticleRecommendationsList from './ArticleRecommendationsList';
 
 import { ArticleType } from '@/entities/Article';
 import { StoreDecorator } from '@/shared/config/storybook/StoreDecorator';

@@ -18,6 +18,7 @@ export { Dropdown } from './Popups/ui/Dropdown/Dropdown';
 export { Popover } from './Popups/ui/Popover/Popover';
 export { Drawer } from './Drawer/Drawer';
 export { StarRating } from './StarRating/StarRating';
+export { LazyLoader } from './LazyLoader/LazyLoader';
 
 // types
 export type { DropdownItems } from './Popups/ui/Dropdown/Dropdown';

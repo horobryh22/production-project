@@ -37,8 +37,6 @@ export const NotificationButton = memo((props: NotificationButtonProps): ReactEl
         </Button>
     ) : null;
 
-    /*TODO по хорошему здесь в дальнейшем применить библиотеку loadable,
-       которая позволяет не загружать компонент, если он отрисовывается по условию*/
     const renderContent = () => {
         if (isDesktop) {
             return (

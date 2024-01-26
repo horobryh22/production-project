@@ -14,7 +14,7 @@ interface ArticleRecommendationsListProps {
     className?: string;
 }
 
-export const ArticleRecommendationsList = memo(
+const ArticleRecommendationsList = memo(
     (props: ArticleRecommendationsListProps): ReactElement => {
         const { className } = props;
         const { t } = useTranslation('article');
@@ -42,3 +42,5 @@ export const ArticleRecommendationsList = memo(
         );
     },
 );
+
+export default ArticleRecommendationsList;

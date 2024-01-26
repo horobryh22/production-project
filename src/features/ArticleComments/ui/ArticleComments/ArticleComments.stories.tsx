@@ -1,6 +1,6 @@
 import type { ComponentMeta, ComponentStory } from '@storybook/react';
 
-import { ArticleComments } from './ArticleComments';
+import ArticleComments from './ArticleComments';
 
 import { StoreDecorator } from '@/shared/config/storybook/StoreDecorator';
 

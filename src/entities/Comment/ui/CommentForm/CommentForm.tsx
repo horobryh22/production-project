@@ -25,7 +25,7 @@ const reducers: ReducersList = {
     commentForm: commentFormReducer,
 };
 
-const CommentForm = memo(
+export const CommentForm = memo(
     ({ className, onSendComment, isLoading }: CommentFormProps): ReactElement => {
         const dispatch = useAppDispatch();
         const { t } = useTranslation('article');
@@ -70,5 +70,3 @@ const CommentForm = memo(
         );
     },
 );
-
-export default CommentForm;
