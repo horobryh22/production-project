@@ -82,7 +82,11 @@ export const RatingCard = memo((props: RatingCardProps): ReactElement => {
     const renderModal = () => {
         if (isDesktop) {
             return (
-                <Modal isOpen={isModalOpen} onClose={handleCancel}>
+                <Modal
+                    isOpen={isModalOpen}
+                    onClose={handleCancel}
+                    testMode={__PROJECT__ === 'storybook'}
+                >
                     <VStack max gap={'16'}>
                         {modalContent}
                         <HStack max gap={'32'} justify={'end'}>
@@ -100,7 +104,11 @@ export const RatingCard = memo((props: RatingCardProps): ReactElement => {
         }
 
         return (
-            <Drawer isOpen={isModalOpen} onClose={handleCancel}>
+            <Drawer
+                isOpen={isModalOpen}
+                onClose={handleCancel}
+                testMode={__PROJECT__ === 'storybook'}
+            >
                 <VStack max gap={'32'}>
                     {modalContent}
                     <Button fullWidth onClick={handleAccept}>
