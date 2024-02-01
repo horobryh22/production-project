@@ -2,14 +2,12 @@ import React from 'react';
 
 import type { ComponentMeta, ComponentStory } from '@storybook/react';
 
-import { Button, ButtonTheme } from '../../../Button/Button';
-
 import { Popover } from './Popover';
 
-import { Notification } from '@/entities/Notification/model/types';
-import { NotificationItem } from '@/entities/Notification/ui/NotificationItem/NotificationItem';
+import type { Notification } from '@/entities/Notification';
+import { NotificationItem } from '@/entities/Notification';
 import notificationIcon from '@/shared/assets/icons/notification.svg';
-import { Icon, VStack } from '@/shared/ui';
+import { Button, ButtonTheme, Icon, VStack } from '@/shared/ui';
 
 export default {
     title: 'shared/Popover',

@@ -144,6 +144,9 @@
     "fsd-plugin/path-checker":  ["error", {
       "alias": "@"
     }],
+    "fsd-plugin/public-api-imports":  ["error", {
+      "alias": "@"
+    }],
     "i18next/no-literal-string": [
       "error",
       {

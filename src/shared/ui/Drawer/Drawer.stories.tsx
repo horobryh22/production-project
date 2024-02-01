@@ -4,8 +4,8 @@ import type { ComponentMeta, ComponentStory } from '@storybook/react';
 
 import { Drawer } from './Drawer';
 
-import { Notification } from '@/entities/Notification/model/types';
-import { NotificationItem } from '@/entities/Notification/ui/NotificationItem/NotificationItem';
+import type { Notification } from '@/entities/Notification';
+import { NotificationItem } from '@/entities/Notification';
 import { Button, VStack } from '@/shared/ui';
 
 export default {

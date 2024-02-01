@@ -6,8 +6,7 @@ import { useParams } from 'react-router-dom';
 
 import { ArticleDetailsHeader } from '../ArticleDetailsHeader/ArticleDetailsHeader';
 
-import { ArticleDetails } from '@/entities/Article';
-import { selectArticleDetailsIsLoading } from '@/entities/Article/model/selectors/articleDetails';
+import { ArticleDetails, selectArticleDetailsIsLoading } from '@/entities/Article';
 import { classNames } from '@/shared/lib';
 import { Text, VStack, LazyLoader } from '@/shared/ui';
 import { TextTheme } from '@/shared/ui/Text/Text';

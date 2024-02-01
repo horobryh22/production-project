@@ -3,7 +3,7 @@ import { rest } from 'msw';
 
 import { NotificationButton } from './NotificationButton';
 
-import { Notification } from '@/entities/Notification/model/types';
+import { Notification } from '@/entities/Notification';
 import { StoreDecorator } from '@/shared/config/storybook/StoreDecorator';
 
 export default {
