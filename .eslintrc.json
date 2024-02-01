@@ -141,7 +141,9 @@
         ]
       }
     ],
-    "fsd-plugin/path-checker":  "error",
+    "fsd-plugin/path-checker":  ["error", {
+      "alias": "@"
+    }],
     "i18next/no-literal-string": [
       "error",
       {

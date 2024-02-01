@@ -21,9 +21,10 @@ const shouldPathBeRelative = (importFrom, importTo) => {
         return false;
     }
 
-    const normalizedPath = path.toNamespacedPath(importTo).split('src')[1];
-    const layerTo = normalizedPath.split('\\')[1];
-    const sliceTo = normalizedPath.split('\\')[2];
+    // normalize и path.sep чтобы работало в любой системе и Windows и Linux
+    const normalizedPath = path.normalize(importTo).split('src')[1];
+    const layerTo = normalizedPath.split(path.sep)[1];
+    const sliceTo = normalizedPath.split(path.sep)[2];
 
     return layerFrom === layerTo && sliceFrom === sliceTo && layerFrom !== 'shared';
 }
@@ -56,9 +57,15 @@ const replaceToRelativeImport = (importFrom, importTo) => {
 module.exports = (context) => {
     const { options } = context;
     // const {include = [], exclude = [] } = options[0] || {};
+
     return {
         ImportDeclaration: (node) => {
-            const importFromFile = node.source.value;
+            const importFromValue = node.source.value;
+            // получаем настройки, в данном случае алиас, который прокидывали в тестх, или в описании
+            // правил в .eslintrc.json
+            const alias = options?.[0]?.alias ?? '';
+
+            const importFromFile = alias ? importFromValue.replace(`${alias}/`, '') : importFromValue;
             const importToFile = context.getFilename();
 
             if (shouldPathBeRelative(importFromFile, importToFile)) {

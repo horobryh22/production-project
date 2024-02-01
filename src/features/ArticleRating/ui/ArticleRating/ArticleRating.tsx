@@ -9,8 +9,6 @@ import { RatingCard } from '@/entities/Rating';
 import { selectAuthData } from '@/entities/User';
 import { Skeleton } from '@/shared/ui';
 
-// TODO написать сторикейсы для этой компоненты и в идеале написать пару RTL (UI) тестов
-
 export interface ArticleRatingProps {
     className?: string;
     articleId: string;
