@@ -146,7 +146,7 @@
     }],
     "fsd-plugin/public-api-imports":  ["error", {
       "alias": "@",
-      "testFilesPatterns": ["**/*.test.*", "**/*.story.*", "**/StoreDecorator.tsx"]
+      "testFilesPatterns": ["**/*.test.*", "**/*.stories.*", "**/StoreDecorator.tsx"]
     }],
     "i18next/no-literal-string": [
       "error",
