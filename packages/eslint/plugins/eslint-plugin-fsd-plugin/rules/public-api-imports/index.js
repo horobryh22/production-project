@@ -14,9 +14,12 @@ module.exports = {
                 properties: {
                     alias: {
                         type: 'string'
+                    },
+                    testFilesPatterns: {
+                        type: 'array'
                     }
                 }
-            }
+            },
         ],
     },
     create: publicApiImports,

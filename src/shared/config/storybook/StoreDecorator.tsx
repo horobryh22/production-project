@@ -5,22 +5,15 @@ import type { StoryFnReactReturnType } from '@storybook/react/dist/ts3.9/client/
 
 import { ReducersList } from '../../lib/hooks/useDynamicModuleLoader/useDynamicModuleLoader';
 
-// TODO
 import { StateSchema, StoreProvider } from '@/app/providers/StoreProvider';
-// eslint-disable-next-line fsd-plugin/public-api-imports
-import { articleDetailsReducer } from '@/entities/Article/model/slice/articleDetailsSlice';
-// eslint-disable-next-line fsd-plugin/public-api-imports
-import { commentFormReducer } from '@/entities/Comment/model/slice/commentFormSlice';
-// eslint-disable-next-line fsd-plugin/public-api-imports
-import { articleCommentsReducer } from '@/features/ArticleComments/model/slice/articleCommentsSlice';
-// eslint-disable-next-line fsd-plugin/public-api-imports
-import { articleInfiniteListReducer } from '@/features/ArticleInfiniteList/model/slice/articleInfiniteListSlice';
-// eslint-disable-next-line fsd-plugin/public-api-imports
-import { articleRecommendationsReducer } from '@/features/ArticleRecommendationsList/model/slices/articleRecommendationsSlice';
+import { articleDetailsReducer } from '@/entities/Article/testing';
+import { commentFormReducer } from '@/entities/Comment/testing';
+import { articleCommentsReducer } from '@/features/ArticleComments/testing';
+import { articleInfiniteListReducer } from '@/features/ArticleInfiniteList/testing';
+import { articleRecommendationsReducer } from '@/features/ArticleRecommendationsList/testing';
 import { loginReducer } from '@/features/AuthByUserName';
 import { profileReducer } from '@/features/EditableProfileCard';
-// eslint-disable-next-line fsd-plugin/public-api-imports
-import { viewSwitcherReducer } from '@/widgets/ViewSwitcher/model/slice/viewSwitcherSlice';
+import { viewSwitcherReducer } from '@/widgets/ViewSwitcher/testing';
 
 const defaultAsyncReducers: ReducersList = {
     login: loginReducer,

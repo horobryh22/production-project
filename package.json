@@ -93,6 +93,7 @@
     "jest-html-reporters": "^3.1.4",
     "json-server": "^0.17.0",
     "loki": "^0.30.3",
+    "micromatch": "^4.0.5",
     "mini-css-extract-plugin": "^2.5.3",
     "mocha": "^10.2.0",
     "msw": "^1.2.1",
