@@ -3,9 +3,8 @@ import { ReactElement, ReactNode, useMemo } from 'react';
 import { useSelector } from 'react-redux';
 import { Navigate, useLocation } from 'react-router-dom';
 
-import { RoutePath } from '../../config/routeConfig';
-
 import { UserRole, selectUserRoles } from '@/entities/User';
+import { RoutePath } from '@/shared/const/router';
 
 interface RequireRoleProps {
     roles: UserRole[];

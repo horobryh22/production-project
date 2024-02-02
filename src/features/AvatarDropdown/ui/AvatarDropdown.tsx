@@ -5,8 +5,8 @@ import { useSelector } from 'react-redux';
 
 import classes from './AvatarDropdown.module.scss';
 
-import { RoutePath } from '@/app/providers/router/config/routeConfig';
 import { isUserAdmin, isUserManager, selectAuthData, userActions } from '@/entities/User';
+import { RoutePath } from '@/shared/const/router';
 import { classNames, useAppDispatch } from '@/shared/lib';
 import { Avatar, Dropdown, DropdownItems } from '@/shared/ui';
 

@@ -6,8 +6,8 @@ import { useNavigate } from 'react-router';
 
 import { selectCanUserEditArticle } from '../../model/selectors/articleDetailsSelectors';
 
-import { RoutePath } from '@/app/providers/router/config/routeConfig';
 import { selectArticleDetailsData } from '@/entities/Article';
+import { RoutePath } from '@/shared/const/router';
 import { classNames } from '@/shared/lib';
 import { Button, HStack } from '@/shared/ui';
 

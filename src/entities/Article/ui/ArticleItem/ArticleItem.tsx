@@ -8,8 +8,8 @@ import { ArticleTextBlockComponent } from '../ArticleTextBlockComponent/ArticleT
 
 import classes from './ArticleItem.module.scss';
 
-import { RoutePath } from '@/app/providers/router/config/routeConfig';
 import EyeIcon from '@/shared/assets/icons/view.svg';
+import { RoutePath } from '@/shared/const/router';
 import { classNames, useHover } from '@/shared/lib';
 import { Mods } from '@/shared/lib/classNames/classNames';
 import { AppLink, Avatar, Button, Card, Icon, Text } from '@/shared/ui';
