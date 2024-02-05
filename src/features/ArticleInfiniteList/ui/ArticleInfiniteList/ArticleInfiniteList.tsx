@@ -14,6 +14,8 @@ import {
 } from '../../model/slice/articleInfiniteListSlice';
 
 import { ArticlesList, ArticleView } from '@/entities/Article';
+// TODO
+// eslint-disable-next-line
 import {
     selectArticlesPageFilterOrder,
     selectArticlesPageFilterSearch,

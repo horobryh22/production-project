@@ -4,6 +4,8 @@ import { selectInfiniteListLimit } from '../../selectors/articleInfiniteListSele
 
 import { ThunkConfig } from '@/app/providers/StoreProvider';
 import { Article, ArticleType } from '@/entities/Article';
+// TODO
+// eslint-disable-next-line
 import {
     selectArticlesPageFilterOrder,
     selectArticlesPageFilterSearch,

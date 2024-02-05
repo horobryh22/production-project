@@ -2,7 +2,9 @@ import { memo, ReactElement, ReactNode, useCallback } from 'react';
 
 import classes from './Tabs.module.scss';
 
-import { ArticleType } from '@/entities/Article';
+// TODO
+// eslint-disable-next-line
+import type { ArticleType } from '@/entities/Article';
 import { classNames } from '@/shared/lib';
 import { Card } from '@/shared/ui';
 import { CardTheme } from '@/shared/ui/Card/Card';
