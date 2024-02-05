@@ -1,5 +1,6 @@
 const path = require('path');
 const micromatch = require('micromatch');
+const isRelativePath = require('../../helpers/isPathRelative');
 
 // слои, в которых запрещен импорт не из Public API
 const FORBIDDEN_LAYERS = ['entities', 'features', 'widgets', 'pages'];
@@ -14,7 +15,7 @@ module.exports = (context) => {
             const importFromFile = path.normalize(alias ? importFromValue.replace(`${alias}/`, '') : importFromValue);
 
             // проверяем, является ли путь относительным
-            if (importFromFile.startsWith('.')) {
+            if (isRelativePath(importFromFile)) {
                 return;
             }
 

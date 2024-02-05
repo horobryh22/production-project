@@ -5,9 +5,9 @@ import { Portal } from '../Portal/Portal';
 
 import classes from './Drawer.module.scss';
 
-import { useTheme } from '@/app/providers/ThemeProvider';
 import { classNames } from '@/shared/lib';
 import { Mods } from '@/shared/lib/classNames/classNames';
+import { useTheme } from '@/shared/lib/hooks/useTheme/useTheme';
 import { AnimationProvider, useAnimationModules } from '@/shared/lib/providers';
 
 export interface DrawerProps {

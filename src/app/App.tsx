@@ -3,7 +3,8 @@ import React, { ReactElement, Suspense, useEffect } from 'react';
 import { ErrorBoundary } from 'react-error-boundary';
 import { useSelector } from 'react-redux';
 
-import { AppRouter } from '@/app/providers/router';
+import { AppRouter } from './providers/router';
+
 import { selectInitialized, userActions } from '@/entities/User';
 import { classNames, useAppDispatch } from '@/shared/lib';
 import { ErrorFallback } from '@/shared/ui';

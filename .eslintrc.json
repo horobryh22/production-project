@@ -148,6 +148,11 @@
       "alias": "@",
       "testFilesPatterns": ["**/*.test.*", "**/*.stories.*", "**/StoreDecorator.tsx"]
     }],
+    "fsd-plugin/layer-imports":  ["error", {
+      "alias": "@",
+      "ignoredImportPatterns": ["**/StoreProvider", "**/testing"],
+      "testFilesPatterns": ["**/*.test.*", "**/*.stories.*", "**/StoreDecorator.tsx"]
+    }],
     "i18next/no-literal-string": [
       "error",
       {

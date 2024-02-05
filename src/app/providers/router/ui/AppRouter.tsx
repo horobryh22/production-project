@@ -4,8 +4,8 @@ import { Route, Routes } from 'react-router-dom';
 
 import { routeConfig } from '../config/routeConfig';
 import { RequireAuth } from '../lib/RequireAuth/RequireAuth';
+import { RequireRole } from '../lib/RequireRole/RequireRole';
 
-import { RequireRole } from '@/app/providers/router/lib/RequireRole/RequireRole';
 import { PageLoader } from '@/widgets/PageLoader';
 
 export const AppRouter = (): ReactElement => {

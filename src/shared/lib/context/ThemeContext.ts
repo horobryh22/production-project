@@ -1,6 +1,6 @@
 import { createContext } from 'react';
 
-import { Theme } from './useTheme';
+import { Theme } from '../hooks/useTheme/useTheme';
 
 interface ThemeContextProps {
     theme?: Theme;
@@ -8,5 +8,3 @@ interface ThemeContextProps {
 }
 
 export const ThemeContext = createContext<ThemeContextProps>({});
-
-export const LOCAL_STORAGE_THEME_KEY = 'theme';
