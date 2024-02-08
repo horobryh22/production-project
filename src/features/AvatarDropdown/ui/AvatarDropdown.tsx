@@ -8,7 +8,8 @@ import classes from './AvatarDropdown.module.scss';
 import { isUserAdmin, isUserManager, selectAuthData, userActions } from '@/entities/User';
 import { RoutePath } from '@/shared/const/router';
 import { classNames, useAppDispatch } from '@/shared/lib';
-import { Avatar, Dropdown, DropdownItems } from '@/shared/ui';
+import { DropdownItems } from '@/shared/types/ui';
+import { Avatar, Dropdown } from '@/shared/ui';
 
 interface AvatarDropdownProps {
     className?: string;
