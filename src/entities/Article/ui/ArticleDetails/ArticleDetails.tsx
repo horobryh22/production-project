@@ -28,7 +28,7 @@ import {
 } from '@/shared/lib';
 import { ReducersList } from '@/shared/lib/hooks/useDynamicModuleLoader/useDynamicModuleLoader';
 import { Avatar, Icon, Skeleton, Text } from '@/shared/ui';
-import { TextAlign, TextSize, TextTheme } from '@/shared/ui/Text/Text';
+import { TextAlign, TextSize, TextTheme } from '@/shared/ui';
 
 const reducers: ReducersList = {
     articleDetails: articleDetailsReducer,

@@ -13,7 +13,7 @@ import {
 } from '@/features/EditableProfileCard';
 import { classNames, useAppDispatch } from '@/shared/lib';
 import { Button, ButtonTheme, HStack } from '@/shared/ui';
-import { Text } from '@/shared/ui/Text/Text';
+import { Text } from '@/shared/ui';
 
 interface ProfilePageHeaderProps {
     id?: string;

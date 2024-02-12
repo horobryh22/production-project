@@ -1,13 +1,13 @@
 import { memo, ReactElement, ReactNode, useCallback } from 'react';
 
+import { CardTheme, Card } from '../Card/Card';
+
 import classes from './Tabs.module.scss';
 
 // TODO
 // eslint-disable-next-line
 import type { ArticleType } from '@/entities/Article';
 import { classNames } from '@/shared/lib';
-import { Card } from '@/shared/ui';
-import { CardTheme } from '@/shared/ui/Card/Card';
 
 export interface TabItem {
     value: ArticleType;

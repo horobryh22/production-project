@@ -1,5 +1,7 @@
 export { AppLink, AppLinkTheme } from './AppLink/AppLink';
-export { Button, ButtonTheme } from './Button/Button';
+export { Tabs } from "./Tabs/Tabs";
+export { Overlay } from "./Overlay/Overlay";
+export { Button, ButtonTheme, ButtonSize } from './Button/Button';
 export { Loader } from './Loader/Loader';
 export { ErrorFallback } from './ErrorFallback/ErrorFallback';
 export { Modal } from './Modal/Modal';
@@ -11,7 +13,7 @@ export { Text, TextSize, TextAlign, TextTheme } from './Text/Text';
 export { Skeleton } from './Skeleton/Skeleton';
 export { Icon } from './Icon/Icon';
 export { Code } from './Code/Code';
-export { Card } from './Card/Card';
+export { Card, CardTheme } from './Card/Card';
 export { VStack } from './Stack/VStack/VStack';
 export { HStack } from './Stack/HStack/HStack';
 export { ListBox } from './Popups/ui/ListBox/ListBox';
@@ -20,3 +22,8 @@ export { Popover } from './Popups/ui/Popover/Popover';
 export { Drawer } from './Drawer/Drawer';
 export { StarRating } from './StarRating/StarRating';
 export { LazyLoader } from './LazyLoader/LazyLoader';
+
+// types
+export type { DrawerProps } from './Drawer/Drawer';
+export type { SelectOptions } from './Select/Select';
+export type { TabItem } from './Tabs/Tabs';

@@ -11,7 +11,7 @@ import classes from './Sidebar.module.scss';
 
 import { classNames } from '@/shared/lib';
 import { Button, ButtonTheme, HStack, VStack } from '@/shared/ui';
-import { ButtonSize } from '@/shared/ui/Button/Button';
+import { ButtonSize } from '@/shared/ui';
 
 interface SidebarProps {
     className?: string;

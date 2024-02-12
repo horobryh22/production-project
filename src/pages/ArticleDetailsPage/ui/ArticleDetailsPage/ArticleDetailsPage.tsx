@@ -9,7 +9,7 @@ import { ArticleDetailsHeader } from '../ArticleDetailsHeader/ArticleDetailsHead
 import { ArticleDetails, selectArticleDetailsIsLoading } from '@/entities/Article';
 import { classNames } from '@/shared/lib';
 import { Text, VStack, LazyLoader } from '@/shared/ui';
-import { TextTheme } from '@/shared/ui/Text/Text';
+import { TextTheme } from '@/shared/ui';
 import { Page } from '@/widgets/Page';
 
 // lazy loading

@@ -10,7 +10,7 @@ import classes from './ArticleTypeTabs.module.scss';
 
 import { ArticleType } from '@/entities/Article';
 import { classNames, useAppDispatch } from '@/shared/lib';
-import { TabItem, Tabs } from '@/shared/ui/Tabs/Tabs';
+import { TabItem, Tabs } from '@/shared/ui';
 
 interface ArticleTypeTabsProps {
     className?: string;
