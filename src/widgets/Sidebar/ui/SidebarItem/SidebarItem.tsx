@@ -3,13 +3,13 @@ import React, { memo } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
 
-import { SidebarItemType } from '../../model/types';
-
-import classes from './SidebarItem.module.scss';
-
 import { selectIsUserAuth } from '@/entities/User';
 import { classNames } from '@/shared/lib';
 import { AppLink, AppLinkTheme } from '@/shared/ui';
+
+import { SidebarItemType } from '../../model/types';
+
+import classes from './SidebarItem.module.scss';
 
 interface SidebarItemProps {
     item: SidebarItemType;

@@ -3,14 +3,14 @@ import { memo, ReactElement, useCallback, useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
 
+import { ArticleType } from '@/entities/Article';
+import { classNames, useAppDispatch } from '@/shared/lib';
+import { TabItem, Tabs } from '@/shared/ui';
+
 import { selectArticlesPageFilterTypeTab } from '../../model/selectors/articlesPageFilterSelectors';
 import { articlesPageFilterActions } from '../../model/slice/articlesPageFilterSlice';
 
 import classes from './ArticleTypeTabs.module.scss';
-
-import { ArticleType } from '@/entities/Article';
-import { classNames, useAppDispatch } from '@/shared/lib';
-import { TabItem, Tabs } from '@/shared/ui';
 
 interface ArticleTypeTabsProps {
     className?: string;

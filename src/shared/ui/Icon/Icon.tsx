@@ -1,8 +1,8 @@
 import React, { ReactElement, memo } from 'react';
 
-import classes from './Icon.module.scss';
-
 import { classNames } from '@/shared/lib';
+
+import classes from './Icon.module.scss';
 
 type IconTheme = 'primary' | 'inverted' | 'outline';
 interface IconProps extends React.SVGProps<SVGSVGElement> {

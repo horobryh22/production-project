@@ -2,11 +2,11 @@ import { useState } from 'react';
 
 import type { ComponentMeta, ComponentStory } from '@storybook/react';
 
-import { Drawer } from './Drawer';
-
 import type { Notification } from '@/entities/Notification';
 import { NotificationItem } from '@/entities/Notification';
 import { Button, VStack } from '@/shared/ui';
+
+import { Drawer } from './Drawer';
 
 export default {
     title: 'shared/Drawer',

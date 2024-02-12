@@ -3,6 +3,13 @@ import { ReactElement, useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
 
+import { Country } from '@/entities/Country';
+import { Currency } from '@/entities/Currency';
+import { ProfileCard } from '@/entities/Profile';
+import { useAppDispatch, useDynamicModuleLoader, useInitialEffect } from '@/shared/lib';
+import { ReducersList } from '@/shared/lib/hooks/useDynamicModuleLoader/useDynamicModuleLoader';
+import { VStack, Text, TextTheme } from '@/shared/ui';
+
 import { ValidateProfileError } from '../model/consts/consts';
 import { selectProfileError } from '../model/selectors/selectProfileError/selectProfileError';
 import { selectProfileFormData } from '../model/selectors/selectProfileFormData/selectProfileFormData';
@@ -11,14 +18,6 @@ import { selectProfileReadonly } from '../model/selectors/selectProfileReadonly/
 import { selectProfileValidateErrors } from '../model/selectors/selectProfileValidateErrors/selectProfileValidateErrors';
 import { fetchProfileData } from '../model/services/fetchProfileData/fetchProfileData';
 import { profileActions, profileReducer } from '../model/slice/profileSlice';
-
-import { Country } from '@/entities/Country';
-import { Currency } from '@/entities/Currency';
-import { ProfileCard } from '@/entities/Profile';
-import { useAppDispatch, useDynamicModuleLoader, useInitialEffect } from '@/shared/lib';
-import { ReducersList } from '@/shared/lib/hooks/useDynamicModuleLoader/useDynamicModuleLoader';
-import { VStack } from '@/shared/ui';
-import { Text, TextTheme } from '@/shared/ui';
 
 const INITIAL_REDUCERS: ReducersList = {
     profile: profileReducer,

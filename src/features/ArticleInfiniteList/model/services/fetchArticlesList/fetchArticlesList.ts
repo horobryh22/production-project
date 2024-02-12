@@ -1,7 +1,5 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
-import { selectInfiniteListLimit } from '../../selectors/articleInfiniteListSelectors';
-
 import { ThunkConfig } from '@/app/providers/StoreProvider';
 import { Article, ArticleType } from '@/entities/Article';
 // TODO
@@ -13,6 +11,8 @@ import {
     selectArticlesPageFilterTypeTab,
 } from '@/features/ArticlesPageFilter';
 import { addQueryParams } from '@/shared/lib/url/addQueryParams/addQueryParams';
+
+import { selectInfiniteListLimit } from '../../selectors/articleInfiniteListSelectors';
 
 export interface FetchArticlesListProps {
     page: number;

@@ -3,10 +3,10 @@ import { ReactElement, memo } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useParams } from 'react-router-dom';
 
-import classes from './ArticleEditPage.module.scss';
-
 import { classNames } from '@/shared/lib';
 import { Page } from '@/widgets/Page';
+
+import classes from './ArticleEditPage.module.scss';
 
 interface ArticleEditPageProps {
     className?: string;

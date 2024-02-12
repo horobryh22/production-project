@@ -1,6 +1,6 @@
-import { initView } from './initView';
-
 import { TestAsyncThunk } from '@/shared/lib/tests/testAsyncThunk';
+
+import { initView } from './initView';
 
 describe('initArticlesPage.test', () => {
     test('initState action should be called', async () => {

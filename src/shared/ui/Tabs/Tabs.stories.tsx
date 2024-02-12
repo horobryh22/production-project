@@ -1,9 +1,9 @@
 import { action } from '@storybook/addon-actions';
 import type { ComponentMeta, ComponentStory } from '@storybook/react';
 
-import { Tabs } from './Tabs';
-
 import { ArticleType } from '@/entities/Article';
+
+import { Tabs } from './Tabs';
 
 export default {
     title: 'shared/Tabs',

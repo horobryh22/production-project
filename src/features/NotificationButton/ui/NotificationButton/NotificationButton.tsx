@@ -2,13 +2,13 @@ import React, { memo, ReactElement, useCallback, useState } from 'react';
 
 import { useSelector } from 'react-redux';
 
-import classes from './NotificationButton.module.scss';
-
 import { NotificationList } from '@/entities/Notification';
 import { selectIsUserAuth } from '@/entities/User';
 import notificationIcon from '@/shared/assets/icons/notification.svg';
 import { classNames, useIsDesktop } from '@/shared/lib';
 import { Button, ButtonTheme, Drawer, Icon, Popover } from '@/shared/ui';
+
+import classes from './NotificationButton.module.scss';
 
 interface NotificationButtonProps {
     className?: string;

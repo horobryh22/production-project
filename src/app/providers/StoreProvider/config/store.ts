@@ -3,14 +3,14 @@ import { configureStore } from '@reduxjs/toolkit';
 import type { NavigateFunction } from 'react-router/dist/lib/hooks';
 import type { CombinedState, Reducer } from 'redux';
 
-import { ReducerManager, StateSchema, StoreSchema } from '../config/StateSchema';
-
-import { createReducerManager } from './reducerManager';
-
 import { userReducer } from '@/entities/User';
 import { instance } from '@/shared/api/api';
 import { rtkApi } from '@/shared/api/rtkApi';
 import { uiPageSliceReducer } from '@/widgets/Page';
+
+import { ReducerManager, StateSchema, StoreSchema } from '../config/StateSchema';
+
+import { createReducerManager } from './reducerManager';
 
 export const createReduxStore = (
     initialState?: StateSchema,

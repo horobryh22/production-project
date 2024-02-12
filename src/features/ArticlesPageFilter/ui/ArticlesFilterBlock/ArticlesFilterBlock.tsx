@@ -4,6 +4,17 @@ import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
 import { useSearchParams } from 'react-router-dom';
 
+import { ArticleSortType } from '@/entities/Article';
+import {
+    classNames,
+    useAppDispatch,
+    useDynamicModuleLoader,
+    useInitialEffect,
+} from '@/shared/lib';
+import { ReducersList } from '@/shared/lib/hooks/useDynamicModuleLoader/useDynamicModuleLoader';
+import { SortOrder } from '@/shared/types';
+import { Card, Input } from '@/shared/ui';
+
 import {
     selectArticlesPageFilterOrder,
     selectArticlesPageFilterSearch,
@@ -18,17 +29,6 @@ import { ArticleSortSelector } from '../ArticleSortSelector/ArticleSortSelector'
 import { ArticleTypeTabs } from '../ArticleTypeTabs/ArticleTypeTabs';
 
 import classes from './ArticlesFilterBlock.module.scss';
-
-import { ArticleSortType } from '@/entities/Article';
-import {
-    classNames,
-    useAppDispatch,
-    useDynamicModuleLoader,
-    useInitialEffect,
-} from '@/shared/lib';
-import { ReducersList } from '@/shared/lib/hooks/useDynamicModuleLoader/useDynamicModuleLoader';
-import { SortOrder } from '@/shared/types';
-import { Card, Input } from '@/shared/ui';
 
 interface ArticlesFilterBlockProps {
     className?: string;

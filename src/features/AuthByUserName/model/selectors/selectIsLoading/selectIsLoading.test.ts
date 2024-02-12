@@ -1,6 +1,6 @@
-import { selectIsLoading } from './selectIsLoading';
-
 import { StateSchema } from '@/app/providers/StoreProvider';
+
+import { selectIsLoading } from './selectIsLoading';
 
 describe('selectIsLoading', () => {
     test('should return isLoading', () => {

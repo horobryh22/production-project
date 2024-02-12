@@ -3,15 +3,15 @@ import { HTMLAttributeAnchorTarget, memo, MutableRefObject, ReactElement } from 
 import { useTranslation } from 'react-i18next';
 import { VirtuosoGrid } from 'react-virtuoso';
 
+import { classNames } from '@/shared/lib';
+import { Text, TextSize } from '@/shared/ui';
+
 import { ArticleView } from '../../model/consts/consts';
 import { Article } from '../../model/types';
 import { ArticleItem } from '../ArticleItem/ArticleItem';
 import { ArticleItemSkeleton } from '../ArticleItem/ArticleItemSkeleton';
 
 import classes from './ArticlesList.module.scss';
-
-import { classNames } from '@/shared/lib';
-import { Text, TextSize } from '@/shared/ui';
 
 interface ArticlesListProps {
     className?: string;

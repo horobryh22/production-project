@@ -1,10 +1,10 @@
 import { action } from '@storybook/addon-actions';
 import type { ComponentMeta, ComponentStory } from '@storybook/react';
 
-import { ArticleSortSelector } from './ArticleSortSelector';
-
 import { ArticleSortType } from '@/entities/Article';
 import { SortOrder } from '@/shared/types';
+
+import { ArticleSortSelector } from './ArticleSortSelector';
 
 export default {
     title: 'features/ArticlePageFilter/ArticleSortSelector',

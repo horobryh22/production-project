@@ -1,8 +1,8 @@
 import type { ComponentMeta, ComponentStory } from '@storybook/react';
 
-import { ArticleDetailsHeader } from './ArticleDetailsHeader';
-
 import { StoreDecorator } from '@/shared/config/storybook/StoreDecorator';
+
+import { ArticleDetailsHeader } from './ArticleDetailsHeader';
 
 export default {
     title: 'pages/ArticleDetails/ArticleDetailsHeader',

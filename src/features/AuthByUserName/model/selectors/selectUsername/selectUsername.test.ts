@@ -1,6 +1,6 @@
-import { selectUsername } from './selectUsername';
-
 import { StateSchema } from '@/app/providers/StoreProvider';
+
+import { selectUsername } from './selectUsername';
 
 describe('select username', () => {
     test('should return username', () => {

@@ -1,9 +1,9 @@
 import type { ComponentMeta, ComponentStory } from '@storybook/react';
 
-import { ArticleTypeTabs } from './ArticleTypeTabs';
-
 import { ArticleType } from '@/entities/Article';
 import { StoreDecorator } from '@/shared/config/storybook/StoreDecorator';
+
+import { ArticleTypeTabs } from './ArticleTypeTabs';
 
 export default {
     title: 'features/ArticlePageFilter/ArticleTypeTabs',

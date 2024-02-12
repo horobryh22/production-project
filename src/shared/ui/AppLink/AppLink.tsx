@@ -3,9 +3,9 @@ import { ReactElement } from 'react';
 import type { NavLinkProps } from 'react-router-dom';
 import { NavLink } from 'react-router-dom';
 
-import classes from './AppLink.module.scss';
-
 import { classNames } from '@/shared/lib';
+
+import classes from './AppLink.module.scss';
 
 export enum AppLinkTheme {
     PRIMARY = 'primary',

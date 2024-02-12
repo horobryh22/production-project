@@ -1,10 +1,10 @@
-import { ValidateProfileError } from '../../consts/consts';
-
-import { updateUserProfile } from './updateUserProfile';
-
 import { Country } from '@/entities/Country';
 import { Currency } from '@/entities/Currency';
 import { TestAsyncThunk } from '@/shared/lib/tests/testAsyncThunk';
+
+import { ValidateProfileError } from '../../consts/consts';
+
+import { updateUserProfile } from './updateUserProfile';
 
 const profileData = {
     age: 28,

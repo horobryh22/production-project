@@ -1,6 +1,6 @@
-import popupCls from './popups.module.scss';
-
 import { DropdownDirection } from '@/shared/types/ui';
+
+import popupCls from './popups.module.scss';
 
 export const popupDirectionClass: Record<DropdownDirection, string> = {
     'top left': popupCls.topLeft,

@@ -1,12 +1,11 @@
 import { memo, ReactElement } from 'react';
 
+import { classNames } from '@/shared/lib';
+import { AppLink, Card, Text, CardTheme } from '@/shared/ui';
+
 import { Notification } from '../../model/types';
 
 import classes from './NotificationItem.module.scss';
-
-import { classNames } from '@/shared/lib';
-import { AppLink, Card, Text } from '@/shared/ui';
-import { CardTheme } from '@/shared/ui';
 
 interface NotificationItemProps {
     className?: string;

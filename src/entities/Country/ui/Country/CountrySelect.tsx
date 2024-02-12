@@ -2,14 +2,13 @@ import { memo, ReactElement, useCallback } from 'react';
 
 import { useTranslation } from 'react-i18next';
 
+import { classNames } from '@/shared/lib';
+import { Mods } from '@/shared/lib/classNames/classNames';
+import { ListBox, SelectOptions } from '@/shared/ui';
+
 import { Country } from '../../model/consts/consts';
 
 import classes from './CountrySelect.module.scss';
-
-import { classNames } from '@/shared/lib';
-import { Mods } from '@/shared/lib/classNames/classNames';
-import { ListBox } from '@/shared/ui';
-import { SelectOptions } from '@/shared/ui';
 
 const options: SelectOptions<Country>[] = [
     { content: Country.USA, value: Country.USA },

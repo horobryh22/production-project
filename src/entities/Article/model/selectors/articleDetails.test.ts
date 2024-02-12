@@ -1,10 +1,10 @@
+import { StateSchema } from '@/app/providers/StoreProvider';
+
 import {
     selectArticleDetailsData,
     selectArticleDetailsIsLoading,
     selectArticleDetailsError,
 } from './articleDetails';
-
-import { StateSchema } from '@/app/providers/StoreProvider';
 
 describe('articleDetails selectors', () => {
     const state: DeepPartial<StateSchema> = {

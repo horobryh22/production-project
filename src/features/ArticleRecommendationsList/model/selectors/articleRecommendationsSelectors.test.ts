@@ -1,9 +1,9 @@
+import { StateSchema } from '@/app/providers/StoreProvider';
+
 import {
     selectArticleRecommendationsError,
     selectArticleRecommendationsIsLoading,
 } from './articleRecommendationsSelectors';
-
-import { StateSchema } from '@/app/providers/StoreProvider';
 
 describe('articleRecommendationsSelectors', () => {
     test('should return error', () => {

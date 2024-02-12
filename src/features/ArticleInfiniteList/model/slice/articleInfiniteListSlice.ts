@@ -1,11 +1,11 @@
 import type { PayloadAction } from '@reduxjs/toolkit';
 import { createEntityAdapter, createSlice } from '@reduxjs/toolkit';
 
-import { fetchArticlesList } from '../services/fetchArticlesList/fetchArticlesList';
-import { ArticleInfiniteListSchema } from '../types';
-
 import { StateSchema } from '@/app/providers/StoreProvider';
 import { Article } from '@/entities/Article';
+
+import { fetchArticlesList } from '../services/fetchArticlesList/fetchArticlesList';
+import { ArticleInfiniteListSchema } from '../types';
 
 const articleAdapter = createEntityAdapter<Article>({
     selectId: article => article?.id,

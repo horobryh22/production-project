@@ -1,8 +1,8 @@
+import { StateSchema } from '@/app/providers/StoreProvider';
+
 import { ValidateProfileError } from '../../consts/consts';
 
 import { selectProfileValidateErrors } from './selectProfileValidateErrors';
-
-import { StateSchema } from '@/app/providers/StoreProvider';
 
 describe('selectProfileValidateErrors', () => {
     test('should return array with errors', () => {

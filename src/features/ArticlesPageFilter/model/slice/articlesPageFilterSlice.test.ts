@@ -1,12 +1,12 @@
+import { ArticleSortType, ArticleType } from '@/entities/Article';
+import { SortOrder } from '@/shared/types';
+
 import { ArticlesPageFilterSchema } from '../types';
 
 import {
     articlesPageFilterActions,
     articlesPageFilterReducer,
 } from './articlesPageFilterSlice';
-
-import { ArticleSortType, ArticleType } from '@/entities/Article';
-import { SortOrder } from '@/shared/types';
 
 describe('articlesPageFilterSlice.test', () => {
     let state: ArticlesPageFilterSchema;

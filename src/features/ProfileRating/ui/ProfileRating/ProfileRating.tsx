@@ -3,11 +3,11 @@ import { memo, ReactElement, useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
 
-import { useProfileRating, useRateProfile } from '../../api/profileRatingAPI';
-
 import { RatingCard } from '@/entities/Rating';
 import { selectAuthData } from '@/entities/User';
 import { Skeleton } from '@/shared/ui';
+
+import { useProfileRating, useRateProfile } from '../../api/profileRatingAPI';
 
 export interface ProfileRatingProps {
     className?: string;

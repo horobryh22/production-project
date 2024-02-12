@@ -1,9 +1,9 @@
+import { Article, ArticleType } from '@/entities/Article';
+
 import { fetchArticleRecommendations } from '../services/fetchArticleRecommendations/fetchArticleRecommendations';
 import { ArticleRecommendationsSchema } from '../types';
 
 import { articleRecommendationsReducer } from './articleRecommendationsSlice';
-
-import { Article, ArticleType } from '@/entities/Article';
 
 describe('articleRecommendationsSlice.test', () => {
     let state: ArticleRecommendationsSchema;

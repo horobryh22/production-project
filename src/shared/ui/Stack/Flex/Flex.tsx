@@ -1,9 +1,9 @@
 import { HTMLAttributes, memo, ReactElement, ReactNode, DetailedHTMLProps } from 'react';
 
-import classes from './Flex.module.scss';
-
 import { classNames } from '@/shared/lib';
 import { Mods } from '@/shared/lib/classNames/classNames';
+
+import classes from './Flex.module.scss';
 
 type FlexJustify = 'center' | 'between' | 'start' | 'end';
 type FlexAlign = 'center' | 'start' | 'end';

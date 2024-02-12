@@ -3,6 +3,25 @@ import { memo, ReactElement, useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
 
+import DataIcon from '@/shared/assets/icons/date.svg';
+import ViewIcon from '@/shared/assets/icons/view.svg';
+import {
+    useInitialEffect,
+    classNames,
+    useAppDispatch,
+    useDynamicModuleLoader,
+} from '@/shared/lib';
+import { ReducersList } from '@/shared/lib/hooks/useDynamicModuleLoader/useDynamicModuleLoader';
+import {
+    Avatar,
+    Icon,
+    Skeleton,
+    Text,
+    TextAlign,
+    TextSize,
+    TextTheme,
+} from '@/shared/ui';
+
 import { ArticleBlockType } from '../../model/consts/consts';
 import {
     selectArticleDetailsData,
@@ -17,18 +36,6 @@ import { ArticleImageBlockComponent } from '../ArticleImageBlockComponent/Articl
 import { ArticleTextBlockComponent } from '../ArticleTextBlockComponent/ArticleTextBlockComponent';
 
 import classes from './ArticleDetails.module.scss';
-
-import DataIcon from '@/shared/assets/icons/date.svg';
-import ViewIcon from '@/shared/assets/icons/view.svg';
-import {
-    useInitialEffect,
-    classNames,
-    useAppDispatch,
-    useDynamicModuleLoader,
-} from '@/shared/lib';
-import { ReducersList } from '@/shared/lib/hooks/useDynamicModuleLoader/useDynamicModuleLoader';
-import { Avatar, Icon, Skeleton, Text } from '@/shared/ui';
-import { TextAlign, TextSize, TextTheme } from '@/shared/ui';
 
 const reducers: ReducersList = {
     articleDetails: articleDetailsReducer,

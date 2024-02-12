@@ -2,16 +2,16 @@ import { Fragment, memo, ReactElement, ReactNode, useMemo } from 'react';
 
 import { Listbox as HListBox } from '@headlessui/react';
 
+import CheckIcon from '@/shared/assets/icons/check.svg';
+import { classNames } from '@/shared/lib';
+import { DropdownDirection } from '@/shared/types/ui';
+
 import { Button, ButtonTheme } from '../../../Button/Button';
 import { HStack } from '../../../Stack/HStack/HStack';
 import { popupDirectionClass } from '../../styles';
 import popupCls from '../../styles/popups.module.scss';
 
 import classes from './ListBox.module.scss';
-
-import CheckIcon from '@/shared/assets/icons/check.svg';
-import { classNames } from '@/shared/lib';
-import { DropdownDirection } from '@/shared/types/ui';
 
 interface ListBoxItem {
     value: string;

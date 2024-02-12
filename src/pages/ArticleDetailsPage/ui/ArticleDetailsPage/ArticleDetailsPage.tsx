@@ -4,13 +4,12 @@ import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 
-import { ArticleDetailsHeader } from '../ArticleDetailsHeader/ArticleDetailsHeader';
-
 import { ArticleDetails, selectArticleDetailsIsLoading } from '@/entities/Article';
 import { classNames } from '@/shared/lib';
-import { Text, VStack, LazyLoader } from '@/shared/ui';
-import { TextTheme } from '@/shared/ui';
+import { Text, VStack, LazyLoader, TextTheme } from '@/shared/ui';
 import { Page } from '@/widgets/Page';
+
+import { ArticleDetailsHeader } from '../ArticleDetailsHeader/ArticleDetailsHeader';
 
 // lazy loading
 const ArticleRating = lazy(() => import('@/features/ArticleRating'));

@@ -2,8 +2,6 @@ import { memo, MutableRefObject, ReactElement, useCallback, useState } from 'rea
 
 import { useSelector } from 'react-redux';
 
-import classes from './ArticlesPage.module.scss';
-
 import {
     ArticleInfiniteList,
     fetchNextArticlesPage,
@@ -12,6 +10,8 @@ import { ArticlesFilterBlock } from '@/features/ArticlesPageFilter';
 import { classNames, useAppDispatch } from '@/shared/lib';
 import { Page } from '@/widgets/Page';
 import { selectViewSwitcherView, ViewSwitcher } from '@/widgets/ViewSwitcher';
+
+import classes from './ArticlesPage.module.scss';
 
 interface ArticlePageProps {
     className?: string;

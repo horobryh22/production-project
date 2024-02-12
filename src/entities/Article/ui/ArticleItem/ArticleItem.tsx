@@ -2,17 +2,17 @@ import { HTMLAttributeAnchorTarget, memo, ReactElement } from 'react';
 
 import { useTranslation } from 'react-i18next';
 
-import { ArticleBlockType, ArticleView } from '../../model/consts/consts';
-import { Article, ArticleTextBlock } from '../../model/types';
-import { ArticleTextBlockComponent } from '../ArticleTextBlockComponent/ArticleTextBlockComponent';
-
-import classes from './ArticleItem.module.scss';
-
 import EyeIcon from '@/shared/assets/icons/view.svg';
 import { RoutePath } from '@/shared/const/router';
 import { classNames, useHover } from '@/shared/lib';
 import { Mods } from '@/shared/lib/classNames/classNames';
 import { AppLink, Avatar, Button, Card, Icon, Text } from '@/shared/ui';
+
+import { ArticleBlockType, ArticleView } from '../../model/consts/consts';
+import { Article, ArticleTextBlock } from '../../model/types';
+import { ArticleTextBlockComponent } from '../ArticleTextBlockComponent/ArticleTextBlockComponent';
+
+import classes from './ArticleItem.module.scss';
 
 interface ArticleItemProps {
     className?: string;

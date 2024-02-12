@@ -1,8 +1,8 @@
 import { ReactElement } from 'react';
 
-import classes from './Loader.module.scss';
-
 import { classNames } from '@/shared/lib';
+
+import classes from './Loader.module.scss';
 
 interface LoaderProps {
     className?: string;

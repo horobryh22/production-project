@@ -1,11 +1,11 @@
+import { Country } from '@/entities/Country';
+import { Currency } from '@/entities/Currency';
+
 import { ValidateProfileError } from '../consts/consts';
 import { updateUserProfile } from '../services/updateUserProfile/updateUserProfile';
 import { ProfileSchema } from '../types';
 
 import { profileActions, profileReducer } from './profileSlice';
-
-import { Country } from '@/entities/Country';
-import { Currency } from '@/entities/Currency';
 
 const userData = {
     age: 28,

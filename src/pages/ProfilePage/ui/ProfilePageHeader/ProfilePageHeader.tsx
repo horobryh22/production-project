@@ -3,8 +3,6 @@ import { ReactElement, useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
 
-import { getCanEdit } from '../../model/selectors/getCanEdit/getCanEdit';
-
 import {
     profileActions,
     selectProfileError,
@@ -12,8 +10,9 @@ import {
     updateUserProfile,
 } from '@/features/EditableProfileCard';
 import { classNames, useAppDispatch } from '@/shared/lib';
-import { Button, ButtonTheme, HStack } from '@/shared/ui';
-import { Text } from '@/shared/ui';
+import { Button, ButtonTheme, HStack, Text } from '@/shared/ui';
+
+import { getCanEdit } from '../../model/selectors/getCanEdit/getCanEdit';
 
 interface ProfilePageHeaderProps {
     id?: string;

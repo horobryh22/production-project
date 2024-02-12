@@ -1,9 +1,9 @@
+import { Comment } from '@/entities/Comment';
+
 import { addCommentForArticle } from '../services/addCommentForArticle/addCommentForArticle';
 import { fetchCommentsByArticleId } from '../services/fetchCommentsByArticleId/fetchCommentsByArticleId';
 import { articleCommentsReducer } from '../slice/articleCommentsSlice';
 import { ArticleCommentsSchema } from '../types';
-
-import { Comment } from '@/entities/Comment';
 
 describe('articleCommentsSlice.test', () => {
     let state: ArticleCommentsSchema;

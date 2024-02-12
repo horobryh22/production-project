@@ -1,7 +1,7 @@
-import { addCommentForArticle } from './addCommentForArticle';
-
 import { Comment } from '@/entities/Comment';
 import { TestAsyncThunk } from '@/shared/lib/tests/testAsyncThunk';
+
+import { addCommentForArticle } from './addCommentForArticle';
 
 const comment: Comment = {
     user: {

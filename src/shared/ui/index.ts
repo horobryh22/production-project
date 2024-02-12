@@ -1,6 +1,6 @@
 export { AppLink, AppLinkTheme } from './AppLink/AppLink';
-export { Tabs } from "./Tabs/Tabs";
-export { Overlay } from "./Overlay/Overlay";
+export { Tabs } from './Tabs/Tabs';
+export { Overlay } from './Overlay/Overlay';
 export { Button, ButtonTheme, ButtonSize } from './Button/Button';
 export { Loader } from './Loader/Loader';
 export { ErrorFallback } from './ErrorFallback/ErrorFallback';

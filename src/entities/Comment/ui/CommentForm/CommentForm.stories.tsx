@@ -1,8 +1,8 @@
 import type { ComponentMeta, ComponentStory } from '@storybook/react';
 
-import { CommentForm } from './CommentForm';
-
 import { StoreDecorator } from '@/shared/config/storybook/StoreDecorator';
+
+import { CommentForm } from './CommentForm';
 
 export default {
     title: 'entities/CommentForm',

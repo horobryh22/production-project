@@ -1,8 +1,6 @@
 import { screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
-import ProfilePage from './ProfilePage';
-
 import { Country } from '@/entities/Country';
 import { Currency } from '@/entities/Currency';
 import { Profile } from '@/entities/Profile';
@@ -12,6 +10,8 @@ import {
     renderComponent,
     renderComponentOptions,
 } from '@/shared/lib/tests/renderComponent';
+
+import ProfilePage from './ProfilePage';
 
 const profileData: Profile = {
     id: '1',

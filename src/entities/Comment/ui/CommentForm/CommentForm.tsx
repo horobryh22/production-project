@@ -3,6 +3,10 @@ import { memo, ReactElement, useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
 
+import { classNames, useAppDispatch, useDynamicModuleLoader } from '@/shared/lib';
+import { ReducersList } from '@/shared/lib/hooks/useDynamicModuleLoader/useDynamicModuleLoader';
+import { Button, HStack, Input } from '@/shared/ui';
+
 import { selectCommentText } from '../../model/selectors/selectCommentText/selectCommentText';
 import {
     commentFormActions,
@@ -10,10 +14,6 @@ import {
 } from '../../model/slice/commentFormSlice';
 
 import classes from './CommentForm.module.scss';
-
-import { classNames, useAppDispatch, useDynamicModuleLoader } from '@/shared/lib';
-import { ReducersList } from '@/shared/lib/hooks/useDynamicModuleLoader/useDynamicModuleLoader';
-import { Button, HStack, Input } from '@/shared/ui';
 
 export interface CommentFormProps {
     className?: string;

@@ -1,9 +1,9 @@
 import { HTMLAttributes, ReactElement, ReactNode } from 'react';
 
-import classes from './Card.module.scss';
-
 import { classNames } from '@/shared/lib';
 import { Mods } from '@/shared/lib/classNames/classNames';
+
+import classes from './Card.module.scss';
 
 export enum CardTheme {
     NORMAL = 'normal',

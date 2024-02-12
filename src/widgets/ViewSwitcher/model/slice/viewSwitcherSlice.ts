@@ -1,10 +1,10 @@
 import type { PayloadAction } from '@reduxjs/toolkit';
 import { createSlice } from '@reduxjs/toolkit';
 
-import { ViewSwitcherSchema } from '../types';
-
 import { ArticleView } from '@/entities/Article';
 import { ARTICLES_VIEW_LOCAL_STORAGE_KEY } from '@/shared/const/localStorage';
+
+import { ViewSwitcherSchema } from '../types';
 
 const initialState: ViewSwitcherSchema = {
     view: ArticleView.TILE,

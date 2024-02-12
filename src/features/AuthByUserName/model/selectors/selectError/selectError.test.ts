@@ -1,6 +1,6 @@
-import { selectError } from './selectError';
-
 import { StateSchema } from '@/app/providers/StoreProvider';
+
+import { selectError } from './selectError';
 
 describe('selectError', () => {
     test('should return error', () => {

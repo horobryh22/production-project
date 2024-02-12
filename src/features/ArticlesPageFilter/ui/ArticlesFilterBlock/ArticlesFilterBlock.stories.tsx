@@ -1,8 +1,8 @@
 import type { ComponentMeta, ComponentStory } from '@storybook/react';
 
-import { ArticlesFilterBlock } from './ArticlesFilterBlock';
-
 import { StoreDecorator } from '@/shared/config/storybook/StoreDecorator';
+
+import { ArticlesFilterBlock } from './ArticlesFilterBlock';
 
 export default {
     title: 'features/ArticlePageFilter/ArticlesFilterBlock',

@@ -1,9 +1,9 @@
 import type { ComponentMeta, ComponentStory } from '@storybook/react';
 import { rest } from 'msw';
 
-import ProfileRating from './ProfileRating';
-
 import { StoreDecorator } from '@/shared/config/storybook/StoreDecorator';
+
+import ProfileRating from './ProfileRating';
 
 export default {
     title: 'features/ProfileRating',

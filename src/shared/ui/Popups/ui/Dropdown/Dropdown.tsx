@@ -2,14 +2,14 @@ import { Fragment, memo, ReactElement, ReactNode } from 'react';
 
 import { Menu } from '@headlessui/react';
 
+import { classNames } from '@/shared/lib';
+import { DropdownDirection, DropdownItems } from '@/shared/types/ui';
+
 import { AppLink } from '../../../AppLink/AppLink';
 import { popupDirectionClass } from '../../styles';
 import popupCls from '../../styles/popups.module.scss';
 
 import classes from './Dropdown.module.scss';
-
-import { classNames } from '@/shared/lib';
-import { DropdownDirection, DropdownItems } from '@/shared/types/ui';
 
 interface DropdownProps {
     className?: string;

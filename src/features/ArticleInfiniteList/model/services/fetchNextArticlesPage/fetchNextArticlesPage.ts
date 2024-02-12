@@ -1,5 +1,7 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
+import { ThunkConfig } from '@/app/providers/StoreProvider';
+
 import {
     selectInfiniteListHasMore,
     selectInfiniteListPageNum,
@@ -7,8 +9,6 @@ import {
 } from '../../selectors/articleInfiniteListSelectors';
 import { articleInfiniteListActions } from '../../slice/articleInfiniteListSlice';
 import { fetchArticlesList } from '../fetchArticlesList/fetchArticlesList';
-
-import { ThunkConfig } from '@/app/providers/StoreProvider';
 
 export const fetchNextArticlesPage = createAsyncThunk<void, void, ThunkConfig<string>>(
     'articlesPage/fetchNextArticlesPage',

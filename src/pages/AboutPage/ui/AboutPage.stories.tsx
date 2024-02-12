@@ -1,8 +1,8 @@
 import type { ComponentMeta, ComponentStory } from '@storybook/react';
 
-import AboutPage from './AboutPage';
-
 import { StoreDecorator } from '@/shared/config/storybook/StoreDecorator';
+
+import AboutPage from './AboutPage';
 
 export default {
     title: 'pages/About',

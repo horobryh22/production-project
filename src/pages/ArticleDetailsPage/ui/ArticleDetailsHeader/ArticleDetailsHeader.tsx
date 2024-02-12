@@ -4,12 +4,12 @@ import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router';
 
-import { selectCanUserEditArticle } from '../../model/selectors/articleDetailsSelectors';
-
 import { selectArticleDetailsData } from '@/entities/Article';
 import { RoutePath } from '@/shared/const/router';
 import { classNames } from '@/shared/lib';
 import { Button, HStack } from '@/shared/ui';
+
+import { selectCanUserEditArticle } from '../../model/selectors/articleDetailsSelectors';
 
 interface ArticleDetailsHeaderProps {
     className?: string;

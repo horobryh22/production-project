@@ -2,13 +2,13 @@ import { memo, ReactElement } from 'react';
 
 import { useTranslation } from 'react-i18next';
 
-import { useRecommendedArticles } from '../../api/recommendedArticlesAPI';
-
-import classes from './ArticleRecommendationsList.module.scss';
-
 import { ArticlesList, ArticleView } from '@/entities/Article';
 import { classNames } from '@/shared/lib';
 import { Text, TextSize, VStack } from '@/shared/ui';
+
+import { useRecommendedArticles } from '../../api/recommendedArticlesAPI';
+
+import classes from './ArticleRecommendationsList.module.scss';
 
 interface ArticleRecommendationsListProps {
     className?: string;

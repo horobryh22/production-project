@@ -1,13 +1,13 @@
 import { memo, ReactElement } from 'react';
 
-import { Comment } from '../../model/types';
-
-import classes from './CommentItem.module.scss';
-
 import { RoutePath } from '@/shared/const/router';
 import { classNames } from '@/shared/lib';
 import { Mods } from '@/shared/lib/classNames/classNames';
 import { Avatar, Text, Skeleton, AppLink } from '@/shared/ui';
+
+import { Comment } from '../../model/types';
+
+import classes from './CommentItem.module.scss';
 
 interface CommentItemProps {
     className?: string;

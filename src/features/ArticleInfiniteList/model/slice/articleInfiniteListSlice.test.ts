@@ -1,3 +1,5 @@
+import { Article, ArticleBlockType, ArticleType } from '@/entities/Article';
+
 import { fetchArticlesList } from '../services/fetchArticlesList/fetchArticlesList';
 import { ArticleInfiniteListSchema } from '../types';
 
@@ -5,8 +7,6 @@ import {
     articleInfiniteListActions,
     articleInfiniteListReducer,
 } from './articleInfiniteListSlice';
-
-import { Article, ArticleBlockType, ArticleType } from '@/entities/Article';
 
 const article: Article = {
     id: '7',

@@ -2,17 +2,6 @@ import { MutableRefObject, ReactElement } from 'react';
 
 import { useSelector } from 'react-redux';
 
-import {
-    selectInfiniteListIsLoading,
-    selectInfiniteListLimit,
-} from '../../model/selectors/articleInfiniteListSelectors';
-import { fetchArticlesList } from '../../model/services/fetchArticlesList/fetchArticlesList';
-import {
-    articleInfiniteListActions,
-    articleInfiniteListReducer,
-    infiniteListSelectors,
-} from '../../model/slice/articleInfiniteListSlice';
-
 import { ArticlesList, ArticleView } from '@/entities/Article';
 // TODO
 // eslint-disable-next-line
@@ -30,6 +19,17 @@ import {
     useInitialEffect,
 } from '@/shared/lib';
 import { ReducersList } from '@/shared/lib/hooks/useDynamicModuleLoader/useDynamicModuleLoader';
+
+import {
+    selectInfiniteListIsLoading,
+    selectInfiniteListLimit,
+} from '../../model/selectors/articleInfiniteListSelectors';
+import { fetchArticlesList } from '../../model/services/fetchArticlesList/fetchArticlesList';
+import {
+    articleInfiniteListActions,
+    articleInfiniteListReducer,
+    infiniteListSelectors,
+} from '../../model/slice/articleInfiniteListSlice';
 
 interface ArticleInfiniteListProps {
     className?: string;

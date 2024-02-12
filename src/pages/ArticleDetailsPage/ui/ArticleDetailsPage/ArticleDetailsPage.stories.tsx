@@ -1,10 +1,10 @@
 import type { ComponentMeta, ComponentStory } from '@storybook/react';
 import { rest } from 'msw';
 
-import ArticleDetailsPage from './ArticleDetailsPage';
-
 import { Article, ArticleBlockType, ArticleType } from '@/entities/Article';
 import { StoreDecorator } from '@/shared/config/storybook/StoreDecorator';
+
+import ArticleDetailsPage from './ArticleDetailsPage';
 
 export default {
     title: 'pages/ArticleDetails/ArticleDetailsPage',

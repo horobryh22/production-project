@@ -1,10 +1,10 @@
 import type { PayloadAction } from '@reduxjs/toolkit';
 import { createSlice } from '@reduxjs/toolkit';
 
-import { ArticlesPageFilterSchema, ArticlesPageURLParams } from '../types';
-
 import { ArticleSortType, ArticleType } from '@/entities/Article';
 import { SortOrder } from '@/shared/types';
+
+import { ArticlesPageFilterSchema, ArticlesPageURLParams } from '../types';
 
 const initialState: ArticlesPageFilterSchema = {
     order: SortOrder.DESC,

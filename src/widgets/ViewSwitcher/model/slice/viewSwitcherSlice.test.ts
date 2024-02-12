@@ -1,8 +1,8 @@
+import { ArticleView } from '@/entities/Article';
+
 import { ViewSwitcherSchema } from '../types';
 
 import { viewSwitcherActions, viewSwitcherReducer } from './viewSwitcherSlice';
-
-import { ArticleView } from '@/entities/Article';
 
 describe('viewSwitcherSlice.test', () => {
     let state: ViewSwitcherSchema;

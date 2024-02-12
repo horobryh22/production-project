@@ -1,5 +1,9 @@
 import type { DeepPartial } from 'redux';
 
+import { StateSchema } from '@/app/providers/StoreProvider';
+import { ArticleSortType, ArticleType } from '@/entities/Article';
+import { SortOrder } from '@/shared/types';
+
 import {
     selectArticlesPageFilterOrder,
     selectArticlesPageFilterSort,
@@ -7,10 +11,6 @@ import {
     selectArticlesPageFilterSearch,
     selectArticlesPageFilterInited,
 } from './articlesPageFilterSelectors';
-
-import { StateSchema } from '@/app/providers/StoreProvider';
-import { ArticleSortType, ArticleType } from '@/entities/Article';
-import { SortOrder } from '@/shared/types';
 
 describe('articlesPageFilterSelectors.test', () => {
     let state: DeepPartial<StateSchema>;

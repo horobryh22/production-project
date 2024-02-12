@@ -1,6 +1,6 @@
-import { selectIsUserAuth } from './selectIsUserAuth';
-
 import { StateSchema } from '@/app/providers/StoreProvider';
+
+import { selectIsUserAuth } from './selectIsUserAuth';
 
 describe('selectIsUserAuth', () => {
     test('should return isUserAuth', () => {

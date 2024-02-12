@@ -3,14 +3,6 @@ import { memo, ReactElement, useCallback, useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
 
-import { selectArticleCommentsIsLoading } from '../../model/selectors/selectArticleCommentsIsLoading/selectArticleCommentsIsLoading';
-import { addCommentForArticle } from '../../model/services/addCommentForArticle/addCommentForArticle';
-import { fetchCommentsByArticleId } from '../../model/services/fetchCommentsByArticleId/fetchCommentsByArticleId';
-import {
-    articleCommentsReducer,
-    commentsSelectors,
-} from '../../model/slice/articleCommentsSlice';
-
 import { CommentForm, CommentsList } from '@/entities/Comment';
 import {
     classNames,
@@ -20,6 +12,14 @@ import {
 } from '@/shared/lib';
 import { ReducersList } from '@/shared/lib/hooks/useDynamicModuleLoader/useDynamicModuleLoader';
 import { Text, TextSize, VStack } from '@/shared/ui';
+
+import { selectArticleCommentsIsLoading } from '../../model/selectors/selectArticleCommentsIsLoading/selectArticleCommentsIsLoading';
+import { addCommentForArticle } from '../../model/services/addCommentForArticle/addCommentForArticle';
+import { fetchCommentsByArticleId } from '../../model/services/fetchCommentsByArticleId/fetchCommentsByArticleId';
+import {
+    articleCommentsReducer,
+    commentsSelectors,
+} from '../../model/slice/articleCommentsSlice';
 
 interface ArticleCommentsProps {
     className?: string;

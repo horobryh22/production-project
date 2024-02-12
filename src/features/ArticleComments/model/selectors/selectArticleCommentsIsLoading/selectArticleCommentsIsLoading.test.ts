@@ -1,6 +1,6 @@
-import { selectArticleCommentsIsLoading } from './selectArticleCommentsIsLoading';
-
 import { StateSchema } from '@/app/providers/StoreProvider';
+
+import { selectArticleCommentsIsLoading } from './selectArticleCommentsIsLoading';
 
 describe('selectArticleDetailsCommentsIsLoading', () => {
     test('should return isLoading', () => {

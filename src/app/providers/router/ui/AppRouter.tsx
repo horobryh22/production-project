@@ -2,11 +2,11 @@ import React, { ReactElement, Suspense, useMemo } from 'react';
 
 import { Route, Routes } from 'react-router-dom';
 
+import { PageLoader } from '@/widgets/PageLoader';
+
 import { routeConfig } from '../config/routeConfig';
 import { RequireAuth } from '../lib/RequireAuth/RequireAuth';
 import { RequireRole } from '../lib/RequireRole/RequireRole';
-
-import { PageLoader } from '@/widgets/PageLoader';
 
 export const AppRouter = (): ReactElement => {
     const elements = useMemo(() => {

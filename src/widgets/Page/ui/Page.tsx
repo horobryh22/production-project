@@ -3,11 +3,6 @@ import { memo, MutableRefObject, ReactElement, ReactNode, UIEvent, useRef } from
 import { useSelector } from 'react-redux';
 import { useLocation } from 'react-router-dom';
 
-import { selectScrollPositionByPath } from '../model/selectors/uiPageSelectors';
-import { uiPageSliceActions } from '../model/slice/uiPageSlice';
-
-import classes from './Page.module.scss';
-
 import { StateSchema } from '@/app/providers/StoreProvider';
 import {
     classNames,
@@ -16,6 +11,11 @@ import {
     useInitialEffect,
     useThrottle,
 } from '@/shared/lib';
+
+import { selectScrollPositionByPath } from '../model/selectors/uiPageSelectors';
+import { uiPageSliceActions } from '../model/slice/uiPageSlice';
+
+import classes from './Page.module.scss';
 
 interface PageProps {
     className?: string;

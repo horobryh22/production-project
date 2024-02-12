@@ -1,5 +1,7 @@
 import type { DeepPartial } from 'redux';
 
+import { StateSchema } from '@/app/providers/StoreProvider';
+
 import {
     selectInfiniteListHasMore,
     selectInfiniteListIsLoading,
@@ -7,8 +9,6 @@ import {
     selectInfiniteListError,
     selectInfiniteListLimit,
 } from './articleInfiniteListSelectors';
-
-import { StateSchema } from '@/app/providers/StoreProvider';
 
 describe('articleInfiniteList.test', () => {
     let state: DeepPartial<StateSchema>;

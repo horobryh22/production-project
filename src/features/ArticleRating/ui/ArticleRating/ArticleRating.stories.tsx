@@ -3,9 +3,9 @@ import React from 'react';
 import type { ComponentMeta, ComponentStory } from '@storybook/react';
 import { rest } from 'msw';
 
-import ArticleRating from './ArticleRating';
-
 import { StoreDecorator } from '@/shared/config/storybook/StoreDecorator';
+
+import ArticleRating from './ArticleRating';
 
 export default {
     title: 'features/ArticleRating',

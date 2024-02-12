@@ -3,8 +3,6 @@ import React, { memo, ReactElement, useCallback, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
 
-import classes from './Navbar.module.scss';
-
 import { selectAuthData, selectIsUserAuth } from '@/entities/User';
 import { LoginModal } from '@/features/AuthByUserName';
 import { AvatarDropdown } from '@/features/AvatarDropdown';
@@ -20,6 +18,8 @@ import {
     Text,
     TextTheme,
 } from '@/shared/ui';
+
+import classes from './Navbar.module.scss';
 
 interface NavbarProps {
     className?: string;

@@ -2,15 +2,6 @@ import { memo, ReactElement, useCallback, useMemo } from 'react';
 
 import { useSelector } from 'react-redux';
 
-import { selectViewSwitcherView } from '../model/selectors/viewSwitcherSelectors';
-import { initView } from '../model/services/initView/initView';
-import {
-    viewSwitcherActions,
-    viewSwitcherReducer,
-} from '../model/slice/viewSwitcherSlice';
-
-import classes from './ViewSwitcher.module.scss';
-
 import { ArticleView } from '@/entities/Article';
 import ListView from '@/shared/assets/icons/list.svg';
 import TileView from '@/shared/assets/icons/tile.svg';
@@ -22,6 +13,15 @@ import {
 } from '@/shared/lib';
 import { ReducersList } from '@/shared/lib/hooks/useDynamicModuleLoader/useDynamicModuleLoader';
 import { Button, ButtonTheme, HStack, Icon } from '@/shared/ui';
+
+import { selectViewSwitcherView } from '../model/selectors/viewSwitcherSelectors';
+import { initView } from '../model/services/initView/initView';
+import {
+    viewSwitcherActions,
+    viewSwitcherReducer,
+} from '../model/slice/viewSwitcherSlice';
+
+import classes from './ViewSwitcher.module.scss';
 
 interface ViewSwitcherProps {
     className?: string;

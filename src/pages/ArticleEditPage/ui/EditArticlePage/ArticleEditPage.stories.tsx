@@ -1,8 +1,8 @@
 import type { ComponentMeta, ComponentStory } from '@storybook/react';
 
-import ArticleEditPage from './ArticleEditPage';
-
 import { StoreDecorator } from '@/shared/config/storybook/StoreDecorator';
+
+import ArticleEditPage from './ArticleEditPage';
 
 export default {
     title: 'pages/ArticleEditPage/ArticleEditPage',

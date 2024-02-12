@@ -32,7 +32,8 @@
     "prettier",
     "react-hooks",
     "@typescript-eslint",
-    "fsd-plugin"
+    "fsd-plugin",
+    "unused-imports"
   ],
   "overrides": [
     {
@@ -60,28 +61,30 @@
     "import/order": [
       "error",
       {
-        "newlines-between": "always",
-        "pathGroupsExcludedImportTypes": [
-          "react"
-        ],
-        "alphabetize": {
-          "order": "asc",
-          "caseInsensitive": true
-        },
-        "groups": [
-          "builtin",
-          "external",
-          "parent",
-          "sibling",
-          "index"
-        ],
+        "groups": ["builtin", "external", "internal", "parent", "index"],
         "pathGroups": [
           {
             "pattern": "react",
             "group": "external",
             "position": "before"
+          },
+          {
+            "pattern": "@/**",
+            "group": "external",
+            "position": "after"
+          },
+          {
+            "pattern": "./**.module.*",
+            "group": "index",
+            "position": "after"
           }
-        ]
+        ],
+        "pathGroupsExcludedImportTypes": ["react"],
+        "newlines-between": "always",
+        "alphabetize": {
+          "order": "asc",
+          "caseInsensitive": true
+        }
       }
     ],
     "import/extensions": "off",
@@ -141,6 +144,7 @@
         ]
       }
     ],
+    "unused-imports/no-unused-imports": "error",
     "fsd-plugin/path-checker":  ["error", {
       "alias": "@"
     }],
