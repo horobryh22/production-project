@@ -1,6 +1,7 @@
 const path = require('path');
 const micromatch = require('micromatch');
 const isRelativePath = require('../../helpers/isPathRelative');
+const {testingReport, publicApiReport} = require('../../consts');
 
 // слои, в которых запрещен импорт не из Public API
 const FORBIDDEN_LAYERS = ['entities', 'features', 'widgets', 'pages'];
@@ -20,7 +21,11 @@ module.exports = (context) => {
             }
 
             const importSegments = importFromFile.split(path.sep);
-            const isForbiddenImport = importSegments.length > 2 && FORBIDDEN_LAYERS.includes(importSegments[0]);
+
+            const layer = importSegments[0];
+            const slice = importSegments[1];
+
+            const isForbiddenImport = importSegments.length > 2 && FORBIDDEN_LAYERS.includes(layer);
             const isImportFormTestingPublicAPI = importSegments[2] === 'testing' && importSegments.length < 4;
 
             // если больше 2-х сегментов, и импорт происходит из одного из наших слоев, а не из других библиотек,
@@ -28,7 +33,11 @@ module.exports = (context) => {
             if (isForbiddenImport && !isImportFormTestingPublicAPI) {
                 context.report({
                     node,
-                    message: 'Импорт должен происходить только из Public API (index.ts)',
+                    messageId: publicApiReport,
+                    // фиксим автоматически
+                    fix(fixer) {
+                        return fixer.replaceText(node.source, `\'${alias}/${layer}/${slice}\'`);
+                    }
                 });
             }
 
@@ -46,7 +55,7 @@ module.exports = (context) => {
                 if (!isCorrectImport) {
                     context.report({
                         node,
-                        message: `Тестовые данные из testing.tsx (public API), можно импортировать только в файлы, соответствующие паттернам:${testFilesPatterns.join(', ')}`,
+                        messageId: testingReport ,
                     });
                 }
             }

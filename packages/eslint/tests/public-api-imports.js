@@ -3,6 +3,7 @@
 // imports
 const rule = require('../plugins/eslint-plugin-fsd-plugin/rules/public-api-imports');
 const RuleTester = require('eslint').RuleTester;
+const {testingReport, publicApiReport} = require('../plugins/eslint-plugin-fsd-plugin/consts');
 
 // variables
 const options = [
@@ -44,13 +45,14 @@ ruleTester.run('public-api-imports', rule, {
     invalid: [
         {
             code: 'import { ArticleComments } from \'@/features/ArticleComments/CommentForm\';',
-            errors: [{ message: 'Импорт должен происходить только из Public API (index.ts)' }],
+            errors: [{ messageId: publicApiReport }],
+            output: "import { ArticleComments } from '@/features/ArticleComments';", // значение, которое ожидаем увидеть после автофикса
             options,
         },
         {
             code: "import { articleDetailsReducer } from '@/entities/Article/testing';",
             filename:  'src/shared/ui/Modal/Modal.tsx',
-            errors: [{ message: `Тестовые данные из testing.tsx (public API), можно импортировать только в файлы, соответствующие паттернам:${options[0].testFilesPatterns.join(', ')}` }],
+            errors: [{ messageId: testingReport }],
             options,
         },
     ],
