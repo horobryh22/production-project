@@ -5,7 +5,7 @@ import { mockAllIsIntersecting } from 'react-intersection-observer/test-utils';
 import { Country } from '@/entities/Country';
 import { Currency } from '@/entities/Currency';
 import { Profile } from '@/entities/Profile';
-import { profileReducer } from '@/features/EditableProfileCard';
+import { profileReducer } from '@/features/EditableProfileCard/testing';
 import { instance } from '@/shared/api/api';
 import {
     renderComponent,

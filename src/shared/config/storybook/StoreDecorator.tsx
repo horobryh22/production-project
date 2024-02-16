@@ -9,8 +9,8 @@ import { commentFormReducer } from '@/entities/Comment/testing';
 import { articleCommentsReducer } from '@/features/ArticleComments/testing';
 import { articleInfiniteListReducer } from '@/features/ArticleInfiniteList/testing';
 import { articleRecommendationsReducer } from '@/features/ArticleRecommendationsList/testing';
-import { loginReducer } from '@/features/AuthByUserName';
-import { profileReducer } from '@/features/EditableProfileCard';
+import { loginReducer } from '@/features/AuthByUserName/testing';
+import { profileReducer } from '@/features/EditableProfileCard/testing';
 import { viewSwitcherReducer } from '@/widgets/ViewSwitcher/testing';
 
 import { ReducersList } from '../../lib/hooks/useDynamicModuleLoader/useDynamicModuleLoader';
