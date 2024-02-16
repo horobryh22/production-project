@@ -24,6 +24,7 @@ export const parameters = {
             { name: 'purple', class: ['app', 'app_purple_theme'] },
         ],
     },
+    layout: 'fullscreen' // чтобы не было паддингов в окне интерфейса сторибук
 };
 
 addDecorator(StyleDecorator);

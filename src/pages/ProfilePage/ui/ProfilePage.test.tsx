@@ -1,5 +1,6 @@
 import { screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
+import { mockAllIsIntersecting } from 'react-intersection-observer/test-utils';
 
 import { Country } from '@/entities/Country';
 import { Currency } from '@/entities/Currency';
@@ -44,16 +45,25 @@ const options: renderComponentOptions = {
     },
 };
 
+beforeEach(() => {
+    mockAllIsIntersecting(true); // мокаем intersectionObserver
+});
+
 describe('ProfilePage', () => {
     test('Должно появляться две кнопки Сохранить и Отменить', async () => {
         renderComponent(<ProfilePage />, options);
 
-        expect(screen.getByTestId('ProfilePageButton.Edit')).toBeInTheDocument();
+        const editBtn = screen.getByTestId('ProfilePageButton.Edit');
 
-        await userEvent.click(screen.getByTestId('ProfilePageButton.Edit'));
+        expect(editBtn).toBeInTheDocument();
 
-        expect(screen.getByTestId('ProfilePageButton.Cancel')).toBeInTheDocument();
-        expect(screen.getByTestId('ProfilePageButton.Save')).toBeInTheDocument();
+        userEvent.click(editBtn);
+
+        const cancelBtn = screen.getByTestId('ProfilePageButton.Cancel');
+        const saveBtn = screen.getByTestId('ProfilePageButton.Save');
+
+        expect(cancelBtn).toBeInTheDocument();
+        expect(saveBtn).toBeInTheDocument();
     });
 
     test('При отмене изменений должны подставляться исходные значения на момент редактирования', async () => {
@@ -65,23 +75,25 @@ describe('ProfilePage', () => {
 
         expect(editBtn).toBeInTheDocument();
 
-        await userEvent.click(editBtn);
+        userEvent.click(editBtn);
 
         expect(firstnameInput).toHaveValue('Илья');
         expect(lastnameInput).toHaveValue('Хоробрых');
 
-        await userEvent.clear(firstnameInput);
-        await userEvent.clear(lastnameInput);
+        userEvent.clear(firstnameInput);
+        userEvent.clear(lastnameInput);
 
-        await userEvent.type(firstnameInput, 'firstname');
-        await userEvent.type(lastnameInput, 'lastname');
+        userEvent.type(firstnameInput, 'firstname');
+        userEvent.type(lastnameInput, 'lastname');
 
         expect(firstnameInput).toHaveValue('firstname');
         expect(lastnameInput).toHaveValue('lastname');
 
         const cancelBtn = screen.getByTestId('ProfilePageButton.Cancel');
 
-        await userEvent.click(cancelBtn);
+        expect(cancelBtn).toBeInTheDocument();
+
+        userEvent.click(cancelBtn);
 
         expect(firstnameInput).toHaveValue('Илья');
         expect(lastnameInput).toHaveValue('Хоробрых');
@@ -95,9 +107,9 @@ describe('ProfilePage', () => {
         const firstnameInput = screen.getByTestId('EditableProfileCard.Firstname');
         const editBtn = screen.getByTestId('ProfilePageButton.Edit');
 
-        await userEvent.click(editBtn);
-        await userEvent.clear(firstnameInput);
-        await userEvent.click(screen.getByTestId('ProfilePageButton.Save'));
+        userEvent.click(editBtn);
+        userEvent.clear(firstnameInput);
+        userEvent.click(screen.getByTestId('ProfilePageButton.Save'));
 
         expect(mockPutReq).not.toHaveBeenCalled();
         // expect(screen.getByTestId('EditableProfileCard.Error.Paragraph')).toBeInTheDocument();
@@ -111,13 +123,13 @@ describe('ProfilePage', () => {
         const firstnameInput = screen.getByTestId('EditableProfileCard.Firstname');
         const editBtn = screen.getByTestId('ProfilePageButton.Edit');
 
-        await userEvent.click(editBtn);
-        await userEvent.clear(firstnameInput);
-        await userEvent.type(firstnameInput, 'Иван');
+        userEvent.click(editBtn);
+        userEvent.clear(firstnameInput);
+        userEvent.type(firstnameInput, 'Иван');
 
         const saveBtn = screen.getByTestId('ProfilePageButton.Save');
 
-        await userEvent.click(saveBtn);
+        userEvent.click(saveBtn);
 
         expect(mockPutReq).toHaveBeenCalled();
         expect(firstnameInput).toHaveValue('Иван');
