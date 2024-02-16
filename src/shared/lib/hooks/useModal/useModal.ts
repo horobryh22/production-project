@@ -10,9 +10,14 @@ interface UseModalResult {
     isClosing: boolean;
     closeHandler: () => void;
 }
+
 /**
- Хук объединяет в себе логику модального окна (анимация закрытия, закрытие на 'Esc', закрытие кликом на Overlay)
+ * Переиспользуемый хук для модальных компонентов (drawer/modal)
+ * @param isOpen
+ * @param onClose
+ * @param animationDelay
  */
+
 export const useModal = ({
     isOpen,
     onClose,

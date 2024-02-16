@@ -2,6 +2,8 @@ const path = require('path');
 const isRelativePath = require('../../helpers/isPathRelative');
 const {layers: LAYERS} = require('../../consts');
 
+// TODO сделать автофикс для этого правила!
+
 const shouldPathBeRelative = (importFrom, importTo) => {
     if (isRelativePath(importFrom)) {
         return false;

@@ -3,6 +3,8 @@ import LanguageDetector from 'i18next-browser-languagedetector';
 import Backend from 'i18next-http-backend';
 import { initReactI18next } from 'react-i18next';
 
+// TODO доработать переводы в сторибук и в самом проекте (сейчас это не работает)
+
 i18n
     // to divide into some chunks our file translation.json
     .use(Backend)
