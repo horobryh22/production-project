@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux';
 import { Navigate, useLocation } from 'react-router-dom';
 
 import { UserRole, selectUserRoles } from '@/entities/User';
-import { RoutePath } from '@/shared/const/router';
+import { getRouteForbidden } from '@/shared/const/router';
 
 interface RequireRoleProps {
     roles: UserRole[];
@@ -24,7 +24,7 @@ export const RequireRole = ({
     );
 
     if (!hasRequiredRoles) {
-        return <Navigate to={RoutePath.forbidden} state={{ from: location }} replace />;
+        return <Navigate to={getRouteForbidden()} state={{ from: location }} replace />;
     }
 
     return children as ReactElement;

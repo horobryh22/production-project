@@ -1,6 +1,6 @@
 import { memo, ReactElement } from 'react';
 
-import { RoutePath } from '@/shared/const/router';
+import { getRouteMain, getRouteProfile } from '@/shared/const/router';
 import { classNames } from '@/shared/lib';
 import { Mods } from '@/shared/lib/classNames/classNames';
 import { Avatar, Text, Skeleton, AppLink } from '@/shared/ui';
@@ -42,7 +42,11 @@ export const CommentItem = memo((props: CommentItemProps): ReactElement => {
     return (
         <div className={classNames(classes.CommentItem, {}, [className])}>
             <AppLink
-                to={`${RoutePath.profile}${comment?.user?.id}`}
+                to={
+                    comment?.user?.id
+                        ? getRouteProfile(comment?.user?.id)
+                        : getRouteMain()
+                }
                 className={classes.header}
             >
                 {comment?.user?.avatar && (

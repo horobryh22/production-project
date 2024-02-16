@@ -5,7 +5,7 @@ import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router';
 
 import { selectArticleDetailsData } from '@/entities/Article';
-import { RoutePath } from '@/shared/const/router';
+import { getRouteArticleEdit, getRouteArticles } from '@/shared/const/router';
 import { classNames } from '@/shared/lib';
 import { Button, HStack } from '@/shared/ui';
 
@@ -25,11 +25,11 @@ export const ArticleDetailsHeader = memo(
         const article = useSelector(selectArticleDetailsData);
 
         const onBackToArticles = useCallback(() => {
-            navigate(RoutePath.articles);
+            navigate(getRouteArticles());
         }, [navigate]);
 
         const onEditArticle = useCallback(() => {
-            navigate(`${RoutePath.articles}/${article?.id}/edit`);
+            article?.id && navigate(getRouteArticleEdit(article?.id));
         }, [article?.id, navigate]);
 
         return (

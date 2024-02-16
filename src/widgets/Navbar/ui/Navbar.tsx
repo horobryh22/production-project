@@ -7,7 +7,7 @@ import { selectAuthData, selectIsUserAuth } from '@/entities/User';
 import { LoginModal } from '@/features/AuthByUserName';
 import { AvatarDropdown } from '@/features/AvatarDropdown';
 import { NotificationButton } from '@/features/NotificationButton';
-import { RoutePath } from '@/shared/const/router';
+import { getRouteArticleCreate } from '@/shared/const/router';
 import { classNames } from '@/shared/lib';
 import {
     AppLink,
@@ -52,7 +52,7 @@ export const Navbar = memo(({ className }: NavbarProps): ReactElement => {
                 {isUserAuth && (
                     <AppLink
                         className={classes.createBtn}
-                        to={RoutePath.article_create}
+                        to={getRouteArticleCreate()}
                         theme={AppLinkTheme.PRIMARY}
                     >
                         {t('Create Article', { ns: 'article' })}

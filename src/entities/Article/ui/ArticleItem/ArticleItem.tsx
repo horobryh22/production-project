@@ -3,7 +3,7 @@ import { HTMLAttributeAnchorTarget, memo, ReactElement } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import EyeIcon from '@/shared/assets/icons/view.svg';
-import { RoutePath } from '@/shared/const/router';
+import { getRouteArticleDetails } from '@/shared/const/router';
 import { classNames, useHover } from '@/shared/lib';
 import { Mods } from '@/shared/lib/classNames/classNames';
 import { AppLink, Avatar, Button, Card, Icon, Text } from '@/shared/ui';
@@ -70,7 +70,7 @@ export const ArticleItem = memo((props: ArticleItemProps): ReactElement => {
                         />
                     )}
                     <div className={classes.footer}>
-                        <AppLink to={RoutePath.articles_details + article.id}>
+                        <AppLink to={getRouteArticleDetails(article.id)}>
                             <Button>{t('Read more', { ns: 'article' })}</Button>
                         </AppLink>
                         {views}
@@ -87,7 +87,7 @@ export const ArticleItem = memo((props: ArticleItemProps): ReactElement => {
     return (
         <AppLink
             {...bindHover}
-            to={RoutePath.articles_details + article.id}
+            to={getRouteArticleDetails(article.id)}
             target={target}
             className={classNames(classes.ArticleItem, mods, [className, classes[view]])}
         >

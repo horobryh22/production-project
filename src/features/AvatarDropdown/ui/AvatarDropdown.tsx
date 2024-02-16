@@ -4,7 +4,7 @@ import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
 
 import { isUserAdmin, isUserManager, selectAuthData, userActions } from '@/entities/User';
-import { RoutePath } from '@/shared/const/router';
+import { getRouteAdmin, getRouteProfile } from '@/shared/const/router';
 import { classNames, useAppDispatch } from '@/shared/lib';
 import { DropdownItems } from '@/shared/types/ui';
 import { Avatar, Dropdown } from '@/shared/ui';
@@ -36,13 +36,13 @@ export const AvatarDropdown = memo((props: AvatarDropdownProps): ReactElement =>
             ...(isAdminPanelVisible
                 ? [
                       {
-                          href: RoutePath.admin,
+                          href: getRouteAdmin(),
                           content: t('Admin panel'),
                       },
                   ]
                 : []),
             {
-                href: RoutePath.profile + userData.id,
+                href: getRouteProfile(userData.id),
                 content: t('Profile'),
             },
             {
