@@ -19,9 +19,9 @@ export const parameters = {
     themes: {
         default: 'dark',
         list: [
-            { name: 'dark', class: ['app', 'app_dark_theme'] },
-            { name: 'light', class: ['app', 'app_light_theme'] },
-            { name: 'purple', class: ['app', 'app_purple_theme'] },
+            { name: 'dark', class: ['app', 'app_dark_theme'], color: '#0606e7' },
+            { name: 'light', class: ['app', 'app_light_theme'], color: '#e5e5ef'  },
+            { name: 'purple', class: ['app', 'app_purple_theme'], color: '#d07ee5' },
         ],
     },
     layout: 'fullscreen' // чтобы не было паддингов в окне интерфейса сторибук
