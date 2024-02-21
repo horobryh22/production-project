@@ -29,6 +29,8 @@ export function buildSlice<
         );
     };
 
+    // TODO создать useAsyncThunk используя внутри useAppDispatch (пример в стриме по 13 модулю)
+
     return {
         ...slice,
         useActions,
