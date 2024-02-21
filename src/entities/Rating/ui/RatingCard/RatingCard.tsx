@@ -127,7 +127,7 @@ export const RatingCard = memo((props: RatingCardProps): ReactElement => {
                 className={classNames('', {}, [className])}
                 align={'center'}
             >
-                {text && <Text title={rating ? t('Спасибо за вашу оценку') : text} />}
+                {text && <Text title={rating ? t('thanks_for_your_grade') : text} />}
                 <StarRating selectedStars={rating} onSelect={handleRatingSelect} />
             </VStack>
             {withFeedback && renderModal()}

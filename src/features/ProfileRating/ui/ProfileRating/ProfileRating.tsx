@@ -65,7 +65,7 @@ const ProfileRating = memo((props: ProfileRatingProps): ReactElement => {
     return (
         <RatingCard
             className={className}
-            text={t('Оцените профиль')}
+            text={t('rate_profile', { ns: 'profile' })}
             withFeedback
             feedbackTitle={t('Помогите пользователю сделать его профиль лучше')}
             rating={rating?.rating}
