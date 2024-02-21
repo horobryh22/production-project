@@ -17,7 +17,7 @@ import { selectProfileIsLoading } from '../model/selectors/selectProfileIsLoadin
 import { selectProfileReadonly } from '../model/selectors/selectProfileReadonly/selectProfileReadonly';
 import { selectProfileValidateErrors } from '../model/selectors/selectProfileValidateErrors/selectProfileValidateErrors';
 import { fetchProfileData } from '../model/services/fetchProfileData/fetchProfileData';
-import { profileActions, profileReducer } from '../model/slice/profileSlice';
+import { useProfileActions, profileReducer } from '../model/slice/profileSlice';
 
 const INITIAL_REDUCERS: ReducersList = {
     profile: profileReducer,
@@ -33,6 +33,7 @@ export const EditableProfileCard = ({
     profileId,
 }: EditableProfileCardProps): ReactElement => {
     const dispatch = useAppDispatch();
+    const { changeUserProfile } = useProfileActions();
 
     const { t } = useTranslation('profile');
 
@@ -52,60 +53,60 @@ export const EditableProfileCard = ({
 
     const onChangeFirstname = useCallback(
         (value?: string) => {
-            dispatch(profileActions.changeUserProfile({ first: value }));
+            changeUserProfile({ first: value });
         },
-        [dispatch],
+        [changeUserProfile],
     );
 
     const onChangeLastname = useCallback(
         (value?: string) => {
-            dispatch(profileActions.changeUserProfile({ lastname: value }));
+            changeUserProfile({ lastname: value });
         },
-        [dispatch],
+        [changeUserProfile],
     );
 
     const onChangeAge = useCallback(
         (value?: string) => {
             if (!/\D/g.test(value || '')) {
-                dispatch(profileActions.changeUserProfile({ age: Number(value || 0) }));
+                changeUserProfile({ age: Number(value || 0) });
             }
         },
-        [dispatch],
+        [changeUserProfile],
     );
 
     const onChangeCity = useCallback(
         (value?: string) => {
-            dispatch(profileActions.changeUserProfile({ city: value }));
+            changeUserProfile({ city: value });
         },
-        [dispatch],
+        [changeUserProfile],
     );
 
     const onChangeUsername = useCallback(
         (value?: string) => {
-            dispatch(profileActions.changeUserProfile({ username: value }));
+            changeUserProfile({ username: value });
         },
-        [dispatch],
+        [changeUserProfile],
     );
 
     const onChangeAvatar = useCallback(
         (value?: string) => {
-            dispatch(profileActions.changeUserProfile({ avatar: value }));
+            changeUserProfile({ avatar: value });
         },
-        [dispatch],
+        [changeUserProfile],
     );
 
     const onChangeCurrency = useCallback(
         (value: Currency) => {
-            dispatch(profileActions.changeUserProfile({ currency: value }));
+            changeUserProfile({ currency: value });
         },
-        [dispatch],
+        [changeUserProfile],
     );
 
     const onChangeCountry = useCallback(
         (value: Country) => {
-            dispatch(profileActions.changeUserProfile({ country: value }));
+            changeUserProfile({ country: value });
         },
-        [dispatch],
+        [changeUserProfile],
     );
 
     const validateErrorTranslates: Record<ValidateProfileError, string> = {

@@ -14,7 +14,7 @@ import {
     selectUsername,
 } from '../../model/selectors';
 import { loginByUsername } from '../../model/services/loginByUsername/loginByUsername';
-import { loginActions, loginReducer } from '../../model/slice/loginSlice';
+import { useLoginActions, loginReducer } from '../../model/slice/loginSlice';
 
 import classes from './LoginForm.module.scss';
 
@@ -31,6 +31,7 @@ const LoginForm = memo(({ className, onSuccess }: LoginFormProps): ReactElement 
     const { t } = useTranslation();
 
     const dispatch = useAppDispatch();
+    const { setUsername, setPassword } = useLoginActions();
 
     const username = useSelector(selectUsername);
     const password = useSelector(selectPassword);
@@ -38,20 +39,6 @@ const LoginForm = memo(({ className, onSuccess }: LoginFormProps): ReactElement 
     const isLoading = useSelector(selectIsLoading);
 
     useDynamicModuleLoader(INITIAL_REDUCERS);
-
-    const onChangeUsername = useCallback(
-        (username: string): void => {
-            dispatch(loginActions.setUsername(username));
-        },
-        [dispatch],
-    );
-
-    const onChangePassword = useCallback(
-        (password: string): void => {
-            dispatch(loginActions.setPassword(password));
-        },
-        [dispatch],
-    );
 
     const onLogin = useCallback(async (): Promise<void> => {
         const result = await dispatch(loginByUsername({ username, password }));
@@ -74,13 +61,13 @@ const LoginForm = memo(({ className, onSuccess }: LoginFormProps): ReactElement 
                 autoFocus
                 className={classes.input}
                 value={username}
-                onChange={onChangeUsername}
+                onChange={setUsername}
                 placeholder={t('Enter username')}
             />
             <Input
                 className={classes.input}
                 value={password}
-                onChange={onChangePassword}
+                onChange={setPassword}
                 placeholder={t('Enter password')}
             />
             <Button

@@ -1,10 +1,9 @@
-import { memo, ReactElement, useCallback } from 'react';
+import { memo, ReactElement } from 'react';
 
 import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
 import { useSearchParams } from 'react-router-dom';
 
-import { ArticleSortType } from '@/entities/Article';
 import {
     classNames,
     useAppDispatch,
@@ -12,7 +11,6 @@ import {
     useInitialEffect,
 } from '@/shared/lib';
 import { ReducersList } from '@/shared/lib/hooks/useDynamicModuleLoader/useDynamicModuleLoader';
-import { SortOrder } from '@/shared/types';
 import { Card, Input } from '@/shared/ui';
 
 import {
@@ -22,7 +20,7 @@ import {
 } from '../../model/selectors/articlesPageFilterSelectors';
 import { initArticlesPageFilter } from '../../model/services/initArticlesPageFilter/initArticlesPageFilter';
 import {
-    articlesPageFilterActions,
+    useArticlePageFilterActions,
     articlesPageFilterReducer,
 } from '../../model/slice/articlesPageFilterSlice';
 import { ArticleSortSelector } from '../ArticleSortSelector/ArticleSortSelector';
@@ -43,6 +41,7 @@ export const ArticlesFilterBlock = memo(
         const { className } = props;
         const dispatch = useAppDispatch();
         const { t } = useTranslation();
+        const { setOrder, setSort, setSearch } = useArticlePageFilterActions();
 
         const [searchParams] = useSearchParams();
 
@@ -51,27 +50,6 @@ export const ArticlesFilterBlock = memo(
         const search = useSelector(selectArticlesPageFilterSearch);
 
         useDynamicModuleLoader(reducers);
-
-        const onChangeSort = useCallback(
-            (sort: ArticleSortType): void => {
-                dispatch(articlesPageFilterActions.setSort(sort));
-            },
-            [dispatch],
-        );
-
-        const onChangeSearch = useCallback(
-            (sort: string): void => {
-                dispatch(articlesPageFilterActions.setSearch(sort));
-            },
-            [dispatch],
-        );
-
-        const onChangeOrder = useCallback(
-            (sort: SortOrder): void => {
-                dispatch(articlesPageFilterActions.setOrder(sort));
-            },
-            [dispatch],
-        );
 
         useInitialEffect(() => {
             dispatch(initArticlesPageFilter(searchParams));
@@ -82,13 +60,13 @@ export const ArticlesFilterBlock = memo(
                 <ArticleSortSelector
                     sort={sort}
                     order={order}
-                    onChangeSort={onChangeSort}
-                    onChangeOrder={onChangeOrder}
+                    onChangeSort={setSort}
+                    onChangeOrder={setOrder}
                 />
                 <Card className={classes.search}>
                     <Input
                         value={search}
-                        onChange={onChangeSearch}
+                        onChange={setSearch}
                         placeholder={t('Search', { ns: 'article' })}
                     />
                 </Card>

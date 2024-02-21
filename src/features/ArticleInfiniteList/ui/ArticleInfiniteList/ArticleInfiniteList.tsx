@@ -26,7 +26,7 @@ import {
 } from '../../model/selectors/articleInfiniteListSelectors';
 import { fetchArticlesList } from '../../model/services/fetchArticlesList/fetchArticlesList';
 import {
-    articleInfiniteListActions,
+    useArticleInfiniteActions,
     articleInfiniteListReducer,
     infiniteListSelectors,
 } from '../../model/slice/articleInfiniteListSlice';
@@ -41,12 +41,16 @@ const reducers: ReducersList = {
     articleInfiniteList: articleInfiniteListReducer,
 };
 
+// TODO сейчас криво подгружается для больших экранов (на работе не работает триггер с плаиточным отображением)
+
 export const ArticleInfiniteList = ({
     className,
     view,
     scrollPageRef,
 }: ArticleInfiniteListProps): ReactElement => {
     const dispatch = useAppDispatch();
+
+    const { selLimit } = useArticleInfiniteActions();
 
     const needVirtualization = __PROJECT__ !== 'storybook';
 
@@ -64,8 +68,8 @@ export const ArticleInfiniteList = ({
     useInitialEffect(() => {
         const newLimit = view === ArticleView.TILE ? 8 : 3;
 
-        dispatch(articleInfiniteListActions.selLimit(newLimit));
-    }, [dispatch, view]);
+        selLimit(newLimit);
+    }, [view, selLimit]);
 
     useInitialEffect(() => {
         dispatch(fetchArticlesList({ page: 1, replace: true }));

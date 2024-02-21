@@ -4,11 +4,11 @@ import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
 
 import { ArticleType } from '@/entities/Article';
-import { classNames, useAppDispatch } from '@/shared/lib';
+import { classNames } from '@/shared/lib';
 import { TabItem, Tabs } from '@/shared/ui';
 
 import { selectArticlesPageFilterTypeTab } from '../../model/selectors/articlesPageFilterSelectors';
-import { articlesPageFilterActions } from '../../model/slice/articlesPageFilterSlice';
+import { useArticlePageFilterActions } from '../../model/slice/articlesPageFilterSlice';
 
 import classes from './ArticleTypeTabs.module.scss';
 
@@ -21,7 +21,7 @@ export const ArticleTypeTabs = memo((props: ArticleTypeTabsProps): ReactElement 
 
     const { t } = useTranslation();
 
-    const dispatch = useAppDispatch();
+    const { setTypeTab } = useArticlePageFilterActions();
 
     const typeTab = useSelector(selectArticlesPageFilterTypeTab);
 
@@ -48,9 +48,9 @@ export const ArticleTypeTabs = memo((props: ArticleTypeTabsProps): ReactElement 
 
     const onChangeTypeTab = useCallback(
         (tab: TabItem): void => {
-            dispatch(articlesPageFilterActions.setTypeTab(tab.value));
+            setTypeTab(tab.value);
         },
-        [dispatch],
+        [setTypeTab],
     );
 
     return (

@@ -40,5 +40,4 @@ export const articleRecommendationsSlice = createSlice({
             }),
 });
 
-export const { actions: articleRecommendationsActions } = articleRecommendationsSlice;
 export const { reducer: articleRecommendationsReducer } = articleRecommendationsSlice;

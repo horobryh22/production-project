@@ -1,8 +1,9 @@
 import type { PayloadAction } from '@reduxjs/toolkit';
-import { createEntityAdapter, createSlice } from '@reduxjs/toolkit';
+import { createEntityAdapter } from '@reduxjs/toolkit';
 
 import { StateSchema } from '@/app/providers/StoreProvider';
 import { Article } from '@/entities/Article';
+import { buildSlice } from '@/shared/store/buildSlice';
 
 import { fetchArticlesList } from '../services/fetchArticlesList/fetchArticlesList';
 import { ArticleInfiniteListSchema } from '../types';
@@ -15,7 +16,7 @@ export const infiniteListSelectors = articleAdapter.getSelectors<StateSchema>(
     state => state.articleInfiniteList || articleAdapter.getInitialState(),
 );
 
-export const articleInfiniteListSlice = createSlice({
+export const articleInfiniteListSlice = buildSlice({
     name: 'articlePageSlice',
     initialState: articleAdapter.getInitialState<ArticleInfiniteListSchema>({
         isLoading: false,
@@ -60,4 +61,5 @@ export const articleInfiniteListSlice = createSlice({
 });
 
 export const { actions: articleInfiniteListActions } = articleInfiniteListSlice;
+export const { useActions: useArticleInfiniteActions } = articleInfiniteListSlice;
 export const { reducer: articleInfiniteListReducer } = articleInfiniteListSlice;

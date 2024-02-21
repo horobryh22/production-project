@@ -1,7 +1,7 @@
 export { EditableProfileCard } from '../EditableProfileCard/ui/EditableProfileCard';
 export { fetchProfileData } from './model/services/fetchProfileData/fetchProfileData';
 export { updateUserProfile } from './model/services/updateUserProfile/updateUserProfile';
-export { profileActions } from '../EditableProfileCard/model/slice/profileSlice';
+export { useProfileActions } from '../EditableProfileCard/model/slice/profileSlice';
 export type { ProfileSchema } from '../EditableProfileCard/model/types';
 export { selectProfileReadonly } from '../EditableProfileCard/model/selectors/selectProfileReadonly/selectProfileReadonly';
 export { selectProfileError } from '../EditableProfileCard/model/selectors/selectProfileError/selectProfileError';

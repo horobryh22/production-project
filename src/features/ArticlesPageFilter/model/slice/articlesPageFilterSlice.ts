@@ -1,7 +1,7 @@
 import type { PayloadAction } from '@reduxjs/toolkit';
-import { createSlice } from '@reduxjs/toolkit';
 
 import { ArticleSortType, ArticleType } from '@/entities/Article';
+import { buildSlice } from '@/shared/store/buildSlice';
 import { SortOrder } from '@/shared/types';
 
 import { ArticlesPageFilterSchema, ArticlesPageURLParams } from '../types';
@@ -14,7 +14,7 @@ const initialState: ArticlesPageFilterSchema = {
     _inited: false,
 };
 
-export const articlesPageFilterSlice = createSlice({
+export const articlesPageFilterSlice = buildSlice({
     name: 'articlesPageFilterSlice',
     initialState,
     reducers: {
@@ -41,4 +41,5 @@ export const articlesPageFilterSlice = createSlice({
 });
 
 export const { actions: articlesPageFilterActions } = articlesPageFilterSlice;
+export const { useActions: useArticlePageFilterActions } = articlesPageFilterSlice;
 export const { reducer: articlesPageFilterReducer } = articlesPageFilterSlice;

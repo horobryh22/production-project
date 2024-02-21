@@ -4,7 +4,7 @@ import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
 
 import {
-    profileActions,
+    useProfileActions,
     selectProfileError,
     selectProfileReadonly,
     updateUserProfile,
@@ -26,18 +26,19 @@ export const ProfilePageHeader = ({
     const { t } = useTranslation('profile');
 
     const dispatch = useAppDispatch();
+    const { setReadonly, cancelEdit } = useProfileActions();
 
     const readonly = useSelector(selectProfileReadonly);
     const error = useSelector(selectProfileError);
     const canEdit = useSelector(getCanEdit);
 
     const onEdit = useCallback((): void => {
-        dispatch(profileActions.setReadonly(false));
-    }, [dispatch]);
+        setReadonly(false);
+    }, [setReadonly]);
 
     const onCancelEdit = useCallback((): void => {
-        dispatch(profileActions.cancelEdit());
-    }, [dispatch]);
+        cancelEdit();
+    }, [cancelEdit]);
 
     const onSave = useCallback((): void => {
         if (id) {

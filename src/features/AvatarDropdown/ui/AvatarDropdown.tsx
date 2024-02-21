@@ -1,11 +1,16 @@
-import React, { memo, ReactElement, useCallback, useMemo } from 'react';
+import React, { memo, ReactElement, useMemo } from 'react';
 
 import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
 
-import { isUserAdmin, isUserManager, selectAuthData, userActions } from '@/entities/User';
+import {
+    isUserAdmin,
+    isUserManager,
+    selectAuthData,
+    useUserActions,
+} from '@/entities/User';
 import { getRouteAdmin, getRouteProfile } from '@/shared/const/router';
-import { classNames, useAppDispatch } from '@/shared/lib';
+import { classNames } from '@/shared/lib';
 import { DropdownItems } from '@/shared/types/ui';
 import { Avatar, Dropdown } from '@/shared/ui';
 
@@ -19,17 +24,13 @@ export const AvatarDropdown = memo((props: AvatarDropdownProps): ReactElement =>
     const { className } = props;
 
     const { t } = useTranslation();
-    const dispatch = useAppDispatch();
+    const { logout } = useUserActions();
 
     const userData = useSelector(selectAuthData);
     const isAdmin = useSelector(isUserAdmin);
     const isManager = useSelector(isUserManager);
 
     const isAdminPanelVisible = isAdmin || isManager;
-
-    const onLogout = useCallback(() => {
-        dispatch(userActions.logout());
-    }, [dispatch]);
 
     const dropdownItems: DropdownItems[] = useMemo(() => {
         return [
@@ -46,11 +47,11 @@ export const AvatarDropdown = memo((props: AvatarDropdownProps): ReactElement =>
                 content: t('Profile'),
             },
             {
-                onClick: onLogout,
+                onClick: logout,
                 content: t('Logout'),
             },
         ];
-    }, [isAdminPanelVisible, onLogout, t, userData.id]);
+    }, [isAdminPanelVisible, logout, t, userData.id]);
 
     return (
         <Dropdown
