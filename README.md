@@ -33,6 +33,7 @@
 - `npm run storybook:build` - Сборка storybook билда
 - `npm run prepare` - Запуск прекоммит хуков
 - `npm run generate:slice` - Скрипт для генерации FSD слайсов
+- `npm run postinstall` - Скрипт выполняется после установки зависимостей, командой `npm i`
 
 ----
 

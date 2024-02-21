@@ -17,6 +17,8 @@ export function buildPlugins({
     apiUrl,
     project,
 }: BuildOptions): WebpackPluginInstance[] {
+    const isProd = !isDev;
+
     const plugins = [
         // it shows us progress of build files
         new webpack.ProgressPlugin(),
@@ -25,19 +27,11 @@ export function buildPlugins({
             // we told webpack which html file will be sample
             template: paths.html,
         }),
-        new MiniCssExtractPlugin({
-            filename: 'css/[name].[contenthash:8].css',
-            chunkFilename: 'css/[name].[contenthash:8].css',
-        }),
         // this plugin gives access to variables what announced inside it
         new webpack.DefinePlugin({
             __IS_DEV__: JSON.stringify(isDev),
             __API__: JSON.stringify(apiUrl),
             __PROJECT__: JSON.stringify(project),
-        }),
-        // this plugin needs for copy locales to production build
-        new CopyPlugin({
-            patterns: [{ from: paths.locales, to: paths.localesBuild }],
         }),
         new ForkTsCheckerWebpackPlugin({
             typescript: {
@@ -58,6 +52,21 @@ export function buildPlugins({
             new CircularDependencyPlugin({
                 exclude: /node_modules/,
                 failOnError: true,
+            }),
+        );
+    }
+
+    if (isProd) {
+        plugins.push(
+            new MiniCssExtractPlugin({
+                filename: 'css/[name].[contenthash:8].css',
+                chunkFilename: 'css/[name].[contenthash:8].css',
+            }),
+        );
+        plugins.push(
+            // this plugin needs for copy locales to production build
+            new CopyPlugin({
+                patterns: [{ from: paths.locales, to: paths.localesBuild }],
             }),
         );
     }

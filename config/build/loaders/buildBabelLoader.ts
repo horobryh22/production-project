@@ -15,6 +15,7 @@ export const buildBabelLoader = ({
     use: {
         loader: 'babel-loader',
         options: {
+            cacheDirectory: true, // достает часть кода из кэша, а не генерит его заново (node_modules/.cache)
             presets: ['@babel/preset-env'],
             plugins: [
                 [
