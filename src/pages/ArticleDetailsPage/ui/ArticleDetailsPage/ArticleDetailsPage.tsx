@@ -1,10 +1,9 @@
 import { lazy, memo, ReactElement } from 'react';
 
 import { useTranslation } from 'react-i18next';
-import { useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 
-import { ArticleDetails, selectArticleDetailsIsLoading } from '@/entities/Article';
+import { ArticleDetails, useArticleDetailsIsLoading } from '@/entities/Article';
 import { classNames } from '@/shared/lib';
 import { Text, VStack, LazyLoader, TextTheme } from '@/shared/ui';
 import { Page } from '@/widgets/Page';
@@ -29,7 +28,7 @@ const ArticleDetailsPage = memo((props: ArticleDetailsPageProps): ReactElement =
     let { id } = useParams();
 
     // если контент еще загружается, скипаем подгрузку чанков, которые находятся ниже
-    const isMainContentLoading = useSelector(selectArticleDetailsIsLoading);
+    const isMainContentLoading = useArticleDetailsIsLoading();
 
     if (!id && __PROJECT__ === 'storybook') id = '1';
 

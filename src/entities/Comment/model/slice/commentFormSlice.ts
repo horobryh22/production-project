@@ -1,11 +1,12 @@
 import type { PayloadAction } from '@reduxjs/toolkit';
-import { createSlice } from '@reduxjs/toolkit';
+
+import { buildSlice } from '@/shared/store/buildSlice';
 
 import { CommentFormSchema } from '../types';
 
 const initialState: CommentFormSchema = {};
 
-export const commentFormSlice = createSlice({
+export const commentFormSlice = buildSlice({
     name: 'commentFormSlice',
     initialState,
     reducers: {
@@ -15,5 +16,6 @@ export const commentFormSlice = createSlice({
     },
 });
 
+export const { useActions: useCommentFormActions } = commentFormSlice;
 export const { actions: commentFormActions } = commentFormSlice;
 export const { reducer: commentFormReducer } = commentFormSlice;

@@ -3,14 +3,14 @@ import { memo, ReactElement, useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
 
-import { classNames, useAppDispatch, useDynamicModuleLoader } from '@/shared/lib';
+import { classNames, useDynamicModuleLoader } from '@/shared/lib';
 import { ReducersList } from '@/shared/lib/hooks/useDynamicModuleLoader/useDynamicModuleLoader';
 import { Button, HStack, Input } from '@/shared/ui';
 
 import { selectCommentText } from '../../model/selectors/selectCommentText/selectCommentText';
 import {
-    commentFormActions,
     commentFormReducer,
+    useCommentFormActions,
 } from '../../model/slice/commentFormSlice';
 
 import classes from './CommentForm.module.scss';
@@ -27,22 +27,22 @@ const reducers: ReducersList = {
 
 export const CommentForm = memo(
     ({ className, onSendComment, isLoading }: CommentFormProps): ReactElement => {
-        const dispatch = useAppDispatch();
+        const { changeText } = useCommentFormActions();
         const { t } = useTranslation('article');
 
         const text = useSelector(selectCommentText);
 
         const onChangeComment = useCallback(
             (value: string): void => {
-                dispatch(commentFormActions.changeText(value));
+                changeText(value);
             },
-            [dispatch],
+            [changeText],
         );
 
         const handleSendComment = useCallback(() => {
             onSendComment(text || '');
-            dispatch(commentFormActions.changeText(''));
-        }, [dispatch, onSendComment, text]);
+            changeText('');
+        }, [changeText, onSendComment, text]);
 
         useDynamicModuleLoader(reducers);
 

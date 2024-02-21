@@ -2,7 +2,8 @@ export { ArticleDetails } from './ui/ArticleDetails/ArticleDetails';
 export type { Article, ArticleDetailsSchema } from './model/types';
 export {
     selectArticleDetailsData,
-    selectArticleDetailsIsLoading,
+    useArticleDetailsIsLoading,
+    useArticleDetailsData,
 } from './model/selectors/articleDetails';
 export { ArticlesList } from './ui/ArticlesList/ArticlesList';
 export { ArticleType } from './model/consts/consts';

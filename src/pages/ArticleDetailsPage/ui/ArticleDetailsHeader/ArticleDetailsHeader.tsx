@@ -4,7 +4,7 @@ import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router';
 
-import { selectArticleDetailsData } from '@/entities/Article';
+import { useArticleDetailsData } from '@/entities/Article';
 import { getRouteArticleEdit, getRouteArticles } from '@/shared/const/router';
 import { classNames } from '@/shared/lib';
 import { Button, HStack } from '@/shared/ui';
@@ -22,7 +22,7 @@ export const ArticleDetailsHeader = memo(
         const navigate = useNavigate();
 
         const canUserEditArticle = useSelector(selectCanUserEditArticle);
-        const article = useSelector(selectArticleDetailsData);
+        const article = useArticleDetailsData();
 
         const onBackToArticles = useCallback(() => {
             navigate(getRouteArticles());

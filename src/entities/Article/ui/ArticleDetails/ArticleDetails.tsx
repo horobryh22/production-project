@@ -1,7 +1,6 @@
 import { memo, ReactElement, useCallback } from 'react';
 
 import { useTranslation } from 'react-i18next';
-import { useSelector } from 'react-redux';
 
 import DataIcon from '@/shared/assets/icons/date.svg';
 import ViewIcon from '@/shared/assets/icons/view.svg';
@@ -24,9 +23,9 @@ import {
 
 import { ArticleBlockType } from '../../model/consts/consts';
 import {
-    selectArticleDetailsData,
-    selectArticleDetailsError,
-    selectArticleDetailsIsLoading,
+    useArticleDetailsData,
+    useArticleDetailsError,
+    useArticleDetailsIsLoading,
 } from '../../model/selectors/articleDetails';
 import { fetchArticleById } from '../../model/services/fetchArticleById/fetchArticleById';
 import { articleDetailsReducer } from '../../model/slice/articleDetailsSlice';
@@ -51,9 +50,9 @@ export const ArticleDetails = memo((props: ArticleDetailsProps): ReactElement =>
     const { t } = useTranslation('article');
 
     const dispatch = useAppDispatch();
-    const article = useSelector(selectArticleDetailsData);
-    const isLoading = useSelector(selectArticleDetailsIsLoading);
-    const error = useSelector(selectArticleDetailsError);
+    const article = useArticleDetailsData();
+    const isLoading = useArticleDetailsIsLoading();
+    const error = useArticleDetailsError();
 
     useDynamicModuleLoader(reducers);
 
