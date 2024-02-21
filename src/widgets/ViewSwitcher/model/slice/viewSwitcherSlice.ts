@@ -1,8 +1,8 @@
 import type { PayloadAction } from '@reduxjs/toolkit';
-import { createSlice } from '@reduxjs/toolkit';
 
 import { ArticleView } from '@/entities/Article';
 import { ARTICLES_VIEW_LOCAL_STORAGE_KEY } from '@/shared/const/localStorage';
+import { buildSlice } from '@/shared/store/buildSlice';
 
 import { ViewSwitcherSchema } from '../types';
 
@@ -11,7 +11,7 @@ const initialState: ViewSwitcherSchema = {
     _inited: false,
 };
 
-export const viewSwitcherSlice = createSlice({
+export const viewSwitcherSlice = buildSlice({
     name: 'viewSwitcherSlice',
     initialState,
     reducers: {
@@ -31,4 +31,5 @@ export const viewSwitcherSlice = createSlice({
 });
 
 export const { actions: viewSwitcherActions } = viewSwitcherSlice;
+export const { useActions: useViewSwitcherActions } = viewSwitcherSlice;
 export const { reducer: viewSwitcherReducer } = viewSwitcherSlice;

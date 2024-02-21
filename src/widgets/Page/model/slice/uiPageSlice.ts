@@ -1,5 +1,6 @@
 import type { PayloadAction } from '@reduxjs/toolkit';
-import { createSlice } from '@reduxjs/toolkit';
+
+import { buildSlice } from '@/shared/store/buildSlice';
 
 import { ScrollOptions, UIPageSchema } from '../types';
 
@@ -7,7 +8,7 @@ const initialState: UIPageSchema = {
     scroll: {},
 };
 
-export const uiPageSlice = createSlice({
+export const uiPageSlice = buildSlice({
     name: 'uiPageSlice',
     initialState,
     reducers: {
@@ -18,4 +19,5 @@ export const uiPageSlice = createSlice({
 });
 
 export const { actions: uiPageSliceActions } = uiPageSlice;
+export const { useActions: useUIPageActions } = uiPageSlice;
 export const { reducer: uiPageSliceReducer } = uiPageSlice;

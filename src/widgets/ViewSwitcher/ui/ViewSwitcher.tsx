@@ -17,7 +17,7 @@ import { Button, ButtonTheme, HStack, Icon } from '@/shared/ui';
 import { selectViewSwitcherView } from '../model/selectors/viewSwitcherSelectors';
 import { initView } from '../model/services/initView/initView';
 import {
-    viewSwitcherActions,
+    useViewSwitcherActions,
     viewSwitcherReducer,
 } from '../model/slice/viewSwitcherSlice';
 
@@ -47,12 +47,13 @@ const reducers: ReducersList = {
 export const ViewSwitcher = memo((props: ViewSwitcherProps): ReactElement => {
     const { className } = props;
     const dispatch = useAppDispatch();
+    const { setView } = useViewSwitcherActions();
 
     const view = useSelector(selectViewSwitcherView);
 
     const onClickViewIcon = useCallback(
         (newView: ArticleView) => () => {
-            dispatch(viewSwitcherActions.setView(newView));
+            setView(newView);
         },
         [dispatch],
     );

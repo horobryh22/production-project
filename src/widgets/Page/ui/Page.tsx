@@ -6,14 +6,13 @@ import { useLocation } from 'react-router-dom';
 import { StateSchema } from '@/app/providers/StoreProvider';
 import {
     classNames,
-    useAppDispatch,
     useInfiniteScroll,
     useInitialEffect,
     useThrottle,
 } from '@/shared/lib';
 
 import { selectScrollPositionByPath } from '../model/selectors/uiPageSelectors';
-import { uiPageSliceActions } from '../model/slice/uiPageSlice';
+import { useUIPageActions } from '../model/slice/uiPageSlice';
 
 import classes from './Page.module.scss';
 
@@ -27,7 +26,7 @@ interface PageProps {
 export const Page = memo((props: PageProps): ReactElement => {
     const { className, children, onScrollEnd, setScrollPageRef } = props;
 
-    const dispatch = useAppDispatch();
+    const { setScrollPosition } = useUIPageActions();
     const { pathname } = useLocation();
 
     const scrollPosition = useSelector((state: StateSchema) =>
@@ -44,12 +43,10 @@ export const Page = memo((props: PageProps): ReactElement => {
     });
 
     const onScroll = useThrottle((e: UIEvent<HTMLDivElement>): void => {
-        dispatch(
-            uiPageSliceActions.setScrollPosition({
-                scroll: e.currentTarget.scrollTop,
-                path: pathname,
-            }),
-        );
+        setScrollPosition({
+            scroll: e.currentTarget.scrollTop,
+            path: pathname,
+        });
     }, 500);
 
     useInitialEffect(() => {
