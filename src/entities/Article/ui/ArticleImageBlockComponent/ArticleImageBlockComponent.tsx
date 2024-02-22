@@ -1,7 +1,7 @@
 import { memo, ReactElement } from 'react';
 
 import { classNames } from '@/shared/lib';
-import { TextAlign, Text } from '@/shared/ui';
+import { TextAlign, Text, AppImage, Skeleton } from '@/shared/ui';
 
 import { ArticleImageBlock } from '../../model/types';
 
@@ -25,7 +25,7 @@ export const ArticleImageBlockComponent = memo(
                     className,
                 ])}
             >
-                <img src={src} alt="image" />
+                <AppImage src={src} fallback={<Skeleton width={'100%'} height={200} />} />
                 {title && (
                     <Text
                         text={title}

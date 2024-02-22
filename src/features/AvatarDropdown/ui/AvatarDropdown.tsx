@@ -57,7 +57,7 @@ export const AvatarDropdown = memo((props: AvatarDropdownProps): ReactElement =>
         <Dropdown
             className={classNames(classes.dropdown, {}, [className])}
             items={dropdownItems}
-            trigger={<Avatar size={30} src={userData.avatar} />}
+            trigger={<Avatar size={30} src={userData.avatar} invertedFallback />}
             direction={'bottom left'}
         />
     );

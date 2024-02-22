@@ -5,10 +5,10 @@
     "jest": true
   },
   "extends": [
-    "prettier",
+    //"prettier",
     "plugin:react/recommended",
     "plugin:import/recommended",
-    "plugin:prettier/recommended",
+    //"plugin:prettier/recommended",
     "plugin:react-hooks/recommended",
     "plugin:i18next/recommended",
     "plugin:storybook/recommended"
@@ -29,7 +29,7 @@
     "import",
     "i18next",
     "storybook",
-    "prettier",
+    //"prettier",
     "react-hooks",
     "@typescript-eslint",
     "fsd-plugin",

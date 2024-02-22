@@ -6,7 +6,16 @@ import EyeIcon from '@/shared/assets/icons/view.svg';
 import { getRouteArticleDetails } from '@/shared/const/router';
 import { classNames, useHover } from '@/shared/lib';
 import { Mods } from '@/shared/lib/classNames/classNames';
-import { AppLink, Avatar, Button, Card, Icon, Text } from '@/shared/ui';
+import {
+    AppImage,
+    AppLink,
+    Avatar,
+    Button,
+    Card,
+    Icon,
+    Skeleton,
+    Text,
+} from '@/shared/ui';
 
 import { ArticleBlockType, ArticleView } from '../../model/consts/consts';
 import { Article, ArticleTextBlock } from '../../model/types';
@@ -57,10 +66,11 @@ export const ArticleItem = memo((props: ArticleItemProps): ReactElement => {
                     <Text title={article.title} className={classes.title} />
                     {types}
                     <div className={classes.imageBlock}>
-                        <img
+                        <AppImage
                             src={article.img}
                             alt={article.title}
                             className={classes.image}
+                            fallback={<Skeleton width={'100%'} height={200} />}
                         />
                     </div>
                     {textBlock && (
@@ -93,10 +103,11 @@ export const ArticleItem = memo((props: ArticleItemProps): ReactElement => {
         >
             <Card>
                 <div className={classes.imageBlock}>
-                    <img
+                    <AppImage
                         src={article.img}
                         alt={article.title}
                         className={classes.image}
+                        fallback={<Skeleton width={200} height={200} />}
                     />
                     <Text text={article.createdAt} className={classes.date} />
                 </div>

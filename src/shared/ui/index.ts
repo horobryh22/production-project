@@ -1,4 +1,5 @@
 export { AppLink, AppLinkTheme } from './AppLink/AppLink';
+export { AppImage } from "./AppImage/AppImage";
 export { Tabs } from './Tabs/Tabs';
 export { Overlay } from './Overlay/Overlay';
 export { Button, ButtonTheme, ButtonSize } from './Button/Button';
