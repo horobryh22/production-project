@@ -7,7 +7,7 @@ import { Page } from '@/widgets/Page';
 const AdminPage = (): ReactElement => {
     const { t } = useTranslation('admin');
 
-    return <Page>{t('Admin page', { ns: 'admin' })}</Page>;
+    return <Page data-testid={'AdminPage'}>{t('Admin page', { ns: 'admin' })}</Page>;
 };
 
 export default AdminPage;

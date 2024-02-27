@@ -7,7 +7,7 @@ import { Page } from '@/widgets/Page';
 const AboutPage = (): ReactElement => {
     const { t } = useTranslation('about');
 
-    return <Page>{t('About page', { ns: 'about' })}</Page>;
+    return <Page data-testid={'AboutPage'}>{t('About page', { ns: 'about' })}</Page>;
 };
 
 export default AboutPage;

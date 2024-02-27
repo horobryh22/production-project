@@ -17,7 +17,7 @@ const ProfilePage = (): ReactElement => {
     if (__PROJECT__ === 'jest') id = '1';
 
     return (
-        <Page>
+        <Page data-testid={'ProfilePage'}>
             <VStack gap={'16'} max>
                 <ProfilePageHeader id={id} />
                 <EditableProfileCard profileId={id} />

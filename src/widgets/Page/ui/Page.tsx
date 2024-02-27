@@ -10,13 +10,14 @@ import {
     useInitialEffect,
     useThrottle,
 } from '@/shared/lib';
+import type { TestProps } from '@/shared/types/testData';
 
 import { selectScrollPositionByPath } from '../model/selectors/uiPageSelectors';
 import { useUIPageActions } from '../model/slice/uiPageSlice';
 
 import classes from './Page.module.scss';
 
-interface PageProps {
+interface PageProps extends TestProps {
     className?: string;
     children: ReactNode;
     onScrollEnd?: () => void;
@@ -61,6 +62,7 @@ export const Page = memo((props: PageProps): ReactElement => {
             onScroll={onScroll}
             ref={wrapperRef}
             className={classNames(classes.Page, {}, [className])}
+            data-testid={props['data-testid'] ?? 'Page'}
         >
             {children}
             {onScrollEnd ? <div className={classes.trigger} ref={triggerRef} /> : null}

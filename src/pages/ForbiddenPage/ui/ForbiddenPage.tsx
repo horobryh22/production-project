@@ -7,5 +7,9 @@ import { Page } from '@/widgets/Page';
 export const ForbiddenPage = (): ReactElement => {
     const { t } = useTranslation('forbidden');
 
-    return <Page>{t('Forbidden page', { ns: 'forbidden' })}</Page>;
+    return (
+        <Page data-testid={'ForbiddenPage'}>
+            {t('Forbidden page', { ns: 'forbidden' })}
+        </Page>
+    );
 };

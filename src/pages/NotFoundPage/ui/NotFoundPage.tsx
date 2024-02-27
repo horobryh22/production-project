@@ -15,7 +15,10 @@ export const NotFoundPage = ({ className }: NotFoundPageProps): ReactElement => 
     const { t } = useTranslation('not-found');
 
     return (
-        <Page className={classNames(classes.NotFoundPage, {}, [className])}>
+        <Page
+            data-testid={'NotFoundPage'}
+            className={classNames(classes.NotFoundPage, {}, [className])}
+        >
             {t('Page not found', { ns: 'not-found' })}
         </Page>
     );
