@@ -64,6 +64,7 @@ const ProfileRating = memo((props: ProfileRatingProps): ReactElement => {
 
     return (
         <RatingCard
+            data-testid={'rating'}
             className={className}
             text={t('rate_profile', { ns: 'profile' })}
             withFeedback

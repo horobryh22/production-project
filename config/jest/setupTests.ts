@@ -5,7 +5,7 @@ import 'regenerator-runtime/runtime';
 Object.defineProperty(window, 'matchMedia', {
     writable: true,
     value: jest.fn().mockImplementation(query => ({
-        matches: false,
+        matches: true, // isDesktop всегда будет восприниматься как true
         media: query,
         onchange: null,
         addListener: jest.fn(), // Deprecated

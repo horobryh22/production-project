@@ -3,6 +3,7 @@ import { memo, ReactElement, useCallback, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import { classNames, useIsDesktop } from '@/shared/lib';
+import type { TestProps } from '@/shared/types/testData';
 import {
     Button,
     ButtonTheme,
@@ -16,7 +17,7 @@ import {
     VStack,
 } from '@/shared/ui';
 
-interface RatingCardProps {
+interface RatingCardProps extends TestProps {
     className?: string;
     rating?: number;
     text: string;
@@ -120,7 +121,7 @@ export const RatingCard = memo((props: RatingCardProps): ReactElement => {
     };
 
     return (
-        <Card max>
+        <Card max data-testid={props['data-testid']}>
             <VStack
                 max
                 gap={'16'}
