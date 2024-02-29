@@ -7,7 +7,7 @@ import { renderComponent } from '@/shared/lib/tests/renderComponent';
 
 import { AppRouter } from './AppRouter';
 
-describe('app/AppRouter', () => {
+describe('app/router/AppRouter', () => {
     test('Страница должна отрендериться', async () => {
         renderComponent(<AppRouter />, { route: getRouteAbout() });
 
