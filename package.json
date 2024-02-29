@@ -32,7 +32,8 @@
     "postinstall": "node scripts/clear-cache.js"
   },
   "lint-staged": {
-    "**/*.{ts,tsx}": ["eslint --fix", "eslint", "prettier --write"]
+    "**/*.{ts,tsx}": ["eslint --fix", "eslint", "prettier --write"],
+    "**/*.{scss,css}": ["stylelint --fix", "stylelint"]
   },
   "keywords": [],
   "author": "",
