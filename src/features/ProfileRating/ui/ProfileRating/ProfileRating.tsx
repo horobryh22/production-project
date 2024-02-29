@@ -7,7 +7,10 @@ import { RatingCard } from '@/entities/Rating';
 import { selectAuthData } from '@/entities/User';
 import { Skeleton } from '@/shared/ui';
 
-import { useProfileRating, useRateProfile } from '../../api/profileRating12232API';
+import {
+    useProfileRating,
+    useRateProfile,
+} from '../../api/profileRating12212312312332API';
 
 export interface ProfileRatingProps {
     className?: string;
