@@ -17,7 +17,6 @@
     "lint:scss:fix": "npx stylelint \"**/*.scss\" --fix",
     "test:rules": "mocha  packages/eslint/tests/",
     "test:unit": "jest --config ./config/jest/jest.config.ts",
-    "test:unit:staged": "jest --config ./config/jest/jest.config.ts -findRelatedTests --coverage",
     "test:ui": "npx loki test",
     "test:ui:ci": "npx loki --requireReference --reactUri file:./storybook-static",
     "test:ui:ok": "npx loki update",
@@ -41,9 +40,6 @@
     "**/*.{scss,css}": [
       "stylelint --fix",
       "stylelint"
-    ],
-    "**/*.test.*": [
-     "npm run test:unit:staged"
     ]
   },
   "keywords": [],
