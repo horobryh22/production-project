@@ -33,7 +33,7 @@
   },
   "lint-staged": {
     "**/*.{ts,tsx}": ["eslint --fix", "eslint", "prettier --write"],
-    "**/*.{scss,css}": ["stylelint --fix", "stylelint"]
+    "**/*.{scss,css}": "stylelint"
   },
   "keywords": [],
   "author": "",
