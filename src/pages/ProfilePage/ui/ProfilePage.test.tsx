@@ -1,4 +1,4 @@
-import { screen, waitFor } from '@testing-library/react';
+import { act, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { mockAllIsIntersecting } from 'react-intersection-observer/test-utils';
 
@@ -103,17 +103,26 @@ describe('ProfilePage', () => {
     });
 
     test('При ошибке валидации, должна появляться ошибка', async () => {
-        const mockPutReq = jest.spyOn(instance, 'put');
+        await act(async () => {
+            const editBtn = await screen.findByTestId('ProfilePageButton.Edit');
 
-        const firstnameInput = screen.getByTestId('EditableProfileCard.Firstname');
-        const editBtn = screen.getByTestId('ProfilePageButton.Edit');
+            userEvent.click(editBtn);
+        });
 
-        userEvent.click(editBtn);
-        userEvent.clear(firstnameInput);
-        userEvent.click(screen.getByTestId('ProfilePageButton.Save'));
+        await act(async () => {
+            const firstnameInput = await screen.findByTestId(
+                'EditableProfileCard.Firstname',
+            );
 
-        expect(mockPutReq).not.toHaveBeenCalled();
-        // expect(screen.getByTestId('EditableProfileCard.Error.Paragraph')).toBeInTheDocument();
+            userEvent.clear(firstnameInput);
+        });
+
+        await act(async () => {
+            const mockPutReq = jest.spyOn(instance, 'put');
+
+            userEvent.click(screen.getByTestId('ProfilePageButton.Save'));
+            expect(mockPutReq).not.toHaveBeenCalled();
+        });
     });
 
     test('В случае если нет ошибок валидации, запрос должен быть отправлен', async () => {

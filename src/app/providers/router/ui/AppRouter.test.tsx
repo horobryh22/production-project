@@ -1,4 +1,4 @@
-import { screen } from '@testing-library/react';
+import { act, screen } from '@testing-library/react';
 import { mockAllIsIntersecting } from 'react-intersection-observer/test-utils';
 
 import { UserRole } from '@/entities/User';
@@ -33,10 +33,13 @@ describe('app/router/AppRouter', () => {
     });
 
     test('Страница профиля доступна для авторизованного пользователя', async () => {
-        renderComponent(<AppRouter />, {
-            route: getRouteProfile('1'),
-            initialState: { user: { isUserAuth: true, authData: { id: '1' } } },
-        });
+        // оборачиваем в act так как на странице ProfilePage есть lazy компонент, который подгружается динамически
+        await act(() =>
+            renderComponent(<AppRouter />, {
+                route: getRouteProfile('1'),
+                initialState: { user: { isUserAuth: true, authData: { id: '1' } } },
+            }),
+        );
 
         mockAllIsIntersecting(true); // мокаем intersectionObserver
         const profilePage = await screen.findByTestId('ProfilePage');
