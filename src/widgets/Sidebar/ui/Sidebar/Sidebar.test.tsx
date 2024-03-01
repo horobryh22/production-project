@@ -4,7 +4,7 @@ import { renderComponent } from '@/shared/lib/tests/renderComponent';
 
 import { Sidebar } from './Sidebar';
 
-describe('sidebar', () => {
+describe('Sidebar', () => {
     test('exists in the document', () => {
         renderComponent(<Sidebar />);
         expect(screen.getByTestId('sidebar')).toBeInTheDocument();

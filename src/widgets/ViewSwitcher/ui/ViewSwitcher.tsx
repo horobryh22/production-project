@@ -55,7 +55,7 @@ export const ViewSwitcher = memo((props: ViewSwitcherProps): ReactElement => {
         (newView: ArticleView) => () => {
             setView(newView);
         },
-        [dispatch],
+        [setView],
     );
 
     const mappedViews = useMemo(() => {
