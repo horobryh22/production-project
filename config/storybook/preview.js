@@ -1,3 +1,4 @@
+import 'loki/configure-react';
 import { addDecorator } from '@storybook/react';
 import { StyleDecorator } from '../../src/shared/config/storybook/StyleDecorator';
 import { RouterDecorator } from '../../src/shared/config/storybook/RouterDecorator';
@@ -20,11 +21,11 @@ export const parameters = {
         default: 'dark',
         list: [
             { name: 'dark', class: ['app', 'app_dark_theme'], color: '#0606e7' },
-            { name: 'light', class: ['app', 'app_light_theme'], color: '#e5e5ef'  },
+            { name: 'light', class: ['app', 'app_light_theme'], color: '#e5e5ef' },
             { name: 'purple', class: ['app', 'app_purple_theme'], color: '#d07ee5' },
         ],
     },
-    layout: 'fullscreen' // чтобы не было паддингов в окне интерфейса сторибук
+    layout: 'fullscreen', // чтобы не было паддингов в окне интерфейса сторибук
 };
 
 addDecorator(StyleDecorator);

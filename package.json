@@ -157,6 +157,7 @@
     "react-virtuoso": "^4.0.6"
   },
   "loki": {
+    "chromeSelector": "#storybook-root > *",
     "configurations": {
       "chrome.laptop": {
         "target": "chrome.app",
