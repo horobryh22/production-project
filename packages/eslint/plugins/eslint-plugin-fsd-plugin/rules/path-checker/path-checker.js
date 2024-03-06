@@ -3,7 +3,7 @@ const isRelativePath = require('../../helpers/isPathRelative');
 const { layers: LAYERS } = require('../../consts');
 
 const getNormalizedPath = (filePath, separator) => {
-    return path.normalize(filePath).split(separator)[1];
+    return path.normalize(filePath).split(separator)[1] ?? '';
 };
 
 const shouldPathBeRelative = (importFrom, importTo) => {

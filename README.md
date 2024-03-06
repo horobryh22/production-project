@@ -21,6 +21,7 @@
 - `npm run lint:scss:fix` - Исправление scss файлов style линтером
 - `npm run test:rules` - Запуск тестирования собственных правил для ESLint
 - `npm run test:unit` - Запуск unit тестов с jest
+- `npm run test:e2e` - Запуск e2e тестов с cypress
 - `npm run test:ui` - Запуск скриншотных тестов с loki
 - `npm run test:ui:ok` - Подтверждение новых скриншотов
 - `npm run test:ui:ci` - Запуск скриншотных тестов в CI

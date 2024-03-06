@@ -63,6 +63,15 @@
         "MANAGER"
       ],
       "avatar": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRdim6mwjPEYlsFTPtK5hmZXBGJG1KyUz4SxpZBKVU&s"
+    },
+    {
+      "id": "4",
+      "username": "testuser",
+      "password": "testpassword",
+      "roles": [
+        "USER"
+      ],
+      "avatar": ""
     }
   ],
   "profile": [

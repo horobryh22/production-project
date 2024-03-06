@@ -33,6 +33,7 @@ const ArticlesPage = memo((props: ArticlePageProps): ReactElement => {
 
     return (
         <Page
+            data-testid={'ArticlesPage'}
             onScrollEnd={onLoadNextPart}
             setScrollPageRef={setScrollPageRef}
             className={classNames('', {}, [className])}
