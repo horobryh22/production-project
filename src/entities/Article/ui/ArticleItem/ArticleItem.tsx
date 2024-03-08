@@ -57,7 +57,7 @@ export const ArticleItem = memo((props: ArticleItemProps): ReactElement => {
                     classes[view],
                 ])}
             >
-                <Card>
+                <Card data-testid={'ArticleItem.List'}>
                     <div className={classes.header}>
                         <Avatar size={30} src={article.user.avatar} />
                         <Text text={article.user.username} className={classes.username} />
@@ -101,7 +101,7 @@ export const ArticleItem = memo((props: ArticleItemProps): ReactElement => {
             target={target}
             className={classNames(classes.ArticleItem, mods, [className, classes[view]])}
         >
-            <Card>
+            <Card data-testid={'ArticleItem.Tile'}>
                 <div className={classes.imageBlock}>
                     <AppImage
                         src={article.img}

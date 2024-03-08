@@ -60,6 +60,8 @@ export const StarRating = memo((props: StarRatingProps): ReactElement => {
 
                 return (
                     <Icon
+                        data-testid={`RatingCard.Star${starCount}`}
+                        data-selected={selectedStarsCount >= starCount}
                         key={starCount}
                         className={classNames(classes.normal, iconMods, [])}
                         width={size}

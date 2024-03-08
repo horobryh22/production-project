@@ -76,6 +76,7 @@ export const RatingCard = memo((props: RatingCardProps): ReactElement => {
                 value={feedbackText}
                 onChange={setFeedbackText}
                 placeholder={t('Введите отзыв')}
+                data-testid={'RatingCard.Input'}
             />
         </>
     );
@@ -87,12 +88,19 @@ export const RatingCard = memo((props: RatingCardProps): ReactElement => {
                     isOpen={isModalOpen}
                     onClose={handleCancel}
                     testMode={__PROJECT__ === 'storybook'}
+                    data-testid={'RatingCard.Modal'}
                 >
                     <VStack max gap={'16'}>
                         {modalContent}
                         <HStack max gap={'32'} justify={'end'}>
-                            <Button onClick={handleAccept}>{t('Отправить')}</Button>
                             <Button
+                                data-testid={'RatingCard.Send'}
+                                onClick={handleAccept}
+                            >
+                                {t('Отправить')}
+                            </Button>
+                            <Button
+                                data-testid={'RatingCard.Cancel'}
                                 theme={ButtonTheme.OUTLINE_RED}
                                 onClick={handleCancel}
                             >
@@ -109,10 +117,15 @@ export const RatingCard = memo((props: RatingCardProps): ReactElement => {
                 isOpen={isModalOpen}
                 onClose={handleCancel}
                 testMode={__PROJECT__ === 'storybook'}
+                data-testid={'RatingCard.Drawer'}
             >
                 <VStack max gap={'32'}>
                     {modalContent}
-                    <Button fullWidth onClick={handleAccept}>
+                    <Button
+                        fullWidth
+                        onClick={handleAccept}
+                        data-testid={'RatingCard.Send'}
+                    >
                         {t('Отправить')}
                     </Button>
                 </VStack>
@@ -121,7 +134,7 @@ export const RatingCard = memo((props: RatingCardProps): ReactElement => {
     };
 
     return (
-        <Card max data-testid={props['data-testid']}>
+        <Card max data-testid={'RatingCard'}>
             <VStack
                 max
                 gap={'16'}

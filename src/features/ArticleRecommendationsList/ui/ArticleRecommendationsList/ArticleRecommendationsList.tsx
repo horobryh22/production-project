@@ -26,7 +26,12 @@ const ArticleRecommendationsList = memo(
         }
 
         return (
-            <VStack max gap={'16'} className={classNames('', {}, [className])}>
+            <VStack
+                data-testid={'ArticleRecommendationsList'}
+                max
+                gap={'16'}
+                className={classNames('', {}, [className])}
+            >
                 <Text
                     size={TextSize.L}
                     title={t('Recommended articles', { ns: 'article' })}

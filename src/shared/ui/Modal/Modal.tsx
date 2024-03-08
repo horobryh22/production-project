@@ -19,7 +19,7 @@ const ANIMATION_DELAY = 300;
 const MODAL_ROOT = document.getElementById('modal-root') || undefined;
 
 export const Modal = (props: ModalProps) => {
-    const { className, children, isOpen, onClose, testMode } = props;
+    const { className, children, isOpen, onClose, testMode, ...restProps } = props;
 
     const { isClosing, closeHandler } = useModal({
         animationDelay: ANIMATION_DELAY,
@@ -33,7 +33,7 @@ export const Modal = (props: ModalProps) => {
     };
 
     const modalElement = (
-        <div className={classNames(classes.Modal, mods, [className])}>
+        <div {...restProps} className={classNames(classes.Modal, mods, [className])}>
             <Overlay onClick={closeHandler} />
             <div className={classes.content}>{children}</div>
         </div>

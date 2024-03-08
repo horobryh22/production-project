@@ -68,6 +68,7 @@ export const ArticlesFilterBlock = memo(
                         value={search}
                         onChange={setSearch}
                         placeholder={t('Search', { ns: 'article' })}
+                        data-testid={'ArticleFilterBlock.Input'}
                     />
                 </Card>
                 <ArticleTypeTabs />

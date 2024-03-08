@@ -44,7 +44,10 @@ const ArticleDetailsPage = memo((props: ArticleDetailsPageProps): ReactElement =
     }
 
     return (
-        <Page className={classNames('', {}, [className])}>
+        <Page
+            data-testid={'ArticleDetailsPage'}
+            className={classNames('', {}, [className])}
+        >
             <VStack gap={'16'} max>
                 <ArticleDetailsHeader />
                 <ArticleDetails id={id} />

@@ -119,11 +119,15 @@ export const ArticleDetails = memo((props: ArticleDetailsProps): ReactElement =>
     }
 
     return (
-        <div className={classNames(classes.ArticleDetails, {}, [className])}>
+        <div
+            data-testid={'ArticleDetails'}
+            className={classNames(classes.ArticleDetails, {}, [className])}
+        >
             <div className={classes.avatarWrapper}>
                 <Avatar src={article?.img} size={200} />
             </div>
             <Text
+                data-testid={'ArticleDetails.Title'}
                 className={classes.title}
                 text={article?.subtitle}
                 title={article?.title}

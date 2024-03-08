@@ -35,7 +35,12 @@ export const CommentsList = memo((props: CommentsListProps): ReactElement => {
     }
 
     return (
-        <VStack max gap={'8'} className={classNames('', {}, [className])}>
+        <VStack
+            data-testid={'CommentsList'}
+            max
+            gap={'8'}
+            className={classNames('', {}, [className])}
+        >
             {mappedComments.length ? (
                 mappedComments
             ) : (

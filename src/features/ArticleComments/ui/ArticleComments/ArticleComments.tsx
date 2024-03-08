@@ -55,7 +55,12 @@ export const ArticleComments = memo((props: ArticleCommentsProps): ReactElement 
     );
 
     return (
-        <VStack max gap={'16'} className={classNames('', {}, [className])}>
+        <VStack
+            data-testid={'ArticleComments'}
+            max
+            gap={'16'}
+            className={classNames('', {}, [className])}
+        >
             <Text size={TextSize.L} title={t('Comments', { ns: 'article' })} />
             <CommentForm onSendComment={onSendComment} isLoading={isLoading} />
             <CommentsList comments={reversedComments} isLoading={isLoading} />

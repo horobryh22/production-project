@@ -48,11 +48,13 @@ export const CommentForm = memo(
 
         return (
             <HStack
+                data-testid={'CommentForm'}
                 max
                 justify={'between'}
                 className={classNames(classes.AddCommentForm, {}, [className])}
             >
                 <Input
+                    data-testid={'CommentForm.Input'}
                     disabled={isLoading}
                     className={classes.input}
                     value={text || ''}
@@ -61,7 +63,11 @@ export const CommentForm = memo(
                     })}
                     onChange={onChangeComment}
                 />
-                <Button onClick={handleSendComment} disabled={isLoading}>
+                <Button
+                    data-testid={'CommentForm.Button'}
+                    onClick={handleSendComment}
+                    disabled={isLoading}
+                >
                     {t('Отправить', {
                         ns: 'profile',
                     })}

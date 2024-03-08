@@ -40,7 +40,10 @@ export const CommentItem = memo((props: CommentItemProps): ReactElement => {
     }
 
     return (
-        <div className={classNames(classes.CommentItem, {}, [className])}>
+        <div
+            data-testid={'CommentList.Item'}
+            className={classNames(classes.CommentItem, {}, [className])}
+        >
             <AppLink
                 to={
                     comment?.user?.id

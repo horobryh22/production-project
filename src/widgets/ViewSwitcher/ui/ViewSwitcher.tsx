@@ -32,11 +32,13 @@ const viewTypes = [
         id: 1,
         Svg: TileView,
         view: ArticleView.TILE,
+        'data-testid': 'ViewSwitcher.Tile',
     },
     {
         id: 2,
         Svg: ListView,
         view: ArticleView.LIST,
+        'data-testid': 'ViewSwitcher.List',
     },
 ];
 
@@ -64,8 +66,10 @@ export const ViewSwitcher = memo((props: ViewSwitcherProps): ReactElement => {
                 key={viewItem.id}
                 theme={ButtonTheme.CLEAR}
                 onClick={onClickViewIcon(viewItem.view)}
+                data-testid={viewItem['data-testid']}
             >
                 <Icon
+                    data-testid={viewItem['data-testid'] + '.Icon'}
                     Svg={viewItem.Svg}
                     className={classNames('', {
                         [classes['no-active']]: view !== viewItem.view,
