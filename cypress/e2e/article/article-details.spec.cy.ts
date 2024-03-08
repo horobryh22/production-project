@@ -18,8 +18,11 @@ describe('Пользователь заходит на страницу стат
     });
 
     it('Пользователь видит содержимое статьи', () => {
+        // ждем пока контент страницы будет полностью загружен
+        cy.wait(2000);
+
         cy.selectByTestId('ArticleDetails').should('exist');
-        cy.selectByTestId('ArticleDetails.Header').should(
+        cy.selectByTestId('ArticleDetails.Title.Header').should(
             'have.text',
             DEFAULT_ARTICLE.title,
         );
