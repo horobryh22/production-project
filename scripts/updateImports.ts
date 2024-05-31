@@ -1,20 +1,17 @@
-import { Project } from "ts-morph";
+import { Project } from 'ts-morph';
 
 const project = new Project();
 
 // сначала добавляем все файлы
-project.addSourceFilesAtPaths([
-    "src/**/*.ts",
-    "src/**/*.tsx",
-])
+project.addSourceFilesAtPaths(['src/**/*.ts', 'src/**/*.tsx']);
 
 // затем получаем эти файлы
 const files = project.getSourceFiles();
 
-const ALLOWED_PATHS = ['app', 'shared', 'widgets', 'entities', 'pages', 'features']
+const ALLOWED_PATHS = ['app', 'shared', 'widgets', 'entities', 'pages', 'features'];
 const checkAbsolutePath = (importPath: string) => {
-    return ALLOWED_PATHS.some(allowedPath => importPath.startsWith(allowedPath) )
-}
+    return ALLOWED_PATHS.some(allowedPath => importPath.startsWith(allowedPath));
+};
 
 files.forEach(sourceFile => {
     const importDeclarations = sourceFile.getImportDeclarations();
@@ -25,7 +22,7 @@ files.forEach(sourceFile => {
         if (checkAbsolutePath(importPath)) {
             importDeclaration.setModuleSpecifier('@/' + importPath);
         }
-    })
-})
+    });
+});
 
 project.save();

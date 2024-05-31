@@ -6,7 +6,10 @@ const micromatch = require('micromatch');
 const project = new Project();
 
 // helpers
-const getMatchingExports = (indexExports?: ExportDeclaration[], pattern?: string): string[] => {
+const getMatchingExports = (
+    indexExports?: ExportDeclaration[],
+    pattern?: string,
+): string[] => {
     if (!indexExports || !pattern) {
         return [];
     }
@@ -31,7 +34,7 @@ const getPublicAPIExportItems = (list: string[], baseName?: string) => {
         ?.map((item, i, arr) => {
             const isLastItem = arr.length - 1 === i;
             const isDefaultExport = item === 'default';
-            const finalName = isDefaultExport && baseName ? baseName : item
+            const finalName = isDefaultExport && baseName ? baseName : item;
 
             return isLastItem ? `\`${finalName}\`` : `\`${finalName}\`\n\n`;
         })
@@ -39,11 +42,7 @@ const getPublicAPIExportItems = (list: string[], baseName?: string) => {
 };
 
 // сначала добавляем все типы файлов, которые буду обрабатываться
-project.addSourceFilesAtPaths([
-    '**/*.md',
-    'src/**/*.ts',
-    'src/**/*.tsx',
-]);
+project.addSourceFilesAtPaths(['**/*.md', 'src/**/*.ts', 'src/**/*.tsx']);
 
 const entityPath = path.resolve(__dirname, '..', 'src', 'entities');
 const featurePath = path.resolve(__dirname, '..', 'src', 'features');
@@ -99,7 +98,9 @@ ${getPublicAPIExportItems(selectors)}
 ${getPublicAPIExportItems(consts)}`;
 
     if (!mdFile) {
-        const sourceFile = directory.createSourceFile(sourceFilePath, textTemplate, { overwrite: true });
+        const sourceFile = directory.createSourceFile(sourceFilePath, textTemplate, {
+            overwrite: true,
+        });
 
         await sourceFile.save();
     } else {

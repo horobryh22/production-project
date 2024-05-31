@@ -7,10 +7,7 @@ const project = new Project();
 console.log({ args: process.argv });
 
 // сначала добавляем все типы файлов, которые буду обрабатываться
-project.addSourceFilesAtPaths([
-    'src/**/*.ts',
-    'src/**/*.tsx',
-]);
+project.addSourceFilesAtPaths(['src/**/*.ts', 'src/**/*.tsx']);
 
 // все файлы проекта
 const files = project.getSourceFiles();
@@ -28,20 +25,28 @@ const uiIndex = uiDir?.getSourceFile(uiIndexPath);
 
 uiDirectories?.forEach(directory => {
     // получаем только файлы с нашими компонентами
-    const file = directory.getSourceFiles().find(file => !file.getBaseNameWithoutExtension().match(/\./));
+    const file = directory
+        .getSourceFiles()
+        .find(file => !file.getBaseNameWithoutExtension().match(/\./));
 
     // если файлы с компонентами есть
     if (file) {
         // получаем имя нашей компоненты
         const fileName = file.getBaseNameWithoutExtension();
         // путь до наше компоненты в файле shared/ui/index
-        const modulePath =`./${fileName}/${fileName}`
+        const modulePath = `./${fileName}/${fileName}`;
         // все экспорты, которые есть в файле shared/ui/index
         const indexExportDeclarations = uiIndex?.getExportDeclarations();
         // получаем экспорты тольк из нашей компоненты (здесь типы и компоненты)
-        const moduleExportDeclarations = uiIndex?.getExportDeclarations().filter(declaration => declaration.getModuleSpecifierValue() === modulePath);
-        const moduleExportElementsNames = moduleExportDeclarations?.flatMap(declaration => declaration.getNamedExports());
-        const indexExportsNames = moduleExportElementsNames?.map(indexExport => indexExport.getName());
+        const moduleExportDeclarations = uiIndex
+            ?.getExportDeclarations()
+            .filter(declaration => declaration.getModuleSpecifierValue() === modulePath);
+        const moduleExportElementsNames = moduleExportDeclarations?.flatMap(declaration =>
+            declaration.getNamedExports(),
+        );
+        const indexExportsNames = moduleExportElementsNames?.map(indexExport =>
+            indexExport.getName(),
+        );
         // получаем экспорты из нашей компоненты
         const fileExports = file.getExportedDeclarations();
         const fileExportsNames = Array.from(fileExports.keys());
@@ -55,30 +60,39 @@ uiDirectories?.forEach(directory => {
 
             // если наш экспорт не экспортируется из index
             if (!isExported) {
-
                 // если экспорт не является типом или интерфейсом
                 // добавляем просто в экспорт
                 if (!isInterface) {
                     // находим декларацию с экспортом компонент и добавляем в нее элемент, которые еще не экспортируется
-                    const moduleDeclaration = moduleExportDeclarations?.find(declaration => {
-                        return declaration.getModuleSpecifierValue() === modulePath && !declaration.isTypeOnly();
-                    })
+                    const moduleDeclaration = moduleExportDeclarations?.find(
+                        declaration => {
+                            return (
+                                declaration.getModuleSpecifierValue() === modulePath &&
+                                !declaration.isTypeOnly()
+                            );
+                        },
+                    );
 
                     // если уже есть экспорт из файла, то расширяем его
                     if (moduleDeclaration) {
-                        moduleDeclaration?.addNamedExport(exportElement)
+                        moduleDeclaration?.addNamedExport(exportElement);
                     } else {
                         // иначе создаем новый экспорт
                         uiIndex?.insertExportDeclaration(1, {
                             namedExports: [exportElement],
                             moduleSpecifier: `./${fileName}/${fileName}`,
-                        })
+                        });
                     }
                 } else {
                     // если является типом или интерфейсом, то проверяем, экспортируются ли уже типы из нашего модуля
-                    const typeModuleDeclaration = indexExportDeclarations?.find(exportDeclaration => {
-                        return exportDeclaration.getModuleSpecifierValue() === modulePath && exportDeclaration.isTypeOnly();
-                    })
+                    const typeModuleDeclaration = indexExportDeclarations?.find(
+                        exportDeclaration => {
+                            return (
+                                exportDeclaration.getModuleSpecifierValue() ===
+                                    modulePath && exportDeclaration.isTypeOnly()
+                            );
+                        },
+                    );
 
                     // если уже есть экспорт из файла, то расширяем его
                     if (typeModuleDeclaration) {
@@ -89,19 +103,16 @@ uiDirectories?.forEach(directory => {
                             isTypeOnly: true,
                             namedExports: [exportElement],
                             moduleSpecifier: `./${fileName}/${fileName}`,
-                        })
+                        });
                     }
                     uiIndex?.save();
                 }
-
             }
-        })
+        });
     }
 });
 
-
 const ALLOWED_PATHS = ['app', 'shared', 'widgets', 'entities', 'pages', 'features'];
-
 
 const checkAbsolutePath = (importPath: string) => {
     return ALLOWED_PATHS.some(allowedPath => importPath.startsWith(allowedPath));
@@ -127,7 +138,7 @@ files.forEach(sourceFile => {
         if (layer === 'shared' && slice === 'ui') {
             importDeclaration.setModuleSpecifier('@/shared/ui');
         }
-    })
-})
+    });
+});
 
 project.save();

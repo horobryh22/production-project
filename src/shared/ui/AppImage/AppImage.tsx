@@ -1,9 +1,4 @@
-import {
-    ImgHTMLAttributes,
-    ReactElement,
-    useLayoutEffect,
-    useState,
-} from 'react';
+import { ImgHTMLAttributes, ReactElement, useLayoutEffect, useState } from 'react';
 
 interface AppImageProps extends ImgHTMLAttributes<HTMLImageElement> {
     fallback?: ReactElement;

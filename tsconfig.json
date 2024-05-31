@@ -1,39 +1,39 @@
 {
-  "compilerOptions": {
-    "baseUrl": ".",
-    "paths": {
-      "@/*": ["./src/*"]
-    },
-    "outDir": "./dist/",
-    // shows places in the code where the type is not specified
-    "noImplicitAny": true,
-    "module": "ESNext",
-    "strict": true,
-    // in which specification will be compiled our code for support more browsers
-    "target": "es5",
-    "jsx": "react-jsx",
-    // with compiling js files also will be handled
-    "allowJs": true,
-    "moduleResolution": "node",
-    // let us work with packages which use 'common js' (webpack, path, ...)
-    // like with usual packages with using 'import' instead of (require('webpack') module.export = common js);
-    "esModuleInterop": true,
-    // let us to using imports like 'import webpack from 'webpack' instead of
-    // 'import * as webpack from 'webpack'
-    "allowSyntheticDefaultImports": true,
-    "sourceMap": true,
-    "isolatedModules": true
-  },
-  "ts-node": {
     "compilerOptions": {
-      "module": "CommonJS"
-    }
-  },
-  "include": [
-    "./config/jest/setupTests.ts",
-    "./**/*.ts",
-    "./**/*.tsx",
-    "./src/**/*.ts",
-    "./src/**/*.tsx"
-  ]
+        "baseUrl": ".",
+        "paths": {
+            "@/*": ["./src/*"]
+        },
+        "outDir": "./dist/",
+        // shows places in the code where the type is not specified
+        "noImplicitAny": true,
+        "module": "ESNext",
+        "strict": true,
+        // in which specification will be compiled our code for support more browsers
+        "target": "es5",
+        "jsx": "react-jsx",
+        // with compiling js files also will be handled
+        "allowJs": true,
+        "moduleResolution": "node",
+        // let us work with packages which use 'common js' (webpack, path, ...)
+        // like with usual packages with using 'import' instead of (require('webpack') module.export = common js);
+        "esModuleInterop": true,
+        // let us to using imports like 'import webpack from 'webpack' instead of
+        // 'import * as webpack from 'webpack'
+        "allowSyntheticDefaultImports": true,
+        "sourceMap": true,
+        "isolatedModules": true
+    },
+    "ts-node": {
+        "compilerOptions": {
+            "module": "CommonJS"
+        }
+    },
+    "include": [
+        "./config/jest/setupTests.ts",
+        "./**/*.ts",
+        "./**/*.tsx",
+        "./src/**/*.ts",
+        "./src/**/*.tsx"
+    ]
 }
