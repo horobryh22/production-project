@@ -8,8 +8,15 @@ describe('Изолированное тестирование карточки �
         // Мокируем запроc за получением данных карточки профиля и возвращаем содержимое файла profile.json
         cy.intercept('GET', '**/profile/*', { fixture: 'profile.json' });
 
-        cy.mount(<EditableProfileCard profileId={USER_ID} />, {
+        const element = (
+            <div className={'app'}>
+                <EditableProfileCard profileId={USER_ID} />
+            </div>
+        );
+        const options = {
             initialState: { user: { authData: { id: USER_ID } } },
-        });
+        };
+
+        cy.mount(element, options);
     });
 });
