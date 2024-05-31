@@ -9,7 +9,7 @@ import { profileReducer } from '@/features/EditableProfileCard/testing';
 import { instance } from '@/shared/api/api';
 import {
     renderComponent,
-    renderComponentOptions,
+    RenderComponentOptions,
 } from '@/shared/lib/tests/renderComponent';
 
 import ProfilePage from './ProfilePage';
@@ -28,7 +28,7 @@ const profileData: Profile = {
     first: 'Илья',
 };
 
-const options: renderComponentOptions = {
+const options: RenderComponentOptions = {
     initialState: {
         profile: {
             data: profileData,
