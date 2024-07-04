@@ -9,7 +9,6 @@ const MainPage = (): ReactElement => {
 
     return (
         <Page data-testid={'MainPage'}>
-            <div>11111111111111111111</div>
             {t('Main page', { ns: 'main' })}
         </Page>
     );

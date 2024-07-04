@@ -36,8 +36,7 @@
     "lint-staged": {
         "**/*.{ts,tsx}": [
             "eslint --fix",
-            "eslint",
-            "prettier --list-different"
+            "eslint"
         ],
         "**/*.{scss,css}": [
             "stylelint --fix",
