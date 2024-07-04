@@ -19,10 +19,5 @@ jobs:
           host: ${{ secrets.REMOTE_HOST }}
           username: ${{ secrets.REMOTE_USER }}
           password: ${{ secrets.REMOTE_PASSWORD }}
-          script: |
-            cd ~/production-project
-            git pull
-            /root/.nvm/versions/node/v14.21.3/bin/npm run build:prod
-            rm -rf ~/../var/www/production-project/html
-            mv ~/production-project/build ~/../var/www/production-project/html
+          script: .deploy/deploy.sh
             
