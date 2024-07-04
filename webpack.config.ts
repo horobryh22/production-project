@@ -5,6 +5,9 @@ import { Configuration } from 'webpack';
 import { buildWebpackConfig } from './config/build/buildWebpackConfig';
 import { BuildEnv, BuildMode, BuildPaths } from './config/build/types/config';
 
+// Заполняет process.env значениями из файла .env
+require('dotenv').config();
+
 export default (env: BuildEnv): Configuration => {
     const PORT = env?.port || 3000;
 
@@ -20,7 +23,8 @@ export default (env: BuildEnv): Configuration => {
     const MODE: BuildMode = env?.mode || 'development';
     const IS_DEV = MODE === 'development';
     const ANALYZE = env?.analyze || false;
-    const URL = env?.apiUrl || 'http://localhost:8000';
+    const HOST = IS_DEV ? process.env.DEVELOPMENT_HOST : process.env.PRODUCTION_HOST;
+    const URL = env?.apiUrl ?? HOST;
 
     return buildWebpackConfig({
         port: PORT,

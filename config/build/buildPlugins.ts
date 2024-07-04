@@ -9,8 +9,7 @@ import webpack, { WebpackPluginInstance } from 'webpack';
 import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
 
 import { BuildOptions } from './types/config';
-// Заполняет process.env значениями из файла .env
-require('dotenv').config();
+
 
 export function buildPlugins({
     paths,
@@ -20,7 +19,6 @@ export function buildPlugins({
     project,
 }: BuildOptions): WebpackPluginInstance[] {
     const isProd = !isDev;
-    const host = isProd ? process.env.PRODUCTION_HOST : process.env.DEVELOPMENT_HOST;
 
     const plugins = [
         // it shows us progress of build files
@@ -33,7 +31,7 @@ export function buildPlugins({
         // this plugin gives access to variables what announced inside it
         new webpack.DefinePlugin({
             __IS_DEV__: JSON.stringify(isDev),
-            __API__: JSON.stringify(apiUrl ?? host),
+            __API__: JSON.stringify(apiUrl),
             __PROJECT__: JSON.stringify(project),
         }),
         new ForkTsCheckerWebpackPlugin({
