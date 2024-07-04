@@ -19,11 +19,4 @@ jobs:
           host: ${{ secrets.REMOTE_HOST }}
           username: ${{ secrets.REMOTE_USER }}
           password: ${{ secrets.REMOTE_PASSWORD }}
-          script: |
-            if [ -f ~/production-project/.deploy/deploy.sh ]; then
-              chmod +x ~/production-project/.deploy/deploy.sh
-              ~/production-project/.deploy/deploy.sh
-            else
-              ls -la ~/production-project/.deploy
-              echo "Deployment script not found!"
-              exit 1
+          script: ~/production-project/.deploy/deploy.sh
