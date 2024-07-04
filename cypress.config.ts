@@ -13,7 +13,7 @@ export default defineConfig({
         admin_password: process.env.ADMIN_AUTH_PASSWORD,
         auth_username: process.env.AUTH_USERNAME,
         auth_password: process.env.AUTH_PASSWORD,
-        host: process.env.HOST,
+        host: process.env.DEVELOPMENT_HOST,
     },
 
     component: {
