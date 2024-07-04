@@ -17,8 +17,8 @@ jobs:
         uses: appleboy/ssh-action@v0.1.6
         with:
           host: ${{ secrets.REMOTE_HOST }}
-          username: ${{ secrets.REMOTE_USER }}
           password: ${{ secrets.REMOTE_PASSWORD }}
+          username: ${{ secrets.REMOTE_USER }}
           script: |
             cd ~/production-project
             git pull
