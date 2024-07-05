@@ -2,15 +2,18 @@ import { useSelector } from 'react-redux';
 
 import { StateSchema } from '@/app/providers/StoreProvider';
 
-type Selector<T> = (state: StateSchema) => T;
-type Result<T> = [() => T, Selector<T>];
+type Selector<T, Args extends any[]> = (state: StateSchema, ...args: Args) => T;
+type Hook<T, Args extends any[]> = (...args: Args) => T;
+type Result<T, Args extends any[]> = [Hook<T, Args>, Selector<T, Args>];
 
 // TODO подумать, чтобы расширить этот хук под createSelector из библиотеки reselect
 //  и применить его во всем проекте вместо useSelector
 
-export function buildSelector<T>(selector: Selector<T>): Result<T> {
-    const useSelectorHook = (): T => {
-        return useSelector(selector);
+export function buildSelector<T, Args extends any[]>(
+    selector: Selector<T, Args>,
+): Result<T, Args> {
+    const useSelectorHook: Hook<T, Args> = (...args: Args) => {
+        return useSelector((state: StateSchema) => selector(state, ...args));
     };
 
     return [useSelectorHook, selector];
