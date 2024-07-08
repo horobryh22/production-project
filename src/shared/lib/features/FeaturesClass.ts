@@ -1,4 +1,6 @@
-import { FeaturesFlags } from '@/shared/types/features';
+import { ReactNode } from 'react';
+
+import { FeaturesFlags, ToggleFeature } from '@/shared/types/features';
 
 class Features {
     private featureFlags: FeaturesFlags;
@@ -15,6 +17,14 @@ class Features {
         if (newFeatureFlags) {
             this.featureFlags = newFeatureFlags;
         }
+    }
+
+    toggleFeature<T extends ReactNode>({ name, on, off }: ToggleFeature<T>): T {
+        if (this.featureFlags[name]) {
+            return on();
+        }
+
+        return off();
     }
 }
 
