@@ -1,6 +1,7 @@
 import type { PayloadAction } from '@reduxjs/toolkit';
 
 import { USER_LOCAL_STORAGE_KEY } from '@/shared/const/localStorage';
+import { features } from '@/shared/lib/features';
 import { buildSlice } from '@/shared/store/buildSlice';
 
 import { User, UserSchema } from '../types';
@@ -18,13 +19,19 @@ export const userSlice = buildSlice({
         setAuthData: (state, action: PayloadAction<User>) => {
             state.isUserAuth = true;
             state.authData = action.payload;
+
+            features.setFeatureFlags(action.payload.featureFlags);
         },
         initAuthData: state => {
-            const user = JSON.parse(localStorage.getItem(USER_LOCAL_STORAGE_KEY)!);
+            const user = JSON.parse(
+                localStorage.getItem(USER_LOCAL_STORAGE_KEY)!,
+            ) as User;
 
             if (user) {
                 state.authData = user;
                 state.isUserAuth = true;
+
+                features.setFeatureFlags(user.featureFlags);
             } else {
                 state.authData = { id: '', username: '' };
                 state.isUserAuth = false;
