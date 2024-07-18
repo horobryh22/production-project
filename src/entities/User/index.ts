@@ -11,3 +11,4 @@ export {
 } from './model/selectors/selectUserRoles/selectUserRoles';
 export { saveJsonSettings } from './model/services/saveJsonSettings/saveJsonSettings';
 export { UserRole } from './model/consts/consts';
+export { initAuthData } from './model/services/initAuthData/initAuthData';

@@ -13,7 +13,7 @@ export const loginByUsername = createAsyncThunk<User, UserData, ThunkConfig<stri
     'login/loginByUsername',
     async ({ username, password }, { rejectWithValue, dispatch, extra }) => {
         try {
-            const { data } = await extra.api.post<User>('/login', {
+            const { data } = await extra.api.post<any, { data: User }>('/login', {
                 username,
                 password,
             });
@@ -22,7 +22,7 @@ export const loginByUsername = createAsyncThunk<User, UserData, ThunkConfig<stri
                 throw new Error();
             }
 
-            localStorage.setItem(USER_LOCAL_STORAGE_KEY, JSON.stringify(data));
+            localStorage.setItem(USER_LOCAL_STORAGE_KEY, JSON.stringify(data.id));
             dispatch(userActions.setAuthData(data));
 
             return data;

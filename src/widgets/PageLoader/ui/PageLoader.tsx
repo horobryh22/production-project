@@ -7,11 +7,18 @@ import classes from './PageLoader.module.scss';
 
 interface PageLoaderProps {
     className?: string;
+    maxHeight?: boolean;
 }
 
-export const PageLoader = ({ className }: PageLoaderProps): ReactElement => {
+export const PageLoader = ({ className, maxHeight }: PageLoaderProps): ReactElement => {
     return (
-        <div className={classNames(classes.PageLoader, {}, [className])}>
+        <div
+            className={classNames(
+                classes.PageLoader,
+                { [classes.maxHeight]: maxHeight },
+                [className],
+            )}
+        >
             <Loader />
         </div>
     );
