@@ -145,7 +145,7 @@
             "error",
             {
                 "alias": "@",
-                "ignoredImportPatterns": ["**/StoreProvider", "**/testing"],
+                "ignoredImportPatterns": ["**/StoreProvider", "**/testing", "**/ThemeProvider"],
                 "testFilesPatterns": ["**/*.test.*", "**/*.stories.*"]
             }
         ],

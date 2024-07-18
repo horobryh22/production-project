@@ -1,5 +1,8 @@
 import type { ComponentMeta, ComponentStory } from '@storybook/react';
 
+import { StoreDecorator } from '@/shared/config/storybook/StoreDecorator';
+import { ThemeDecorator } from '@/shared/config/storybook/ThemeDecorator';
+
 import { ThemeSwitcher as ThemeSwitcherComponent } from './ThemeSwitcher';
 
 export default {
@@ -15,3 +18,9 @@ const Template: ComponentStory<typeof ThemeSwitcherComponent> = args => (
 );
 
 export const ThemeSwitcher = Template.bind({});
+ThemeSwitcher.decorators = [
+    ThemeDecorator(),
+    StoreDecorator({
+        user: { authData: { id: '1' } },
+    }),
+];
