@@ -4,7 +4,8 @@ import { USER_LOCAL_STORAGE_KEY } from '@/shared/const/localStorage';
 import { features } from '@/shared/lib/features';
 import { buildSlice } from '@/shared/store/buildSlice';
 
-import { User, UserSchema } from '../types';
+import { saveJsonSettings } from '../services/saveJsonSettings/saveJsonSettings';
+import { JsonSettings, User, UserSchema } from '../types';
 
 const initialState: UserSchema = {
     authData: { id: '', username: '' },
@@ -46,6 +47,15 @@ export const userSlice = buildSlice({
             localStorage.removeItem(USER_LOCAL_STORAGE_KEY);
         },
     },
+    extraReducers: builder =>
+        builder.addCase(
+            saveJsonSettings.fulfilled,
+            (state, action: PayloadAction<JsonSettings>) => {
+                if (state.authData) {
+                    state.authData.jsonSettings = action.payload;
+                }
+            },
+        ),
 });
 
 export const { useActions: useUserActions } = userSlice;

@@ -1,6 +1,6 @@
 import { createContext } from 'react';
 
-import { Theme } from '../hooks/useTheme/useTheme';
+import { Theme } from '@/shared/const/enums';
 
 interface ThemeContextProps {
     theme?: Theme;
