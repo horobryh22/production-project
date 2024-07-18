@@ -16,9 +16,7 @@ export const initAuthData = createAsyncThunk<User, void, ThunkConfig<string>>(
                 return rejectWithValue('userId is not found!');
             }
 
-            const user: User = await dispatch(
-                getAuthUserDataQuery(JSON.parse(userId)),
-            ).unwrap();
+            const user: User = await dispatch(getAuthUserDataQuery(userId)).unwrap();
 
             if (!user) {
                 return rejectWithValue('error');

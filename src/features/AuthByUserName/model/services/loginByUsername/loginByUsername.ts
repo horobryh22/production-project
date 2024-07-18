@@ -22,7 +22,7 @@ export const loginByUsername = createAsyncThunk<User, UserData, ThunkConfig<stri
                 throw new Error();
             }
 
-            localStorage.setItem(USER_LOCAL_STORAGE_KEY, JSON.stringify(data.id));
+            localStorage.setItem(USER_LOCAL_STORAGE_KEY, data.id);
             dispatch(userActions.setAuthData(data));
 
             return data;
