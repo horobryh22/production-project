@@ -3,9 +3,6 @@ import { Project } from 'ts-morph';
 const path = require('path');
 const project = new Project();
 
-// при запуске скрипта можно вытащить аругменты, для которых можно сделать исключения
-console.log({ args: process.argv });
-
 // сначала добавляем все типы файлов, которые буду обрабатываться
 project.addSourceFilesAtPaths(['src/**/*.ts', 'src/**/*.tsx']);
 

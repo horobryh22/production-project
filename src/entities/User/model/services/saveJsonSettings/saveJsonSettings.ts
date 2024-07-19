@@ -18,8 +18,6 @@ export const saveJsonSettings = createAsyncThunk<
             const authData = selectAuthData(getState());
             const currentSettings = jsonSettingsSelector(getState()) ?? {};
 
-            console.log({ currentSettings, authData });
-
             if (!authData.id) {
                 return rejectWithValue('userId is empty!');
             }

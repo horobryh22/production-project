@@ -32,7 +32,7 @@
         "prepare": "husky install",
         "generate:slice": "node scripts/createSlice/index.js",
         "postinstall": "node scripts/clear-cache.js",
-        "feature:remove": "ts-node ./scripts/removeFeature.ts"
+        "feature:remove": "ts-node scripts/removeFeature/removeFeature.ts"
     },
     "lint-staged": {
         "**/*.{ts,tsx}": [

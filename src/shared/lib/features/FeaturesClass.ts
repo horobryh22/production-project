@@ -1,6 +1,6 @@
 import { ReactNode } from 'react';
 
-import { FeaturesFlags, ToggleFeature } from '@/shared/types/features';
+import type { FeaturesFlags, ToggleFeature } from '@/shared/types/features';
 
 class Features {
     private featureFlags: FeaturesFlags;
