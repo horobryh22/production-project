@@ -9,6 +9,8 @@ interface ToggleFeatureProps {
     off: ReactElement;
 }
 
+// TODO можно сделать тест, что компонента работает корректно
+
 export const ToggleFeature = (props: ToggleFeatureProps): ReactElement => {
     const { off, on, feature } = props;
 
