@@ -35,8 +35,7 @@ export const toggleComponent = (node: Node, flag: string, featureName: string) =
 
         const feature = featureAttribute
             ?.getFirstDescendantByKind(SyntaxKind.StringLiteral)
-            ?.getText()
-            ?.slice(1, -1);
+            ?.getLiteralValue();
 
         if (feature !== featureName) {
             return;

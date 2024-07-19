@@ -35,8 +35,7 @@ const replaceToggleFunction = (node: Node, flag: string, featureName: string) =>
     // из полученных объектов свойств вытаскиваем необходимые нам данные
     const name = nameProperty
         ?.getFirstDescendantByKind(SyntaxKind.StringLiteral) // знаем что тут строка
-        ?.getText()
-        ?.slice(1, -1);
+        ?.getLiteralValue();
 
     const onResult = onProperty
         ?.getFirstDescendantByKind(SyntaxKind.ArrowFunction) // знаем что тут стрелочная ф-ия
