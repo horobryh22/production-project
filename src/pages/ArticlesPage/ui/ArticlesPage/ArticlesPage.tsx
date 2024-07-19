@@ -1,4 +1,11 @@
-import { memo, MutableRefObject, ReactElement, useCallback, useState } from 'react';
+import React, {
+    lazy,
+    memo,
+    MutableRefObject,
+    ReactElement,
+    useCallback,
+    useState,
+} from 'react';
 
 import { useSelector } from 'react-redux';
 
@@ -8,10 +15,14 @@ import {
 } from '@/features/ArticleInfiniteList';
 import { ArticlesFilterBlock } from '@/features/ArticlesPageFilter';
 import { classNames, useAppDispatch } from '@/shared/lib';
+import { LazyLoader } from '@/shared/ui';
 import { Page } from '@/widgets/Page';
 import { selectViewSwitcherView, ViewSwitcher } from '@/widgets/ViewSwitcher';
 
 import classes from './ArticlesPage.module.scss';
+
+// lazy
+const ArticlePageGreeting = lazy(() => import('@/features/ArticlePageGreeting'));
 
 interface ArticlePageProps {
     className?: string;
@@ -45,6 +56,9 @@ const ArticlesPage = memo((props: ArticlePageProps): ReactElement => {
                 scrollPageRef={scrollPageRef}
                 view={view}
             />
+            <LazyLoader>
+                <ArticlePageGreeting />
+            </LazyLoader>
         </Page>
     );
 });

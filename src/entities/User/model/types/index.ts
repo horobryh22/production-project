@@ -21,5 +21,5 @@ export interface UserSchema {
 export interface JsonSettings {
     theme?: Theme;
     isFirstVisit?: boolean;
-    settingsPageHasBeenOpen?: boolean;
+    articlePageHasBeenOpen?: boolean;
 }

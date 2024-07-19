@@ -48,7 +48,7 @@
       "jsonSettings": {
         "theme": "app_purple_theme",
         "isFirstVisit": true,
-        "settingsPageHasBeenOpen": false
+        "articlePageHasBeenOpen": true
       },
       "featureFlags": {
         "isArticleRatingEnabled": false
